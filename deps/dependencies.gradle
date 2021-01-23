@@ -1,0 +1,40 @@
+ext {
+    // Local dependencies --------------------------------------------------------------------------
+    buildSdkVer = 30
+    buildToolsVer = "30.0.3"
+    appId = "com.evgenykuksov.rercipes"
+    minSdkVer = 21
+    targetSdkVer = 30
+    codeVer = 1
+    nameVer =  "1.0"
+
+    // Remote dependencies -------------------------------------------------------------------------
+    kotlinVer = "1.4.21"
+    gradleVer = "4.1.2"
+    coreKtxVer = "1.3.2"
+
+    appcompatVer = "1.2.0"
+    materialVer = "1.2.1"
+
+    constraintlayoutVer = "2.0.4"
+
+    jUnitVer = "4.13.1"
+    jUnitExtVer = "1.1.2"
+    jUnitEspressoVer = "3.3.0"
+
+
+
+    kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVer"
+    gradleProject = "com.android.tools.build:gradle:$gradleVer"
+    kotlinLanguage = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVer"
+    coreKtx = "androidx.core:core-ktx:$coreKtxVer"
+    
+    appCompat = "androidx.appcompat:appcompat:$appcompatVer"
+    material = "com.google.android.material:material:$materialVer"
+
+    constraintlayout = "androidx.constraintlayout:constraintlayout:$constraintlayoutVer"
+
+    jUnit = "junit:junit:$jUnitVer"
+    jUnitExt = "androidx.test.ext:junit:$jUnitExtVer"
+    jUnitEspresso = "androidx.test.espresso:espresso-core:$jUnitEspressoVer"
+}
