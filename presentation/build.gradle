@@ -7,16 +7,14 @@ plugins {
 android {
     compileSdkVersion buildSdkVer
     buildToolsVersion buildToolsVer
-
     defaultConfig {
         applicationId appId
         minSdkVersion minSdkVer
         targetSdkVersion targetSdkVer
         versionCode codeVer
         versionName nameVer
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner testInstrumentation
     }
-
     buildTypes {
         release {
             minifyEnabled false
