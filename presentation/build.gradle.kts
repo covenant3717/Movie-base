@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     implementation(Libs.coreKtx)
     implementation(Libs.viewmodel)
     implementation(Libs.livedata)
+    implementation(Libs.runtime)
     implementation(Libs.coroutine)
     implementation(Libs.coroutineAndroid)
 
