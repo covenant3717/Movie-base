@@ -54,9 +54,6 @@ dependencies {
     implementation(Libs.appcompat)
     implementation(Libs.material)
     implementation(Libs.constraintlayout)
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     testImplementation(Libs.junit)
     androidTestImplementation(Libs.junits)
