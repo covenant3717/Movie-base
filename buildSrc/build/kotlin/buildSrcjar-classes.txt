@@ -1,1 +1,1 @@
-/Users/evgeny/AndroidStudioProjects/Rercipes/buildSrc/build/classes/kotlin/main/Apps.class:/Users/evgeny/AndroidStudioProjects/Rercipes/buildSrc/build/classes/kotlin/main/Libs.class:/Users/evgeny/AndroidStudioProjects/Rercipes/buildSrc/build/classes/kotlin/main/Versions.class
+/Users/evgeny/AndroidStudioProjects/Recipes/buildSrc/build/classes/kotlin/main/Apps.class:/Users/evgeny/AndroidStudioProjects/Recipes/buildSrc/build/classes/kotlin/main/Libs.class:/Users/evgeny/AndroidStudioProjects/Recipes/buildSrc/build/classes/kotlin/main/Versions.class

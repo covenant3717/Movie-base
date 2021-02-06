@@ -1,2 +1,2 @@
 include(":presentation")
-rootProject.name = "Rercipes"
+rootProject.name = "Recipes"

@@ -1,4 +1,4 @@
-package com.evgenykuksov.rercipes
+package com.evgenykuksov.recipes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
