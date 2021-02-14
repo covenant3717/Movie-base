@@ -13,6 +13,7 @@ object Versions {
     const val coreKtx = "1.3.2"
     const val lifecycle = "2.2.0"
     const val coroutine = "1.4.2"
+    const val koin = "2.2.2"
 
     const val appCompat = "1.2.0"
     const val material = "1.2.1"
@@ -28,16 +29,28 @@ object Libs {
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-    const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
-    const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
-    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
-    const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+
+    object Jetpack {
+        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    }
 
     object UI {
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val material = "com.google.android.material:material:${Versions.material}"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    }
+
+    object Coroutines {
+        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+    }
+
+    object Di {
+        const val koin = "org.koin:koin-core:${Versions.koin}"
+        const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
+        const val koinTest = "org.koin:koin-test:${Versions.koin}"
     }
 
     object Tests {

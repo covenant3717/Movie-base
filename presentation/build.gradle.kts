@@ -49,15 +49,20 @@ android {
 dependencies {
     implementation(Libs.kotlin)
     implementation(Libs.coreKtx)
-    implementation(Libs.viewmodel)
-    implementation(Libs.livedata)
-    implementation(Libs.runtime)
-    implementation(Libs.coroutine)
-    implementation(Libs.coroutineAndroid)
+
+    implementation(Libs.Jetpack.viewmodel)
+    implementation(Libs.Jetpack.livedata)
+    implementation(Libs.Jetpack.runtime)
 
     implementation(Libs.UI.appcompat)
     implementation(Libs.UI.material)
     implementation(Libs.UI.constraintlayout)
+
+    implementation(Libs.Coroutines.coroutine)
+    implementation(Libs.Coroutines.coroutineAndroid)
+
+    implementation(Libs.Di.koin)
+    implementation(Libs.Di.koinAndroid)
 
     testImplementation(Libs.Tests.junit)
     androidTestImplementation(Libs.Tests.junits)
