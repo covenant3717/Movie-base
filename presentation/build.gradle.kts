@@ -55,11 +55,11 @@ dependencies {
     implementation(Libs.coroutine)
     implementation(Libs.coroutineAndroid)
 
-    implementation(Libs.appcompat)
-    implementation(Libs.material)
-    implementation(Libs.constraintlayout)
+    implementation(Libs.UI.appcompat)
+    implementation(Libs.UI.material)
+    implementation(Libs.UI.constraintlayout)
 
-    testImplementation(Libs.junit)
-    androidTestImplementation(Libs.junits)
-    androidTestImplementation(Libs.espressoCore)
+    testImplementation(Libs.Tests.junit)
+    androidTestImplementation(Libs.Tests.junits)
+    androidTestImplementation(Libs.Tests.espressoCore)
 }

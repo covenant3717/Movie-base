@@ -16,11 +16,8 @@ object Versions {
 
     const val appCompat = "1.2.0"
     const val material = "1.2.1"
-
-    // view
     const val constraintLayout = "2.0.4"
 
-    // test
     const val junit = "4.12"
     const val junitTest = "1.1.2"
     const val espressoCore = "3.3.0"
@@ -37,14 +34,15 @@ object Libs {
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
     const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
 
-    const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val material = "com.google.android.material:material:${Versions.material}"
+    object UI {
+        const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+        const val material = "com.google.android.material:material:${Versions.material}"
+        const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    }
 
-    // view
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-
-    // test
-    const val junit = "junit:junit:${Versions.junit}"
-    const val junits = "androidx.test.ext:junit:${Versions.junitTest}"
-    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    object Tests {
+        const val junit = "junit:junit:${Versions.junit}"
+        const val junits = "androidx.test.ext:junit:${Versions.junitTest}"
+        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    }
 }
