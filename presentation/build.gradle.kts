@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+
     implementation(Libs.kotlin)
     implementation(Libs.coreKtx)
 
