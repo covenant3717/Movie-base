@@ -20,7 +20,7 @@ object Versions {
     const val constraintLayout = "2.0.4"
 
     const val retrofit = "2.9.0"
-    const val stetho = "1.5.1"
+    const val chuck = "1.1.0"
 
     const val junit = "4.12"
     const val junitTest = "1.1.2"
@@ -60,8 +60,8 @@ object Libs {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         const val retrofitAdapterRxJava = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-        const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
-        const val stethoOkhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
+        const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.chuck}"
+        const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
     }
 
     object Tests {

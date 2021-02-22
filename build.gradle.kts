@@ -1,13 +1,12 @@
 buildscript {
-    val kotlin_version by extra("1.4.30")
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }
     dependencies {
         classpath(Libs.kotlinPlugin)
         classpath(Libs.gradle)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 
@@ -15,6 +14,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url = uri("https://www.jitpack.io") }
+        mavenCentral()
     }
 }
 

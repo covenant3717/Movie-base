@@ -31,8 +31,8 @@ dependencies {
     implementation(Libs.Network.retrofit)
     implementation(Libs.Network.retrofitConverterGson)
     implementation(Libs.Network.retrofitAdapterRxJava)
-    implementation(Libs.Network.stetho)
-    implementation(Libs.Network.stethoOkhttp)
+    debugImplementation(Libs.Network.chuckDebug)
+    releaseImplementation(Libs.Network.chuckRelease)
 
     testImplementation(Libs.Tests.junit)
     androidTestImplementation(Libs.Tests.junits)
