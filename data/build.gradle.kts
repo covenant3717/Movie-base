@@ -28,6 +28,10 @@ dependencies {
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)
 
+    implementation(Libs.Network.retrofit)
+    implementation(Libs.Network.stetho)
+    implementation(Libs.Network.stethoOkhttp)
+
     testImplementation(Libs.Tests.junit)
     androidTestImplementation(Libs.Tests.junits)
     androidTestImplementation(Libs.Tests.espressoCore)
