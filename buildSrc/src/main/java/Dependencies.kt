@@ -58,6 +58,8 @@ object Libs {
 
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        const val retrofitAdapterRxJava = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
         const val stethoOkhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
     }

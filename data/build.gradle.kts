@@ -29,6 +29,8 @@ dependencies {
     implementation(Libs.Di.koinAndroid)
 
     implementation(Libs.Network.retrofit)
+    implementation(Libs.Network.retrofitConverterGson)
+    implementation(Libs.Network.retrofitAdapterRxJava)
     implementation(Libs.Network.stetho)
     implementation(Libs.Network.stethoOkhttp)
 
