@@ -59,7 +59,7 @@ object Libs {
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-        const val retrofitAdapterRxJava = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        const val retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
         const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.chuck}"
         const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
     }
