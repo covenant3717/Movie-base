@@ -12,6 +12,14 @@ android {
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
         consumerProguardFiles("consumer-rules.pro")
     }
+    buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "BASE_URL", "\"https://api.spoonacular.com\"")
+        }
+        getByName("release") {
+            buildConfigField("String", "BASE_URL", "\"https://api.spoonacular.com\"")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
