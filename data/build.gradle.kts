@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     implementation(Libs.kotlin)
     implementation(Libs.coreKtx)
 
