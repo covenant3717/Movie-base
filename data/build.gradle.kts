@@ -39,6 +39,7 @@ dependencies {
     implementation(Libs.Network.retrofit)
     implementation(Libs.Network.retrofitConverterGson)
     implementation(Libs.Network.retrofitAdapterRxJava)
+
     debugImplementation(Libs.Network.chuckDebug)
     releaseImplementation(Libs.Network.chuckRelease)
 
