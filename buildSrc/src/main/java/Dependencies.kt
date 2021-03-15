@@ -14,13 +14,15 @@ object Versions {
     const val lifecycle = "2.2.0"
     const val coroutine = "1.4.2"
     const val koin = "2.2.2"
+    const val retrofit = "2.9.0"
+    const val chuck = "1.1.0"
+    const val rxJava = "3.0.11"
+    const val rxAndroid = "3.0.0"
+    const val rxKotlin = "3.0.1"
 
     const val appCompat = "1.2.0"
     const val material = "1.2.1"
     const val constraintLayout = "2.0.4"
-
-    const val retrofit = "2.9.0"
-    const val chuck = "1.1.0"
 
     const val junit = "4.12"
     const val junitTest = "1.1.2"
@@ -48,6 +50,12 @@ object Libs {
     object Coroutines {
         const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
         const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+    }
+
+    object RX {
+        const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
+        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
+        const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlin}"
     }
 
     object Di {

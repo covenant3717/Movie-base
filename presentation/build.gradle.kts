@@ -59,11 +59,15 @@ dependencies {
     implementation(Libs.UI.material)
     implementation(Libs.UI.constraintlayout)
 
+    implementation(Libs.Di.koin)
+    implementation(Libs.Di.koinAndroid)
+
     implementation(Libs.Coroutines.coroutine)
     implementation(Libs.Coroutines.coroutineAndroid)
 
-    implementation(Libs.Di.koin)
-    implementation(Libs.Di.koinAndroid)
+    implementation(Libs.RX.rxJava)
+    implementation(Libs.RX.rxAndroid)
+    implementation(Libs.RX.rxKotlin)
 
     testImplementation(Libs.Tests.junit)
     androidTestImplementation(Libs.Tests.junits)

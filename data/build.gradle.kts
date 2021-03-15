@@ -36,6 +36,10 @@ dependencies {
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)
 
+    implementation(Libs.RX.rxJava)
+    implementation(Libs.RX.rxAndroid)
+    implementation(Libs.RX.rxKotlin)
+
     implementation(Libs.Network.retrofit)
     implementation(Libs.Network.retrofitConverterGson)
     implementation(Libs.Network.retrofitAdapterRxJava)
