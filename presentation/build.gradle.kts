@@ -61,6 +61,7 @@ dependencies {
 
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)
+    implementation(Libs.Di.koinViewModel)
 
     implementation(Libs.Coroutines.coroutine)
     implementation(Libs.Coroutines.coroutineAndroid)

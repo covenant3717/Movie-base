@@ -61,6 +61,7 @@ object Libs {
     object Di {
         const val koin = "org.koin:koin-core:${Versions.koin}"
         const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
         const val koinTest = "org.koin:koin-test:${Versions.koin}"
     }
 
