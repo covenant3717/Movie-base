@@ -15,6 +15,7 @@ object Versions {
     const val coroutine = "1.4.2"
     const val koin = "2.2.2"
     const val retrofit = "2.9.0"
+    const val okhttpLogInterceptor = "4.9.0"
     const val chuck = "1.1.0"
     const val rxJava = "3.0.11"
     const val rxAndroid = "3.0.0"
@@ -69,6 +70,7 @@ object Libs {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         const val retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
+        const val okhttpLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogInterceptor}"
         const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.chuck}"
         const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
     }
