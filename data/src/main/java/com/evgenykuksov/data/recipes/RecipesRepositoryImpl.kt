@@ -1,8 +1,8 @@
 package com.evgenykuksov.data.recipes
 
 import com.evgenykuksov.data.recipes.remote.RemoteRecipes
-import com.evgenykuksov.domain.repository.recipes.RecipesRepository
-import com.evgenykuksov.domain.repository.recipes.model.Recipe
+import com.evgenykuksov.domain.recipes.RecipesRepository
+import com.evgenykuksov.domain.recipes.model.Recipe
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 

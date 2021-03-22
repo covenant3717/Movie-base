@@ -1,9 +1,12 @@
 package com.evgenykuksov.data.di
 
 import com.evgenykuksov.data.BuildConfig
+import com.evgenykuksov.data.network.ApiKeyInterceptor
+import com.evgenykuksov.data.network.HeaderInterceptor
 import com.google.gson.GsonBuilder
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -17,9 +20,8 @@ val NetworkModule = module {
         Retrofit.Builder()
             .client(get())
             .baseUrl(BASE_URL)
-//            .addConverterFactory(ResponseWrapperConverter())
-            .addConverterFactory(get())
-            .addCallAdapterFactory(get())
+            .addConverterFactory(GsonConverterFactory.create(get()))
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
     }
 
@@ -28,28 +30,21 @@ val NetworkModule = module {
             .connectTimeout(OKHTTP_CONNECT_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(OKHTTP_READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .pingInterval(OKHTTP_PING_INTERVAL_MS, TimeUnit.MILLISECONDS)
+            .addInterceptor(ApiKeyInterceptor())
             .addInterceptor(ChuckInterceptor(this.androidContext()))
-//            .addInterceptor(HeaderInterceptor(instance()))
-//            .addInterceptor(
-//                HttpLoggingInterceptor(HttpResponseLogger())
-//                    .setLevel(
-//                        if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-//                        else HttpLoggingInterceptor.Level.NONE
-//                    )
-//            )
+            .addInterceptor(HeaderInterceptor())
+            .addInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(
+                        if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+                        else HttpLoggingInterceptor.Level.NONE
+                    )
+            )
             .build()
     }
 
     single {
         GsonBuilder().create()
-    }
-
-    single {
-        GsonConverterFactory.create(get())
-    }
-
-    single {
-        RxJava3CallAdapterFactory.create()
     }
 }
 

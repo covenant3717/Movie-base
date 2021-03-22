@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface RecipesApi {
 
-    @GET("complexSearch")
+    @GET("recipes/complexSearch")
     fun getRecipes(): Single<List<RecipeRemote>>
 }
