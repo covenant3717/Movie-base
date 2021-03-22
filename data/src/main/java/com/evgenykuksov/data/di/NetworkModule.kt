@@ -51,7 +51,6 @@ val NetworkModule = module {
     single {
         RxJava3CallAdapterFactory.create()
     }
-
 }
 
 private const val BASE_URL = BuildConfig.BASE_URL
