@@ -1,9 +1,7 @@
 package com.evgenykuksov.recipes
 
 import android.app.Application
-import com.evgenykuksov.data.di.NetworkModule
-import com.evgenykuksov.data.di.RxDataModule
-import com.evgenykuksov.data.recipes.di.RecipesModule
+import com.evgenykuksov.data.di.DataModule
 import com.evgenykuksov.recipes.di.RxPresentationModule
 import com.evgenykuksov.recipes.di.UseCasesModule
 import com.evgenykuksov.recipes.di.ViewModelModule
@@ -20,13 +18,11 @@ class App : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@App)
+            modules(DataModule)
             modules(
                 ViewModelModule,
                 UseCasesModule,
-                RxPresentationModule,
-                NetworkModule,
-                RxDataModule,
-                RecipesModule
+                RxPresentationModule
             )
         }
     }

@@ -14,7 +14,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val NetworkModule = module {
+internal val NetworkModule = module {
 
     single {
         Retrofit.Builder()

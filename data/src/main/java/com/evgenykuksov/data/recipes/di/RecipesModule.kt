@@ -10,17 +10,11 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-val RecipesModule = module {
+internal val RecipesModule = module {
 
-    single {
-        get<Retrofit>().create(RecipesApi::class.java)
-    }
+    single { get<Retrofit>().create(RecipesApi::class.java) }
 
-    single<RemoteRecipes> {
-        RemoteRecipesImpl(get())
-    }
+    single<RemoteRecipes> { RemoteRecipesImpl(get()) }
 
-    single<RecipesRepository> {
-        RecipesRepositoryImpl(get(), get(named(SCHEDULER_IO)))
-    }
+    single<RecipesRepository> { RecipesRepositoryImpl(get(), get(named(SCHEDULER_IO))) }
 }
