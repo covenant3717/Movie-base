@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val RxPresentationModule = module {
+internal val RxModule = module {
 
     single(named(SCHEDULER_UI)) { AndroidSchedulers.mainThread() }
 }
