@@ -1,9 +1,9 @@
 package com.evgenykuksov.data.recipes.remote
 
-import com.evgenykuksov.data.recipes.remote.model.RecipeListRemote
+import com.evgenykuksov.data.recipes.remote.model.RecipeDataRemote
 import kotlinx.coroutines.flow.Flow
 
 interface RemoteRecipes {
 
-    fun getRecipes(): Flow<RecipeListRemote>
+    fun getRecipes(): Flow<RecipeDataRemote>
 }

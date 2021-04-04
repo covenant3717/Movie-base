@@ -15,9 +15,11 @@ class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch(Dispatchers.Main) {
-            delay(2500)
+            delay(DELAY_START_MAIN)
             finish()
             startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
         }
     }
 }
+
+private const val DELAY_START_MAIN = 2500L
