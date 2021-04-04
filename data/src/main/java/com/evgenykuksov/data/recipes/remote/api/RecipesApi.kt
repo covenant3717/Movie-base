@@ -1,11 +1,10 @@
 package com.evgenykuksov.data.recipes.remote.api
 
-import com.evgenykuksov.data.recipes.remote.model.RecipeRemote
-import io.reactivex.rxjava3.core.Single
+import com.evgenykuksov.data.recipes.remote.model.RecipeListRemote
 import retrofit2.http.GET
 
 interface RecipesApi {
 
     @GET("recipes/complexSearch")
-    fun getRecipes(): Single<List<RecipeRemote>>
+    suspend fun getRecipes(): RecipeListRemote
 }

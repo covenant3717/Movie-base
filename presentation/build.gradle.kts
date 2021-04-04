@@ -67,10 +67,6 @@ dependencies {
     implementation(Libs.Coroutines.coroutine)
     implementation(Libs.Coroutines.coroutineAndroid)
 
-    implementation(Libs.RX.rxJava)
-    implementation(Libs.RX.rxAndroid)
-    implementation(Libs.RX.rxKotlin)
-
     testImplementation(Libs.Tests.junit)
     androidTestImplementation(Libs.Tests.junits)
     androidTestImplementation(Libs.Tests.espressoCore)

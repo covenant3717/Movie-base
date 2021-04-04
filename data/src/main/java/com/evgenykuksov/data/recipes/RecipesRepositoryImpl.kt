@@ -3,15 +3,16 @@ package com.evgenykuksov.data.recipes
 import com.evgenykuksov.data.recipes.remote.RemoteRecipes
 import com.evgenykuksov.domain.recipes.RecipesRepository
 import com.evgenykuksov.domain.recipes.model.Recipe
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 
 class RecipesRepositoryImpl(
-    private val remoteStore: RemoteRecipes,
-    private val ioScheduler: Scheduler
+    private val remoteStore: RemoteRecipes
 ) : RecipesRepository {
 
-    override fun getRecipes(): Single<List<Recipe>> = remoteStore.getRecipes()
-        .map { it.map { it.toDomain() } }
-        .subscribeOn(ioScheduler)
+    override fun getRecipes(): Flow<List<Recipe>> = remoteStore.getRecipes()
+        .map { it.results?.map { it.toDomain() }.orEmpty() }
+        .flowOn(Dispatchers.IO)
 }

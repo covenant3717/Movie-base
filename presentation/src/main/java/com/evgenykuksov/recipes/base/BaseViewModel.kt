@@ -1,14 +1,11 @@
 package com.evgenykuksov.recipes.base
 
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.disposables.CompositeDisposable
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected val disposables: CompositeDisposable = CompositeDisposable()
-
-    override fun onCleared() {
-        super.onCleared()
-        disposables.clear()
-    }
+    protected fun launchOnUi(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch { block() }
 }

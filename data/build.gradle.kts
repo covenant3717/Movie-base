@@ -40,10 +40,6 @@ dependencies {
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)
 
-    implementation(Libs.RX.rxJava)
-    implementation(Libs.RX.rxAndroid)
-    implementation(Libs.RX.rxKotlin)
-
     implementation(Libs.Coroutines.coroutine)
     implementation(Libs.Coroutines.coroutineAndroid)
 
