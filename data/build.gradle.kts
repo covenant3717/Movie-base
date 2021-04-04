@@ -44,6 +44,9 @@ dependencies {
     implementation(Libs.RX.rxAndroid)
     implementation(Libs.RX.rxKotlin)
 
+    implementation(Libs.Coroutines.coroutine)
+    implementation(Libs.Coroutines.coroutineAndroid)
+
     implementation(Libs.Network.retrofit)
     implementation(Libs.Network.retrofitConverterGson)
     implementation(Libs.Network.retrofitAdapterRxJava)
