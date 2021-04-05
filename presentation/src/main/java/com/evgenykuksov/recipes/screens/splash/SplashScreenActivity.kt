@@ -20,6 +20,10 @@ class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {
             startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
         }
     }
+
+    override fun observe() {
+
+    }
 }
 
 private const val DELAY_START_MAIN = 2500L

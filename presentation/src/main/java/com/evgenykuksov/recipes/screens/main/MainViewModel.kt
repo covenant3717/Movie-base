@@ -7,19 +7,26 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 
-class MainViewModel(private val recipesUseCase: RecipesUseCase) : BaseViewModel() {
+class MainViewModel(private val recipesUseCase: RecipesUseCase) :
+    BaseViewModel<MainContract.Intent, MainContract.State, MainContract.Effect>() {
 
-    fun getRecipes() {
-        launchOnUi {
-            recipesUseCase.getRecipes()
-                .onStart { Log.i("ml", "start") }
-                .catch { exception ->
-                    Log.i("ml", "exception: $exception")
-                    exception.printStackTrace()
-                }
-                .collect {
-                    Log.i("ml", "list: $it")
-                }
+    override fun createInitialState() = MainContract.State.Idle
+
+    override fun handleIntent(intent: MainContract.Intent) {
+        when (intent) {
+            is MainContract.Intent.Start -> load()
         }
+    }
+
+    private fun load() = launchOnThisScope {
+        recipesUseCase.getRecipes()
+            .onStart { Log.i("ml", "start") }
+            .catch { exception ->
+                Log.i("ml", "exception: $exception")
+                exception.printStackTrace()
+            }
+            .collect {
+                Log.i("ml", "list: $it")
+            }
     }
 }
