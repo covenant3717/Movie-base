@@ -1,6 +1,5 @@
 package com.evgenykuksov.recipes.screens.main
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.recipes.RecipesUseCase
 import com.evgenykuksov.recipes.base.BaseViewModel
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val recipesUseCase: RecipesUseCase) :
-    BaseViewModel<MainContract.Intent, MainContract.State, MainContract.Effect>() {
+    BaseViewModel<MainContract.Intent, MainContract.State, MainContract.SingleEvent>() {
 
     override fun createInitialState() = MainContract.State.Idle
 
@@ -24,14 +23,12 @@ class MainViewModel(private val recipesUseCase: RecipesUseCase) :
         recipesUseCase.getRecipes()
             .onStart { setState(MainContract.State.Loading) }
             .catch { exception ->
-                Log.i("ml", "exception: $exception")
                 setState(MainContract.State.Idle)
-                setEffect(MainContract.Effect.ToastError(exception.localizedMessage.orEmpty()))
+                setSingleEvent(MainContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
                 exception.printStackTrace()
             }
             .collect {
                 setState(MainContract.State.Success(it))
-                Log.i("ml", "list: $it")
             }
     }
 }

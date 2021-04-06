@@ -1,3 +1,3 @@
 package com.evgenykuksov.recipes.base
 
-interface UiEffect
+interface UiSingleEvent

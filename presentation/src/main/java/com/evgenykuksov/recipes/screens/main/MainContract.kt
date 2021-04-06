@@ -1,7 +1,7 @@
 package com.evgenykuksov.recipes.screens.main
 
 import com.evgenykuksov.domain.recipes.model.Recipe
-import com.evgenykuksov.recipes.base.UiEffect
+import com.evgenykuksov.recipes.base.UiSingleEvent
 import com.evgenykuksov.recipes.base.UiIntent
 import com.evgenykuksov.recipes.base.UiState
 
@@ -17,7 +17,7 @@ class MainContract {
         data class Success(val list: List<Recipe>) : State()
     }
 
-    sealed class Effect : UiEffect {
-        data class ToastError(val message: String) : Effect()
+    sealed class SingleEvent : UiSingleEvent {
+        data class ToastError(val message: String) : SingleEvent()
     }
 }

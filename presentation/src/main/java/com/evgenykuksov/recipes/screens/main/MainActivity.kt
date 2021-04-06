@@ -42,9 +42,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     private fun observeSingleEffect() = lifecycleScope.launchWhenStarted {
-        viewModel.singleEffect.collect {
+        viewModel.singleEvent.collect {
             when (it) {
-                is MainContract.Effect.ToastError -> {
+                is MainContract.SingleEvent.ToastError -> {
                     Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
