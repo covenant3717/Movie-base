@@ -18,6 +18,6 @@ class MainContract {
     }
 
     sealed class Effect : UiEffect {
-        object ShowToast : Effect()
+        data class ToastError(val message: String) : Effect()
     }
 }

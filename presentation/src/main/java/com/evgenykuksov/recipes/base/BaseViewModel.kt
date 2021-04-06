@@ -2,7 +2,6 @@ package com.evgenykuksov.recipes.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -39,19 +38,11 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, Effect : UiEffe
 
     abstract fun handleIntent(intent: Intent)
 
-    fun setIntent(intent: Intent) {
-        viewModelScope.launch { _intent.emit(intent) }
-    }
+    fun setIntent(intent: Intent) = viewModelScope.launch { _intent.emit(intent) }
 
-    protected fun setState(reduce: State.() -> State) {
-        val newState = currentState.reduce()
+    protected fun setState(newState: State) {
         _state.value = newState
     }
 
-    protected fun setEffect(builder: () -> Effect) {
-        val effectValue = builder()
-        viewModelScope.launch { _singleEffect.send(effectValue) }
-    }
-
-    protected fun launchOnThisScope(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch { block() }
+    protected fun setEffect(effect: Effect) = viewModelScope.launch { _singleEffect.send(effect) }
 }

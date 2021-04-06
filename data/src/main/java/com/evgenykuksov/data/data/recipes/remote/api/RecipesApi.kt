@@ -1,6 +1,6 @@
-package com.evgenykuksov.data.recipes.remote.api
+package com.evgenykuksov.data.data.recipes.remote.api
 
-import com.evgenykuksov.data.recipes.remote.model.RecipeDataRemote
+import com.evgenykuksov.data.data.recipes.remote.model.RecipeDataRemote
 import retrofit2.http.GET
 
 interface RecipesApi {

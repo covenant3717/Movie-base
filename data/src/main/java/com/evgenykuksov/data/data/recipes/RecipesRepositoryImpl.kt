@@ -1,6 +1,6 @@
-package com.evgenykuksov.data.recipes
+package com.evgenykuksov.data.data.recipes
 
-import com.evgenykuksov.data.recipes.remote.RemoteRecipes
+import com.evgenykuksov.data.data.recipes.remote.RemoteRecipes
 import com.evgenykuksov.domain.recipes.RecipesRepository
 import com.evgenykuksov.domain.recipes.model.Recipe
 import kotlinx.coroutines.Dispatchers

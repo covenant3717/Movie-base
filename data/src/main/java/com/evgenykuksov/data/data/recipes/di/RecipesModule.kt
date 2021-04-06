@@ -1,9 +1,9 @@
-package com.evgenykuksov.data.recipes.di
+package com.evgenykuksov.data.data.recipes.di
 
-import com.evgenykuksov.data.recipes.RecipesRepositoryImpl
-import com.evgenykuksov.data.recipes.remote.RemoteRecipes
-import com.evgenykuksov.data.recipes.remote.RemoteRecipesImpl
-import com.evgenykuksov.data.recipes.remote.api.RecipesApi
+import com.evgenykuksov.data.data.recipes.RecipesRepositoryImpl
+import com.evgenykuksov.data.data.recipes.remote.RemoteRecipes
+import com.evgenykuksov.data.data.recipes.remote.RemoteRecipesImpl
+import com.evgenykuksov.data.data.recipes.remote.api.RecipesApi
 import com.evgenykuksov.domain.recipes.RecipesRepository
 import org.koin.dsl.module
 import retrofit2.Retrofit

@@ -17,31 +17,35 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        observeState()
+        observeSingleEffect()
         viewModel.setIntent(MainContract.Intent.Start)
     }
 
-    override fun observe() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.state.collect {
-                when (it) {
-                    is MainContract.State.Idle -> {
-                        pb.isVisible = false
-                    }
-                    is MainContract.State.Loading -> {
-                        pb.isVisible = true
-                    }
-                    is MainContract.State.Success -> {
-                        pb.isVisible = false
-                        tvSize.text = "size: $it."
-                    }
+    private fun observeState() = lifecycleScope.launchWhenStarted {
+        viewModel.state.collect {
+            when (it) {
+                is MainContract.State.Idle -> {
+                    pb.isVisible = false
+                    tvSize.text = "size:"
+                }
+                is MainContract.State.Loading -> {
+                    pb.isVisible = true
+                    tvSize.text = "size:"
+                }
+                is MainContract.State.Success -> {
+                    pb.isVisible = false
+                    tvSize.text = "size: ${it.list.size}"
                 }
             }
+        }
+    }
 
-            viewModel.singleEffect.collect {
-                when (it) {
-                    is MainContract.Effect.ShowToast -> {
-                        Toast.makeText(this@MainActivity, "test", Toast.LENGTH_SHORT).show()
-                    }
+    private fun observeSingleEffect() = lifecycleScope.launchWhenStarted {
+        viewModel.singleEffect.collect {
+            when (it) {
+                is MainContract.Effect.ToastError -> {
+                    Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }

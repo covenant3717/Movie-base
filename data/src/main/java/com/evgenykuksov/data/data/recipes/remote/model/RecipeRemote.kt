@@ -1,4 +1,4 @@
-package com.evgenykuksov.data.recipes.remote.model
+package com.evgenykuksov.data.data.recipes.remote.model
 
 import com.google.gson.annotations.SerializedName
 
