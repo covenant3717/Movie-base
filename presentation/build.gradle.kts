@@ -51,6 +51,7 @@ dependencies {
 
     implementation(Libs.kotlin)
     implementation(Libs.coreKtx)
+    implementation(Libs.coil)
 
     implementation(Libs.Jetpack.viewmodel)
     implementation(Libs.Jetpack.livedata)

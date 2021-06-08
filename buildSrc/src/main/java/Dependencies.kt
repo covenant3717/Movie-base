@@ -14,6 +14,7 @@ object Versions {
     const val lifecycle = "2.2.0"
     const val coroutine = "1.4.2"
     const val koin = "2.2.2"
+    const val coil = "1.2.2"
     const val retrofit = "2.9.0"
     const val retrofitAdapterCoroutinesVersion = "1.0.0"
     const val okhttpLogInterceptor = "4.9.0"
@@ -38,6 +39,7 @@ object Libs {
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
 
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
