@@ -59,6 +59,8 @@ dependencies {
     implementation(Libs.UI.appcompat)
     implementation(Libs.UI.material)
     implementation(Libs.UI.constraintlayout)
+    implementation(Libs.UI.groupie)
+    implementation(Libs.UI.groupieExt)
 
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)

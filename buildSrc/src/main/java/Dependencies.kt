@@ -25,6 +25,7 @@ object Versions {
     const val appCompat = "1.2.0"
     const val material = "1.2.1"
     const val constraintLayout = "2.0.4"
+    const val groupie = "2.9.0"
 
     const val junit = "4.12"
     const val junitTest = "1.1.2"
@@ -47,6 +48,8 @@ object Libs {
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val material = "com.google.android.material:material:${Versions.material}"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val groupie = "com.github.lisawray.groupie:groupie:${Versions.groupie}"
+        const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.groupie}"
     }
 
     object Coroutines {
