@@ -61,6 +61,7 @@ dependencies {
     implementation(Libs.UI.constraintlayout)
     implementation(Libs.UI.groupie)
     implementation(Libs.UI.groupieExt)
+    implementation(Libs.UI.circleImageView)
 
     implementation(Libs.Di.koin)
     implementation(Libs.Di.koinAndroid)

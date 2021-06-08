@@ -26,6 +26,7 @@ object Versions {
     const val material = "1.2.1"
     const val constraintLayout = "2.0.4"
     const val groupie = "2.9.0"
+    const val circleImageView = "3.1.0"
 
     const val junit = "4.12"
     const val junitTest = "1.1.2"
@@ -50,6 +51,7 @@ object Libs {
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val groupie = "com.github.lisawray.groupie:groupie:${Versions.groupie}"
         const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.groupie}"
+        const val circleImageView = "de.hdodenhof:circleimageview:${Versions.circleImageView}"
     }
 
     object Coroutines {
