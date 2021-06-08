@@ -2,7 +2,10 @@ package com.evgenykuksov.recipes.screens.main
 
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.recipes.RecipesUseCase
+import com.evgenykuksov.domain.recipes.model.Recipe
 import com.evgenykuksov.recipes.base.BaseViewModel
+import com.evgenykuksov.recipes.screens.main.items.RecipeItem
+import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
@@ -28,7 +31,13 @@ class MainViewModel(private val recipesUseCase: RecipesUseCase) :
                 exception.printStackTrace()
             }
             .collect {
-                setState(MainContract.State.Success(it))
+                setState(MainContract.State.Success(buildItems(it)))
             }
     }
+
+    private fun buildItems(list: List<Recipe>): List<Item> =
+        mutableListOf<RecipeItem>()
+            .apply {
+                list.forEach { add(RecipeItem(it)) }
+            }
 }
