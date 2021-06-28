@@ -3,6 +3,39 @@ import org.gradle.kotlin.dsl.project
 
 object DependenciesModule {
 
+    fun DependencyHandlerScope.data() {
+        "implementation"(project(":domain"))
+
+        "implementation"(Dependencies.kotlin)
+        "implementation"(Dependencies.coreKtx)
+
+        "implementation"(Dependencies.Di.koin)
+        "implementation"(Dependencies.Di.koinAndroid)
+
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
+
+        "implementation"(Dependencies.Network.retrofit)
+        "implementation"(Dependencies.Network.retrofitConverterGson)
+        "implementation"(Dependencies.Network.retrofitAdapterRxJava)
+        "implementation"(Dependencies.Network.okhttpLogInterceptor)
+
+        "debugImplementation"(Dependencies.Network.chuckDebug)
+        "releaseImplementation"(Dependencies.Network.chuckRelease)
+
+        "testImplementation"(Dependencies.Tests.junit)
+        "androidTestImplementation"(Dependencies.Tests.junits)
+        "androidTestImplementation"(Dependencies.Tests.espressoCore)
+    }
+
+    fun DependencyHandlerScope.domain() {
+        "implementation"(Dependencies.kotlin)
+        "implementation"(Dependencies.coreKtx)
+
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
+    }
+
     fun DependencyHandlerScope.presentation() {
         "implementation"(project(":domain"))
         "implementation"(project(":data"))
@@ -32,13 +65,5 @@ object DependenciesModule {
         "testImplementation"(Dependencies.Tests.junit)
         "androidTestImplementation"(Dependencies.Tests.junits)
         "androidTestImplementation"(Dependencies.Tests.espressoCore)
-    }
-
-    fun DependencyHandlerScope.domain() {
-        "implementation"(Dependencies.kotlin)
-        "implementation"(Dependencies.coreKtx)
-
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 }

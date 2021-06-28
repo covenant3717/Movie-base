@@ -1,3 +1,5 @@
+import DependenciesModule.data
+
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
@@ -32,26 +34,5 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
-
-    implementation(Dependencies.kotlin)
-    implementation(Dependencies.coreKtx)
-
-    implementation(Dependencies.Di.koin)
-    implementation(Dependencies.Di.koinAndroid)
-
-    implementation(Dependencies.Coroutines.coroutine)
-    implementation(Dependencies.Coroutines.coroutineAndroid)
-
-    implementation(Dependencies.Network.retrofit)
-    implementation(Dependencies.Network.retrofitConverterGson)
-    implementation(Dependencies.Network.retrofitAdapterRxJava)
-    implementation(Dependencies.Network.okhttpLogInterceptor)
-
-    debugImplementation(Dependencies.Network.chuckDebug)
-    releaseImplementation(Dependencies.Network.chuckRelease)
-
-    testImplementation(Dependencies.Tests.junit)
-    androidTestImplementation(Dependencies.Tests.junits)
-    androidTestImplementation(Dependencies.Tests.espressoCore)
+    data()
 }
