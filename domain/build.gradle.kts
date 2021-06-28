@@ -3,9 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation(Libs.kotlin)
-    implementation(Libs.coreKtx)
+    implementation(Dependencies.kotlin)
+    implementation(Dependencies.coreKtx)
 
-    implementation(Libs.Coroutines.coroutine)
-    implementation(Libs.Coroutines.coroutineAndroid)
+    implementation(Dependencies.Coroutines.coroutine)
+    implementation(Dependencies.Coroutines.coroutineAndroid)
 }

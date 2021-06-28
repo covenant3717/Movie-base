@@ -34,24 +34,24 @@ android {
 dependencies {
     implementation(project(":domain"))
 
-    implementation(Libs.kotlin)
-    implementation(Libs.coreKtx)
+    implementation(Dependencies.kotlin)
+    implementation(Dependencies.coreKtx)
 
-    implementation(Libs.Di.koin)
-    implementation(Libs.Di.koinAndroid)
+    implementation(Dependencies.Di.koin)
+    implementation(Dependencies.Di.koinAndroid)
 
-    implementation(Libs.Coroutines.coroutine)
-    implementation(Libs.Coroutines.coroutineAndroid)
+    implementation(Dependencies.Coroutines.coroutine)
+    implementation(Dependencies.Coroutines.coroutineAndroid)
 
-    implementation(Libs.Network.retrofit)
-    implementation(Libs.Network.retrofitConverterGson)
-    implementation(Libs.Network.retrofitAdapterRxJava)
-    implementation(Libs.Network.okhttpLogInterceptor)
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.retrofitConverterGson)
+    implementation(Dependencies.Network.retrofitAdapterRxJava)
+    implementation(Dependencies.Network.okhttpLogInterceptor)
 
-    debugImplementation(Libs.Network.chuckDebug)
-    releaseImplementation(Libs.Network.chuckRelease)
+    debugImplementation(Dependencies.Network.chuckDebug)
+    releaseImplementation(Dependencies.Network.chuckRelease)
 
-    testImplementation(Libs.Tests.junit)
-    androidTestImplementation(Libs.Tests.junits)
-    androidTestImplementation(Libs.Tests.espressoCore)
+    testImplementation(Dependencies.Tests.junit)
+    androidTestImplementation(Dependencies.Tests.junits)
+    androidTestImplementation(Dependencies.Tests.espressoCore)
 }

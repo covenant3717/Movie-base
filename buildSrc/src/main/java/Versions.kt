@@ -2,11 +2,6 @@ import org.gradle.api.JavaVersion
 
 object Versions {
 
-    const val KOTLIN = "1.5.20"
-    const val GRADLE = "4.1.1"
-    const val CORE_KTX = "1.3.2"
-    val JAVA = JavaVersion.VERSION_1_8
-
     object App {
         const val COMPILE_SDK = 30
         const val APPLICATION_ID = "com.evgenykuksov.recipes"
@@ -43,6 +38,11 @@ object Versions {
         const val JUNIT_TEST = "1.1.2"
         const val ESPRESSO_CORE = "3.3.0"
     }
+
+    const val KOTLIN = "1.5.20"
+    const val GRADLE = "4.1.1"
+    const val CORE_KTX = "1.3.2"
+    val JAVA = JavaVersion.VERSION_1_8
 
     const val LIFECYCLE = "2.2.0"
     const val KOIN = "2.2.2"
