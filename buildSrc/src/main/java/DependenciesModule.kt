@@ -33,4 +33,12 @@ object DependenciesModule {
         "androidTestImplementation"(Dependencies.Tests.junits)
         "androidTestImplementation"(Dependencies.Tests.espressoCore)
     }
+
+    fun DependencyHandlerScope.domain() {
+        "implementation"(Dependencies.kotlin)
+        "implementation"(Dependencies.coreKtx)
+
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
+    }
 }
