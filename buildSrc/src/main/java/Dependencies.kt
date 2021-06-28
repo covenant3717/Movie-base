@@ -1,92 +1,56 @@
-object Apps {
-    const val compileSdk = 30
-    const val appId = "com.evgenykuksov.recipes"
-    const val minSdk = 21
-    const val targetSdk = 30
-    const val versionCode = 1
-    const val versionName = "1.0"
-}
-
-object Versions {
-    const val kotlin = "1.4.21"
-    const val gradle = "4.1.1"
-    const val coreKtx = "1.3.2"
-    const val lifecycle = "2.2.0"
-    const val coroutine = "1.4.2"
-    const val koin = "2.2.2"
-    const val coil = "1.2.2"
-    const val retrofit = "2.9.0"
-    const val retrofitAdapterCoroutinesVersion = "1.0.0"
-    const val okhttpLogInterceptor = "4.9.0"
-    const val chuck = "1.1.0"
-    const val rxJava = "3.0.11"
-    const val rxAndroid = "3.0.0"
-    const val rxKotlin = "3.0.1"
-
-    const val appCompat = "1.2.0"
-    const val material = "1.2.1"
-    const val constraintLayout = "2.0.4"
-    const val groupie = "2.9.0"
-    const val circleImageView = "3.1.0"
-
-    const val junit = "4.12"
-    const val junitTest = "1.1.2"
-    const val espressoCore = "3.3.0"
-}
-
 object Libs {
-    const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-    const val coil = "io.coil-kt:coil:${Versions.coil}"
+    const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+    const val gradle = "com.android.tools.build:gradle:${Versions.GRADLE}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
+    const val coreKtx = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val coil = "io.coil-kt:coil:${Versions.COIL}"
 
     object Jetpack {
-        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
-        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
+        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}"
+        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}"
     }
 
     object UI {
-        const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-        const val material = "com.google.android.material:material:${Versions.material}"
-        const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-        const val groupie = "com.github.lisawray.groupie:groupie:${Versions.groupie}"
-        const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.groupie}"
-        const val circleImageView = "de.hdodenhof:circleimageview:${Versions.circleImageView}"
+        const val appcompat = "androidx.appcompat:appcompat:${Versions.UI.APP_COMPAT}"
+        const val material = "com.google.android.material:material:${Versions.UI.MATERIAL}"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
+        const val groupie = "com.github.lisawray.groupie:groupie:${Versions.UI.GROUPIE}"
+        const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.UI.GROUPIE}"
+        const val circleImageView = "de.hdodenhof:circleimageview:${Versions.UI.CIRCLE_IMAGE_VIEW}"
     }
 
     object Coroutines {
-        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
-        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Threads.COROUTINE}"
+        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Threads.COROUTINE}"
     }
 
     object RX {
-        const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
-        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
-        const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlin}"
+        const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.Threads.RX_JAVA}"
+        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.Threads.RX_ANDROID}"
+        const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.Threads.RX_KOTLIN}"
     }
 
     object Di {
-        const val koin = "org.koin:koin-core:${Versions.koin}"
-        const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
-        const val koinTest = "org.koin:koin-test:${Versions.koin}"
+        const val koin = "org.koin:koin-core:${Versions.KOIN}"
+        const val koinAndroid = "org.koin:koin-android:${Versions.KOIN}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.KOIN}"
+        const val koinTest = "org.koin:koin-test:${Versions.KOIN}"
     }
 
     object Network {
-        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-        const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-        const val retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
-        const val retrofitAdapterCoroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:${Versions.retrofitAdapterCoroutinesVersion}"
-        const val okhttpLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogInterceptor}"
-        const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.chuck}"
-        const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Network.RETROFIT}"
+        const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.Network.RETROFIT}"
+        const val retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Network.RETROFIT}"
+        const val retrofitAdapterCoroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:${Versions.Network.RETROFIT_COROUTINE_ADAPTER}"
+        const val okhttpLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKHTTP_LOG_INTERCEPTOR}"
+        const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.Network.CHUCK}"
+        const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.Network.CHUCK}"
     }
 
     object Tests {
-        const val junit = "junit:junit:${Versions.junit}"
-        const val junits = "androidx.test.ext:junit:${Versions.junitTest}"
-        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+        const val junit = "junit:junit:${Versions.Tests.JUNIT}"
+        const val junits = "androidx.test.ext:junit:${Versions.Tests.JUNIT_TEST}"
+        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Tests.ESPRESSO_CORE}"
     }
 }

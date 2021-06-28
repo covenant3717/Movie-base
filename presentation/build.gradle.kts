@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
+    compileSdkVersion(Versions.App.COMPILE_SDK)
     defaultConfig {
-        applicationId(Apps.appId)
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.targetSdk)
-        versionCode = Apps.versionCode
-        versionName = Apps.versionName
+        applicationId(Versions.App.APPLICATION_ID)
+        minSdkVersion(Versions.App.MIN_SDK)
+        targetSdkVersion(Versions.App.TARGET_SDK)
+        versionCode = Versions.App.VERSION_CODE
+        versionName = Versions.App.VERSION_NAME
         testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
         vectorDrawables.useSupportLibrary = true
     }
@@ -37,11 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Versions.JAVA
+        targetCompatibility = Versions.JAVA
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.JAVA.toString()
     }
 }
 
@@ -59,7 +59,7 @@ dependencies {
 
     implementation(Libs.UI.appcompat)
     implementation(Libs.UI.material)
-    implementation(Libs.UI.constraintlayout)
+    implementation(Libs.UI.constraintLayout)
     implementation(Libs.UI.groupie)
     implementation(Libs.UI.groupieExt)
     implementation(Libs.UI.circleImageView)
