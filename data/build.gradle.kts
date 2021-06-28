@@ -24,13 +24,6 @@ android {
             buildConfigField("String", "API_KEY", "\"0c548a1cd7174a8998401265afa99400\"")
         }
     }
-    compileOptions {
-        sourceCompatibility = Versions.JAVA
-        targetCompatibility = Versions.JAVA
-    }
-    kotlinOptions {
-        jvmTarget = Versions.JAVA.toString()
-    }
 }
 
 dependencies {
