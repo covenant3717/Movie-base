@@ -1,4 +1,4 @@
-package com.evgenykuksov.recipes.base
+package com.evgenykuksov.moviebase.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

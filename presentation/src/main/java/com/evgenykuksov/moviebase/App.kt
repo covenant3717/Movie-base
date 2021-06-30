@@ -1,8 +1,8 @@
-package com.evgenykuksov.recipes
+package com.evgenykuksov.moviebase
 
 import android.app.Application
 import com.evgenykuksov.data.di.DataModule
-import com.evgenykuksov.recipes.di.PresentationModule
+import com.evgenykuksov.moviebase.di.PresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

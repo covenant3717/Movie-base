@@ -1,4 +1,4 @@
-package com.evgenykuksov.recipes.base
+package com.evgenykuksov.moviebase.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

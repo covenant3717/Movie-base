@@ -1,11 +1,11 @@
-package com.evgenykuksov.recipes.screens.main
+package com.evgenykuksov.moviebase.screens.main
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.evgenykuksov.recipes.R
-import com.evgenykuksov.recipes.base.BaseActivity
+import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.moviebase.base.BaseActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section

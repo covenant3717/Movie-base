@@ -1,8 +1,8 @@
-package com.evgenykuksov.recipes.screens.main
+package com.evgenykuksov.moviebase.screens.main
 
-import com.evgenykuksov.recipes.base.UiIntent
-import com.evgenykuksov.recipes.base.UiSingleEvent
-import com.evgenykuksov.recipes.base.UiState
+import com.evgenykuksov.moviebase.base.UiIntent
+import com.evgenykuksov.moviebase.base.UiSingleEvent
+import com.evgenykuksov.moviebase.base.UiState
 import com.xwray.groupie.kotlinandroidextensions.Item
 
 class MainContract {

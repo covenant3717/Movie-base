@@ -1,6 +1,6 @@
-package com.evgenykuksov.recipes.di
+package com.evgenykuksov.moviebase.di
 
-import com.evgenykuksov.recipes.screens.main.MainViewModel
+import com.evgenykuksov.moviebase.screens.main.MainViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,4 +1,4 @@
-package com.evgenykuksov.recipes
+package com.evgenykuksov.moviebase
 
 import org.junit.Test
 

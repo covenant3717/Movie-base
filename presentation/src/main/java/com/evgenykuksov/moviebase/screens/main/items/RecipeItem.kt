@@ -1,9 +1,9 @@
-package com.evgenykuksov.recipes.screens.main.items
+package com.evgenykuksov.moviebase.screens.main.items
 
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.evgenykuksov.domain.recipes.model.Recipe
-import com.evgenykuksov.recipes.R
+import com.evgenykuksov.moviebase.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_recipe.view.*

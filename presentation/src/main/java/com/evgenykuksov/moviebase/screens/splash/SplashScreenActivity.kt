@@ -1,11 +1,11 @@
-package com.evgenykuksov.recipes.screens.splash
+package com.evgenykuksov.moviebase.screens.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.evgenykuksov.recipes.R
-import com.evgenykuksov.recipes.base.BaseActivity
-import com.evgenykuksov.recipes.screens.main.MainActivity
+import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.moviebase.screens.main.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

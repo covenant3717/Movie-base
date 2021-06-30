@@ -1,10 +1,10 @@
-package com.evgenykuksov.recipes.screens.main
+package com.evgenykuksov.moviebase.screens.main
 
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.recipes.RecipesUseCase
 import com.evgenykuksov.domain.recipes.model.Recipe
-import com.evgenykuksov.recipes.base.BaseViewModel
-import com.evgenykuksov.recipes.screens.main.items.RecipeItem
+import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.moviebase.screens.main.items.RecipeItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect

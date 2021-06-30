@@ -1,3 +1,3 @@
-package com.evgenykuksov.recipes.di
+package com.evgenykuksov.moviebase.di
 
 internal val PresentationModule = listOf(UseCasesModule, ViewModelsModule)
