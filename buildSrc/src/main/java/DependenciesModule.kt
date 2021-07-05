@@ -22,10 +22,6 @@ object DependenciesModule {
 
         "debugImplementation"(Dependencies.Network.chuckDebug)
         "releaseImplementation"(Dependencies.Network.chuckRelease)
-
-        "testImplementation"(Dependencies.Tests.junit)
-        "androidTestImplementation"(Dependencies.Tests.junits)
-        "androidTestImplementation"(Dependencies.Tests.espressoCore)
     }
 
     fun DependencyHandlerScope.domain() {
@@ -39,6 +35,7 @@ object DependenciesModule {
     fun DependencyHandlerScope.presentation() {
         "implementation"(project(":domain"))
         "implementation"(project(":data"))
+        "implementation"(project(":core"))
 
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
@@ -51,6 +48,8 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.appcompat)
         "implementation"(Dependencies.UI.material)
         "implementation"(Dependencies.UI.constraintLayout)
+        "implementation"(Dependencies.UI.fragment)
+        "implementation"(Dependencies.UI.fragmentKts)
         "implementation"(Dependencies.UI.groupie)
         "implementation"(Dependencies.UI.groupieExt)
         "implementation"(Dependencies.UI.circleImageView)
@@ -73,18 +72,10 @@ object DependenciesModule {
 
         "implementation"(Dependencies.UI.appcompat)
         "implementation"(Dependencies.UI.material)
+        "implementation"(Dependencies.UI.fragment)
 
         "testImplementation"(Dependencies.Tests.junit)
         "androidTestImplementation"(Dependencies.Tests.junits)
         "androidTestImplementation"(Dependencies.Tests.espressoCore)
     }
-
 }
-
-//implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//implementation 'androidx.core:core-ktx:1.6.0'
-//implementation 'androidx.appcompat:appcompat:1.3.0'
-//implementation 'com.google.android.material:material:1.4.0'
-//testImplementation 'junit:junit:4.+'
-//androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-//androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

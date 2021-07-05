@@ -14,6 +14,7 @@ object Versions {
     object UI {
         const val APP_COMPAT = "1.2.0"
         const val MATERIAL = "1.2.1"
+        const val FRAGMENT = "1.3.5"
         const val CONSTRAINT_LAYOUT = "2.0.4"
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"

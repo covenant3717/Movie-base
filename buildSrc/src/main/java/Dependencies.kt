@@ -15,6 +15,8 @@ object Dependencies {
         const val appcompat = "androidx.appcompat:appcompat:${Versions.UI.APP_COMPAT}"
         const val material = "com.google.android.material:material:${Versions.UI.MATERIAL}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
+        const val fragment = "androidx.fragment:fragment:${Versions.UI.FRAGMENT}"
+        const val fragmentKts = "androidx.fragment:fragment-ktx:${Versions.UI.FRAGMENT}"
         const val groupie = "com.github.lisawray.groupie:groupie:${Versions.UI.GROUPIE}"
         const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.UI.GROUPIE}"
         const val circleImageView = "de.hdodenhof:circleimageview:${Versions.UI.CIRCLE_IMAGE_VIEW}"
