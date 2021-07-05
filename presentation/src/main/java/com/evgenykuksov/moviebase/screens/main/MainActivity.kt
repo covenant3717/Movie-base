@@ -28,21 +28,21 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     private fun initWidgets() {
-        rvItems.adapter = adapter.apply { add(updatingGroup) }
+//        rvItems.adapter = adapter.apply { add(updatingGroup) }
     }
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
             when (it) {
                 is MainContract.State.Idle -> {
-                    pb.isVisible = false
+//                    pb.isVisible = false
                 }
                 is MainContract.State.Loading -> {
-                    pb.isVisible = true
+//                    pb.isVisible = true
                 }
                 is MainContract.State.Success -> {
-                    pb.isVisible = false
-                    updatingGroup.update(it.list)
+//                    pb.isVisible = false
+//                    updatingGroup.update(it.list)
                 }
             }
         }

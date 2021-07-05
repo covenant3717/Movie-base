@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main">#111111</color>
+
+    <color name="splash_menu_icon">#CCFFFFFF</color>
 </resources>

@@ -11,6 +11,8 @@
     <dimen name="offset_40">40dp</dimen>
     <dimen name="offset_32">32dp</dimen>
     <dimen name="offset_24">24dp</dimen>
+    <dimen name="offset_20">20dp</dimen>
+    <dimen name="offset_16">10dp</dimen>
     <dimen name="offset_10">10dp</dimen>
     <dimen name="offset_8">8dp</dimen>
     <dimen name="offset_4">4dp</dimen>
