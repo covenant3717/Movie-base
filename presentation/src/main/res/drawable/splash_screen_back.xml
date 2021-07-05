@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@android:color/white" />
+    <item android:drawable="@drawable/back_splashscreen" />
 
-    <item>
+    <item
+        android:bottom="@dimen/offset_40"
+        android:left="@dimen/offset_40">
         <bitmap
-            android:gravity="center"
-            android:src="@drawable/splashscreen" />
+            android:gravity="bottom|left"
+            android:src="@drawable/splash_logo" />
     </item>
 </layer-list>
