@@ -28,7 +28,6 @@ class MainViewModel(private val recipesUseCase: RecipesUseCase) :
             .catch { exception ->
                 setState(MainContract.State.Idle)
                 setSingleEvent(MainContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
-                exception.printStackTrace()
             }
             .collect {
                 setState(MainContract.State.Success(buildItems(it)))
