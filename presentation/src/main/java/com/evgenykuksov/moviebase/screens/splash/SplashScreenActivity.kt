@@ -16,8 +16,8 @@ class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch(Dispatchers.Main) {
             delay(DELAY_START_MAIN)
-            finish()
             startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+            finish()
         }
     }
 }
