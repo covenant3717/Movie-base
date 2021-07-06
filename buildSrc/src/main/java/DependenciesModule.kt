@@ -35,7 +35,6 @@ object DependenciesModule {
     fun DependencyHandlerScope.presentation() {
         "implementation"(project(":domain"))
         "implementation"(project(":data"))
-        "implementation"(project(":core"))
 
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
@@ -60,19 +59,6 @@ object DependenciesModule {
 
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
-
-        "testImplementation"(Dependencies.Tests.junit)
-        "androidTestImplementation"(Dependencies.Tests.junits)
-        "androidTestImplementation"(Dependencies.Tests.espressoCore)
-    }
-
-    fun DependencyHandlerScope.core() {
-        "implementation"(Dependencies.kotlin)
-        "implementation"(Dependencies.coreKtx)
-
-        "implementation"(Dependencies.UI.appcompat)
-        "implementation"(Dependencies.UI.material)
-        "implementation"(Dependencies.UI.fragment)
 
         "testImplementation"(Dependencies.Tests.junit)
         "androidTestImplementation"(Dependencies.Tests.junits)

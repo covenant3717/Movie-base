@@ -1,4 +1,4 @@
-package com.evgenykuksov.core.extensions
+package com.evgenykuksov.moviebase.extansions
 
 import android.app.Activity
 import android.view.WindowManager
