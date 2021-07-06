@@ -4,21 +4,21 @@
     <item
         android:id="@+id/page_overview"
         android:enabled="true"
-        android:icon="@drawable/ic_splash_rhombus"
+        android:icon="@drawable/ic_main_rhombus"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/page_list"
         android:enabled="true"
-        android:icon="@drawable/ic_splash_list"
+        android:icon="@drawable/ic_main_list"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/page_bookmark"
         android:enabled="true"
-        android:icon="@drawable/ic_splash_bookmark"
+        android:icon="@drawable/ic_main_bookmark"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/page_profile"
         android:enabled="true"
-        android:icon="@drawable/ic_splash_profile"
+        android:icon="@drawable/ic_main_profile"
         tools:ignore="MenuTitle" />
 </menu>

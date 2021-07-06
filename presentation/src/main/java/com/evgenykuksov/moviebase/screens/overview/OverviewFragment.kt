@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
-import com.evgenykuksov.moviebase.screens.main.MainContract
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section

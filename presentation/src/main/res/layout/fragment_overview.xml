@@ -5,15 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
+    android:fitsSystemWindows="true"
+    tools:background="@color/main_background"
     tools:context=".screens.bookmarks.BookmarksFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main"
-        android:textColor="#8A3737"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/offset_20"
+        android:layout_marginTop="@dimen/offset_24"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/offset_8"
+        android:src="@drawable/ic_overview_four_points"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
