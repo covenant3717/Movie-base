@@ -13,10 +13,10 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/offset_20"
-        android:layout_marginTop="@dimen/offset_24"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_24"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/offset_8"
+        android:padding="@dimen/dimen_8"
         android:src="@drawable/ic_overview_four_points"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
