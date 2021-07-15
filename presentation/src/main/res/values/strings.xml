@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Movie base</string>
+
+    <string name="overview_title_categories">Categories</string>
+    <string name="overview_tab_all">All</string>
+    <string name="overview_tab_popular">Popular</string>
+    <string name="overview_tab_top_rated">Top rated</string>
+    <string name="overview_title_your_rank">Your rank</string>
+    <string name="overview_title_your_rank_value">4 523</string>
 </resources>
