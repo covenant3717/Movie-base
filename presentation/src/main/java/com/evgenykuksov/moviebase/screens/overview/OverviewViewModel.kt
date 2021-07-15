@@ -2,7 +2,7 @@ package com.evgenykuksov.moviebase.screens.overview
 
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.recipes.RecipesUseCase
-import com.evgenykuksov.domain.recipes.model.Recipe
+import com.evgenykuksov.domain.recipes.model.Movie
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -34,7 +34,7 @@ class OverviewViewModel(private val recipesUseCase: RecipesUseCase) :
             }
     }
 
-    private fun buildItems(list: List<Recipe>): List<Item> =
+    private fun buildItems(list: List<Movie>): List<Item> =
         mutableListOf<MovieItem>()
             .apply {
                 list.forEach { add(MovieItem(it)) }

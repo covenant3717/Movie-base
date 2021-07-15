@@ -2,17 +2,12 @@ package com.evgenykuksov.moviebase.screens.overview
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.screens.overview.items.RankItem
 import com.evgenykuksov.moviebase.screens.overview.items.SpaceDividerItem
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -24,7 +19,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     private val viewModel: OverviewViewModel by viewModel()
     private val adapterMovies: GroupAdapter<GroupieViewHolder> = GroupAdapter()
-    private var updatingGroupMovies = Section()
+    private var moviesSection = Section()
     private val adapterRank: GroupAdapter<GroupieViewHolder> = GroupAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +35,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     }
 
     private fun initWidgets() {
-        //        rvItems.adapter = adapter.apply { add(updatingGroup) }
+        rvMovies.adapter = adapterMovies.apply { add(moviesSection) }
         rvRank.adapter = adapterRank.apply {
             for (i in 1..9) {
                 if (i in 7..9) add(RankItem(R.color.overview_item_rank_default))
@@ -61,6 +56,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 //                    pb.isVisible = true
                 }
                 is OverviewContract.State.Success -> {
+
 //                    pb.isVisible = false
 //                    updatingGroup.update(it.list)
                 }
@@ -72,7 +68,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         viewModel.singleEvent.collect {
             when (it) {
                 is OverviewContract.SingleEvent.ToastError -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                 }
             }
         }
