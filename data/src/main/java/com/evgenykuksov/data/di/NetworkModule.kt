@@ -1,8 +1,8 @@
 package com.evgenykuksov.data.di
 
 import com.evgenykuksov.data.BuildConfig
-import com.evgenykuksov.data.network.ApiKeyInterceptor
-import com.evgenykuksov.data.network.HeaderInterceptor
+import com.evgenykuksov.data.network.interceptors.ApiKeyInterceptor
+import com.evgenykuksov.data.network.interceptors.HeaderInterceptor
 import com.google.gson.GsonBuilder
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
@@ -46,7 +46,7 @@ internal val NetworkModule = module {
     }
 }
 
-private const val BASE_URL = BuildConfig.BASE_URL
+private const val BASE_URL = "${BuildConfig.BASE_URL}/${BuildConfig.API_VERSION}/"
 private const val OKHTTP_CONNECT_TIMEOUT_MS = 60_000L
 private const val OKHTTP_READ_TIMEOUT_MS = 60_000L
 private const val OKHTTP_PING_INTERVAL_MS = 30_000L
