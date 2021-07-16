@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.recipes.RecipesUseCase
 import com.evgenykuksov.domain.recipes.model.Movie
 import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
@@ -34,9 +35,12 @@ class OverviewViewModel(private val recipesUseCase: RecipesUseCase) :
             }
     }
 
-    private fun buildItems(list: List<Movie>): List<Item> =
-        mutableListOf<MovieItem>()
-            .apply {
-                list.forEach { add(MovieItem(it)) }
+    private fun buildItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
+        .apply {
+            add(MovieDividerItem)
+            list.forEach {
+                add(MovieItem(it))
+                add(MovieDividerItem)
             }
+        }
 }

@@ -1,13 +1,14 @@
 package com.evgenykuksov.moviebase.screens.overview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.screens.overview.items.RankItem
-import com.evgenykuksov.moviebase.screens.overview.items.SpaceDividerItem
+import com.evgenykuksov.moviebase.screens.overview.items.RankDividerItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -40,8 +41,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
             for (i in 1..9) {
                 if (i in 7..9) add(RankItem(R.color.overview_item_rank_default))
                 else add(RankItem(R.color.overview_item_rank_active))
-
-                if (i < 9) add(SpaceDividerItem)
+                if (i < 9) add(RankDividerItem)
             }
         }
     }
@@ -56,9 +56,8 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 //                    pb.isVisible = true
                 }
                 is OverviewContract.State.Success -> {
-
 //                    pb.isVisible = false
-//                    updatingGroup.update(it.list)
+                    moviesSection.update(it.list)
                 }
             }
         }

@@ -4,9 +4,9 @@ import com.evgenykuksov.moviebase.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 
-object SpaceDividerItem : Item() {
+object RankDividerItem : Item() {
 
-    override fun getLayout(): Int = R.layout.item_space_divider
+    override fun getLayout(): Int = R.layout.item_divider_rank
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {}
 }
