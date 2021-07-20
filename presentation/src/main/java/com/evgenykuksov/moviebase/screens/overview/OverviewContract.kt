@@ -13,8 +13,9 @@ class OverviewContract {
 
     sealed class State : UiState {
         object Idle : State()
-        object Loading : State()
-        data class Success(val list: List<Item>) : State()
+        data class Loading(val listLoadingItems: List<Item>) : State()
+        data class Success(val listItems: List<Item>) : State()
+        data class Error(val listErrorItems: List<Item>) : State()
     }
 
     sealed class SingleEvent : UiSingleEvent {

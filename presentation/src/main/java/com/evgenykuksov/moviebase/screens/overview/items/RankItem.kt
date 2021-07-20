@@ -7,7 +7,7 @@ import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_rank.view.*
 
-data class RankItem(@ColorRes private val colorBackground: Int) : Item() {
+internal data class RankItem(@ColorRes private val colorBackground: Int) : Item() {
 
     override fun getLayout(): Int = R.layout.item_rank
 

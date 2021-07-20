@@ -1,3 +1,3 @@
 package com.evgenykuksov.moviebase.di
 
-internal val PresentationModule = listOf(UseCasesModule, ViewModelsModule)
+internal val PresentationModule = listOf(UseCasesModule, ViewModelsModule, CoilModule)

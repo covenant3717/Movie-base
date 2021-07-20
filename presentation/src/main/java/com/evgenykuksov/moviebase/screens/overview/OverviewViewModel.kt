@@ -1,18 +1,24 @@
 package com.evgenykuksov.moviebase.screens.overview
 
 import androidx.lifecycle.viewModelScope
+import coil.ImageLoader
 import com.evgenykuksov.domain.recipes.RecipesUseCase
 import com.evgenykuksov.domain.recipes.model.Movie
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
+import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
+import com.evgenykuksov.moviebase.screens.overview.items.MovieLoadingItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class OverviewViewModel(private val recipesUseCase: RecipesUseCase) :
+class OverviewViewModel(
+    private val recipesUseCase: RecipesUseCase,
+    private val gifLoader: ImageLoader
+) :
     BaseViewModel<OverviewContract.Intent, OverviewContract.State, OverviewContract.SingleEvent>() {
 
     override fun createInitialState() = OverviewContract.State.Idle
@@ -25,9 +31,9 @@ class OverviewViewModel(private val recipesUseCase: RecipesUseCase) :
 
     private fun load() = viewModelScope.launch {
         recipesUseCase.getRecipes()
-            .onStart { setState(OverviewContract.State.Loading) }
+            .onStart { setState(OverviewContract.State.Loading(buildLoadingItems())) }
             .catch { exception ->
-                setState(OverviewContract.State.Idle)
+                setState(OverviewContract.State.Error(buildErrorItems()))
                 setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
@@ -35,12 +41,16 @@ class OverviewViewModel(private val recipesUseCase: RecipesUseCase) :
             }
     }
 
+    private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))
+
     private fun buildItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
-            add(MovieDividerItem)
+            add(MovieDividerItem())
             list.forEach {
                 add(MovieItem(it))
-                add(MovieDividerItem)
+                add(MovieDividerItem())
             }
         }
+
+    private fun buildErrorItems(): List<Item> = listOf<Item>(MovieErrorItem())
 }

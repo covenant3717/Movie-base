@@ -8,7 +8,7 @@ import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-data class MovieItem(private val movie: Movie) : Item() {
+internal data class MovieItem(private val movie: Movie) : Item() {
 
     override fun getLayout(): Int = R.layout.item_movie
 
