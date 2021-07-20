@@ -1,6 +1,7 @@
 package com.evgenykuksov.moviebase.screens.overview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -8,6 +9,7 @@ import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.screens.overview.items.RankDividerItem
 import com.evgenykuksov.moviebase.screens.overview.items.RankItem
+import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -35,11 +37,25 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     }
 
     private fun initWidgets() {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    TAB_NEW -> viewModel.showListMovies(TAB_NEW)
+                    TAB_POPULAR -> viewModel.showListMovies(TAB_POPULAR)
+                    TAB_TOP_RATED -> viewModel.showListMovies(TAB_TOP_RATED)
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+
         rvMovies.adapter = adapterMovies.apply { add(moviesSection) }
         rvRank.adapter = adapterRank.apply {
             for (i in 1..9) {
                 if (i in 7..9) add(RankItem(R.color.overview_item_rank_default))
                 else add(RankItem(R.color.overview_item_rank_active))
+
                 if (i < 9) add(RankDividerItem())
             }
         }
@@ -78,3 +94,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         fun newInstance() = OverviewFragment()
     }
 }
+
+internal const val TAB_NEW = 0
+internal const val TAB_POPULAR = 1
+internal const val TAB_TOP_RATED = 2
