@@ -4,7 +4,7 @@ import com.evgenykuksov.data.extensions.orNegativeDefault
 import com.evgenykuksov.data.data.movies.remote.model.MovieRemote
 import com.evgenykuksov.data.extensions.orZero
 import com.evgenykuksov.data.util.getOriginalImageUrl
-import com.evgenykuksov.domain.recipes.model.Movie
+import com.evgenykuksov.domain.movies.model.Movie
 
 fun MovieRemote.toDomain() = Movie(
     id = id.orNegativeDefault(),

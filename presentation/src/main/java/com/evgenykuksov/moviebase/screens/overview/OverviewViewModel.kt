@@ -2,8 +2,8 @@ package com.evgenykuksov.moviebase.screens.overview
 
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
-import com.evgenykuksov.domain.recipes.RecipesUseCase
-import com.evgenykuksov.domain.recipes.model.Movie
+import com.evgenykuksov.domain.movies.MoviesUseCase
+import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class OverviewViewModel(
-    private val recipesUseCase: RecipesUseCase,
+    private val moviesUseCase: MoviesUseCase,
     private val gifLoader: ImageLoader
 ) :
     BaseViewModel<OverviewContract.Intent, OverviewContract.State, OverviewContract.SingleEvent>() {
@@ -30,7 +30,7 @@ class OverviewViewModel(
     }
 
     private fun load() = viewModelScope.launch {
-        recipesUseCase.getRecipes()
+        moviesUseCase.getPopular()
             .onStart { setState(OverviewContract.State.Loading(buildLoadingItems())) }
             .catch { exception ->
                 setState(OverviewContract.State.Error(buildErrorItems()))

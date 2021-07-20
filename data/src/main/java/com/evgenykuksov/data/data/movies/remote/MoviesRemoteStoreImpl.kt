@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.flow
 
 class MoviesRemoteStoreImpl(private val api: MoviesApi) : MoviesRemoteStore {
 
-    override fun getRecipes() = flow { emit(api.getPopular()) }
+    override fun getPopular() = flow { emit(api.getPopular()) }
 }

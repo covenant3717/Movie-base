@@ -2,7 +2,7 @@ package com.evgenykuksov.moviebase.screens.overview.items
 
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.evgenykuksov.domain.recipes.model.Movie
+import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.moviebase.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item

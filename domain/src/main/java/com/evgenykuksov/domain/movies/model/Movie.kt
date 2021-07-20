@@ -1,4 +1,4 @@
-package com.evgenykuksov.domain.recipes.model
+package com.evgenykuksov.domain.movies.model
 
 data class Movie(
     val id: Long,
