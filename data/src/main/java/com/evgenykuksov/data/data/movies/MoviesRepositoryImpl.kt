@@ -15,4 +15,8 @@ class MoviesRepositoryImpl(
     override fun getPopular(): Flow<List<Movie>> = remoteStore.getPopular()
         .map { it.results?.map { it.toDomain() }.orEmpty() }
         .flowOn(Dispatchers.IO)
+
+    override fun getTopRated(): Flow<List<Movie>> = remoteStore.getTopRated()
+        .map { it.results?.map { it.toDomain() }.orEmpty() }
+        .flowOn(Dispatchers.IO)
 }

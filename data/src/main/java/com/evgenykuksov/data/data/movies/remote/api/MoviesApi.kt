@@ -7,4 +7,7 @@ interface MoviesApi {
 
     @GET("movie/popular")
     suspend fun getPopular(): MoviesDataRemote
+
+    @GET("movie/top_rated")
+    suspend fun getTopRated(): MoviesDataRemote
 }
