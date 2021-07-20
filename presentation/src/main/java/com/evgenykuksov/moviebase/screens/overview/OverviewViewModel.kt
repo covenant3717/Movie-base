@@ -30,7 +30,7 @@ class OverviewViewModel(
     }
 
     private fun load() = viewModelScope.launch {
-        moviesUseCase.getPopular()
+        moviesUseCase.getNowPlaying()
             .onStart { setState(OverviewContract.State.Loading(buildLoadingItems())) }
             .catch { exception ->
                 setState(OverviewContract.State.Error(buildErrorItems()))

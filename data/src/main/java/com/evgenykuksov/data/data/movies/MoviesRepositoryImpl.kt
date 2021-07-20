@@ -12,6 +12,10 @@ class MoviesRepositoryImpl(
     private val remoteStore: MoviesRemoteStore
 ) : MoviesRepository {
 
+    override fun getNowPlaying(): Flow<List<Movie>> = remoteStore.getNowPlaying()
+        .map { it.results?.map { it.toDomain() }.orEmpty() }
+        .flowOn(Dispatchers.IO)
+
     override fun getPopular(): Flow<List<Movie>> = remoteStore.getPopular()
         .map { it.results?.map { it.toDomain() }.orEmpty() }
         .flowOn(Dispatchers.IO)

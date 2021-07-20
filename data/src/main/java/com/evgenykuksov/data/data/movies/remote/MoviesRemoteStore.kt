@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesRemoteStore {
 
+    fun getNowPlaying(): Flow<MoviesDataRemote>
+
     fun getPopular(): Flow<MoviesDataRemote>
 
     fun getTopRated(): Flow<MoviesDataRemote>
