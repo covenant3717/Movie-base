@@ -39,6 +39,7 @@ object DependenciesModule {
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
         "implementation"(Dependencies.coil)
+        "implementation"(Dependencies.coil_gif)
 
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)

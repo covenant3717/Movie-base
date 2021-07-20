@@ -48,4 +48,5 @@ object Versions {
     const val LIFECYCLE = "2.2.0"
     const val KOIN = "2.2.2"
     const val COIL = "1.2.2"
+    const val COIL_GIF = "1.3.0"
 }

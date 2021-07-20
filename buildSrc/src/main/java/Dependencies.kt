@@ -4,6 +4,7 @@ object Dependencies {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.CORE_KTX}"
     const val coil = "io.coil-kt:coil:${Versions.COIL}"
+    const val coil_gif = "io.coil-kt:coil-gif:${Versions.COIL_GIF}"
 
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
