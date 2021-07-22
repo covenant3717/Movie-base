@@ -1,5 +1,6 @@
 package com.evgenykuksov.moviebase.screens.overview
 
+import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.base.UiIntent
 import com.evgenykuksov.moviebase.base.UiSingleEvent
 import com.evgenykuksov.moviebase.base.UiState
@@ -9,13 +10,16 @@ class OverviewContract {
 
     sealed class Intent : UiIntent {
         object Start : Intent()
+        data class SelectCategory(val category: MoviesCategory) : Intent()
     }
 
-    sealed class State : UiState {
-        object Idle : State()
-        data class Loading(val listLoadingItems: List<Item>) : State()
-        data class Success(val listItems: List<Item>) : State()
-        data class Error(val listErrorItems: List<Item>) : State()
+    data class State(val state: OverviewState) : UiState
+
+    sealed class OverviewState : UiState {
+        object Idle : OverviewState()
+        data class Loading(val listLoadingItems: List<Item>) : OverviewState()
+        data class Success(val listItems: List<Item>) : OverviewState()
+        data class Error(val listErrorItems: List<Item>) : OverviewState()
     }
 
     sealed class SingleEvent : UiSingleEvent {

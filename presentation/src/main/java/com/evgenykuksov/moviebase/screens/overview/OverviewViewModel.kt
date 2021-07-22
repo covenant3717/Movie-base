@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Movie
+import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
@@ -25,11 +26,12 @@ class OverviewViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = OverviewContract.State.Idle
+    override fun createInitialState() = OverviewContract.State(OverviewContract.OverviewState.Idle)
 
     override fun handleIntent(intent: OverviewContract.Intent) {
         when (intent) {
             is OverviewContract.Intent.Start -> load()
+            is OverviewContract.Intent.SelectCategory -> handleSelectCategory(intent.category)
         }
     }
 
@@ -41,14 +43,16 @@ class OverviewViewModel(
         ) { listNowPlaying, listPopular, listTopRated ->
             MoviesData(listNowPlaying, listPopular, listTopRated)
         }
-            .onStart { setState(OverviewContract.State.Loading(buildLoadingItems())) }
+            .onStart {
+                setState { copy(state = OverviewContract.OverviewState.Loading(buildLoadingItems())) }
+            }
             .catch { exception ->
-                setState(OverviewContract.State.Error(buildErrorItems()))
+                setState { copy(state = OverviewContract.OverviewState.Error(buildErrorItems())) }
                 setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
                 moviesData = it
-                setState(OverviewContract.State.Success(buildItems(it.listNowPlaying)))
+                setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listNowPlaying))) }
             }
     }
 
@@ -65,11 +69,15 @@ class OverviewViewModel(
             }
         }
 
-    fun showListMovies(selectedTab: Int) =
-        when (selectedTab) {
-            TAB_NEW -> setState(OverviewContract.State.Success(buildItems(moviesData?.listNowPlaying.orEmpty())))
-            TAB_POPULAR -> setState(OverviewContract.State.Success(buildItems(moviesData?.listPopular.orEmpty())))
-            TAB_TOP_RATED -> setState(OverviewContract.State.Success(buildItems(moviesData?.listTopRated.orEmpty())))
-            else -> Unit
+    private fun handleSelectCategory(category: MoviesCategory) =
+        moviesData?.let {
+            when (category) {
+                MoviesCategory.New ->
+                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listNowPlaying))) }
+                MoviesCategory.Popular ->
+                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listPopular))) }
+                MoviesCategory.TopRated ->
+                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listTopRated))) }
+            }
         }
 }

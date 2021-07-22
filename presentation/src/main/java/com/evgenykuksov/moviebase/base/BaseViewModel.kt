@@ -38,9 +38,10 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, SingleEvent : U
         }
     }
 
-    fun setIntent(intent: Intent) = viewModelScope.launch { _intent.emit(intent) }
+    fun sendIntent(intent: Intent) = viewModelScope.launch { _intent.emit(intent) }
 
-    protected fun setState(newState: State) {
+    protected fun setState(reduce: State.() -> State) {
+        val newState = currentState.reduce()
         _state.value = newState
     }
 

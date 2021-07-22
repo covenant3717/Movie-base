@@ -1,10 +1,10 @@
 package com.evgenykuksov.moviebase.screens.overview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.screens.overview.items.RankDividerItem
@@ -28,7 +28,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         super.onCreate(savedInstanceState)
         observeState()
         observeSingleEffect()
-        viewModel.setIntent(OverviewContract.Intent.Start)
+        viewModel.sendIntent(OverviewContract.Intent.Start)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,9 +40,9 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    TAB_NEW -> viewModel.showListMovies(TAB_NEW)
-                    TAB_POPULAR -> viewModel.showListMovies(TAB_POPULAR)
-                    TAB_TOP_RATED -> viewModel.showListMovies(TAB_TOP_RATED)
+                    TAB_NEW -> viewModel.sendIntent(OverviewContract.Intent.SelectCategory(MoviesCategory.New))
+                    TAB_POPULAR -> viewModel.sendIntent(OverviewContract.Intent.SelectCategory(MoviesCategory.Popular))
+                    TAB_TOP_RATED -> viewModel.sendIntent(OverviewContract.Intent.SelectCategory(MoviesCategory.TopRated))
                 }
             }
 
@@ -63,17 +63,17 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
-            when (it) {
-                is OverviewContract.State.Idle -> {
+            when (it.state) {
+                is OverviewContract.OverviewState.Idle -> {
                 }
-                is OverviewContract.State.Loading -> {
-                    moviesSection.update(it.listLoadingItems)
+                is OverviewContract.OverviewState.Loading -> {
+                    moviesSection.update(it.state.listLoadingItems)
                 }
-                is OverviewContract.State.Success -> {
-                    moviesSection.update(it.listItems)
+                is OverviewContract.OverviewState.Success -> {
+                    moviesSection.update(it.state.listItems)
                 }
-                is OverviewContract.State.Error -> {
-                    moviesSection.update(it.listErrorItems)
+                is OverviewContract.OverviewState.Error -> {
+                    moviesSection.update(it.state.listErrorItems)
                 }
             }
         }
