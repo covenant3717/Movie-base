@@ -14,7 +14,6 @@ import com.evgenykuksov.moviebase.screens.overview.items.MovieLoadingItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
@@ -36,16 +35,8 @@ class OverviewViewModel(
     }
 
     private fun load() = viewModelScope.launch {
-        combine(
-            moviesUseCase.getNowPlaying(),
-            moviesUseCase.getPopular(),
-            moviesUseCase.getTopRated()
-        ) { listNowPlaying, listPopular, listTopRated ->
-            MoviesData(listNowPlaying, listPopular, listTopRated)
-        }
-            .onStart {
-                setState { copy(state = OverviewContract.OverviewState.Loading(buildLoadingItems())) }
-            }
+        moviesUseCase.getAll()
+            .onStart { setState { copy(state = OverviewContract.OverviewState.Loading(buildLoadingItems())) } }
             .catch { exception ->
                 setState { copy(state = OverviewContract.OverviewState.Error(buildErrorItems())) }
                 setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))

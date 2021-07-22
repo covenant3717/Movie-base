@@ -1,10 +1,16 @@
 package com.evgenykuksov.domain.movies
 
-class MoviesUseCase(private val repository: MoviesRepository) {
+import com.evgenykuksov.domain.movies.model.Movie
+import com.evgenykuksov.domain.movies.model.MoviesData
+import kotlinx.coroutines.flow.Flow
 
-    fun getNowPlaying() = repository.getNowPlaying()
+interface MoviesUseCase {
 
-    fun getPopular() = repository.getPopular()
+    fun getAll(): Flow<MoviesData>
 
-    fun getTopRated() = repository.getTopRated()
+    fun getNowPlaying(): Flow<List<Movie>>
+
+    fun getPopular(): Flow<List<Movie>>
+
+    fun getTopRated(): Flow<List<Movie>>
 }
