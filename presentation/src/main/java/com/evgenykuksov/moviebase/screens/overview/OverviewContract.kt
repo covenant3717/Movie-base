@@ -18,7 +18,7 @@ class OverviewContract {
     sealed class OverviewState : UiState {
         object Idle : OverviewState()
         data class Loading(val listLoadingItems: List<Item>) : OverviewState()
-        data class Success(val listItems: List<Item>) : OverviewState()
+        data class Success(val listMovieItems: List<Item>) : OverviewState()
         data class Error(val listErrorItems: List<Item>) : OverviewState()
     }
 

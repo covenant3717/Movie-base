@@ -10,7 +10,7 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, SingleEvent : U
 
     private val initialState: State by lazy { createInitialState() }
 
-    protected val currentState: State
+    private val currentState: State
         get() = state.value
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(initialState)

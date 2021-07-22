@@ -70,7 +70,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
                     moviesSection.update(it.state.listLoadingItems)
                 }
                 is OverviewContract.OverviewState.Success -> {
-                    moviesSection.update(it.state.listItems)
+                    moviesSection.update(it.state.listMovieItems)
                 }
                 is OverviewContract.OverviewState.Error -> {
                     moviesSection.update(it.state.listErrorItems)
