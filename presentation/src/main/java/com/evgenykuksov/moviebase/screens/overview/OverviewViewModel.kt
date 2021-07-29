@@ -25,7 +25,7 @@ class OverviewViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = OverviewContract.State(emptyList(), null)
+    override fun createInitialState() = OverviewContract.State(null, null)
 
     override fun handleIntent(intent: OverviewContract.Intent) {
         when (intent) {

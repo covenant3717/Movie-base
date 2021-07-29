@@ -14,7 +14,7 @@ class OverviewContract {
     }
 
     data class State(
-        val listItems: List<Item>,
+        val listItems: List<Item>?,
         val rating: Int?
     ) : UiState
 

@@ -64,7 +64,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
-            moviesSection.update(it.listItems)
+            it.listItems?.let { list -> moviesSection.update(list) }
             tvRating.text = if (it.rating.isNotNull()) it.rating.toString() else ""
         }
     }
