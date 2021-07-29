@@ -66,7 +66,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
             it.listItems?.let { list -> moviesSection.update(list) }
-            tvRating.text = if (it.rating.isNotNull()) it.rating.toString() else ""
+            tvRating.text = if (it.rating.isNotNull()) it.rating.toString().insertSpace(0) else ""
         }
     }
 
@@ -79,6 +79,15 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
             }
         }
     }
+
+    private fun String.insertSpace(position: Int): String = StringBuffer()
+        .also {
+            for (i in this.indices) {
+                it.append(this[i])
+                if (i == position) it.append(" ")
+            }
+        }
+        .toString()
 
     companion object {
 
