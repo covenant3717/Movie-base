@@ -2,7 +2,7 @@ package com.evgenykuksov.data.data.movies.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieRemote(
+internal data class MovieRemote(
     @SerializedName("id") val id: Long?,
     @SerializedName("backdrop_path") val backdropPath: String?,
     @SerializedName("genre_ids") val genreIds: List<Int>?,

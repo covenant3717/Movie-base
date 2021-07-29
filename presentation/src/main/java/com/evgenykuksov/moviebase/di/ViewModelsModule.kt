@@ -9,5 +9,5 @@ import org.koin.dsl.module
 internal val ViewModelsModule = module {
 
     viewModel { MainViewModel() }
-    viewModel { OverviewViewModel(get(), get(named(COIL_GIF_LOADER))) }
+    viewModel { OverviewViewModel(get(), get(), get(named(COIL_GIF_LOADER))) }
 }

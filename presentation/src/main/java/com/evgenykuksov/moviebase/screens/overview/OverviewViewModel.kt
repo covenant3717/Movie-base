@@ -6,6 +6,7 @@ import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
+import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
@@ -19,6 +20,7 @@ import kotlinx.coroutines.launch
 
 class OverviewViewModel(
     private val moviesUseCase: MoviesUseCase,
+    private val profileUseCase: ProfileUseCase,
     private val gifLoader: ImageLoader
 ) :
     BaseViewModel<OverviewContract.Intent, OverviewContract.State, OverviewContract.SingleEvent>() {
@@ -34,17 +36,25 @@ class OverviewViewModel(
         }
     }
 
-    private fun load() = viewModelScope.launch {
-        moviesUseCase.getAll()
-            .onStart { setState { copy(listItems = buildLoadingItems()) } }
-            .catch { exception ->
-                setState { copy(listItems = buildErrorItems()) }
-                setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
-            }
-            .collect {
-                moviesData = it
-                setState { copy(listItems = buildItems(it.listNowPlaying)) }
-            }
+    private fun load() {
+        viewModelScope.launch {
+            moviesUseCase.getAll()
+                .onStart { setState { copy(listItems = buildLoadingItems()) } }
+                .catch { exception ->
+                    setState { copy(listItems = buildErrorItems()) }
+                    setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
+                }
+                .collect {
+                    moviesData = it
+                    setState { copy(listItems = buildItems(it.listNowPlaying)) }
+                }
+        }
+
+        viewModelScope.launch {
+            profileUseCase.getRating()
+                .catch { exception -> setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty())) }
+                .collect { setState { copy(rating = it) } }
+        }
     }
 
     private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))

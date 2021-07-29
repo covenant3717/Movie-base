@@ -6,7 +6,7 @@ import com.evgenykuksov.data.extensions.orZero
 import com.evgenykuksov.data.util.getOriginalImageUrl
 import com.evgenykuksov.domain.movies.model.Movie
 
-fun MovieRemote.toDomain() = Movie(
+internal fun MovieRemote.toDomain() = Movie(
     id = id.orNegativeDefault(),
     backdropPath = getOriginalImageUrl(backdropPath.orEmpty()),
     genreIds = genreIds.orEmpty(),

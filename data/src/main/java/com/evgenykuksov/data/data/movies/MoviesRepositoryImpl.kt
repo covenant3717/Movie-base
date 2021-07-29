@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
-class MoviesRepositoryImpl(
+internal class MoviesRepositoryImpl(
     private val remoteStore: MoviesRemoteStore
 ) : MoviesRepository {
 
