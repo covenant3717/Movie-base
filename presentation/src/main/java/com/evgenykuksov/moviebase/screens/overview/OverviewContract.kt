@@ -13,14 +13,10 @@ class OverviewContract {
         data class SelectCategory(val category: MoviesCategory) : Intent()
     }
 
-    data class State(val state: OverviewState) : UiState
-
-    sealed class OverviewState : UiState {
-        object Idle : OverviewState()
-        data class Loading(val listLoadingItems: List<Item>) : OverviewState()
-        data class Success(val listMovieItems: List<Item>) : OverviewState()
-        data class Error(val listErrorItems: List<Item>) : OverviewState()
-    }
+    data class State(
+        val listItems: List<Item>,
+        val rating: Int?
+    ) : UiState
 
     sealed class SingleEvent : UiSingleEvent {
         data class ToastError(val message: String) : SingleEvent()

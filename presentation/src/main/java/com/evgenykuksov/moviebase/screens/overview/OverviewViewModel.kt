@@ -25,7 +25,7 @@ class OverviewViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = OverviewContract.State(OverviewContract.OverviewState.Idle)
+    override fun createInitialState() = OverviewContract.State(emptyList(), null)
 
     override fun handleIntent(intent: OverviewContract.Intent) {
         when (intent) {
@@ -36,14 +36,14 @@ class OverviewViewModel(
 
     private fun load() = viewModelScope.launch {
         moviesUseCase.getAll()
-            .onStart { setState { copy(state = OverviewContract.OverviewState.Loading(buildLoadingItems())) } }
+            .onStart { setState { copy(listItems = buildLoadingItems()) } }
             .catch { exception ->
-                setState { copy(state = OverviewContract.OverviewState.Error(buildErrorItems())) }
+                setState { copy(listItems = buildErrorItems()) }
                 setSingleEvent(OverviewContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
                 moviesData = it
-                setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listNowPlaying))) }
+                setState { copy(listItems = buildItems(it.listNowPlaying)) }
             }
     }
 
@@ -63,12 +63,9 @@ class OverviewViewModel(
     private fun handleSelectCategory(category: MoviesCategory) =
         moviesData?.let {
             when (category) {
-                MoviesCategory.New ->
-                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listNowPlaying))) }
-                MoviesCategory.Popular ->
-                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listPopular))) }
-                MoviesCategory.TopRated ->
-                    setState { copy(state = OverviewContract.OverviewState.Success(buildItems(it.listTopRated))) }
+                MoviesCategory.New -> setState { copy(listItems = buildItems(it.listNowPlaying)) }
+                MoviesCategory.Popular -> setState { copy(listItems = buildItems(it.listPopular)) }
+                MoviesCategory.TopRated -> setState { copy(listItems = buildItems(it.listTopRated)) }
             }
         }
 }

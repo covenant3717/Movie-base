@@ -10,14 +10,11 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, SingleEvent : U
 
     private val initialState: State by lazy { createInitialState() }
 
-    private val currentState: State
-        get() = state.value
+    private val _intent: MutableSharedFlow<Intent> = MutableSharedFlow()
+    private val intent = _intent.asSharedFlow()
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(initialState)
     val state = _state.asStateFlow()
-
-    private val _intent: MutableSharedFlow<Intent> = MutableSharedFlow()
-    val intent = _intent.asSharedFlow()
 
     private val _singleEvent: Channel<SingleEvent> = Channel()
     val singleEvent = _singleEvent.receiveAsFlow()
@@ -30,17 +27,16 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, SingleEvent : U
 
     abstract fun handleIntent(intent: Intent)
 
-    private fun subscribeEvents() {
-        viewModelScope.launch {
-            intent.collect {
-                handleIntent(it)
-            }
+    private fun subscribeEvents() = viewModelScope.launch {
+        intent.collect {
+            handleIntent(it)
         }
     }
 
     fun sendIntent(intent: Intent) = viewModelScope.launch { _intent.emit(intent) }
 
     protected fun setState(reduce: State.() -> State) {
+        val currentState = state.value
         val newState = currentState.reduce()
         _state.value = newState
     }

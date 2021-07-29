@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
+import com.evgenykuksov.moviebase.extansions.isNotNull
 import com.evgenykuksov.moviebase.screens.overview.items.RankDividerItem
 import com.evgenykuksov.moviebase.screens.overview.items.RankItem
 import com.google.android.material.tabs.TabLayout
@@ -63,19 +64,8 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
-            when (it.state) {
-                is OverviewContract.OverviewState.Idle -> {
-                }
-                is OverviewContract.OverviewState.Loading -> {
-                    moviesSection.update(it.state.listLoadingItems)
-                }
-                is OverviewContract.OverviewState.Success -> {
-                    moviesSection.update(it.state.listMovieItems)
-                }
-                is OverviewContract.OverviewState.Error -> {
-                    moviesSection.update(it.state.listErrorItems)
-                }
-            }
+            moviesSection.update(it.listItems)
+            tvRating.text = if (it.rating.isNotNull()) it.rating.toString() else ""
         }
     }
 
