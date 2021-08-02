@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 internal interface MoviesApi {
 
-    @GET("movie/now_playing")
+    @GET("movie/upcoming")
     suspend fun getNowPlaying(): MoviesDataRemote
 
     @GET("movie/popular")
