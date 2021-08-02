@@ -15,7 +15,7 @@ internal data class MovieItem(private val movie: Movie) : Item() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
             imgPoster.load(movie.posterPath) {
-                crossfade(true)
+                crossfade(300)
                 placeholder(R.drawable.ic_overview_popcorn)
                 error(R.drawable.ic_overview_popcorn)
                 transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_24)))
