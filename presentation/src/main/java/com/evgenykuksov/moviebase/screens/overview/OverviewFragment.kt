@@ -1,7 +1,6 @@
 package com.evgenykuksov.moviebase.screens.overview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -67,7 +66,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
             it.listItems?.let { list -> moviesSection.update(list) }
-            if (it.rating.isNotNull()){
+            if (it.rating.isNotNull()) {
                 tvRating.apply {
                     text = it.rating.toString().insertSpace(0)
                     fadeTo(true)
