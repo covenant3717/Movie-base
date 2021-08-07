@@ -27,6 +27,7 @@ class RatingView @JvmOverloads constructor(
             style = Paint.Style.STROKE
 
 
+/*
             val itemWidth = width / COUNT_ITEM
             val spaceWidth = (itemWidth / 10) * 4
             val itemWidthFinal = itemWidth - spaceWidth
@@ -37,15 +38,41 @@ class RatingView @JvmOverloads constructor(
             Log.i("ml", "itemWidth         : $itemWidth")
             Log.i("ml", "spaceWidth        : $spaceWidth")
             Log.i("ml", "itemWidthFinal    : $itemWidthFinal")
+*/
         }
     }
     private val path by lazy { Path() }
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.let {
-            path.moveTo(2.dp, 2.dp)
-            path.lineTo(width.toFloat(), 2.dp)
-            it.drawPath(path, paint)
+            val itemWidth = width / COUNT_ITEM
+            val spaceWidth = (itemWidth / 10) * 4
+            val itemWidthFinal = itemWidth - spaceWidth
+            val spaceWidthFinal = spaceWidth + spaceWidth / COUNT_ITEM
+
+            var startPointX = 2.dp
+            var endPointX = itemWidthFinal.toFloat()
+
+            do {
+                path.moveTo(startPointX, 2.dp)
+                path.lineTo(endPointX, 2.dp)
+                it.drawPath(path, paint)
+
+                startPointX += itemWidthFinal + spaceWidthFinal
+                endPointX += itemWidthFinal + spaceWidthFinal
+            } while (endPointX <= width)
+
+            Log.i("ml", "width          : $width")
+            Log.i("ml", "itemWidth      : $itemWidth")
+            Log.i("ml", "itemWidthFinal : $itemWidthFinal")
+            Log.i("ml", "spaceWidth     : $spaceWidth")
+            Log.i("ml", "spaceWidthFinal: $spaceWidthFinal")
+            Log.i("ml", "2.dp: ${2.dp}")
+            Log.i("ml", "=================================")
+
+//            path.moveTo(2.dp, 2.dp)
+//            path.lineTo(2.dp + width.toFloat(), 2.dp)
+//            it.drawPath(path, paint)
         }
         super.onDraw(canvas)
     }
