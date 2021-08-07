@@ -54,8 +54,8 @@ class RatingView @JvmOverloads constructor(
             var endPointX = itemWidthFinal.toFloat()
 
             do {
-                path.moveTo(startPointX, 2.dp)
-                path.lineTo(endPointX, 2.dp)
+                path.moveTo(startPointX, (height / 2).toFloat())
+                path.lineTo(endPointX, (height / 2).toFloat())
                 it.drawPath(path, paint)
 
                 startPointX += itemWidthFinal + spaceWidthFinal
