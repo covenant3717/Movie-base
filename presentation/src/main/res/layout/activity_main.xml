@@ -8,7 +8,7 @@
     tools:context=".screens.main.MainActivity">
 
     <LinearLayout
-        android:id="@+id/fragmentContainer"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -28,6 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_splash" />
+        app:menu="@menu/menu_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

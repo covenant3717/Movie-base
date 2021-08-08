@@ -62,13 +62,13 @@ class RatingView @JvmOverloads constructor(
                 endPointX += itemWidthFinal + spaceWidthFinal
             } while (endPointX <= width)
 
-            Log.i("ml", "width          : $width")
-            Log.i("ml", "itemWidth      : $itemWidth")
-            Log.i("ml", "itemWidthFinal : $itemWidthFinal")
-            Log.i("ml", "spaceWidth     : $spaceWidth")
-            Log.i("ml", "spaceWidthFinal: $spaceWidthFinal")
-            Log.i("ml", "2.dp: ${2.dp}")
-            Log.i("ml", "=================================")
+//            Log.i("ml", "width          : $width")
+//            Log.i("ml", "itemWidth      : $itemWidth")
+//            Log.i("ml", "itemWidthFinal : $itemWidthFinal")
+//            Log.i("ml", "spaceWidth     : $spaceWidth")
+//            Log.i("ml", "spaceWidthFinal: $spaceWidthFinal")
+//            Log.i("ml", "2.dp: ${2.dp}")
+//            Log.i("ml", "=================================")
 
 //            path.moveTo(2.dp, 2.dp)
 //            path.lineTo(2.dp + width.toFloat(), 2.dp)
