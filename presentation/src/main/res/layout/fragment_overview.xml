@@ -117,12 +117,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_22"
+        android:layout_marginBottom="@dimen/dimen_20"
         android:fontFamily="sans-serif-medium"
         android:text="@string/overview_title_your_rank"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="@color/overview_title_your_rank"
-        app:layout_constraintBottom_toTopOf="@+id/rvRank"
+        app:layout_constraintBottom_toTopOf="@+id/ratingView"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
@@ -139,26 +139,14 @@
         tools:text="@string/overview_title_your_rank_value"
         tools:visibility="visible" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRank"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_48"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:listitem="@layout/item_rank" />
-
     <com.evgenykuksov.moviebase.screens.overview.view.RatingView
         android:id="@+id/ratingView"
         android:layout_width="0dp"
         android:layout_height="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="@dimen/dimen_48"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/rvMovies" />
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

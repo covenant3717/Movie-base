@@ -24,7 +24,6 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     private val viewModel: OverviewViewModel by viewModel()
     private val adapterMovies: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
-    private val adapterRank: GroupAdapter<GroupieViewHolder> = GroupAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,14 +52,6 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         })
 
         rvMovies.adapter = adapterMovies.apply { add(moviesSection) }
-        rvRank.adapter = adapterRank.apply {
-            for (i in 1..9) {
-                if (i in 7..9) add(RankItem(R.color.overview_item_rank_default))
-                else add(RankItem(R.color.overview_item_rank_active))
-
-                if (i < 9) add(RankDividerItem())
-            }
-        }
     }
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
