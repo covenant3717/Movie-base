@@ -18,4 +18,6 @@ class MoviesUseCaseImpl(private val repository: MoviesRepository) : MoviesUseCas
     override fun getPopular() = repository.getPopular()
 
     override fun getTopRated() = repository.getTopRated()
+
+    override fun getMovieDetails(id: Long) = repository.getMovieDetails(id)
 }

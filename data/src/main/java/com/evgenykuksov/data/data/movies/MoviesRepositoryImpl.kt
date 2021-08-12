@@ -3,6 +3,7 @@ package com.evgenykuksov.data.data.movies
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteStore
 import com.evgenykuksov.domain.movies.MoviesRepository
 import com.evgenykuksov.domain.movies.model.Movie
+import com.evgenykuksov.domain.movies.model.MovieDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -22,5 +23,9 @@ internal class MoviesRepositoryImpl(
 
     override fun getTopRated(): Flow<List<Movie>> = remoteStore.getTopRated()
         .map { it.results?.map { it.toDomain() }.orEmpty() }
+        .flowOn(Dispatchers.IO)
+
+    override fun getMovieDetails(id: Long): Flow<MovieDetails> = remoteStore.getMovieDetails(id)
+        .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 }

@@ -9,8 +9,8 @@ import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.extansions.fadeTo
 import com.evgenykuksov.moviebase.extansions.isNotNull
-import com.evgenykuksov.moviebase.screens.overview.items.RankDividerItem
-import com.evgenykuksov.moviebase.screens.overview.items.RankItem
+import com.evgenykuksov.moviebase.screens.movie.MovieActivity
+import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -35,6 +35,9 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initWidgets()
+        adapterMovies.setOnItemClickListener { item, _ ->
+            if (item is MovieItem) startActivity(MovieActivity.newInstance(requireContext(), item.movie.id))
+        }
     }
 
     private fun initWidgets() {

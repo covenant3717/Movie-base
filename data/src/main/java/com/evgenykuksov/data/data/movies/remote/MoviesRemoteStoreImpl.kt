@@ -10,4 +10,6 @@ internal class MoviesRemoteStoreImpl(private val api: MoviesApi) : MoviesRemoteS
     override fun getPopular() = flow { emit(api.getPopular()) }
 
     override fun getTopRated() = flow { emit(api.getTopRated()) }
+
+    override fun getMovieDetails(id: Long) = flow { emit(api.getMovieDetails(id)) }
 }

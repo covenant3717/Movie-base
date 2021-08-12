@@ -1,7 +1,9 @@
 package com.evgenykuksov.data.data.movies.remote.api
 
+import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 internal interface MoviesApi {
 
@@ -13,4 +15,7 @@ internal interface MoviesApi {
 
     @GET("movie/top_rated")
     suspend fun getTopRated(): MoviesDataRemote
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Path("movie_id") id: Long): MovieDetailsRemote
 }

@@ -1,10 +1,14 @@
 package com.evgenykuksov.data.data.movies
 
+import com.evgenykuksov.data.data.movies.remote.model.GenreRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.extensions.orNegativeDefault
 import com.evgenykuksov.data.data.movies.remote.model.MovieRemote
 import com.evgenykuksov.data.extensions.orZero
 import com.evgenykuksov.data.util.getOriginalImageUrl
+import com.evgenykuksov.domain.movies.model.Genre
 import com.evgenykuksov.domain.movies.model.Movie
+import com.evgenykuksov.domain.movies.model.MovieDetails
 
 internal fun MovieRemote.toDomain() = Movie(
     id = id.orNegativeDefault(),
@@ -17,4 +21,24 @@ internal fun MovieRemote.toDomain() = Movie(
     releaseDate = releaseDate.orEmpty(),
     voteAverage = voteAverage.orZero(),
     voteCount = voteCount.orZero()
+)
+
+internal fun MovieDetailsRemote.toDomain() = MovieDetails(
+    id = id.orNegativeDefault(),
+    title = title.orEmpty(),
+    backdropPath = getOriginalImageUrl(backdropPath.orEmpty()),
+    budget = budget.orZero(),
+    genres = genres?.map { it.toDomain() }.orEmpty(),
+    overview = overview.orEmpty(),
+    popularity = popularity.orZero(),
+    posterPath = getOriginalImageUrl(posterPath.orEmpty()),
+    releaseDate = releaseDate.orEmpty(),
+    runtime = runtime.orZero(),
+    voteAverage = voteAverage.orZero(),
+    voteCount = voteCount.orZero()
+)
+
+internal fun GenreRemote.toDomain() = Genre(
+    id = id.orNegativeDefault(),
+    name = name.orEmpty()
 )
