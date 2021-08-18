@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tvTitle"
+    android:id="@+id/tvDescription"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/dimen_20"
     android:paddingEnd="@dimen/dimen_20"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-    android:textColor="@color/movie_item_title"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+    android:textColor="@color/movie_item_description"
+    android:textStyle="bold"
     tools:background="@color/common_background"
     tools:text="Rate" />

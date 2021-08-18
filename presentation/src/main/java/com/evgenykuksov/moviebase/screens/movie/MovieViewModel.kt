@@ -7,6 +7,9 @@ import com.evgenykuksov.domain.movies.model.MovieDetails
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.screens.movie.items.DescriptionItem
+import com.evgenykuksov.moviebase.screens.movie.items.GenreItem
+import com.evgenykuksov.moviebase.screens.movie.items.NameItem
 import com.evgenykuksov.moviebase.screens.movie.items.PosterItem
 import com.evgenykuksov.moviebase.screens.movie.items.TitleItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
@@ -50,13 +53,19 @@ class MovieViewModel(
 
     private fun buildItems(movieDetails: MovieDetails): List<Item> = listOf(
         PosterItem(movieDetails, defaultImageLoader),
-        CustomEmptyItem(R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_16),
+        NameItem(movieDetails.title),
+        CustomEmptyItem(R.dimen.dimen_16),
         TitleItem(R.string.movie_item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         TitleItem(R.string.movie_item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
+        DescriptionItem(movieDetails.overview),
+        CustomEmptyItem(R.dimen.dimen_20),
         TitleItem(R.string.movie_item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
+        GenreItem(movieDetails.genres),
+        CustomEmptyItem(R.dimen.dimen_20),
         TitleItem(R.string.movie_item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
     )

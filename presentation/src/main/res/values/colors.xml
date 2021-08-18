@@ -22,5 +22,8 @@
     <color name="overview_item_rank_default">#33FFFFFF</color>
     <color name="overview_item_error_hint">#4DFFFFFF</color>
 
+    <color name="movie_item_name">#B3FFFFFF</color>
     <color name="movie_item_title">#33FFFFFF</color>
+    <color name="movie_item_description">#66FFFFFF</color>
+    <color name="movie_item_genre">#99FFFFFF</color>
 </resources>
