@@ -11,6 +11,7 @@
         android:layout_height="320dp"
         android:adjustViewBounds="true"
         android:clickable="true"
+        android:cropToPadding="false"
         android:focusable="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"

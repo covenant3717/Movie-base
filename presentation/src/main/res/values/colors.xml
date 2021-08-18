@@ -21,4 +21,6 @@
     <color name="overview_item_rank_active">#6AC0EE</color>
     <color name="overview_item_rank_default">#33FFFFFF</color>
     <color name="overview_item_error_hint">#4DFFFFFF</color>
+
+    <color name="movie_item_title">#33FFFFFF</color>
 </resources>

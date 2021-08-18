@@ -2,6 +2,7 @@ package com.evgenykuksov.moviebase.screens.movie.items
 
 import coil.ImageLoader
 import coil.load
+import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
 import com.evgenykuksov.domain.movies.model.MovieDetails
 import com.evgenykuksov.moviebase.R

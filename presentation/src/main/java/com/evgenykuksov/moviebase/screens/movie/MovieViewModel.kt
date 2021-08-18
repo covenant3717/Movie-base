@@ -1,14 +1,15 @@
 package com.evgenykuksov.moviebase.screens.movie
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
+import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
-import com.evgenykuksov.domain.movies.model.Movie
+import com.evgenykuksov.domain.movies.model.MovieDetails
+import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
-import com.evgenykuksov.moviebase.screens.overview.OverviewContract
-import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
+import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.screens.movie.items.PosterItem
+import com.evgenykuksov.moviebase.screens.movie.items.TitleItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
-import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -16,7 +17,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class MovieViewModel(
-    private val moviesUseCase: MoviesUseCase
+    private val moviesUseCase: MoviesUseCase,
+    private val defaultImageLoader: ImageLoader
 ) :
     BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
@@ -38,7 +40,7 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-
+                setState { copy(listItems = buildItems(it)) }
             }
     }
 
@@ -46,12 +48,16 @@ class MovieViewModel(
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(MovieErrorItem())
 
-    private fun buildItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
-        .apply {
-            add(MovieDividerItem())
-            list.forEach {
-                add(MovieItem(it))
-                add(MovieDividerItem())
-            }
-        }
+    private fun buildItems(movieDetails: MovieDetails): List<Item> = listOf(
+        PosterItem(movieDetails, defaultImageLoader),
+        CustomEmptyItem(R.dimen.dimen_20),
+        TitleItem(R.string.movie_item_title_rate),
+        CustomEmptyItem(R.dimen.dimen_8),
+        TitleItem(R.string.movie_item_title_description),
+        CustomEmptyItem(R.dimen.dimen_8),
+        TitleItem(R.string.movie_item_title_genre),
+        CustomEmptyItem(R.dimen.dimen_8),
+        TitleItem(R.string.movie_item_title_cast),
+        CustomEmptyItem(R.dimen.dimen_8),
+    )
 }
