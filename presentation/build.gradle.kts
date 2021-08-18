@@ -39,11 +39,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Versions.JAVA
-        targetCompatibility = Versions.JAVA
+        sourceCompatibility = Versions.Main.JAVA
+        targetCompatibility = Versions.Main.JAVA
     }
     kotlinOptions {
-        jvmTarget = Versions.JAVA.toString()
+        jvmTarget = Versions.Main.JAVA.toString()
     }
 }
 

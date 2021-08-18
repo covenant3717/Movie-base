@@ -1,15 +1,15 @@
 object Dependencies {
-    const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
-    const val gradle = "com.android.tools.build:gradle:${Versions.GRADLE}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
-    const val coreKtx = "androidx.core:core-ktx:${Versions.CORE_KTX}"
-    const val coil = "io.coil-kt:coil:${Versions.COIL}"
-    const val coil_gif = "io.coil-kt:coil-gif:${Versions.COIL_GIF}"
+    const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Main.KOTLIN}"
+    const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
+    const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
+    const val coil = "io.coil-kt:coil:${Versions.Rest.COIL}"
+    const val coil_gif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
 
     object Jetpack {
-        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
-        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}"
-        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}"
+        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Rest.LIFECYCLE}"
+        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Rest.LIFECYCLE}"
+        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Rest.LIFECYCLE}"
     }
 
     object UI {
@@ -36,10 +36,10 @@ object Dependencies {
     }
 
     object Di {
-        const val koin = "org.koin:koin-core:${Versions.KOIN}"
-        const val koinAndroid = "org.koin:koin-android:${Versions.KOIN}"
-        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.KOIN}"
-        const val koinTest = "org.koin:koin-test:${Versions.KOIN}"
+        const val koin = "org.koin:koin-core:${Versions.Rest.KOIN}"
+        const val koinAndroid = "org.koin:koin-android:${Versions.Rest.KOIN}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.Rest.KOIN}"
+        const val koinTest = "org.koin:koin-test:${Versions.Rest.KOIN}"
     }
 
     object Network {
