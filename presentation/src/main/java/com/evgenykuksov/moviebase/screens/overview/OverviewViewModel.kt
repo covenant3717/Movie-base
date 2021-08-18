@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 class OverviewViewModel(
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,
+    private val defaultImageLoader: ImageLoader,
     private val gifLoader: ImageLoader
 ) :
     BaseViewModel<OverviewContract.Intent, OverviewContract.State, OverviewContract.SingleEvent>() {
@@ -65,7 +66,7 @@ class OverviewViewModel(
         .apply {
             add(MovieDividerItem())
             list.forEach {
-                add(MovieItem(it))
+                add(MovieItem(it, defaultImageLoader))
                 add(MovieDividerItem())
             }
         }

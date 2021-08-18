@@ -10,6 +10,6 @@ import org.koin.dsl.module
 internal val ViewModelsModule = module {
 
     viewModel { MainViewModel() }
-    viewModel { OverviewViewModel(get(), get(), get(named(COIL_GIF_LOADER))) }
-    viewModel { MovieViewModel(get()) }
+    viewModel { OverviewViewModel(get(), get(), get(named(COIL_DEFAULT_LOADER)), get(named(COIL_GIF_LOADER))) }
+    viewModel { MovieViewModel(get(), get(named(COIL_DEFAULT_LOADER))) }
 }
