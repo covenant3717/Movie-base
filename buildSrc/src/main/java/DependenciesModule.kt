@@ -53,6 +53,7 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.groupie)
         "implementation"(Dependencies.UI.groupieExt)
         "implementation"(Dependencies.UI.circleImageView)
+        "implementation"(Dependencies.UI.shimmer)
 
         "implementation"(Dependencies.Di.koin)
         "implementation"(Dependencies.Di.koinAndroid)

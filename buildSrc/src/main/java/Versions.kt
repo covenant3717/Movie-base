@@ -18,6 +18,7 @@ object Versions {
         const val CONSTRAINT_LAYOUT = "2.0.4"
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"
+        const val SHIMMER = "0.5.0"
     }
 
     object Network {
