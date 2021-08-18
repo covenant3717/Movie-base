@@ -22,7 +22,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     private val viewModel: OverviewViewModel by viewModel()
-    private val adapterMovies: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initWidgets()
-        adapterMovies.setOnItemClickListener { item, _ ->
+        adapter.setOnItemClickListener { item, _ ->
             if (item is MovieItem) startActivity(MovieActivity.newInstance(requireContext(), item.movie.id))
         }
     }
@@ -54,7 +54,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        rvMovies.adapter = adapterMovies.apply { add(moviesSection) }
+        rvMovies.adapter = adapter.apply { add(moviesSection) }
     }
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
