@@ -6,7 +6,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 
 internal class MovieDividerItem : Item() {
 
-    override fun getLayout(): Int = R.layout.item_divider_movie
+    override fun getLayout(): Int = R.layout.overview_item_divider
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {}
 }

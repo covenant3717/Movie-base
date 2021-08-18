@@ -6,7 +6,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 
 internal class MovieErrorItem : Item() {
 
-    override fun getLayout(): Int = R.layout.item_movie_error
+    override fun getLayout(): Int = R.layout.overview_item_error
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {}
 }
