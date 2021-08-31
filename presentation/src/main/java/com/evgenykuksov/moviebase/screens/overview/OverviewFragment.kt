@@ -8,6 +8,7 @@ import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.extansions.fadeTo
+import com.evgenykuksov.moviebase.extansions.insertSpaces
 import com.evgenykuksov.moviebase.extansions.isNotNull
 import com.evgenykuksov.moviebase.extansions.toast
 import com.evgenykuksov.moviebase.screens.movie.MovieActivity
@@ -55,7 +56,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
             it.listItems?.let { list -> moviesSection.update(list) }
             if (it.rating.isNotNull()) {
                 tvRating.apply {
-                    text = it.rating.toString().insertSpace(0)
+                    text = it.rating?.insertSpaces(3)
                     fadeTo(true)
                 }
             }
@@ -75,21 +76,12 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         }
     }
 
-    private fun String.insertSpace(position: Int): String = StringBuffer()
-        .also {
-            for (i in this.indices) {
-                it.append(this[i])
-                if (i == position) it.append(" ")
-            }
-        }
-        .toString()
-
     companion object {
 
         fun newInstance() = OverviewFragment()
     }
 }
 
-internal const val TAB_NEW = 0
-internal const val TAB_POPULAR = 1
-internal const val TAB_TOP_RATED = 2
+private const val TAB_NEW = 0
+private const val TAB_POPULAR = 1
+private const val TAB_TOP_RATED = 2
