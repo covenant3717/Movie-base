@@ -23,9 +23,9 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initWidgets()
-        observeState()
         observeSingleEffect()
+        observeState()
+        initWidgets()
         intent.getLongExtra(ARG_MOVIE_ID, 0).let {
             viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(it))
         }

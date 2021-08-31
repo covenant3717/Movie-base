@@ -13,8 +13,9 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.overview_item_movie.view.*
 
 internal data class MovieItem(
-    val movie: Movie,
-    private val defaultImageLoader: ImageLoader
+    private val movie: Movie,
+    private val defaultImageLoader: ImageLoader,
+    private val onClick: (movieId: Long) -> Unit
 ) : Item() {
 
     override fun getLayout(): Int = R.layout.overview_item_movie
@@ -27,10 +28,11 @@ internal data class MovieItem(
             }
             setOnTouchListener { v, event ->
                 when (event.action) {
-                    MotionEvent.ACTION_DOWN -> v.startAnimationScale(0.9f)
-                    MotionEvent.ACTION_UP -> v.startAnimationScale(1f)
-                    MotionEvent.ACTION_CANCEL -> v.startAnimationScale(1f)
-                    else -> {}
+                    MotionEvent.ACTION_DOWN -> v.startAnimationScale(0.9f) {}
+                    MotionEvent.ACTION_UP -> v.startAnimationScale(1f) { onClick(movie.id) }
+                    MotionEvent.ACTION_CANCEL -> v.startAnimationScale(1f) {}
+                    else -> {
+                    }
                 }
                 false
             }

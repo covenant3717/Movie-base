@@ -66,7 +66,11 @@ class OverviewViewModel(
         .apply {
             add(MovieDividerItem())
             list.forEach {
-                add(MovieItem(it, defaultImageLoader))
+                add(
+                    MovieItem(it, defaultImageLoader) {
+                        setSingleEvent(OverviewContract.SingleEvent.StartMovieActivity(it))
+                    }
+                )
                 add(MovieDividerItem())
             }
         }

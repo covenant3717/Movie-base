@@ -10,7 +10,6 @@ import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.extansions.fadeTo
 import com.evgenykuksov.moviebase.extansions.isNotNull
 import com.evgenykuksov.moviebase.screens.movie.MovieActivity
-import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -25,19 +24,12 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        observeState()
-        observeSingleEffect()
-        viewModel.sendIntent(OverviewContract.Intent.Start)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeSingleEffect()
+        observeState()
         initWidgets()
-        adapter.setOnItemClickListener { item, _ ->
-            if (item is MovieItem) startActivity(MovieActivity.newInstance(requireContext(), item.movie.id))
-        }
+        viewModel.sendIntent(OverviewContract.Intent.Start)
     }
 
     private fun initWidgets() {
@@ -74,6 +66,9 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
             when (it) {
                 is OverviewContract.SingleEvent.ToastError -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                }
+                is OverviewContract.SingleEvent.StartMovieActivity -> {
+                    startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
                 }
             }
         }

@@ -20,5 +20,6 @@ class OverviewContract {
 
     sealed class SingleEvent : UiSingleEvent {
         data class ToastError(val message: String) : SingleEvent()
+        data class StartMovieActivity(val movieId: Long) : SingleEvent()
     }
 }
