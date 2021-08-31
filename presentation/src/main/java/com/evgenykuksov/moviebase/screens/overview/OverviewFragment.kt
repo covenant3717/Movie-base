@@ -9,6 +9,7 @@ import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
 import com.evgenykuksov.moviebase.extansions.fadeTo
 import com.evgenykuksov.moviebase.extansions.isNotNull
+import com.evgenykuksov.moviebase.extansions.toast
 import com.evgenykuksov.moviebase.screens.movie.MovieActivity
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
@@ -65,7 +66,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         viewModel.singleEvent.collect {
             when (it) {
                 is OverviewContract.SingleEvent.ToastError -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                    requireContext().toast(it.message, Toast.LENGTH_LONG)
                 }
                 is OverviewContract.SingleEvent.StartMovieActivity -> {
                     startActivity(MovieActivity.newInstance(requireContext(), it.movieId))

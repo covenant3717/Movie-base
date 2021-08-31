@@ -7,11 +7,11 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.moviebase.extansions.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.activity_movie.*
-import kotlinx.android.synthetic.main.fragment_overview.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -45,7 +45,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
         viewModel.singleEvent.collect {
             when (it) {
                 is MovieContract.SingleEvent.ToastError -> {
-                    Toast.makeText(this@MovieActivity, it.message, Toast.LENGTH_LONG).show()
+                    toast(it.message, Toast.LENGTH_LONG)
                 }
             }
         }
