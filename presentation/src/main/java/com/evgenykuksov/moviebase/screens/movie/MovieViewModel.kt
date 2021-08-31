@@ -35,18 +35,34 @@ class MovieViewModel(
         }
     }
 
-    private fun load(movieId: Long) = viewModelScope.launch {
-        moviesUseCase.getMovieDetails(movieId)
-            .onStart {
+    private fun load(movieId: Long) {
+        viewModelScope.launch {
+            moviesUseCase.getMovieDetails(movieId)
+                .onStart {
 //                setState { copy(listItems = buildLoadingItems()) }
-            }
-            .catch { exception ->
-                setState { copy(listItems = buildErrorItems()) }
-                setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
-            }
-            .collect {
-                setState { copy(listItems = buildItems(it)) }
-            }
+                }
+                .catch { exception ->
+                    setState { copy(listItems = buildErrorItems()) }
+                    setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
+                }
+                .collect {
+                    setState { copy(listItems = buildItems(it)) }
+                }
+        }
+
+        viewModelScope.launch {
+            moviesUseCase.getCast(movieId)
+                .onStart {
+//                setState { copy(listItems = buildLoadingItems()) }
+                }
+                .catch { exception ->
+                    setState { copy(listItems = buildErrorItems()) }
+                    setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
+                }
+                .collect {
+//                    setState { copy(listItems = buildItems(it)) }
+                }
+        }
     }
 
 //    private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))

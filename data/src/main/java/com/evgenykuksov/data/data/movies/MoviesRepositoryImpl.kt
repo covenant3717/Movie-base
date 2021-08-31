@@ -2,6 +2,7 @@ package com.evgenykuksov.data.data.movies
 
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteStore
 import com.evgenykuksov.domain.movies.MoviesRepository
+import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MovieDetails
 import kotlinx.coroutines.Dispatchers
@@ -27,5 +28,10 @@ internal class MoviesRepositoryImpl(
 
     override fun getMovieDetails(id: Long): Flow<MovieDetails> = remoteStore.getMovieDetails(id)
         .map { it.toDomain() }
+        .flowOn(Dispatchers.IO)
+
+    override fun getCast(movieId: Long): Flow<List<Actor>> = remoteStore.getCast(movieId)
+        .map { it.cast.orEmpty() }
+        .map { it.map { actorRemote -> actorRemote.toDomain() } }
         .flowOn(Dispatchers.IO)
 }

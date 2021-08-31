@@ -1,5 +1,6 @@
 package com.evgenykuksov.domain.movies
 
+import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MovieDetails
 import com.evgenykuksov.domain.movies.model.MoviesData
@@ -16,4 +17,6 @@ interface MoviesUseCase {
     fun getTopRated(): Flow<List<Movie>>
 
     fun getMovieDetails(id: Long): Flow<MovieDetails>
+
+    fun getCast(movieId: Long): Flow<List<Actor>>
 }

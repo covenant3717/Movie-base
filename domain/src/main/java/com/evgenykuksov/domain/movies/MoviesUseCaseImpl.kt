@@ -20,4 +20,6 @@ class MoviesUseCaseImpl(private val repository: MoviesRepository) : MoviesUseCas
     override fun getTopRated() = repository.getTopRated()
 
     override fun getMovieDetails(id: Long) = repository.getMovieDetails(id)
+
+    override fun getCast(movieId: Long) = repository.getCast(movieId)
 }
