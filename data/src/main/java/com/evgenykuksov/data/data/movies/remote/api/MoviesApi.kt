@@ -1,6 +1,5 @@
 package com.evgenykuksov.data.data.movies.remote.api
 
-import com.evgenykuksov.data.data.movies.remote.model.ActorRemote
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote

@@ -7,9 +7,10 @@ import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
+import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
-import com.evgenykuksov.moviebase.screens.overview.items.MovieDividerItem
-import com.evgenykuksov.moviebase.screens.overview.items.MovieErrorItem
+import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieLoadingItem
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -60,18 +61,18 @@ class OverviewViewModel(
 
     private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))
 
-    private fun buildErrorItems(): List<Item> = listOf<Item>(MovieErrorItem())
+    private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun buildItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
-            add(MovieDividerItem())
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
                 add(
                     MovieItem(it, defaultImageLoader) {
                         setSingleEvent(OverviewContract.SingleEvent.StartMovieActivity(it))
                     }
                 )
-                add(MovieDividerItem())
+                add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             }
         }
 
