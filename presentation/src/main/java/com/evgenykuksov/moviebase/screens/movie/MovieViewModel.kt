@@ -14,7 +14,6 @@ import com.evgenykuksov.moviebase.screens.movie.items.CastItem
 import com.evgenykuksov.moviebase.screens.movie.items.DescriptionItem
 import com.evgenykuksov.moviebase.screens.movie.items.GenreItem
 import com.evgenykuksov.moviebase.screens.movie.items.NameItem
-import com.evgenykuksov.moviebase.screens.movie.items.PosterItem
 import com.evgenykuksov.moviebase.screens.movie.items.RatingItem
 import com.evgenykuksov.moviebase.screens.movie.items.TitleItem
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -26,7 +25,7 @@ class MovieViewModel(
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State(null)
+    override fun createInitialState() = MovieContract.State(null, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -47,7 +46,7 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                setState { copy(listItems = buildItems(it)) }
+                setState { copy(poster = it.movieDetails.posterPath, listItems = buildItems(it)) }
             }
     }
 
@@ -56,8 +55,6 @@ class MovieViewModel(
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun buildItems(data: FullMovieData): List<Item> = listOf(
-        PosterItem(data.movieDetails, defaultImageLoader),
-        CustomEmptyItem(R.dimen.dimen_16),
         NameItem(data.movieDetails.title),
         CustomEmptyItem(R.dimen.dimen_16),
 

@@ -5,19 +5,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import coil.ImageLoader
+import coil.load
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.moviebase.extansions.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.activity_movie.*
+import kotlinx.android.synthetic.main.movie_item_actor.view.*
 import kotlinx.coroutines.flow.collect
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.qualifier.named
 
 class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     private val viewModel: MovieViewModel by viewModel()
+    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
 
@@ -37,6 +44,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
+            imgPoster.load(it.poster, defaultImageLoader)
             it.listItems?.let { list -> detailsSection.update(list) }
         }
     }

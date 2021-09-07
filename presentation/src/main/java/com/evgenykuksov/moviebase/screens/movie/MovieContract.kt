@@ -12,6 +12,7 @@ class MovieContract {
     }
 
     data class State(
+        val poster: String?,
         val listItems: List<Item>?
     ) : UiState
 

@@ -15,8 +15,8 @@ internal val CoilModule = module {
         ImageLoader(this.androidContext())
             .newBuilder()
             .crossfade(300)
-            .placeholder(R.drawable.ic_overview_popcorn)
-            .error(R.drawable.ic_overview_popcorn)
+            .placeholder(R.drawable.ic_common_popcorn)
+            .error(R.drawable.ic_common_popcorn)
             .build()
     }
 

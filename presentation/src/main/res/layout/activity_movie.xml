@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".screens.movie.MovieActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:cropToPadding="false"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/movie_shape_poster"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPoster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDetails"
         android:layout_width="0dp"
@@ -16,6 +39,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
