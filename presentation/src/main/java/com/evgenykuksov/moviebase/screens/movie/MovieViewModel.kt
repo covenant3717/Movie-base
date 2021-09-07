@@ -8,6 +8,7 @@ import com.evgenykuksov.domain.movies.model.FullMovieData
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.commonitems.CustomOneLIneLoadingItem
 import com.evgenykuksov.moviebase.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.movie.items.*
 import com.evgenykuksov.moviebase.screens.movie.items.CastItem
@@ -25,7 +26,7 @@ class MovieViewModel(
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State(null, null)
+    override fun createInitialState() = MovieContract.State("stub", null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -38,9 +39,7 @@ class MovieViewModel(
             moviesUseCase.getMovieDetails(movieId),
             moviesUseCase.getCast(movieId)
         ) { movieDetails, cast -> FullMovieData(movieDetails, cast) }
-            .onStart {
-//                setState { copy(listItems = buildErrorItems()) }
-            }
+            .onStart { setState { copy(listItems = buildLoadingItems()) } }
             .catch { exception ->
                 setState { copy(listItems = buildErrorItems()) }
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
@@ -50,7 +49,36 @@ class MovieViewModel(
             }
     }
 
-//    private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))
+    private fun buildLoadingItems(): List<Item> = listOf(
+        CustomOneLIneLoadingItem(null, R.dimen.dimen_24, R.dimen.dimen_56, R.dimen.dimen_56),
+        CustomEmptyItem(R.dimen.dimen_16),
+
+        TitleItem(R.string.movie_item_title_rate),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_20),
+
+        TitleItem(R.string.movie_item_title_description),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_20),
+
+        TitleItem(R.string.movie_item_title_genre),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_20),
+
+        TitleItem(R.string.movie_item_title_cast),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CastItem(buildActorLoadingItems()),
+        CustomEmptyItem(R.dimen.dimen_32)
+    )
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
@@ -77,6 +105,22 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_8),
         CastItem(buildActorItems(data.listActor)),
         CustomEmptyItem(R.dimen.dimen_32),
+    )
+
+    private fun buildActorLoadingItems() = listOf(
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20),
+        ActorLoadingItem,
+        CustomEmptyItem(widthRes = R.dimen.dimen_20)
     )
 
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()

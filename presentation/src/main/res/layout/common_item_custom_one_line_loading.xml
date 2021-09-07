@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerShimmer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        app:cardBackgroundColor="@color/common_shimmer"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="0dp" />
+
+</com.facebook.shimmer.ShimmerFrameLayout>

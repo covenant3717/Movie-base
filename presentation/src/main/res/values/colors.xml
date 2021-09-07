@@ -10,6 +10,7 @@
 
     <color name="common_icon">#F2FFFFFF</color>
     <color name="common_background">#111111</color>
+    <color name="common_shimmer">#424242</color>
 
     <color name="main_menu_icon">#CCFFFFFF</color>
 
