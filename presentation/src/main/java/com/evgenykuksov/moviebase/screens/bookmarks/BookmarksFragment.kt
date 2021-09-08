@@ -12,7 +12,18 @@ class BookmarksFragment : BaseFragment(R.layout.fragment_bookmarks) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    override fun initWidgets() {
+        // todo
+    }
+
+    override fun observeState() {
+        // todo
+    }
+
+    override fun observeSingleEffect() {
+        // todo
     }
 
     companion object {

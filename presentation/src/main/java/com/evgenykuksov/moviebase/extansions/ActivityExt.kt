@@ -10,5 +10,4 @@ fun Activity.hideStatusBar() = window.addFlags(WindowManager.LayoutParams.FLAG_F
 
 fun Activity.showStatusBar() = window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-fun AppCompatActivity.launchWhenStarted(body: suspend () -> Unit): Job =
-    lifecycleScope.launchWhenStarted { body() }
+fun AppCompatActivity.launchWhenStarted(body: suspend () -> Unit): Job = lifecycleScope.launchWhenStarted { body() }

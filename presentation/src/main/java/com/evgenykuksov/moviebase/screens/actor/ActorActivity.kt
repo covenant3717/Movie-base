@@ -11,14 +11,14 @@ class ActorActivity : BaseActivity(R.layout.activity_actor) {
     }
 
     override fun initWidgets() {
-        TODO("Not yet implemented")
+        // todo
     }
 
     override fun observeState() {
-        TODO("Not yet implemented")
+        // todo
     }
 
     override fun observeSingleEffect() {
-        TODO("Not yet implemented")
+        // todo
     }
 }

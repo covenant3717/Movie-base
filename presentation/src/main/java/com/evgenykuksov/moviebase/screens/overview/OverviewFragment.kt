@@ -3,14 +3,10 @@ package com.evgenykuksov.moviebase.screens.overview
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseFragment
-import com.evgenykuksov.moviebase.extansions.fadeTo
-import com.evgenykuksov.moviebase.extansions.insertSpaces
-import com.evgenykuksov.moviebase.extansions.isNotNull
-import com.evgenykuksov.moviebase.extansions.toast
+import com.evgenykuksov.moviebase.extansions.*
 import com.evgenykuksov.moviebase.screens.movie.MovieActivity
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
@@ -28,13 +24,10 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeSingleEffect()
-        observeState()
-        initWidgets()
         viewModel.sendIntent(OverviewContract.Intent.Start)
     }
 
-    private fun initWidgets() {
+    override fun initWidgets() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
@@ -51,26 +44,30 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
         rvMovies.adapter = adapter.apply { add(moviesSection) }
     }
 
-    private fun observeState() = lifecycleScope.launchWhenStarted {
-        viewModel.state.collect {
-            it.listItems?.let { list -> moviesSection.update(list) }
-            if (it.rating.isNotNull()) {
-                tvRating.apply {
-                    text = it.rating?.insertSpaces(3)
-                    fadeTo(true)
+    override fun observeState() {
+        launchWhenStarted {
+            viewModel.state.collect {
+                it.listItems?.let { list -> moviesSection.update(list) }
+                if (it.rating.isNotNull()) {
+                    tvRating.apply {
+                        text = it.rating?.insertSpaces(3)
+                        fadeTo(true)
+                    }
                 }
             }
         }
     }
 
-    private fun observeSingleEffect() = lifecycleScope.launchWhenStarted {
-        viewModel.singleEvent.collect {
-            when (it) {
-                is OverviewContract.SingleEvent.ToastError -> {
-                    requireContext().toast(it.message, Toast.LENGTH_LONG)
-                }
-                is OverviewContract.SingleEvent.StartMovieActivity -> {
-                    startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
+    override fun observeSingleEffect() {
+        launchWhenStarted {
+            viewModel.singleEvent.collect {
+                when (it) {
+                    is OverviewContract.SingleEvent.ToastError -> {
+                        requireContext().toast(it.message, Toast.LENGTH_LONG)
+                    }
+                    is OverviewContract.SingleEvent.StartMovieActivity -> {
+                        startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
+                    }
                 }
             }
         }

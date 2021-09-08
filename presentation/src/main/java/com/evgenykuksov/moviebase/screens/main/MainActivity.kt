@@ -2,7 +2,6 @@ package com.evgenykuksov.moviebase.screens.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseActivity
 import com.evgenykuksov.moviebase.extansions.launchWhenStarted
