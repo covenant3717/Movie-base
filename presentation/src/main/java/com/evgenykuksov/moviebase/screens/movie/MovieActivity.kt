@@ -15,7 +15,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.activity_movie.*
-import kotlinx.android.synthetic.main.movie_item_actor.view.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -45,6 +45,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
     private fun observeState() = lifecycleScope.launchWhenStarted {
         viewModel.state.collect {
             imgPoster.load(it.poster, defaultImageLoader)
+            delay(it.delayUpdateItems)
             it.listItems?.let { list -> detailsSection.update(list) }
         }
     }

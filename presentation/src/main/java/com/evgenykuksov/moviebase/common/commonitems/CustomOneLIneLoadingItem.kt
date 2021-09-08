@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.commonitems
+package com.evgenykuksov.moviebase.common.commonitems
 
 import android.view.ViewGroup
 import androidx.annotation.DimenRes

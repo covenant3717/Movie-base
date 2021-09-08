@@ -13,6 +13,7 @@ class MovieContract {
 
     data class State(
         val poster: String?,
+        val delayUpdateItems: Long,
         val listItems: List<Item>?
     ) : UiState
 

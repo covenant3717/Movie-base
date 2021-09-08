@@ -9,8 +9,8 @@ import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
-import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
-import com.evgenykuksov.moviebase.commonitems.ErrorItem
+import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.common.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieLoadingItem
 import com.xwray.groupie.kotlinandroidextensions.Item

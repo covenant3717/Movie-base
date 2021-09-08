@@ -7,9 +7,9 @@ import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.FullMovieData
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseViewModel
-import com.evgenykuksov.moviebase.commonitems.CustomEmptyItem
-import com.evgenykuksov.moviebase.commonitems.CustomOneLIneLoadingItem
-import com.evgenykuksov.moviebase.commonitems.ErrorItem
+import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
+import com.evgenykuksov.moviebase.common.commonitems.CustomOneLIneLoadingItem
+import com.evgenykuksov.moviebase.common.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.movie.items.*
 import com.evgenykuksov.moviebase.screens.movie.items.CastItem
 import com.evgenykuksov.moviebase.screens.movie.items.DescriptionItem
@@ -26,7 +26,7 @@ class MovieViewModel(
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State("stub", null)
+    override fun createInitialState() = MovieContract.State("stub", 0, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -45,7 +45,13 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                setState { copy(poster = it.movieDetails.posterPath, listItems = buildItems(it)) }
+                setState {
+                    copy(
+                        poster = it.movieDetails.posterPath,
+                        delayUpdateItems = DELAY_UPDATING_ITEMS,
+                        listItems = buildItems(it)
+                    )
+                }
             }
     }
 
@@ -107,21 +113,14 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_32),
     )
 
-    private fun buildActorLoadingItems() = listOf(
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20),
-        ActorLoadingItem,
-        CustomEmptyItem(widthRes = R.dimen.dimen_20)
-    )
+    private fun buildActorLoadingItems() = mutableListOf<Item>()
+        .apply {
+            for (i: Int in 1..7) {
+                add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+                add(ActorLoadingItem())
+            }
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+        }
 
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
@@ -133,3 +132,5 @@ class MovieViewModel(
         }
         .toList()
 }
+
+private const val DELAY_UPDATING_ITEMS = 1000L

@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.commonitems
+package com.evgenykuksov.moviebase.common.commonitems
 
 import com.evgenykuksov.moviebase.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
