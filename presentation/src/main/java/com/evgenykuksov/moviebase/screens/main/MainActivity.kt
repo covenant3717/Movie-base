@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.moviebase.extansions.launchWhenStarted
 import com.evgenykuksov.moviebase.screens.bookmarks.BookmarksFragment
 import com.evgenykuksov.moviebase.screens.overview.OverviewFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,11 +27,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 add(R.id.container, overviewFragment, OverviewFragment::class.java.simpleName)
             }
             .commit()
-        observeState()
-        initWidgets()
     }
 
-    private fun initWidgets() {
+    override fun initWidgets() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.page_overview -> viewModel.sendIntent(MainContract.Intent.OverviewTouch)
@@ -42,14 +41,18 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         }
     }
 
-    private fun observeState() = lifecycleScope.launchWhenStarted {
-        viewModel.state.collect {
-            when (it.fragmentName) {
-                OverviewFragment::class.java.simpleName -> showFragment(overviewFragment)
-                BookmarksFragment::class.java.simpleName -> showFragment(bookmarksFragment)
+    override fun observeState() {
+        launchWhenStarted {
+            viewModel.state.collect {
+                when (it.fragmentName) {
+                    OverviewFragment::class.java.simpleName -> showFragment(overviewFragment)
+                    BookmarksFragment::class.java.simpleName -> showFragment(bookmarksFragment)
+                }
             }
         }
     }
+
+    override fun observeSingleEffect() {}
 
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()

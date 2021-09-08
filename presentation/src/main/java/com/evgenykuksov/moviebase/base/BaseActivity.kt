@@ -8,5 +8,14 @@ abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        observeSingleEffect()
+        observeState()
+        initWidgets()
     }
+
+    protected abstract fun initWidgets()
+
+    protected abstract fun observeState()
+
+    protected abstract fun observeSingleEffect()
 }

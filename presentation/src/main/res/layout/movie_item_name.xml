@@ -7,7 +7,7 @@
     android:gravity="center"
     android:paddingStart="@dimen/dimen_20"
     android:paddingEnd="@dimen/dimen_20"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
     android:textColor="@color/movie_item_name"
     tools:background="@color/common_background"
     tools:text="Rate" />

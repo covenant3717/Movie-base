@@ -10,6 +10,7 @@ import coil.load
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.base.BaseActivity
 import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
+import com.evgenykuksov.moviebase.extansions.launchWhenStarted
 import com.evgenykuksov.moviebase.extansions.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -30,31 +31,32 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        observeSingleEffect()
-        observeState()
-        initWidgets()
         intent.getLongExtra(ARG_MOVIE_ID, 0).let {
             viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(it))
         }
     }
 
-    private fun initWidgets() {
+    override fun initWidgets() {
         rvDetails.adapter = adapter.apply { add(detailsSection) }
     }
 
-    private fun observeState() = lifecycleScope.launchWhenStarted {
-        viewModel.state.collect {
-            imgPoster.load(it.poster, defaultImageLoader)
-            delay(it.delayUpdateItems)
-            it.listItems?.let { list -> detailsSection.update(list) }
+    override fun observeState() {
+        launchWhenStarted {
+            viewModel.state.collect {
+                imgPoster.load(it.poster, defaultImageLoader)
+                delay(it.delayUpdateItems)
+                it.listItems?.let { list -> detailsSection.update(list) }
+            }
         }
     }
 
-    private fun observeSingleEffect() = lifecycleScope.launchWhenStarted {
-        viewModel.singleEvent.collect {
-            when (it) {
-                is MovieContract.SingleEvent.ToastError -> {
-                    toast(it.message, Toast.LENGTH_LONG)
+    override fun observeSingleEffect() {
+        launchWhenStarted {
+            viewModel.singleEvent.collect {
+                when (it) {
+                    is MovieContract.SingleEvent.ToastError -> {
+                        toast(it.message, Toast.LENGTH_LONG)
+                    }
                 }
             }
         }

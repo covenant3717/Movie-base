@@ -20,6 +20,12 @@ class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {
             finish()
         }
     }
+
+    override fun initWidgets() {}
+
+    override fun observeState() {}
+
+    override fun observeSingleEffect() {}
 }
 
 private const val DELAY_START_MAIN = 2500L

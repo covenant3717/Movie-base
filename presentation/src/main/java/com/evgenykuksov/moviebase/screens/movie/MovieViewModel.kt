@@ -115,7 +115,7 @@ class MovieViewModel(
 
     private fun buildActorLoadingItems() = mutableListOf<Item>()
         .apply {
-            for (i: Int in 1..7) {
+            for (i in 1..7) {
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
                 add(ActorLoadingItem())
             }

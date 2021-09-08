@@ -20,8 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".screens.main.MainActivity" />
-        <activity
-            android:name=".screens.movie.MovieActivity"
-            android:exported="true" />
+        <activity android:name=".screens.movie.MovieActivity" />
+        <activity android:name=".screens.actor.ActorActivity"/>
     </application>
 </manifest>
