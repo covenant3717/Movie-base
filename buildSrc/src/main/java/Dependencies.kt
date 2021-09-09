@@ -22,6 +22,7 @@ object Dependencies {
         const val groupieExt = "com.github.lisawray.groupie:groupie-kotlin-android-extensions:${Versions.UI.GROUPIE}"
         const val circleImageView = "de.hdodenhof:circleimageview:${Versions.UI.CIRCLE_IMAGE_VIEW}"
         const val shimmer = "com.facebook.shimmer:shimmer:${Versions.UI.SHIMMER}"
+        const val photoView = "com.github.chrisbanes:PhotoView:${Versions.UI.PHOTOVIEW}"
     }
 
     object Coroutines {

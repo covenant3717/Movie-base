@@ -26,6 +26,7 @@ object Versions {
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"
         const val SHIMMER = "0.5.0"
+        const val PHOTOVIEW = "2.3.0"
     }
 
     object Network {
