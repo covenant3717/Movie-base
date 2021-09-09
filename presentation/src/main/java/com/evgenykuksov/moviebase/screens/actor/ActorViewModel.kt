@@ -6,7 +6,6 @@ import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.moviebase.base.BaseViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class ActorViewModel(
@@ -24,19 +23,11 @@ class ActorViewModel(
 
     private fun load(actorId: Long) = viewModelScope.launch {
         actorsUseCase.getActorInfo(actorId)
-//            .onStart { setState { copy(listItems = buildLoadingItems()) } }
             .catch { exception ->
-//                setState { copy(listItems = buildErrorItems()) }
-//                setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
+                setSingleEvent(ActorContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-//                setState {
-//                    copy(
-//                        poster = it.movieDetails.posterPath,
-//                        delayUpdateItems = DELAY_UPDATING_ITEMS,
-//                        listItems = buildItems(it)
-//                    )
-//                }
+                setState { copy(photo = it.profilePhoto) }
             }
     }
 }
