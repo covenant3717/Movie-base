@@ -11,6 +11,7 @@ import com.evgenykuksov.moviebase.base.BaseActivity
 import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.moviebase.extansions.launchWhenStarted
 import com.evgenykuksov.moviebase.extansions.toast
+import com.evgenykuksov.moviebase.screens.actor.ActorActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -55,6 +56,9 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
                 when (it) {
                     is MovieContract.SingleEvent.ToastError -> {
                         toast(it.message, Toast.LENGTH_LONG)
+                    }
+                    is MovieContract.SingleEvent.StartActorActivity -> {
+                        startActivity(ActorActivity.newInstance(this, it.actorId))
                     }
                 }
             }

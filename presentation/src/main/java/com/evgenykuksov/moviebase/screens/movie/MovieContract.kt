@@ -19,5 +19,6 @@ class MovieContract {
 
     sealed class SingleEvent : UiSingleEvent {
         data class ToastError(val message: String) : SingleEvent()
+        data class StartActorActivity(val actorId: Long) : SingleEvent()
     }
 }

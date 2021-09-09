@@ -125,8 +125,12 @@ class MovieViewModel(
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-            listActor.forEach {
-                add(ActorItem(it, defaultImageLoader) {})
+            listActor.forEach { actor ->
+                add(
+                    ActorItem(actor, defaultImageLoader) {
+                        setSingleEvent(MovieContract.SingleEvent.StartActorActivity(actor.id))
+                    }
+                )
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_16))
             }
         }

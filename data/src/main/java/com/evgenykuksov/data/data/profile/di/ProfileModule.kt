@@ -1,4 +1,4 @@
-package com.evgenykuksov.data.data.movies.di
+package com.evgenykuksov.data.data.profile.di
 
 import com.evgenykuksov.data.data.profile.ProfileRepositoryImpl
 import com.evgenykuksov.data.data.profile.local.memory.ProfileMemoryStore
