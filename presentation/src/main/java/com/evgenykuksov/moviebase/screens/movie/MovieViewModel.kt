@@ -12,9 +12,9 @@ import com.evgenykuksov.moviebase.common.commonitems.CustomOneLIneLoadingItem
 import com.evgenykuksov.moviebase.common.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.movie.items.*
 import com.evgenykuksov.moviebase.screens.movie.items.CastItem
-import com.evgenykuksov.moviebase.screens.movie.items.DescriptionItem
+import com.evgenykuksov.moviebase.common.commonitems.DescriptionItem
 import com.evgenykuksov.moviebase.screens.movie.items.GenreItem
-import com.evgenykuksov.moviebase.screens.movie.items.NameItem
+import com.evgenykuksov.moviebase.common.commonitems.NameItem
 import com.evgenykuksov.moviebase.screens.movie.items.RatingItem
 import com.evgenykuksov.moviebase.screens.movie.items.TitleItem
 import com.xwray.groupie.kotlinandroidextensions.Item

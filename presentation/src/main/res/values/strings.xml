@@ -14,4 +14,8 @@
     <string name="movie_item_title_genre">Genre</string>
     <string name="movie_item_title_cast">Cast</string>
     <string name="movie_item_vote_count">(%s)</string>
+
+    <string name="actor_dialog_property_birthday">Birthday:</string>
+    <string name="actor_dialog_property_place_of_birth">Place of birth:</string>
+    <string name="actor_dialog_property_popularity">Popularity:</string>
 </resources>
