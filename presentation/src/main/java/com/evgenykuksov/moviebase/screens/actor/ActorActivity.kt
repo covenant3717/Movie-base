@@ -12,6 +12,7 @@ import com.evgenykuksov.moviebase.base.BaseActivity
 import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.moviebase.extansions.launchWhenStarted
 import com.evgenykuksov.moviebase.extansions.toast
+import com.evgenykuksov.moviebase.screens.overview.anim.startAnimationScaleWithBackward
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -36,7 +37,11 @@ class ActorActivity : BaseActivity(R.layout.activity_actor) {
     }
 
     override fun initWidgets() {
-        btnInfo.setOnClickListener { viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo) }
+        btnInfo.setOnClickListener {
+            it.startAnimationScaleWithBackward(0.9f) {
+                viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)
+            }
+        }
     }
 
     override fun observeState() {
