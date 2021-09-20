@@ -19,3 +19,9 @@ internal fun View.startAnimationScale(endValue: Float, onAnimationEnd: () -> Uni
         start()
     }
 }
+
+internal fun View.startAnimationScaleWithBackward(endValue: Float, onAnimationEnd: () -> Unit) {
+    startAnimationScale(endValue) {
+        startAnimationScale(1f) { onAnimationEnd() }
+    }
+}
