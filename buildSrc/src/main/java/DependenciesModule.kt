@@ -4,7 +4,7 @@ import org.gradle.kotlin.dsl.project
 object DependenciesModule {
 
     fun DependencyHandlerScope.data() {
-        "implementation"(project(":domain"))
+        "implementation"(project(Dependencies.Modules.DOMAIN))
 
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
@@ -33,13 +33,13 @@ object DependenciesModule {
     }
 
     fun DependencyHandlerScope.presentation() {
-        "implementation"(project(":domain"))
-        "implementation"(project(":data"))
+        "implementation"(project(Dependencies.Modules.DOMAIN))
+        "implementation"(project(Dependencies.Modules.DATA))
 
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
         "implementation"(Dependencies.coil)
-        "implementation"(Dependencies.coil_gif)
+        "implementation"(Dependencies.coilGif)
 
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)

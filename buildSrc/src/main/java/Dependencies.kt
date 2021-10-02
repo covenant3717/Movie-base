@@ -4,7 +4,7 @@ object Dependencies {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
     const val coil = "io.coil-kt:coil:${Versions.Rest.COIL}"
-    const val coil_gif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
+    const val coilGif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
 
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Rest.LIFECYCLE}"
@@ -57,5 +57,11 @@ object Dependencies {
         const val junit = "junit:junit:${Versions.Tests.JUNIT}"
         const val junits = "androidx.test.ext:junit:${Versions.Tests.JUNIT_TEST}"
         const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Tests.ESPRESSO_CORE}"
+    }
+
+    object Modules {
+        const val DOMAIN = ":domain"
+        const val DATA = ":data"
+        const val PRESENTATION = ":presentation"
     }
 }
