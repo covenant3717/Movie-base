@@ -9,11 +9,6 @@ plugins {
 
 android {
     compileSdkVersion(Versions.App.COMPILE_SDK)
-    defaultConfig {
-        minSdkVersion(Versions.App.MIN_SDK)
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
-        consumerProguardFiles("consumer-rules.pro")
-    }
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
