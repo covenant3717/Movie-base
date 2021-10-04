@@ -58,7 +58,6 @@ object DependenciesModule {
 
         "implementation"(Dependencies.Di.koin)
         "implementation"(Dependencies.Di.koinAndroid)
-        "implementation"(Dependencies.Di.koinViewModel)
 
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)

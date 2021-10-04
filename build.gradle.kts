@@ -2,7 +2,6 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
     dependencies {
         classpath(Dependencies.kotlinPlugin)
@@ -12,10 +11,9 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-        maven { url = uri("https://www.jitpack.io") }
         mavenCentral()
+        google()
+        maven { url = uri("https://www.jitpack.io") }
     }
 }
 

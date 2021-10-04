@@ -4,7 +4,7 @@ object Versions {
 
     object Main {
         const val KOTLIN = "1.5.20"
-        const val GRADLE = "4.1.1"
+        const val GRADLE = "7.0.2"
         const val CORE_KTX = "1.3.2"
         val JAVA = JavaVersion.VERSION_1_8
     }
@@ -51,7 +51,7 @@ object Versions {
 
     object Rest {
         const val LIFECYCLE = "2.2.0"
-        const val KOIN = "2.2.2"
+        const val KOIN = "3.1.2"
         const val COIL = "1.2.2"
         const val COIL_GIF = "1.3.0"
     }

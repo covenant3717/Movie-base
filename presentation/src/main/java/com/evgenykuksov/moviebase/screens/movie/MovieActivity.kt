@@ -19,12 +19,11 @@ import kotlinx.android.synthetic.main.activity_movie.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
-    private val viewModel: MovieViewModel by viewModel()
+    private val viewModel: MovieViewModel by inject()
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()

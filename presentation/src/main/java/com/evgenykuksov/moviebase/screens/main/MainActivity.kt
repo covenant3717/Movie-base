@@ -9,11 +9,11 @@ import com.evgenykuksov.moviebase.screens.bookmarks.BookmarksFragment
 import com.evgenykuksov.moviebase.screens.overview.OverviewFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: MainViewModel by inject()
     private val overviewFragment = OverviewFragment.newInstance()
     private val bookmarksFragment = BookmarksFragment.newInstance()
     private var activeFragment: Fragment = overviewFragment

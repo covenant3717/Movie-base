@@ -4,7 +4,7 @@ import com.evgenykuksov.moviebase.screens.actor.ActorViewModel
 import com.evgenykuksov.moviebase.screens.main.MainViewModel
 import com.evgenykuksov.moviebase.screens.movie.MovieViewModel
 import com.evgenykuksov.moviebase.screens.overview.OverviewViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

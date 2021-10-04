@@ -20,12 +20,11 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.activity_actor.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
 class ActorActivity : BaseActivity(R.layout.activity_actor) {
 
-    private val viewModel: ActorViewModel by viewModel()
+    private val viewModel: ActorViewModel by inject()
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
 

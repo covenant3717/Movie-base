@@ -14,11 +14,11 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_overview.*
 import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
 
-    private val viewModel: OverviewViewModel by viewModel()
+    private val viewModel: OverviewViewModel by inject()
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 

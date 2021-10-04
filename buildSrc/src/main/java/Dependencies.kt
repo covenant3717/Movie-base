@@ -37,10 +37,8 @@ object Dependencies {
     }
 
     object Di {
-        const val koin = "org.koin:koin-core:${Versions.Rest.KOIN}"
-        const val koinAndroid = "org.koin:koin-android:${Versions.Rest.KOIN}"
-        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.Rest.KOIN}"
-        const val koinTest = "org.koin:koin-test:${Versions.Rest.KOIN}"
+        const val koin = "io.insert-koin:koin-core:${Versions.Rest.KOIN}"
+        const val koinAndroid = "io.insert-koin:koin-android:${Versions.Rest.KOIN}"
     }
 
     object Network {

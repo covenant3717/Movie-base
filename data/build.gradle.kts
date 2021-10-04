@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.App.COMPILE_SDK)
+    compileSdk = Versions.App.COMPILE_SDK
     buildTypes {
         getByName("debug") {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
