@@ -47,7 +47,7 @@ class MovieViewModel(
             .collect {
                 setState {
                     copy(
-                        poster = it.movieDetails.posterPath,
+                        poster = it.movieDetails.backdropPath,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )
