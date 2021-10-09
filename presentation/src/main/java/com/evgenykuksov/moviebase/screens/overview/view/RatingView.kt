@@ -7,11 +7,8 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.extansions.dp
-import android.graphics.DashPathEffect
 import android.graphics.Path
-import android.util.Log
-import com.evgenykuksov.moviebase.extansions.px
+import com.evgenykuksov.core.extensions.dp
 
 class RatingView @JvmOverloads constructor(
     context: Context,

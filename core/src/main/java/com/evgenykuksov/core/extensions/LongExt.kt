@@ -1,3 +1,3 @@
-package com.evgenykuksov.data.extensions
+package com.evgenykuksov.core.extensions
 
 fun Long?.orNegativeDefault() = this ?: -1L

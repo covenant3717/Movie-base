@@ -1,11 +1,11 @@
 package com.evgenykuksov.data.data.movies
 
+import com.evgenykuksov.core.extensions.orNegativeDefault
+import com.evgenykuksov.core.extensions.orZero
 import com.evgenykuksov.data.data.movies.remote.model.ActorRemote
 import com.evgenykuksov.data.data.movies.remote.model.GenreRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
-import com.evgenykuksov.data.extensions.orNegativeDefault
 import com.evgenykuksov.data.data.movies.remote.model.MovieRemote
-import com.evgenykuksov.data.extensions.orZero
 import com.evgenykuksov.data.util.getOriginalImageUrl
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.Genre

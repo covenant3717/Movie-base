@@ -1,4 +1,6 @@
-package com.evgenykuksov.moviebase.extansions
+package com.evgenykuksov.core.extensions
+
+fun Int?.orZero() = this ?: 0
 
 fun Int?.isNotNull() = this != null
 

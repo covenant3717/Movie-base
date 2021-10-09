@@ -2,9 +2,9 @@ package com.evgenykuksov.moviebase.common.commonitems
 
 import android.view.ViewGroup
 import androidx.annotation.DimenRes
-import com.evgenykuksov.data.extensions.orZero
+import com.evgenykuksov.core.extensions.orZero
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.extansions.dimen
+import com.evgenykuksov.core.extensions.dimen
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.common_item_custom_one_line_loading.view.*

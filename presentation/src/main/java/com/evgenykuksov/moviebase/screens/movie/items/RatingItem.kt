@@ -1,7 +1,7 @@
 package com.evgenykuksov.moviebase.screens.movie.items
 
+import com.evgenykuksov.core.extensions.insertSpaces
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.extansions.insertSpaces
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.movie_item_rating.view.*

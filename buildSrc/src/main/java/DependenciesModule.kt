@@ -3,7 +3,21 @@ import org.gradle.kotlin.dsl.project
 
 object DependenciesModule {
 
+    fun DependencyHandlerScope.core() {
+        "implementation"(Dependencies.kotlin)
+        "implementation"(Dependencies.coreKtx)
+
+        "implementation"(Dependencies.Jetpack.viewmodel)
+        "implementation"(Dependencies.Jetpack.livedata)
+        "implementation"(Dependencies.Jetpack.runtime)
+
+        "implementation"(Dependencies.UI.appcompat)
+
+        "implementation"(Dependencies.Coroutines.coroutine)
+    }
+
     fun DependencyHandlerScope.data() {
+        "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
 
         "implementation"(Dependencies.kotlin)
@@ -33,6 +47,7 @@ object DependenciesModule {
     }
 
     fun DependencyHandlerScope.presentation() {
+        "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
 
