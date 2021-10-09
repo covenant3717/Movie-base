@@ -1,10 +1,10 @@
 import DependenciesModule.presentation
 
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    id(Plugins.KOTLIN_ANDROID)
-    id(Plugins.KOTLIN_ANDROID_EXTENSIONS)
-    id(Plugins.KOTLIN_KAPT)
+    pluginAndroidApplication()
+    pluginKotlinAndroid()
+    pluginKotlinAndroidExt()
+    pluginKotlinKapt()
 }
 
 android {

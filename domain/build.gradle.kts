@@ -1,7 +1,7 @@
 import DependenciesModule.domain
 
 plugins {
-    id(Plugins.KOTLIN)
+    pluginKotlin()
 }
 
 dependencies {

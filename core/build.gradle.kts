@@ -1,8 +1,8 @@
 import DependenciesModule.core
 
 plugins {
-    id(Plugins.ANDROID_LIBRARY)
-    id(Plugins.KOTLIN_ANDROID)
+    pluginAndroidLibrary()
+    pluginKotlinAndroid()
 }
 
 android {
