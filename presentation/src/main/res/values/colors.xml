@@ -8,10 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="common_icon">#F2FFFFFF</color>
-    <color name="common_background">#111111</color>
-    <color name="common_shimmer">#424242</color>
-
     <color name="main_menu_icon">#CCFFFFFF</color>
 
     <color name="overview_title_categories">#D9FFFFFF</color>
@@ -21,9 +17,7 @@
     <color name="overview_title_your_rank">#D9FFFFFF</color>
     <color name="overview_item_rank_active">#6AC0EE</color>
     <color name="overview_item_rank_default">#33FFFFFF</color>
-    <color name="overview_item_error_hint">#4DFFFFFF</color>
 
-    <color name="movie_item_name">#B3FFFFFF</color>
     <color name="movie_item_title">#33FFFFFF</color>
     <color name="movie_item_description">#66FFFFFF</color>
     <color name="movie_item_genre">#99FFFFFF</color>

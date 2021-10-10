@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:fitsSystemWindows="true"
-    tools:background="@color/common_background"
+    tools:background="@color/core_background"
     tools:context=".screens.bookmarks.BookmarksFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_10"
         android:layout_marginTop="@dimen/dimen_32"
-        android:background="@color/common_background"
+        android:background="@color/core_background"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"

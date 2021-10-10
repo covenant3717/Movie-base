@@ -9,5 +9,5 @@
     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
     android:textColor="@color/movie_item_genre"
     android:textStyle="bold"
-    tools:background="@color/common_background"
+    tools:background="@color/core_background"
     tools:text="Rate" />

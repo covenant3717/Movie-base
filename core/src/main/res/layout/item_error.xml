@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="260dp"
     android:background="@android:color/transparent"
-    tools:background="@color/common_background">
+    android:minHeight="260dp"
+    tools:background="@color/core_background">
 
     <ImageView
         android:id="@+id/imgError"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/ic_overview_mobile_dead" />
+        app:srcCompat="@drawable/ic_core_mobile_dead" />
 
     <TextView
         android:id="@+id/textView4"
@@ -30,9 +30,9 @@
         android:layout_marginEnd="@dimen/dimen_20"
         android:layout_marginBottom="@dimen/dimen_24"
         android:gravity="center"
-        android:text="@string/overview_item_error_hint"
+        android:text="@string/core_item_error_hint_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/overview_item_error_hint"
+        android:textColor="@color/core_item_error_hint_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

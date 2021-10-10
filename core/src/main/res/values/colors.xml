@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="core_icon">#F2FFFFFF</color>
+    <color name="core_background">#111111</color>
+    <color name="core_shimmer">#424242</color>
+
+    <color name="core_item_description_text">#66FFFFFF</color>
+    <color name="core_item_error_hint_text">#4DFFFFFF</color>
+    <color name="core_item_name">#B3FFFFFF</color>
+</resources>
