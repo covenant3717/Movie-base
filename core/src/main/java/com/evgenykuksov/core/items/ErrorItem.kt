@@ -1,12 +1,12 @@
-package com.evgenykuksov.moviebase.common.commonitems
+package com.evgenykuksov.core.items
 
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.core.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 
-internal class ErrorItem : Item() {
+class ErrorItem : Item() {
 
-    override fun getLayout(): Int = R.layout.common_item_error
+    override fun getLayout(): Int = R.layout.item_error
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {}
 }

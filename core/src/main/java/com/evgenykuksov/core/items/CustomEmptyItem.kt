@@ -1,17 +1,17 @@
-package com.evgenykuksov.moviebase.common.commonitems
+package com.evgenykuksov.core.items
 
 import androidx.annotation.DimenRes
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.core.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.common_item_custom_empty.view.*
+import kotlinx.android.synthetic.main.item_custom_empty.view.*
 
 data class CustomEmptyItem(
     @DimenRes private val heightRes: Int? = null,
     @DimenRes private val widthRes: Int? = null
 ) : Item() {
 
-    override fun getLayout(): Int = R.layout.common_item_custom_empty
+    override fun getLayout(): Int = R.layout.item_custom_empty
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {

@@ -12,6 +12,11 @@ object DependenciesModule {
         "implementation"(Dependencies.Jetpack.runtime)
 
         "implementation"(Dependencies.UI.appcompat)
+        "implementation"(Dependencies.UI.material)
+        "implementation"(Dependencies.UI.constraintLayout)
+        "implementation"(Dependencies.UI.groupie)
+        "implementation"(Dependencies.UI.groupieExt)
+        "implementation"(Dependencies.UI.shimmer)
 
         "implementation"(Dependencies.Coroutines.coroutine)
     }

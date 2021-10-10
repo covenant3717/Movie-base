@@ -5,10 +5,10 @@ import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.domain.actors.model.ActorInfo
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseViewModel
-import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
-import com.evgenykuksov.moviebase.common.commonitems.DescriptionItem
-import com.evgenykuksov.moviebase.common.commonitems.ErrorItem
-import com.evgenykuksov.moviebase.common.commonitems.NameItem
+import com.evgenykuksov.core.items.CustomEmptyItem
+import com.evgenykuksov.core.items.DescriptionItem
+import com.evgenykuksov.core.items.ErrorItem
+import com.evgenykuksov.core.items.NameItem
 import com.evgenykuksov.moviebase.screens.actor.items.ActorPropertyItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
