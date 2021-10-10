@@ -3,6 +3,8 @@ package com.evgenykuksov.moviebase.screens.overview
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.evgenykuksov.core.anim.fadeTo
+import com.evgenykuksov.core.anim.startAnimationAlpha
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
