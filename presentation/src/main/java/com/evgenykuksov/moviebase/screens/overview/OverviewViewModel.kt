@@ -8,7 +8,7 @@ import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
 import com.evgenykuksov.moviebase.common.commonitems.ErrorItem
 import com.evgenykuksov.moviebase.screens.overview.items.MovieItem

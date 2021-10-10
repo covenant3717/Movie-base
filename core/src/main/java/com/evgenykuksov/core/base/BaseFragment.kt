@@ -1,15 +1,20 @@
-package com.evgenykuksov.moviebase.base
+package com.evgenykuksov.core.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
-abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity(contentLayoutId) {
+abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(layoutId) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         observeSingleEffect()
         observeState()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initWidgets()
     }
 

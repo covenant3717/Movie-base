@@ -1,8 +1,8 @@
 package com.evgenykuksov.moviebase.screens.movie
 
-import com.evgenykuksov.moviebase.base.UiIntent
-import com.evgenykuksov.moviebase.base.UiSingleEvent
-import com.evgenykuksov.moviebase.base.UiState
+import com.evgenykuksov.core.base.UiIntent
+import com.evgenykuksov.core.base.UiSingleEvent
+import com.evgenykuksov.core.base.UiState
 import com.xwray.groupie.kotlinandroidextensions.Item
 
 class MovieContract {

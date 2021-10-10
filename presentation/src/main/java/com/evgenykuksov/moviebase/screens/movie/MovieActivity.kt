@@ -9,7 +9,7 @@ import coil.load
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.extensions.toast
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.core.base.BaseActivity
 import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.moviebase.screens.actor.ActorActivity
 import com.xwray.groupie.GroupAdapter

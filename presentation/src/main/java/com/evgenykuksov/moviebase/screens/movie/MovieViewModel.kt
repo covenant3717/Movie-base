@@ -6,7 +6,7 @@ import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.FullMovieData
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
 import com.evgenykuksov.moviebase.common.commonitems.CustomOneLIneLoadingItem
 import com.evgenykuksov.moviebase.common.commonitems.ErrorItem

@@ -1,6 +1,6 @@
 package com.evgenykuksov.moviebase.screens.main
 
-import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.moviebase.screens.bookmarks.BookmarksFragment
 import com.evgenykuksov.moviebase.screens.overview.OverviewFragment
 

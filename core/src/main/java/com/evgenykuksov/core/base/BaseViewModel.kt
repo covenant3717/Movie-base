@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.base
+package com.evgenykuksov.core.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

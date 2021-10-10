@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.core.base.BaseActivity
 import com.evgenykuksov.moviebase.screens.bookmarks.BookmarksFragment
 import com.evgenykuksov.moviebase.screens.overview.OverviewFragment
 import kotlinx.android.synthetic.main.activity_main.*

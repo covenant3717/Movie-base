@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseFragment
+import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.moviebase.screens.movie.MovieActivity
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter

@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.domain.actors.model.ActorInfo
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseViewModel
+import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.moviebase.common.commonitems.CustomEmptyItem
 import com.evgenykuksov.moviebase.common.commonitems.DescriptionItem
 import com.evgenykuksov.moviebase.common.commonitems.ErrorItem

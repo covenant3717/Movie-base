@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.base.BaseActivity
+import com.evgenykuksov.core.base.BaseActivity
 import com.evgenykuksov.moviebase.screens.main.MainActivity
 import kotlinx.coroutines.delay
 
