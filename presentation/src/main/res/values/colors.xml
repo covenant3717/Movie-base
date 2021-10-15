@@ -8,8 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="main_menu_icon">#CCFFFFFF</color>
-
     <color name="overview_title_categories">#D9FFFFFF</color>
     <color name="overview_tab_selected">#BFFFFFFF</color>
     <color name="overview_tab_default">#4DFFFFFF</color>

@@ -7,48 +7,48 @@
       android:pathData="M8.703,6.25L16.228,6.25"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"
+      android:strokeColor="@color/menu_icon"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M8.703,12.25L20.46,12.25"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"
+      android:strokeColor="@color/menu_icon"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M8.703,18.25L18.579,18.25"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"
+      android:strokeColor="@color/menu_icon"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M5.176,6.176m-1.176,0a1.176,1.176 0,1 1,2.352 0a1.176,1.176 0,1 1,-2.352 0"
       android:strokeWidth="2"
-      android:fillColor="@color/main_menu_icon"
+      android:fillColor="@color/menu_icon"
       android:strokeColor="#00000000"/>
   <path
       android:pathData="M5.176,6.176m-0.176,0a0.176,0.176 0,1 1,0.352 0a0.176,0.176 0,1 1,-0.352 0"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"/>
+      android:strokeColor="@color/menu_icon"/>
   <path
       android:pathData="M5.176,12.176m-1.176,0a1.176,1.176 0,1 1,2.352 0a1.176,1.176 0,1 1,-2.352 0"
       android:strokeWidth="2"
-      android:fillColor="@color/main_menu_icon"
+      android:fillColor="@color/menu_icon"
       android:strokeColor="#00000000"/>
   <path
       android:pathData="M5.176,12.176m-0.176,0a0.176,0.176 0,1 1,0.352 0a0.176,0.176 0,1 1,-0.352 0"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"/>
+      android:strokeColor="@color/menu_icon"/>
   <path
       android:pathData="M5.176,18.176m-1.176,0a1.176,1.176 0,1 1,2.352 0a1.176,1.176 0,1 1,-2.352 0"
       android:strokeWidth="2"
-      android:fillColor="@color/main_menu_icon"
+      android:fillColor="@color/menu_icon"
       android:strokeColor="#00000000"/>
   <path
       android:pathData="M5.176,18.176m-0.176,0a0.176,0.176 0,1 1,0.352 0a0.176,0.176 0,1 1,-0.352 0"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/main_menu_icon"/>
+      android:strokeColor="@color/menu_icon"/>
 </vector>

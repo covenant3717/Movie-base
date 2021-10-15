@@ -62,5 +62,6 @@ object Dependencies {
         const val DOMAIN = ":domain"
         const val DATA = ":data"
         const val PRESENTATION = ":presentation"
+        const val FEATURE_MAIN = ":feature-main"
     }
 }

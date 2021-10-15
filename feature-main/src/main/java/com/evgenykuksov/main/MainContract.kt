@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.main
+package com.evgenykuksov.main
 
 import com.evgenykuksov.core.base.UiIntent
 import com.evgenykuksov.core.base.UiSingleEvent

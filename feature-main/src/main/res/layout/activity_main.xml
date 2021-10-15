@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/core_background"
-    tools:context=".screens.main.MainActivity">
+    tools:context="com.evgenykuksov.main.MainActivity">
 
     <LinearLayout
         android:id="@+id/container"
@@ -24,7 +24,7 @@
         android:background="@color/core_background"
         android:elevation="0dp"
         android:paddingBottom="@dimen/dimen_16"
-        app:itemIconTint="@color/main_menu_icon"
+        app:itemIconTint="@color/menu_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

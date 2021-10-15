@@ -56,6 +56,8 @@ object DependenciesModule {
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
 
+        "implementation"(project(Dependencies.Modules.FEATURE_MAIN))
+
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
         "implementation"(Dependencies.coil)
@@ -91,6 +93,7 @@ object DependenciesModule {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
+//        "implementation"(project(Dependencies.Modules.PRESENTATION)) // todo: remove after integrate Jetpack navigation
 
         "implementation"(Dependencies.kotlin)
         "implementation"(Dependencies.coreKtx)
@@ -123,8 +126,7 @@ object DependenciesModule {
         "androidTestImplementation"(Dependencies.Tests.espressoCore)
     }
 
-//    fun DependencyHandlerScope.featureSplash() {
-//        "implementation"(project(Dependencies.Modules.PRESENTATION)) // todo: remove after integrate Jetpack navigation
-//        commonFeatureDependencies()
-//    }
+    fun DependencyHandlerScope.featureMain() {
+        commonFeatureDependencies()
+    }
 }
