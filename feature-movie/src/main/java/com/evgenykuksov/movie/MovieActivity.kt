@@ -9,6 +9,7 @@ import coil.load
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.extensions.toast
 import com.evgenykuksov.core.base.BaseActivity
+import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -21,7 +22,7 @@ import org.koin.core.qualifier.named
 class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     private val viewModel: MovieViewModel by inject()
-//    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
+    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
 
@@ -39,7 +40,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-//                imgPoster.load(it.poster, defaultImageLoader)
+                imgPoster.load(it.poster, defaultImageLoader)
                 delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
             }

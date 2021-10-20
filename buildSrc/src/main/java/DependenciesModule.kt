@@ -6,6 +6,10 @@ object DependenciesModule {
     fun DependencyHandlerScope.core() {
         "implementation"(Dependencies.Rest.kotlin)
         "implementation"(Dependencies.Rest.coreKtx)
+        "implementation"(Dependencies.Rest.coil)
+        "implementation"(Dependencies.Rest.coilGif)
+        "implementation"(Dependencies.Di.koin)
+        "implementation"(Dependencies.Di.koinAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)

@@ -1,6 +1,8 @@
 package com.evgenykuksov.moviebase.di
 
 import com.evgenykuksov.actor.ActorViewModel
+import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
+import com.evgenykuksov.core.di.COIL_GIF_LOADER
 import com.evgenykuksov.main.MainViewModel
 import com.evgenykuksov.movie.MovieViewModel
 import com.evgenykuksov.overview.OverviewViewModel

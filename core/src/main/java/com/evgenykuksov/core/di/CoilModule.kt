@@ -1,22 +1,22 @@
-package com.evgenykuksov.moviebase.di
+package com.evgenykuksov.core.di
 
 import android.os.Build
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.core.R
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-internal val CoilModule = module {
+val CoilModule = module {
 
     single<ImageLoader>(named(COIL_DEFAULT_LOADER)) {
         ImageLoader(this.androidContext())
             .newBuilder()
             .crossfade(300)
-            .placeholder(R.drawable.ic_common_popcorn)
-            .error(R.drawable.ic_common_popcorn)
+            .placeholder(R.drawable.ic_core_popcorn)
+            .error(R.drawable.ic_core_popcorn)
             .build()
     }
 

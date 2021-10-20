@@ -11,6 +11,7 @@ import com.evgenykuksov.core.anim.startAnimationScaleWithBackward
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.extensions.toast
 import com.evgenykuksov.core.base.BaseActivity
+import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -23,7 +24,7 @@ import org.koin.core.qualifier.named
 class ActorActivity : BaseActivity(R.layout.activity_actor) {
 
     private val viewModel: ActorViewModel by inject()
-//    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
+    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ class ActorActivity : BaseActivity(R.layout.activity_actor) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-//                imgPhoto.load(it.photo, defaultImageLoader)
+                imgPhoto.load(it.photo, defaultImageLoader)
             }
         }
     }
