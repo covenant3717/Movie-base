@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.splash
+package com.evgenykuksov.moviebase.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,7 @@ class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {
         super.onCreate(savedInstanceState)
         launchWhenStarted {
             delay(DELAY_START_MAIN)
-            startActivity(Intent(this@SplashScreenActivity, com.evgenykuksov.main.MainActivity::class.java))
+            startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
             finish()
         }
     }

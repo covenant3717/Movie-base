@@ -1,15 +1,14 @@
-package com.evgenykuksov.moviebase.screens.actor
+package com.evgenykuksov.actor
 
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.domain.actors.model.ActorInfo
-import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.DescriptionItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.core.items.NameItem
-import com.evgenykuksov.moviebase.screens.actor.items.ActorPropertyItem
+import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect

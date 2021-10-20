@@ -1,18 +1,18 @@
-package com.evgenykuksov.moviebase.screens.actor.items
+package com.evgenykuksov.actor.items
 
 import androidx.annotation.StringRes
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.actor.R
 import com.evgenykuksov.core.extensions.string
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.actor_property_item.view.*
+import kotlinx.android.synthetic.main.item_property.view.*
 
 internal class ActorPropertyItem(
     @StringRes private val propertyName: Int,
     private val propertyValue: String,
 ) : Item() {
 
-    override fun getLayout(): Int = R.layout.actor_property_item
+    override fun getLayout(): Int = R.layout.item_property
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {

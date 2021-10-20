@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/core_background"
-    tools:context=".screens.actor.ActorActivity">
+    tools:context="com.evgenykuksov.actor.ActorActivity">
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/imgPhoto"

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movie">
         <activity
-            android:name=".screens.splash.SplashScreenActivity"
+            android:name=".splashscreen.SplashScreenActivity"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.evgenykuksov.main.MainActivity" />
-        <activity android:name=".screens.movie.MovieActivity" />
-        <activity android:name=".screens.actor.ActorActivity"/>
+        <activity android:name="com.evgenykuksov.movie.MovieActivity" />
+        <activity android:name="com.evgenykuksov.actor.ActorActivity"/>
     </application>
 </manifest>
