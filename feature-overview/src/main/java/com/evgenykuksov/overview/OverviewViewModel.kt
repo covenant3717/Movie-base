@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.overview
+package com.evgenykuksov.overview
 
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
@@ -7,12 +7,11 @@ import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
-import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.ErrorItem
-import com.evgenykuksov.moviebase.screens.overview.items.MovieItem
-import com.evgenykuksov.moviebase.screens.overview.items.MovieLoadingItem
+import com.evgenykuksov.overview.items.MovieItem
+import com.evgenykuksov.overview.items.MovieLoadingItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect

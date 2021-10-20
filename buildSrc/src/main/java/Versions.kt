@@ -36,11 +36,8 @@ object Versions {
         const val CHUCK = "1.1.0"
     }
 
-    object Threads {
+    object Coroutines {
         const val COROUTINE = "1.4.2"
-        const val RX_JAVA = "3.0.11"
-        const val RX_ANDROID = "3.0.0"
-        const val RX_KOTLIN = "3.0.1"
     }
 
     object Tests {

@@ -5,9 +5,9 @@ import android.view.MotionEvent
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.evgenykuksov.core.anim.startAnimationScale
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.moviebase.R
-import com.evgenykuksov.moviebase.screens.overview.anim.startAnimationScale
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.movie_item_actor.view.*

@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:fitsSystemWindows="true"
-    tools:background="@color/core_background"
-    tools:context=".screens.bookmarks.BookmarksFragment">
+    tools:background="@color/core_background">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -32,7 +31,7 @@
         android:paddingTop="@dimen/dimen_8"
         android:paddingEnd="@dimen/dimen_8"
         android:paddingBottom="@dimen/dimen_8"
-        android:src="@drawable/ic_overview_four_points"
+        android:src="@drawable/ic_four_points"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,9 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_32"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/overview_title_categories"
+        android:text="@string/title_categories"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textColor="@color/overview_title_categories"
+        android:textColor="@color/title_categories"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imgFourPoints" />
 
@@ -54,7 +53,7 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="@dimen/dimen_8"
-        android:src="@drawable/ic_overview_reading_glass"
+        android:src="@drawable/ic_reading_glass"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -69,7 +68,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:tabIndicatorColor="@color/overview_tab_underline"
+        app:tabIndicatorColor="@color/tab_underline"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorGravity="bottom"
         app:tabMaxWidth="0dp"
@@ -77,24 +76,24 @@
         app:tabMode="scrollable"
         app:tabPaddingEnd="@dimen/dimen_10"
         app:tabPaddingStart="@dimen/dimen_10"
-        app:tabSelectedTextColor="@color/overview_tab_selected"
+        app:tabSelectedTextColor="@color/tab_selected"
         app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        app:tabTextColor="@color/overview_tab_default">
+        app:tabTextColor="@color/tab_default">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overview_tab_new" />
+            android:text="@string/tab_new" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overview_tab_popular" />
+            android:text="@string/tab_popular" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/overview_tab_top_rated" />
+            android:text="@string/tab_top_rated" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -111,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:itemCount="3"
-        tools:listitem="@layout/overview_item_movie" />
+        tools:listitem="@layout/item_movie" />
 
     <TextView
         android:id="@+id/textView2"
@@ -119,9 +118,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_20"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/overview_title_your_rank"
+        android:text="@string/title_your_rank"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@color/overview_title_your_rank"
+        android:textColor="@color/title_your_rank"
         app:layout_constraintBottom_toTopOf="@+id/ratingView"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
@@ -131,15 +130,15 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@color/overview_title_your_rank"
+        android:textColor="@color/title_your_rank"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        tools:text="@string/overview_title_your_rank_value"
+        tools:text="@string/title_your_rank_value"
         tools:visibility="visible" />
 
-    <com.evgenykuksov.moviebase.screens.overview.view.RatingView
+    <com.evgenykuksov.overview.view.RatingView
         android:id="@+id/ratingView"
         android:layout_width="0dp"
         android:layout_height="10dp"

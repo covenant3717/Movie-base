@@ -1,15 +1,12 @@
-package com.evgenykuksov.moviebase.screens.overview
+package com.evgenykuksov.overview
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.evgenykuksov.core.anim.fadeTo
-import com.evgenykuksov.core.anim.startAnimationAlpha
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
-import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseFragment
-import com.evgenykuksov.moviebase.screens.movie.MovieActivity
 import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -68,7 +65,7 @@ class OverviewFragment : BaseFragment(R.layout.fragment_overview) {
                         requireContext().toast(it.message, Toast.LENGTH_LONG)
                     }
                     is OverviewContract.SingleEvent.StartMovieActivity -> {
-                        startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
+//                        startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
                     }
                 }
             }

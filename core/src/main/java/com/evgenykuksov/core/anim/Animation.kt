@@ -1,5 +1,6 @@
 package com.evgenykuksov.core.anim
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
 import androidx.core.animation.addListener
@@ -27,4 +28,24 @@ fun View.fadeTo(visible: Boolean, duration: Long = 500, startDelay: Long = 0, to
         .setDuration(duration)
         .setStartDelay(startDelay)
         .start()
+}
+
+fun View.startAnimationScale(endValue: Float, onAnimationEnd: () -> Unit) {
+    val scaleX = ObjectAnimator.ofFloat(this, View.SCALE_X, this.scaleX, endValue)
+    val scaleY = ObjectAnimator.ofFloat(this, View.SCALE_Y, this.scaleY, endValue)
+    AnimatorSet().apply {
+        interpolator = FastOutSlowInInterpolator()
+        duration = 100
+        playTogether(scaleX, scaleY)
+        addListener(
+            onEnd = { onAnimationEnd() }
+        )
+        start()
+    }
+}
+
+fun View.startAnimationScaleWithBackward(endValue: Float, onAnimationEnd: () -> Unit) {
+    startAnimationScale(endValue) {
+        startAnimationScale(1f) { onAnimationEnd() }
+    }
 }

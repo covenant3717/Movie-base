@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.overview
+package com.evgenykuksov.overview
 
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.UiIntent

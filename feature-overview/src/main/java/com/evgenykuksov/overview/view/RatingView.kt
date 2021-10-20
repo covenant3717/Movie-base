@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.overview.view
+package com.evgenykuksov.overview.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,9 +6,9 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.evgenykuksov.moviebase.R
 import android.graphics.Path
 import com.evgenykuksov.core.extensions.dp
+import com.evgenykuksov.overview.R
 
 class RatingView @JvmOverloads constructor(
     context: Context,
@@ -18,7 +18,7 @@ class RatingView @JvmOverloads constructor(
 
     private val paint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = ContextCompat.getColor(context, R.color.overview_item_rank_active)
+            color = ContextCompat.getColor(context, R.color.item_rank_active)
             strokeWidth = 4.dp
             strokeCap = Paint.Cap.ROUND
             style = Paint.Style.STROKE

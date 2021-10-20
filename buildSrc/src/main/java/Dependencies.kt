@@ -1,10 +1,8 @@
 object Dependencies {
-    const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Main.KOTLIN}"
-    const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
-    const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
-    const val coil = "io.coil-kt:coil:${Versions.Rest.COIL}"
-    const val coilGif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
+    object Main {
+        const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Main.KOTLIN}"
+        const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
+    }
 
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Rest.LIFECYCLE}"
@@ -26,14 +24,8 @@ object Dependencies {
     }
 
     object Coroutines {
-        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Threads.COROUTINE}"
-        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Threads.COROUTINE}"
-    }
-
-    object RX {
-        const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.Threads.RX_JAVA}"
-        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.Threads.RX_ANDROID}"
-        const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.Threads.RX_KOTLIN}"
+        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.COROUTINE}"
+        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.COROUTINE}"
     }
 
     object Di {
@@ -51,6 +43,13 @@ object Dependencies {
         const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.Network.CHUCK}"
     }
 
+    object Rest {
+        const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
+        const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
+        const val coil = "io.coil-kt:coil:${Versions.Rest.COIL}"
+        const val coilGif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
+    }
+
     object Tests {
         const val junit = "junit:junit:${Versions.Tests.JUNIT}"
         const val junits = "androidx.test.ext:junit:${Versions.Tests.JUNIT_TEST}"
@@ -63,5 +62,6 @@ object Dependencies {
         const val DATA = ":data"
         const val PRESENTATION = ":presentation"
         const val FEATURE_MAIN = ":feature-main"
+        const val FEATURE_OVERVIEW = ":feature-overview"
     }
 }

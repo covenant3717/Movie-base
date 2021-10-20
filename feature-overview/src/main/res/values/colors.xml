@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_categories">#D9FFFFFF</color>
+    <color name="tab_selected">#BFFFFFFF</color>
+    <color name="tab_default">#4DFFFFFF</color>
+    <color name="tab_underline">#7EB9D8</color>
+    <color name="title_your_rank">#D9FFFFFF</color>
+    <color name="item_rank_active">#6AC0EE</color>
+    <color name="item_rank_default">#33FFFFFF</color>
+</resources>
