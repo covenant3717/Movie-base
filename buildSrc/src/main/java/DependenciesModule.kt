@@ -46,11 +46,10 @@ object DependenciesModule {
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 
-    fun DependencyHandlerScope.presentation() {
+    fun DependencyHandlerScope.app() {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
-
         "implementation"(project(Dependencies.Modules.FEATURE_MAIN))
         "implementation"(project(Dependencies.Modules.FEATURE_OVERVIEW))
         "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
@@ -63,7 +62,6 @@ object DependenciesModule {
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
-
         "implementation"(Dependencies.UI.appcompat)
         "implementation"(Dependencies.UI.material)
         "implementation"(Dependencies.UI.constraintLayout)
@@ -74,10 +72,8 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.circleImageView)
         "implementation"(Dependencies.UI.shimmer)
         "implementation"(Dependencies.UI.photoView)
-
         "implementation"(Dependencies.Di.koin)
         "implementation"(Dependencies.Di.koinAndroid)
-
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
 
@@ -95,11 +91,9 @@ object DependenciesModule {
         "implementation"(Dependencies.Rest.coreKtx)
         "implementation"(Dependencies.Rest.coil)
         "implementation"(Dependencies.Rest.coilGif)
-
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
-
         "implementation"(Dependencies.UI.appcompat)
         "implementation"(Dependencies.UI.material)
         "implementation"(Dependencies.UI.constraintLayout)
@@ -110,10 +104,8 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.circleImageView)
         "implementation"(Dependencies.UI.shimmer)
         "implementation"(Dependencies.UI.photoView)
-
         "implementation"(Dependencies.Di.koin)
         "implementation"(Dependencies.Di.koinAndroid)
-
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
 

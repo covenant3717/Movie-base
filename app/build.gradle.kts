@@ -1,4 +1,4 @@
-import DependenciesModule.presentation
+import DependenciesModule.app
 
 plugins {
     pluginAndroidApplication()
@@ -48,5 +48,5 @@ android {
 }
 
 dependencies {
-    presentation()
+    app()
 }
