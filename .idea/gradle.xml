@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature-main" />
+            <option value="$PROJECT_DIR$/feature-movie" />
             <option value="$PROJECT_DIR$/feature-overview" />
             <option value="$PROJECT_DIR$/presentation" />
           </set>

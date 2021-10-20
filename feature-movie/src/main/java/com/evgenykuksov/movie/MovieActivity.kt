@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.movie
+package com.evgenykuksov.movie
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,7 @@ import coil.ImageLoader
 import coil.load
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.extensions.toast
-import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseActivity
-import com.evgenykuksov.moviebase.di.COIL_DEFAULT_LOADER
-import com.evgenykuksov.moviebase.screens.actor.ActorActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -24,7 +21,7 @@ import org.koin.core.qualifier.named
 class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     private val viewModel: MovieViewModel by inject()
-    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
+//    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
 
@@ -42,7 +39,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                imgPoster.load(it.poster, defaultImageLoader)
+//                imgPoster.load(it.poster, defaultImageLoader)
                 delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
             }
@@ -57,7 +54,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
                         toast(it.message, Toast.LENGTH_LONG)
                     }
                     is MovieContract.SingleEvent.StartActorActivity -> {
-                        startActivity(ActorActivity.newInstance(this, it.actorId))
+//                        startActivity(ActorActivity.newInstance(this, it.actorId))
                     }
                 }
             }

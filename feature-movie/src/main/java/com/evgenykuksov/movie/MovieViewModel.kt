@@ -1,22 +1,22 @@
-package com.evgenykuksov.moviebase.screens.movie
+package com.evgenykuksov.movie
 
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.FullMovieData
-import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.CustomOneLIneLoadingItem
 import com.evgenykuksov.core.items.ErrorItem
-import com.evgenykuksov.moviebase.screens.movie.items.*
-import com.evgenykuksov.moviebase.screens.movie.items.CastItem
 import com.evgenykuksov.core.items.DescriptionItem
-import com.evgenykuksov.moviebase.screens.movie.items.GenreItem
 import com.evgenykuksov.core.items.NameItem
-import com.evgenykuksov.moviebase.screens.movie.items.RatingItem
-import com.evgenykuksov.moviebase.screens.movie.items.TitleItem
+import com.evgenykuksov.movie.items.*
+import com.evgenykuksov.movie.items.ActorLoadingItem
+import com.evgenykuksov.movie.items.CastItem
+import com.evgenykuksov.movie.items.GenreItem
+import com.evgenykuksov.movie.items.RatingItem
+import com.evgenykuksov.movie.items.TitleItem
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -59,12 +59,12 @@ class MovieViewModel(
         CustomOneLIneLoadingItem(null, R.dimen.dimen_24, R.dimen.dimen_56, R.dimen.dimen_56),
         CustomEmptyItem(R.dimen.dimen_16),
 
-        TitleItem(R.string.movie_item_title_rate),
+        TitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomOneLIneLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_description),
+        TitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_8),
@@ -75,12 +75,12 @@ class MovieViewModel(
         CustomOneLIneLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_genre),
+        TitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_cast),
+        TitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
         CastItem(buildActorLoadingItems()),
         CustomEmptyItem(R.dimen.dimen_32)
@@ -92,22 +92,22 @@ class MovieViewModel(
         NameItem(data.movieDetails.title),
         CustomEmptyItem(R.dimen.dimen_16),
 
-        TitleItem(R.string.movie_item_title_rate),
+        TitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         RatingItem(data.movieDetails.voteAverage, data.movieDetails.voteCount),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_description),
+        TitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         DescriptionItem(data.movieDetails.overview),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_genre),
+        TitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         GenreItem(data.movieDetails.genres),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.movie_item_title_cast),
+        TitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
         CastItem(buildActorItems(data.listActor)),
         CustomEmptyItem(R.dimen.dimen_32),

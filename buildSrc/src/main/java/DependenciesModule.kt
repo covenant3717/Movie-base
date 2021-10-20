@@ -49,6 +49,7 @@ object DependenciesModule {
 
         "implementation"(project(Dependencies.Modules.FEATURE_MAIN))
         "implementation"(project(Dependencies.Modules.FEATURE_OVERVIEW))
+        "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
 
         "implementation"(Dependencies.Rest.kotlin)
         "implementation"(Dependencies.Rest.coreKtx)
@@ -120,6 +121,9 @@ object DependenciesModule {
         commonFeatureDependencies()
     }
     fun DependencyHandlerScope.featureOverview() {
+        commonFeatureDependencies()
+    }
+    fun DependencyHandlerScope.featureMovie() {
         commonFeatureDependencies()
     }
 }

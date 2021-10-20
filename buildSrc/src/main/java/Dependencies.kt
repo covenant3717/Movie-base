@@ -63,5 +63,6 @@ object Dependencies {
         const val PRESENTATION = ":presentation"
         const val FEATURE_MAIN = ":feature-main"
         const val FEATURE_OVERVIEW = ":feature-overview"
+        const val FEATURE_MOVIE = ":feature-movie"
     }
 }

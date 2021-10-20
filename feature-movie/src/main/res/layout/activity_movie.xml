@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/core_background"
-    tools:context=".screens.movie.MovieActivity">
+    android:background="@color/core_background">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgPoster"
@@ -25,7 +24,7 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:background="@drawable/movie_shape_poster"
+        android:background="@drawable/shape_poster"
         app:layout_constraintBottom_toBottomOf="@+id/imgPoster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,22 +1,22 @@
-package com.evgenykuksov.moviebase.screens.movie.items
+package com.evgenykuksov.movie.items
 
 import com.evgenykuksov.core.extensions.insertSpaces
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.movie_item_rating.view.*
+import kotlinx.android.synthetic.main.item_rating.view.*
 
 internal class RatingItem(
     private val voteAverage: Float,
     private val voteCount: Int
 ) : Item() {
 
-    override fun getLayout(): Int = R.layout.movie_item_rating
+    override fun getLayout(): Int = R.layout.item_rating
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
             tvVoteAverage.text = voteAverage.toString()
-            tvVoteCount.text = resources.getString(R.string.movie_item_vote_count, voteCount.insertSpaces(3))
+            tvVoteCount.text = resources.getString(R.string.item_vote_count, voteCount.insertSpaces(3))
             ratingBar.rating = calcRatingStars()
         }
     }

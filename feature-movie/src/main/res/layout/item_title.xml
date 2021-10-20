@@ -7,6 +7,6 @@
     android:paddingStart="@dimen/dimen_20"
     android:paddingEnd="@dimen/dimen_20"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-    android:textColor="@color/movie_item_title"
+    android:textColor="@color/item_title"
     tools:background="@color/core_background"
     tools:text="Rate" />

@@ -1,4 +1,4 @@
-package com.evgenykuksov.moviebase.screens.movie.items
+package com.evgenykuksov.movie.items
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
@@ -7,10 +7,10 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.evgenykuksov.core.anim.startAnimationScale
 import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.moviebase.R
+import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.movie_item_actor.view.*
+import kotlinx.android.synthetic.main.item_actor.view.*
 
 internal data class ActorItem(
     private val actor: Actor,
@@ -18,7 +18,7 @@ internal data class ActorItem(
     private val onClick: (actorId: Long) -> Unit
 ) : Item() {
 
-    override fun getLayout(): Int = R.layout.movie_item_actor
+    override fun getLayout(): Int = R.layout.item_actor
 
     @SuppressLint("ClickableViewAccessibility")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {

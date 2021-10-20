@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_title">#33FFFFFF</color>
+    <color name="item_description">#66FFFFFF</color>
+    <color name="item_genre">#99FFFFFF</color>
+    <color name="item_vote_average">#B3FFFFFF</color>
+    <color name="item_vote_count">#33FFFFFF</color>
+    <color name="item_rating_bar_star">#FDD05D</color>
+</resources>
