@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="actor_dialog_info_background">#D9000000</color>
-    <color name="actor_dialog_property_name">#4DFFFFFF</color>
-    <color name="actor_dialog_property_value">#B3FFFFFF</color>
+    <color name="dialog_info_background">#D9000000</color>
+    <color name="dialog_property_name">#4DFFFFFF</color>
+    <color name="dialog_property_value">#B3FFFFFF</color>
 </resources>

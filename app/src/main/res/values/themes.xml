@@ -25,7 +25,7 @@
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
-    <style name="ActorDialogInfo" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="DialogInfo" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorBackground">@android:color/transparent</item>

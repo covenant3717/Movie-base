@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="actor_dialog_property_birthday">Birthday:</string>
-    <string name="actor_dialog_property_place_of_birth">Place of birth:</string>
-    <string name="actor_dialog_property_popularity">Popularity:</string>
+    <string name="dialog_property_birthday">Birthday:</string>
+    <string name="dialog_property_place_of_birth">Place of birth:</string>
+    <string name="dialog_property_popularity">Popularity:</string>
 </resources>

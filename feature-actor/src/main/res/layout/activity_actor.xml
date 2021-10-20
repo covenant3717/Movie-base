@@ -32,6 +32,6 @@
         android:padding="@dimen/dimen_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_actor_info" />
+        app:srcCompat="@drawable/ic_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

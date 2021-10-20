@@ -43,11 +43,11 @@ class ActorViewModel(
     private fun buildItems(actorInfo: ActorInfo): List<Item> = listOf(
         NameItem(actorInfo.name),
         CustomEmptyItem(R.dimen.dimen_24),
-        ActorPropertyItem(R.string.actor_dialog_property_birthday, actorInfo.birthday),
+        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.actor_dialog_property_place_of_birth, actorInfo.placeOfBirth),
+        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.actor_dialog_property_popularity, actorInfo.popularity.toString()),
+        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
         CustomEmptyItem(R.dimen.dimen_12),
         DescriptionItem(actorInfo.biography),
         CustomEmptyItem(R.dimen.dimen_32)

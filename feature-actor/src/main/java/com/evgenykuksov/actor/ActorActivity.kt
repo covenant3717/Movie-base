@@ -58,7 +58,7 @@ class ActorActivity : BaseActivity(R.layout.activity_actor) {
             }
         }
 
-        BottomSheetDialog(this, R.style.ActorDialogInfo)
+        BottomSheetDialog(this, R.style.DialogInfo)
             .apply { setContentView(view) }
             .show()
     }
