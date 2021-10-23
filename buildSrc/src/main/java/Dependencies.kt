@@ -12,6 +12,8 @@ object Dependencies {
         const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Jetpack.LIFECYCLE}"
         const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Jetpack.LIFECYCLE}"
         const val appcompat = "androidx.appcompat:appcompat:${Versions.Jetpack.APP_COMPAT}"
+        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.Jetpack.NAVIGATION}"
+        const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.Jetpack.NAVIGATION}"
     }
 
     object UI {

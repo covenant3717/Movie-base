@@ -21,6 +21,7 @@ object Versions {
     object Jetpack {
         const val LIFECYCLE = "2.2.0"
         const val APP_COMPAT = "1.2.0"
+        const val NAVIGATION = "2.3.5"
     }
 
     object UI {

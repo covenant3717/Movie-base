@@ -62,6 +62,8 @@ object DependenciesModule {
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
         "implementation"(Dependencies.Jetpack.appcompat)
+        "implementation"(Dependencies.Jetpack.navigationFragment)
+        "implementation"(Dependencies.Jetpack.navigationUi)
         "implementation"(Dependencies.UI.material)
         "implementation"(Dependencies.UI.coil)
         "implementation"(Dependencies.UI.coilGif)
