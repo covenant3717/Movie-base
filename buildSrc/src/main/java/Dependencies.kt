@@ -1,18 +1,23 @@
 object Dependencies {
+
     object Main {
+        const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
         const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Main.KOTLIN}"
+        const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
         const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
     }
 
     object Jetpack {
-        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Rest.LIFECYCLE}"
-        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Rest.LIFECYCLE}"
-        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Rest.LIFECYCLE}"
+        const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Jetpack.LIFECYCLE}"
+        const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Jetpack.LIFECYCLE}"
+        const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Jetpack.LIFECYCLE}"
+        const val appcompat = "androidx.appcompat:appcompat:${Versions.Jetpack.APP_COMPAT}"
     }
 
     object UI {
-        const val appcompat = "androidx.appcompat:appcompat:${Versions.UI.APP_COMPAT}"
         const val material = "com.google.android.material:material:${Versions.UI.MATERIAL}"
+        const val coil = "io.coil-kt:coil:${Versions.UI.COIL}"
+        const val coilGif = "io.coil-kt:coil-gif:${Versions.UI.COIL_GIF}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
         const val fragment = "androidx.fragment:fragment:${Versions.UI.FRAGMENT}"
         const val fragmentKts = "androidx.fragment:fragment-ktx:${Versions.UI.FRAGMENT}"
@@ -28,9 +33,9 @@ object Dependencies {
         const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.COROUTINE}"
     }
 
-    object Di {
-        const val koin = "io.insert-koin:koin-core:${Versions.Rest.KOIN}"
-        const val koinAndroid = "io.insert-koin:koin-android:${Versions.Rest.KOIN}"
+    object DI {
+        const val koin = "io.insert-koin:koin-core:${Versions.DI.KOIN}"
+        const val koinAndroid = "io.insert-koin:koin-android:${Versions.DI.KOIN}"
     }
 
     object Network {
@@ -41,13 +46,6 @@ object Dependencies {
         const val okhttpLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKHTTP_LOG_INTERCEPTOR}"
         const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.Network.CHUCK}"
         const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.Network.CHUCK}"
-    }
-
-    object Rest {
-        const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Main.KOTLIN}"
-        const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
-        const val coil = "io.coil-kt:coil:${Versions.Rest.COIL}"
-        const val coilGif = "io.coil-kt:coil-gif:${Versions.Rest.COIL_GIF}"
     }
 
     object Tests {
