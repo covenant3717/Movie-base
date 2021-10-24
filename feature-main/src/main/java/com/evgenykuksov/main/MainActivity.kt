@@ -2,6 +2,8 @@ package com.evgenykuksov.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseActivity
 //import com.evgenykuksov.moviebase.screens.bookmarks.BookmarksFragment
@@ -28,26 +30,29 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     override fun initWidgets() {
-        bottomNavigation.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.page_overview -> viewModel.sendIntent(MainContract.Intent.OverviewTouch)
-                R.id.page_list -> {}
-                R.id.page_bookmark -> viewModel.sendIntent(MainContract.Intent.BookmarksTouch)
-                R.id.page_profile -> {}
-            }
-            true
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+        bottomNavigation.setupWithNavController(navHostFragment.navController)
+
+
+//        bottomNavigation.setOnNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.page_overview -> viewModel.sendIntent(MainContract.Intent.OverviewTouch)
+//                R.id.page_bookmark -> viewModel.sendIntent(MainContract.Intent.BookmarksTouch)
+//                R.id.page_profile -> {}
+//            }
+//            true
+//        }
     }
 
     override fun observeState() {
-        launchWhenStarted {
-            viewModel.state.collect {
-                when (it.fragmentName) {
-//                    OverviewFragment::class.java.simpleName -> showFragment(overviewFragment)
-//                    BookmarksFragment::class.java.simpleName -> showFragment(bookmarksFragment)
-                }
-            }
-        }
+//        launchWhenStarted {
+//            viewModel.state.collect {
+//                when (it.fragmentName) {
+////                    OverviewFragment::class.java.simpleName -> showFragment(overviewFragment)
+////                    BookmarksFragment::class.java.simpleName -> showFragment(bookmarksFragment)
+//                }
+//            }
+//        }
     }
 
     override fun observeSingleEffect() {}

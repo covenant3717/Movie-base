@@ -9,6 +9,7 @@ class MainContract {
     sealed class Intent : UiIntent {
         object OverviewTouch : Intent()
         object BookmarksTouch : Intent()
+        object ProfileTouch : Intent()
     }
 
     data class State(
