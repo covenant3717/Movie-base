@@ -23,6 +23,13 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.shimmer)
     }
 
+    fun DependencyHandlerScope.domain() {
+        "implementation"(Dependencies.Main.kotlin)
+        "implementation"(Dependencies.Main.coreKtx)
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
+    }
+
     fun DependencyHandlerScope.data() {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
@@ -39,13 +46,6 @@ object DependenciesModule {
         "implementation"(Dependencies.Network.okhttpLogInterceptor)
         "debugImplementation"(Dependencies.Network.chuckDebug)
         "releaseImplementation"(Dependencies.Network.chuckRelease)
-    }
-
-    fun DependencyHandlerScope.domain() {
-        "implementation"(Dependencies.Main.kotlin)
-        "implementation"(Dependencies.Main.coreKtx)
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 
     fun DependencyHandlerScope.app() {
@@ -70,8 +70,6 @@ object DependenciesModule {
         "implementation"(Dependencies.Jetpack.navigationFragment)
         "implementation"(Dependencies.Jetpack.navigationUi)
         "implementation"(Dependencies.UI.material)
-        "implementation"(Dependencies.UI.coil)
-        "implementation"(Dependencies.UI.coilGif)
         "implementation"(Dependencies.UI.constraintLayout)
     }
 
