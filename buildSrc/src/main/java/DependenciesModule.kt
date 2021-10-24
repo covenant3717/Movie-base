@@ -52,7 +52,6 @@ object DependenciesModule {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
-        "implementation"(project(Dependencies.Modules.FEATURE_MAIN))
         "implementation"(project(Dependencies.Modules.FEATURE_OVERVIEW))
         "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
         "implementation"(project(Dependencies.Modules.FEATURE_ACTOR))
@@ -64,6 +63,9 @@ object DependenciesModule {
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Jetpack.appcompat)
+        "implementation"(Dependencies.Jetpack.navigationFragment)
+        "implementation"(Dependencies.Jetpack.navigationUI)
+        "implementation"(Dependencies.UI.constraintLayout)
     }
 
     private fun DependencyHandlerScope.commonFeatureDependencies() {

@@ -1,11 +1,11 @@
-package com.evgenykuksov.moviebase.splashscreen
+package com.evgenykuksov.moviebase.ui.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.core.base.BaseActivity
-import com.evgenykuksov.main.MainActivity
+import com.evgenykuksov.moviebase.ui.main.MainActivity
 import kotlinx.coroutines.delay
 
 class SplashScreenActivity : BaseActivity(R.layout.activity_splash_screen) {

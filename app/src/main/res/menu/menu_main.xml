@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/page_overview"
+        android:enabled="true"
+        android:icon="@drawable/ic_rhombus"
+        tools:ignore="MenuTitle"
+        tools:title="Overview" />
+    <item
+        android:id="@+id/page_bookmark"
+        android:enabled="true"
+        android:icon="@drawable/ic_bookmark"
+        tools:ignore="MenuTitle"
+        tools:title="Bookmark" />
+    <item
+        android:id="@+id/page_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        tools:ignore="MenuTitle"
+        tools:title="Profile" />
+</menu>
