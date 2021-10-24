@@ -60,8 +60,7 @@ object Dependencies {
         const val CORE = ":core"
         const val DOMAIN = ":domain"
         const val DATA = ":data"
-        const val FEATURE_MAIN = ":feature-main"
-        const val FEATURE_OVERVIEW = ":feature-overview"
+        const val FEATURE_OVERVIEW = ":feature-home"
         const val FEATURE_MOVIE = ":feature-movie"
         const val FEATURE_ACTOR = ":feature-actor"
     }

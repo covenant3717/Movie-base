@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/overviewFragment"
-        android:name="com.evgenykuksov.overview.OverviewFragment"
+        android:name="com.evgenykuksov.home.OverviewFragment"
         android:label="OverviewFragment"
-        tools:layout="@layout/fragment_overview" />
+        tools:layout="@layout/fragment_home" />
 
 </navigation>

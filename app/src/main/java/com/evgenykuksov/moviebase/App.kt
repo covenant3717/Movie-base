@@ -7,7 +7,7 @@ import com.evgenykuksov.data.di.DataModules
 import com.evgenykuksov.movie.di.FeatureMovieModule
 import com.evgenykuksov.moviebase.di.FeatureMainModule
 import com.evgenykuksov.moviebase.di.UseCasesModule
-import com.evgenykuksov.overview.di.FeatureOverviewModule
+import com.evgenykuksov.home.di.FeatureHomeModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -25,7 +25,7 @@ class App : Application() {
             modules(DataModules)
             modules(UseCasesModule)
             modules(FeatureMainModule)
-            modules(FeatureOverviewModule)
+            modules(FeatureHomeModule)
             modules(FeatureMovieModule)
             modules(FeatureActorModule)
         }

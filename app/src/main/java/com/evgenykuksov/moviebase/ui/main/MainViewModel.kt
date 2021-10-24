@@ -5,7 +5,7 @@ import com.evgenykuksov.core.base.BaseViewModel
 class MainViewModel : BaseViewModel<MainContract.Intent, MainContract.State, MainContract.SingleEvent>() {
 
 //    override fun createInitialState() = MainContract.State(OverviewFragment::class.java.simpleName)
-    override fun createInitialState() = MainContract.State("OverviewFragment::class.java.simpleName")
+    override fun createInitialState() = MainContract.State("HomeFragment::class.java.simpleName")
 
     override fun handleIntent(intent: MainContract.Intent) {
         when (intent) {

@@ -17,9 +17,9 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature-actor" />
+            <option value="$PROJECT_DIR$/feature-home" />
             <option value="$PROJECT_DIR$/feature-main" />
             <option value="$PROJECT_DIR$/feature-movie" />
-            <option value="$PROJECT_DIR$/feature-overview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

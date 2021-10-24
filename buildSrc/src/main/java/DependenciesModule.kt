@@ -101,7 +101,7 @@ object DependenciesModule {
     fun DependencyHandlerScope.featureMain() {
         commonFeatureDependencies()
     }
-    fun DependencyHandlerScope.featureOverview() {
+    fun DependencyHandlerScope.featureHome() {
         commonFeatureDependencies()
     }
     fun DependencyHandlerScope.featureMovie() {
