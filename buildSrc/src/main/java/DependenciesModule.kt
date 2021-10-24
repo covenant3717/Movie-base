@@ -63,14 +63,7 @@ object DependenciesModule {
         "implementation"(Dependencies.DI.koinAndroid)
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
-        "implementation"(Dependencies.Jetpack.viewmodel)
-        "implementation"(Dependencies.Jetpack.livedata)
-        "implementation"(Dependencies.Jetpack.runtime)
         "implementation"(Dependencies.Jetpack.appcompat)
-        "implementation"(Dependencies.Jetpack.navigationFragment)
-        "implementation"(Dependencies.Jetpack.navigationUi)
-        "implementation"(Dependencies.UI.material)
-        "implementation"(Dependencies.UI.constraintLayout)
     }
 
     private fun DependencyHandlerScope.commonFeatureDependencies() {
