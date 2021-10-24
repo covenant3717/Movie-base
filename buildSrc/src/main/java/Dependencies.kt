@@ -12,6 +12,11 @@ object Dependencies {
         const val koinAndroid = "io.insert-koin:koin-android:${Versions.DI.KOIN}"
     }
 
+    object Coroutines {
+        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.COROUTINE}"
+        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.COROUTINE}"
+    }
+
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Jetpack.LIFECYCLE}"
         const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Jetpack.LIFECYCLE}"
@@ -33,11 +38,6 @@ object Dependencies {
         const val circleImageView = "de.hdodenhof:circleimageview:${Versions.UI.CIRCLE_IMAGE_VIEW}"
         const val shimmer = "com.facebook.shimmer:shimmer:${Versions.UI.SHIMMER}"
         const val photoView = "com.github.chrisbanes:PhotoView:${Versions.UI.PHOTOVIEW}"
-    }
-
-    object Coroutines {
-        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.COROUTINE}"
-        const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.COROUTINE}"
     }
 
     object Network {

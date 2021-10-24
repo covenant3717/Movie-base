@@ -22,6 +22,10 @@ object Versions {
         const val KOIN = "3.1.2"
     }
 
+    object Coroutines {
+        const val COROUTINE = "1.4.2"
+    }
+
     object Jetpack {
         const val LIFECYCLE = "2.2.0"
         const val APP_COMPAT = "1.2.0"
@@ -38,10 +42,6 @@ object Versions {
         const val CIRCLE_IMAGE_VIEW = "3.1.0"
         const val SHIMMER = "0.5.0"
         const val PHOTOVIEW = "2.3.0"
-    }
-
-    object Coroutines {
-        const val COROUTINE = "1.4.2"
     }
 
     object Network {

@@ -8,6 +8,8 @@ object DependenciesModule {
         "implementation"(Dependencies.Main.coreKtx)
         "implementation"(Dependencies.DI.koin)
         "implementation"(Dependencies.DI.koinAndroid)
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -19,8 +21,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.groupie)
         "implementation"(Dependencies.UI.groupieExt)
         "implementation"(Dependencies.UI.shimmer)
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 
     fun DependencyHandlerScope.data() {
@@ -61,6 +61,8 @@ object DependenciesModule {
         "implementation"(Dependencies.Main.coreKtx)
         "implementation"(Dependencies.DI.koin)
         "implementation"(Dependencies.DI.koinAndroid)
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -71,8 +73,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.coil)
         "implementation"(Dependencies.UI.coilGif)
         "implementation"(Dependencies.UI.constraintLayout)
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 
     private fun DependencyHandlerScope.commonFeatureDependencies() {
@@ -84,6 +84,8 @@ object DependenciesModule {
         "implementation"(Dependencies.Main.coreKtx)
         "implementation"(Dependencies.DI.koin)
         "implementation"(Dependencies.DI.koinAndroid)
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -99,8 +101,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.circleImageView)
         "implementation"(Dependencies.UI.shimmer)
         "implementation"(Dependencies.UI.photoView)
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
     }
 
     fun DependencyHandlerScope.featureMain() {
