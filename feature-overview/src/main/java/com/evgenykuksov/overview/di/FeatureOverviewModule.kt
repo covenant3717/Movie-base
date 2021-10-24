@@ -1,19 +1,13 @@
-package com.evgenykuksov.moviebase.di
+package com.evgenykuksov.overview.di
 
-import com.evgenykuksov.actor.ActorViewModel
 import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.core.di.COIL_GIF_LOADER
-import com.evgenykuksov.main.MainViewModel
-import com.evgenykuksov.movie.MovieViewModel
 import com.evgenykuksov.overview.OverviewViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-internal val ViewModelsModule = module {
+val FeatureOverviewModule = module {
 
-    viewModel { MainViewModel() }
     viewModel { OverviewViewModel(get(), get(), get(named(COIL_DEFAULT_LOADER)), get(named(COIL_GIF_LOADER))) }
-    viewModel { MovieViewModel(get(), get(named(COIL_DEFAULT_LOADER))) }
-    viewModel { ActorViewModel(get()) }
 }
