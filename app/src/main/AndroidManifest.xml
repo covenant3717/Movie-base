@@ -20,7 +20,5 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name="com.evgenykuksov.movie.MovieActivity" />
-        <activity android:name="com.evgenykuksov.actor.ActorActivity"/>
     </application>
 </manifest>

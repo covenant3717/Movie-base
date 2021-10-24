@@ -135,6 +135,9 @@ class MovieViewModel(
             }
         }
         .toList()
-}
 
-private const val DELAY_UPDATING_ITEMS = 1000L
+    companion object {
+
+        private const val DELAY_UPDATING_ITEMS = 1000L
+    }
+}

@@ -80,10 +80,10 @@ class ActorActivity : BaseActivity(R.layout.activity_actor) {
 
     companion object {
 
+        private const val ARG_ACTOR_ID = "arg_actor_id"
+
         fun newInstance(context: Context, actorId: Long) =
             Intent(context, ActorActivity::class.java)
                 .apply { putExtra(ARG_ACTOR_ID, actorId) }
     }
 }
-
-private const val ARG_ACTOR_ID = "arg_actor_id"

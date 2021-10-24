@@ -64,9 +64,9 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
     companion object {
 
+        private const val ARG_MOVIE_ID = "arg_movie_id"
+
         fun newInstance(context: Context, movieId: Long) = Intent(context, MovieActivity::class.java)
             .apply { putExtra(ARG_MOVIE_ID, movieId) }
     }
 }
-
-private const val ARG_MOVIE_ID = "arg_movie_id"
