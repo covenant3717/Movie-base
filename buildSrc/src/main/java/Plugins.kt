@@ -4,6 +4,7 @@ import Plugins.KOTLIN
 import Plugins.KOTLIN_ANDROID
 import Plugins.KOTLIN_ANDROID_EXTENSIONS
 import Plugins.KOTLIN_KAPT
+import Plugins.NAVIGATION_SAFE_ARGS
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -14,6 +15,7 @@ private object Plugins {
     const val KOTLIN_ANDROID_EXTENSIONS = "kotlin-android-extensions"
     const val KOTLIN_KAPT = "kotlin-kapt"
     const val KOTLIN = "kotlin"
+    const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
 }
 
 fun PluginDependenciesSpec.pluginAndroidApplication(): PluginDependencySpec = id(ANDROID_APPLICATION)
@@ -27,3 +29,5 @@ fun PluginDependenciesSpec.pluginKotlinAndroid(): PluginDependencySpec = id(KOTL
 fun PluginDependenciesSpec.pluginKotlinAndroidExt(): PluginDependencySpec = id(KOTLIN_ANDROID_EXTENSIONS)
 
 fun PluginDependenciesSpec.pluginKotlinKapt(): PluginDependencySpec = id(KOTLIN_KAPT)
+
+fun PluginDependenciesSpec.pluginNavigationSafeArgs(): PluginDependencySpec = id(NAVIGATION_SAFE_ARGS)

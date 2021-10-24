@@ -5,6 +5,7 @@ object Dependencies {
         const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Main.KOTLIN}"
         const val coreKtx = "androidx.core:core-ktx:${Versions.Main.CORE_KTX}"
         const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
+        const val navigationSafeArgPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.Jetpack.NAVIGATION}"
     }
 
     object DI {

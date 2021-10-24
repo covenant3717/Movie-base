@@ -5,6 +5,7 @@ plugins {
     pluginKotlinAndroid()
     pluginKotlinAndroidExt()
     pluginKotlinKapt()
+    pluginNavigationSafeArgs()
 }
 
 android {

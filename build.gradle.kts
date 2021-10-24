@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         classpath(Dependencies.Main.kotlinPlugin)
         classpath(Dependencies.Main.gradle)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
+        classpath(Dependencies.Main.navigationSafeArgPlugin)
     }
 }
 

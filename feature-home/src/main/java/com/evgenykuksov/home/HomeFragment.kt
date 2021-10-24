@@ -65,6 +65,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                         requireContext().toast(it.message, Toast.LENGTH_LONG)
                     }
                     is HomeContract.SingleEvent.StartMovieActivity -> {
+//                        val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(13)
+//                        it.findNavController().navigate(action)
 //                        startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
                     }
                 }

@@ -7,19 +7,19 @@ import android.widget.Toast
 import coil.ImageLoader
 import coil.load
 import com.evgenykuksov.core.extensions.launchWhenStarted
-import com.evgenykuksov.core.extensions.toast
-import com.evgenykuksov.core.base.BaseActivity
+import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
+import com.evgenykuksov.core.extensions.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
-import kotlinx.android.synthetic.main.activity_movie.*
+import kotlinx.android.synthetic.main.fragment_movie.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
-class MovieActivity : BaseActivity(R.layout.activity_movie) {
+class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
     private val viewModel: MovieViewModel by inject()
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
@@ -52,7 +52,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
             viewModel.singleEvent.collect {
                 when (it) {
                     is MovieContract.SingleEvent.ToastError -> {
-                        toast(it.message, Toast.LENGTH_LONG)
+                        requireContext().toast(it.message, Toast.LENGTH_LONG)
                     }
                     is MovieContract.SingleEvent.StartActorActivity -> {
 //                        startActivity(ActorActivity.newInstance(this, it.actorId))
@@ -66,7 +66,7 @@ class MovieActivity : BaseActivity(R.layout.activity_movie) {
 
         private const val ARG_MOVIE_ID = "arg_movie_id"
 
-        fun newInstance(context: Context, movieId: Long) = Intent(context, MovieActivity::class.java)
+        fun newInstance(context: Context, movieId: Long) = Intent(context, MovieFragment::class.java)
             .apply { putExtra(ARG_MOVIE_ID, movieId) }
     }
 }

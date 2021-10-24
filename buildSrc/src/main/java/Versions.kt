@@ -12,7 +12,7 @@ object Versions {
     }
 
     object Main {
-        const val KOTLIN = "1.5.20"
+        const val KOTLIN = "1.5.31"
         const val CORE_KTX = "1.3.2"
         const val GRADLE = "7.0.3"
         val JAVA = JavaVersion.VERSION_1_8
