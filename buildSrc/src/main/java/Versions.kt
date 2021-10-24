@@ -18,6 +18,10 @@ object Versions {
         val JAVA = JavaVersion.VERSION_1_8
     }
 
+    object DI {
+        const val KOIN = "3.1.2"
+    }
+
     object Jetpack {
         const val LIFECYCLE = "2.2.0"
         const val APP_COMPAT = "1.2.0"
@@ -38,10 +42,6 @@ object Versions {
 
     object Coroutines {
         const val COROUTINE = "1.4.2"
-    }
-
-    object DI {
-        const val KOIN = "3.1.2"
     }
 
     object Network {

@@ -6,6 +6,8 @@ object DependenciesModule {
     fun DependencyHandlerScope.core() {
         "implementation"(Dependencies.Main.kotlin)
         "implementation"(Dependencies.Main.coreKtx)
+        "implementation"(Dependencies.DI.koin)
+        "implementation"(Dependencies.DI.koinAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -19,19 +21,18 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.shimmer)
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
-        "implementation"(Dependencies.DI.koin)
-        "implementation"(Dependencies.DI.koinAndroid)
     }
 
     fun DependencyHandlerScope.data() {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
+
         "implementation"(Dependencies.Main.kotlin)
         "implementation"(Dependencies.Main.coreKtx)
-        "implementation"(Dependencies.Coroutines.coroutine)
-        "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.DI.koin)
         "implementation"(Dependencies.DI.koinAndroid)
+        "implementation"(Dependencies.Coroutines.coroutine)
+        "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Network.retrofit)
         "implementation"(Dependencies.Network.retrofitConverterGson)
         "implementation"(Dependencies.Network.retrofitAdapterRxJava)
@@ -58,6 +59,8 @@ object DependenciesModule {
 
         "implementation"(Dependencies.Main.kotlin)
         "implementation"(Dependencies.Main.coreKtx)
+        "implementation"(Dependencies.DI.koin)
+        "implementation"(Dependencies.DI.koinAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -70,8 +73,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.constraintLayout)
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
-        "implementation"(Dependencies.DI.koin)
-        "implementation"(Dependencies.DI.koinAndroid)
     }
 
     private fun DependencyHandlerScope.commonFeatureDependencies() {
@@ -81,6 +82,8 @@ object DependenciesModule {
 
         "implementation"(Dependencies.Main.kotlin)
         "implementation"(Dependencies.Main.coreKtx)
+        "implementation"(Dependencies.DI.koin)
+        "implementation"(Dependencies.DI.koinAndroid)
         "implementation"(Dependencies.Jetpack.viewmodel)
         "implementation"(Dependencies.Jetpack.livedata)
         "implementation"(Dependencies.Jetpack.runtime)
@@ -98,8 +101,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.photoView)
         "implementation"(Dependencies.Coroutines.coroutine)
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
-        "implementation"(Dependencies.DI.koin)
-        "implementation"(Dependencies.DI.koinAndroid)
     }
 
     fun DependencyHandlerScope.featureMain() {

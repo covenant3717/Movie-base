@@ -7,6 +7,11 @@ object Dependencies {
         const val gradle = "com.android.tools.build:gradle:${Versions.Main.GRADLE}"
     }
 
+    object DI {
+        const val koin = "io.insert-koin:koin-core:${Versions.DI.KOIN}"
+        const val koinAndroid = "io.insert-koin:koin-android:${Versions.DI.KOIN}"
+    }
+
     object Jetpack {
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Jetpack.LIFECYCLE}"
         const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Jetpack.LIFECYCLE}"
@@ -33,11 +38,6 @@ object Dependencies {
     object Coroutines {
         const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.COROUTINE}"
         const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.COROUTINE}"
-    }
-
-    object DI {
-        const val koin = "io.insert-koin:koin-core:${Versions.DI.KOIN}"
-        const val koinAndroid = "io.insert-koin:koin-android:${Versions.DI.KOIN}"
     }
 
     object Network {
