@@ -46,7 +46,6 @@ object Versions {
 
     object Network {
         const val RETROFIT = "2.9.0"
-        const val RETROFIT_COROUTINE_ADAPTER = "1.0.0"
         const val OKHTTP_LOG_INTERCEPTOR = "4.9.0"
         const val CHUCK = "1.1.0"
     }

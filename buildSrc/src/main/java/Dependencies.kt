@@ -43,8 +43,6 @@ object Dependencies {
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Network.RETROFIT}"
         const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.Network.RETROFIT}"
-        const val retrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Network.RETROFIT}"
-        const val retrofitAdapterCoroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:${Versions.Network.RETROFIT_COROUTINE_ADAPTER}"
         const val okhttpLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKHTTP_LOG_INTERCEPTOR}"
         const val chuckDebug = "com.readystatesoftware.chuck:library:${Versions.Network.CHUCK}"
         const val chuckRelease = "com.readystatesoftware.chuck:library-no-op:${Versions.Network.CHUCK}"
@@ -60,7 +58,7 @@ object Dependencies {
         const val CORE = ":core"
         const val DOMAIN = ":domain"
         const val DATA = ":data"
-        const val FEATURE_OVERVIEW = ":feature-home"
+        const val FEATURE_HOME = ":feature-home"
         const val FEATURE_MOVIE = ":feature-movie"
         const val FEATURE_ACTOR = ":feature-actor"
     }

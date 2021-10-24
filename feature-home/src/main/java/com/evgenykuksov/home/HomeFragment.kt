@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 
-class OverviewFragment : BaseFragment(R.layout.fragment_home) {
+class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by inject()
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
@@ -74,10 +74,8 @@ class OverviewFragment : BaseFragment(R.layout.fragment_home) {
 
     companion object {
 
-        fun newInstance() = OverviewFragment()
+        private const val TAB_NEW = 0
+        private const val TAB_POPULAR = 1
+        private const val TAB_TOP_RATED = 2
     }
 }
-
-private const val TAB_NEW = 0
-private const val TAB_POPULAR = 1
-private const val TAB_TOP_RATED = 2

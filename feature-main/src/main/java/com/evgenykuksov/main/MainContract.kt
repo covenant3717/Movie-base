@@ -7,7 +7,7 @@ import com.evgenykuksov.core.base.UiState
 class MainContract {
 
     sealed class Intent : UiIntent {
-        object OverviewTouch : Intent()
+        object HomeTouch : Intent()
         object BookmarksTouch : Intent()
         object ProfileTouch : Intent()
     }

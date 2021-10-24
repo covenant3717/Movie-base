@@ -42,7 +42,6 @@ object DependenciesModule {
         "implementation"(Dependencies.Coroutines.coroutineAndroid)
         "implementation"(Dependencies.Network.retrofit)
         "implementation"(Dependencies.Network.retrofitConverterGson)
-        "implementation"(Dependencies.Network.retrofitAdapterRxJava)
         "implementation"(Dependencies.Network.okhttpLogInterceptor)
         "debugImplementation"(Dependencies.Network.chuckDebug)
         "releaseImplementation"(Dependencies.Network.chuckRelease)
@@ -52,7 +51,7 @@ object DependenciesModule {
         "implementation"(project(Dependencies.Modules.CORE))
         "implementation"(project(Dependencies.Modules.DOMAIN))
         "implementation"(project(Dependencies.Modules.DATA))
-        "implementation"(project(Dependencies.Modules.FEATURE_OVERVIEW))
+        "implementation"(project(Dependencies.Modules.FEATURE_HOME))
         "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
         "implementation"(project(Dependencies.Modules.FEATURE_ACTOR))
 
