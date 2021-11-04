@@ -28,9 +28,9 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intent.getLongExtra(ARG_MOVIE_ID, 0).let {
-            viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(it))
-        }
+//        intent.getLongExtra(ARG_MOVIE_ID, 0).let {
+//            viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(it))
+//        }
     }
 
     override fun initWidgets() {
