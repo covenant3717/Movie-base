@@ -97,9 +97,6 @@ object DependenciesModule {
         "implementation"(Dependencies.UI.photoView)
     }
 
-    fun DependencyHandlerScope.featureMain() {
-        commonFeatureDependencies()
-    }
     fun DependencyHandlerScope.featureHome() {
         commonFeatureDependencies()
     }
