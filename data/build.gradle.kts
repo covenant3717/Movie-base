@@ -1,5 +1,3 @@
-import DependenciesModule.data
-
 plugins {
     pluginAndroidLibrary()
     pluginKotlinAndroid()

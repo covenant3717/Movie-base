@@ -1,5 +1,3 @@
-import DependenciesModule.domain
-
 plugins {
     pluginKotlin()
 }

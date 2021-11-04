@@ -1,5 +1,3 @@
-import DependenciesModule.featureMovie
-
 plugins {
     pluginAndroidLibrary()
     pluginKotlinAndroid()

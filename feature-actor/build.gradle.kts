@@ -1,5 +1,3 @@
-import DependenciesModule.featureActor
-
 plugins {
     pluginAndroidLibrary()
     pluginKotlinAndroid()

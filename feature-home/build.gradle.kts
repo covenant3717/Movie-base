@@ -1,5 +1,3 @@
-import DependenciesModule.featureHome
-
 plugins {
     pluginAndroidLibrary()
     pluginKotlinAndroid()
