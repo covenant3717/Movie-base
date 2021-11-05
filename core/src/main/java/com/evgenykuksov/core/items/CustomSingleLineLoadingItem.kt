@@ -9,7 +9,7 @@ import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_custom_one_line_loading.view.*
 
-class CustomOneLIneLoadingItem(
+class CustomSingleLineLoadingItem(
     @DimenRes private val widthRes: Int? = null,
     @DimenRes private val heightRes: Int? = null,
     @DimenRes private val marginStartRes: Int? = null,

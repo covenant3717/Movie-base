@@ -7,7 +7,7 @@ import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.FullMovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
-import com.evgenykuksov.core.items.CustomOneLIneLoadingItem
+import com.evgenykuksov.core.items.CustomSingleLineLoadingItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.core.items.DescriptionItem
 import com.evgenykuksov.core.items.NameItem
@@ -56,28 +56,28 @@ class MovieViewModel(
     }
 
     private fun buildLoadingItems(): List<Item> = listOf(
-        CustomOneLIneLoadingItem(null, R.dimen.dimen_24, R.dimen.dimen_56, R.dimen.dimen_56),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_24, R.dimen.dimen_56, R.dimen.dimen_56),
         CustomEmptyItem(R.dimen.dimen_16),
 
         TitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
         TitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
         TitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomOneLIneLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
         TitleItem(R.string.item_title_cast),
