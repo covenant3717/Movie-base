@@ -8,7 +8,7 @@ import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.domain.profile.ProfileUseCaseImpl
 import org.koin.dsl.module
 
-internal val UseCasesModule = module {
+internal val useCasesModule = module {
 
     single<MoviesUseCase> { MoviesUseCaseImpl(get()) }
     single<ProfileUseCase> { ProfileUseCaseImpl(get()) }

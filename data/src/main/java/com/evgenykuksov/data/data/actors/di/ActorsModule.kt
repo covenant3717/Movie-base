@@ -8,7 +8,7 @@ import com.evgenykuksov.domain.actors.ActorsRepository
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-internal val ActorsModule = module {
+internal val actorsModule = module {
 
     single { get<Retrofit>().create(ActorsApi::class.java) }
 

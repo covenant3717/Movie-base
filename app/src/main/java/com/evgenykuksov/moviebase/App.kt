@@ -1,12 +1,12 @@
 package com.evgenykuksov.moviebase
 
 import android.app.Application
-import com.evgenykuksov.actor.di.FeatureActorModule
-import com.evgenykuksov.core.di.CoreModules
-import com.evgenykuksov.data.di.DataModules
-import com.evgenykuksov.movie.di.FeatureMovieModule
-import com.evgenykuksov.moviebase.di.UseCasesModule
-import com.evgenykuksov.home.di.FeatureHomeModule
+import com.evgenykuksov.actor.di.featureActorModule
+import com.evgenykuksov.core.di.coreModules
+import com.evgenykuksov.data.di.dataModules
+import com.evgenykuksov.movie.di.featureMovieModule
+import com.evgenykuksov.moviebase.di.useCasesModule
+import com.evgenykuksov.home.di.featureHomeModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -20,12 +20,12 @@ class App : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@App)
-            modules(CoreModules)
-            modules(DataModules)
-            modules(UseCasesModule)
-            modules(FeatureHomeModule)
-            modules(FeatureMovieModule)
-            modules(FeatureActorModule)
+            modules(coreModules)
+            modules(dataModules)
+            modules(useCasesModule)
+            modules(featureHomeModule)
+            modules(featureMovieModule)
+            modules(featureActorModule)
         }
     }
 }

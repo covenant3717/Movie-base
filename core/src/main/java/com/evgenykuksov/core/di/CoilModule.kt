@@ -9,7 +9,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val CoilModule = module {
+internal val coilModule = module {
 
     single<ImageLoader>(named(COIL_DEFAULT_LOADER)) {
         ImageLoader(this.androidContext())

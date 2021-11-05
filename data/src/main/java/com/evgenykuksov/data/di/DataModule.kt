@@ -1,7 +1,7 @@
 package com.evgenykuksov.data.di
 
-import com.evgenykuksov.data.data.actors.di.ActorsModule
-import com.evgenykuksov.data.data.movies.di.MovieModule
-import com.evgenykuksov.data.data.profile.di.ProfileModule
+import com.evgenykuksov.data.data.actors.di.actorsModule
+import com.evgenykuksov.data.data.movies.di.movieModule
+import com.evgenykuksov.data.data.profile.di.profileModule
 
-val DataModules = listOf(NetworkModule, MovieModule, ProfileModule, ActorsModule)
+val dataModules = listOf(networkModule, movieModule, profileModule, actorsModule)

@@ -6,7 +6,7 @@ import com.evgenykuksov.data.data.profile.local.memory.ProfileMemoryStoreImpl
 import com.evgenykuksov.domain.profile.ProfileRepository
 import org.koin.dsl.module
 
-internal val ProfileModule = module {
+internal val profileModule = module {
 
     single<ProfileMemoryStore> { ProfileMemoryStoreImpl() }
 

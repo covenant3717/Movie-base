@@ -6,7 +6,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val FeatureMovieModule = module {
+val featureMovieModule = module {
 
     viewModel { MovieViewModel(get(), get(named(COIL_DEFAULT_LOADER))) }
 }

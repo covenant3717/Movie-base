@@ -8,7 +8,7 @@ import com.evgenykuksov.domain.movies.MoviesRepository
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-internal val MovieModule = module {
+internal val movieModule = module {
 
     single { get<Retrofit>().create(MoviesApi::class.java) }
 
