@@ -13,12 +13,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-internal val networkModule = module {
+internal fun networkModule(baseUrl: String, apiVersion: String, apiKey: String) = module {
 
     single {
         Retrofit.Builder()
             .client(get())
-            .baseUrl(BASE_URL)
+            .baseUrl("$baseUrl/$apiVersion/")
             .addConverterFactory(GsonConverterFactory.create(get()))
             .build()
     }
@@ -28,7 +28,7 @@ internal val networkModule = module {
             .connectTimeout(OKHTTP_CONNECT_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(OKHTTP_READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .pingInterval(OKHTTP_PING_INTERVAL_MS, TimeUnit.MILLISECONDS)
-            .addInterceptor(ApiKeyInterceptor())
+            .addInterceptor(ApiKeyInterceptor(apiKey))
             .addInterceptor(ChuckInterceptor(this.androidContext()))
             .addInterceptor(HeaderInterceptor())
             .addInterceptor(
@@ -46,7 +46,6 @@ internal val networkModule = module {
     }
 }
 
-private const val BASE_URL = "${BuildConfig.BASE_URL}/${BuildConfig.API_VERSION}/"
 private const val OKHTTP_CONNECT_TIMEOUT_MS = 60_000L
 private const val OKHTTP_READ_TIMEOUT_MS = 60_000L
 private const val OKHTTP_PING_INTERVAL_MS = 30_000L

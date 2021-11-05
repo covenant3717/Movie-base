@@ -4,4 +4,9 @@ import com.evgenykuksov.data.data.actors.di.actorsModule
 import com.evgenykuksov.data.data.movies.di.movieModule
 import com.evgenykuksov.data.data.profile.di.profileModule
 
-val dataModules = listOf(networkModule, movieModule, profileModule, actorsModule)
+fun dataModules(baseUrl: String, apiVersion: String, apiKey: String) = listOf(
+    networkModule(baseUrl, apiVersion, apiKey),
+    movieModule,
+    profileModule,
+    actorsModule
+)

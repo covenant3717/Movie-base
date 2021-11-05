@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    dataConfiguration()
+    libraryConfiguration()
 }
 
 dependencies {

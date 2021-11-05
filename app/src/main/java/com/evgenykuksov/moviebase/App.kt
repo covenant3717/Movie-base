@@ -21,7 +21,7 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(coreModules)
-            modules(dataModules)
+            modules(dataModules(BuildConfig.BASE_URL, BuildConfig.API_VERSION, BuildConfig.API_KEY))
             modules(useCasesModule)
             modules(featureHomeModule)
             modules(featureMovieModule)

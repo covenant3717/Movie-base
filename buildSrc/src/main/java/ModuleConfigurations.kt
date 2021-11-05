@@ -14,43 +14,30 @@ fun BaseAppModuleExtension.appConfiguration() {
     }
     buildTypes {
         getByName("debug") {
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+            buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
+            buildConfigField("String", "API_VERSION", "\"3\"")
             isMinifyEnabled = false
             isDebuggable = true
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-dev"
         }
         getByName("release") {
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+            buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
+            buildConfigField("String", "API_VERSION", "\"3\"")
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
             isZipAlignEnabled = true
             isJniDebuggable = false
             isRenderscriptDebuggable = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
         sourceCompatibility = Versions.Main.JAVA
         targetCompatibility = Versions.Main.JAVA
-    }
-}
-
-fun BaseExtension.dataConfiguration() {
-    libraryConfiguration()
-    buildTypes {
-        getByName("debug") {
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
-            buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
-            buildConfigField("String", "API_VERSION", "\"3\"")
-        }
-        getByName("release") {
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
-            buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
-            buildConfigField("String", "API_VERSION", "\"3\"")
-        }
     }
 }
 
