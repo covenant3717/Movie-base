@@ -18,16 +18,16 @@ private object Plugins {
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
 }
 
-fun PluginDependenciesSpec.pluginAndroidApplication(): PluginDependencySpec = id(ANDROID_APPLICATION)
+internal fun PluginDependenciesSpec.pluginAndroidApplication(): PluginDependencySpec = id(ANDROID_APPLICATION)
 
-fun PluginDependenciesSpec.pluginAndroidLibrary(): PluginDependencySpec = id(ANDROID_LIBRARY)
+internal fun PluginDependenciesSpec.pluginAndroidLibrary(): PluginDependencySpec = id(ANDROID_LIBRARY)
 
-fun PluginDependenciesSpec.pluginKotlin(): PluginDependencySpec = id(KOTLIN)
+internal fun PluginDependenciesSpec.pluginKotlin(): PluginDependencySpec = id(KOTLIN)
 
-fun PluginDependenciesSpec.pluginKotlinAndroid(): PluginDependencySpec = id(KOTLIN_ANDROID)
+internal fun PluginDependenciesSpec.pluginKotlinAndroid(): PluginDependencySpec = id(KOTLIN_ANDROID)
 
-fun PluginDependenciesSpec.pluginKotlinAndroidExt(): PluginDependencySpec = id(KOTLIN_ANDROID_EXTENSIONS)
+internal fun PluginDependenciesSpec.pluginKotlinAndroidExt(): PluginDependencySpec = id(KOTLIN_ANDROID_EXTENSIONS)
 
-fun PluginDependenciesSpec.pluginKotlinKapt(): PluginDependencySpec = id(KOTLIN_KAPT)
+internal fun PluginDependenciesSpec.pluginKotlinKapt(): PluginDependencySpec = id(KOTLIN_KAPT)
 
-fun PluginDependenciesSpec.pluginNavigationSafeArgs(): PluginDependencySpec = id(NAVIGATION_SAFE_ARGS)
+internal fun PluginDependenciesSpec.pluginNavigationSafeArgs(): PluginDependencySpec = id(NAVIGATION_SAFE_ARGS)
