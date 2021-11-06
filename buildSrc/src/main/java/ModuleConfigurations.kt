@@ -39,6 +39,9 @@ fun BaseAppModuleExtension.appConfiguration() {
         sourceCompatibility = Versions.Main.JAVA
         targetCompatibility = Versions.Main.JAVA
     }
+    kotlinOptions {
+        jvmTarget = Versions.Main.JAVA.toString()
+    }
 }
 
 fun BaseExtension.libraryConfiguration() {
