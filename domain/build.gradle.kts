@@ -1,5 +1,5 @@
 plugins {
-    pluginKotlin()
+    domainPlugins()
 }
 
 dependencies {

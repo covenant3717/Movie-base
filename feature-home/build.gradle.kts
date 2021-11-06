@@ -1,7 +1,5 @@
 plugins {
-    pluginAndroidLibrary()
-    pluginKotlinAndroid()
-    pluginKotlinAndroidExt()
+    featurePlugins()
 }
 
 android {
