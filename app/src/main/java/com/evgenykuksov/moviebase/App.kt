@@ -7,6 +7,7 @@ import com.evgenykuksov.data.di.dataModules
 import com.evgenykuksov.movie.di.featureMovieModule
 import com.evgenykuksov.moviebase.di.useCasesModule
 import com.evgenykuksov.home.di.featureHomeModule
+import com.evgenykuksov.moviebase.di.navigationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -20,6 +21,7 @@ class App : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@App)
+            modules(navigationModule)
             modules(coreModules)
             modules(dataModules(BuildConfig.BASE_URL, BuildConfig.API_VERSION, BuildConfig.API_KEY))
             modules(useCasesModule)

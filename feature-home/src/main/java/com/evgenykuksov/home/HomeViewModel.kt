@@ -12,6 +12,7 @@ import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.home.items.MovieItem
 import com.evgenykuksov.home.items.MovieLoadingItem
+import com.evgenykuksov.home.navigation.HomeNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -19,12 +20,12 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
+    private val navigator: HomeNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,
     private val defaultImageLoader: ImageLoader,
     private val gifLoader: ImageLoader
-) :
-    BaseViewModel<HomeContract.Intent, HomeContract.State, HomeContract.SingleEvent>() {
+) : BaseViewModel<HomeContract.Intent, HomeContract.State, HomeContract.SingleEvent>() {
 
     private var moviesData: MoviesData? = null
 
@@ -66,11 +67,7 @@ class HomeViewModel(
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
-                add(
-                    MovieItem(it, defaultImageLoader) {
-                        setSingleEvent(HomeContract.SingleEvent.StartMovieActivity(it))
-                    }
-                )
+                add(MovieItem(it, defaultImageLoader) { navigator.toMovie(it) })
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             }
         }

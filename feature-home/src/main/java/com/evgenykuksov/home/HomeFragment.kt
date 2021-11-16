@@ -40,13 +40,18 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        rvMovies.adapter = adapter.apply { add(moviesSection) }
+//        rvMovies.adapter = adapter.apply { add(moviesSection) }
+        rvMovies.adapter = adapter
     }
 
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                it.listItems?.let { list -> moviesSection.update(list) }
+                it.listItems?.let { list ->
+//                    moviesSection.update(list)
+                    adapter.clear()
+                    adapter.addAll(list)
+                }
                 if (it.rating.isNotNull()) {
                     tvRating.apply {
                         text = it.rating?.insertSpaces(3)

@@ -3,10 +3,7 @@ package com.evgenykuksov.core.extensions
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.Toast
-import androidx.annotation.ColorRes
-import androidx.annotation.DimenRes
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 
 fun Context.toast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT) =
@@ -22,3 +19,5 @@ fun Context.string(@StringRes string: Int): String = this.getString(string)
 fun Context.drawable(@DrawableRes drawable: Int): Drawable? = ContextCompat.getDrawable(this, drawable)
 
 fun Context.dimen(@DimenRes dimen: Int): Int = this.resources.getDimensionPixelOffset(dimen)
+
+fun Context.integer(@IntegerRes integer: Int): Int = this.resources.getInteger(integer)

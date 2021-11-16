@@ -12,20 +12,18 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_movieFragment"
-            app:destination="@id/movieFragment" />
+            app:destination="@id/movieFragment"
+            app:enterAnim="@anim/slide_from_right" />
     </fragment>
+
     <fragment android:id="@+id/bookmarkFragment" />
+
     <fragment android:id="@+id/profileFragment" />
 
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.evgenykuksov.movie.MovieFragment"
         android:label="MovieFragment"
-        tools:layout="@layout/fragment_movie">
-        <argument
-            android:name="movieId"
-            app:argType="long"
-            android:defaultValue="-1L" />
-    </fragment>
+        tools:layout="@layout/fragment_movie" />
 
 </navigation>

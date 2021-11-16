@@ -9,5 +9,13 @@ import org.koin.dsl.module
 
 val featureHomeModule = module {
 
-    viewModel { HomeViewModel(get(), get(), get(named(COIL_DEFAULT_LOADER)), get(named(COIL_GIF_LOADER))) }
+    viewModel {
+        HomeViewModel(
+            get(),
+            get(),
+            get(),
+            get(named(COIL_DEFAULT_LOADER)),
+            get(named(COIL_GIF_LOADER)),
+        )
+    }
 }
