@@ -8,6 +8,7 @@ import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.BaseFragment
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -23,6 +24,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        exitTransition = MaterialElevationScale(false)
+        reenterTransition = MaterialElevationScale(true)
         viewModel.sendIntent(HomeContract.Intent.Start)
     }
 

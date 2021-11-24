@@ -12,8 +12,7 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_movieFragment"
-            app:destination="@id/movieFragment"
-            app:enterAnim="@anim/slide_from_right" />
+            app:destination="@id/movieFragment" />
     </fragment>
 
     <fragment android:id="@+id/bookmarkFragment" />

@@ -7,9 +7,9 @@
     android:background="@color/core_background">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgPoster"
+        android:id="@+id/imgBackdrop"
         android:layout_width="0dp"
-        android:layout_height="320dp"
+        android:layout_height="270dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:clickable="true"
@@ -20,14 +20,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dimen_20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dimen_20" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="220dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvName"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="@drawable/shape_poster"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPoster"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textColor="@color/core_item_name"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/imgPoster"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackdrop"
+        tools:text="Title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDetails"
@@ -37,7 +66,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPoster"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

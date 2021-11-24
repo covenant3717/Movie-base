@@ -67,7 +67,11 @@ class HomeViewModel(
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
-                add(MovieItem(it, defaultImageLoader) { navigator.toMovie(it) })
+                add(
+                    MovieItem(it, defaultImageLoader) { movie, extras ->
+                        navigator.toMovie(movie.id, movie.posterPath, extras)
+                    }
+                )
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             }
         }

@@ -26,7 +26,7 @@ class MovieViewModel(
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State("stub", 0, null)
+    override fun createInitialState() = MovieContract.State("", "", 0, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -47,7 +47,8 @@ class MovieViewModel(
             .collect {
                 setState {
                     copy(
-                        poster = it.movieDetails.backdropPath,
+                        backdrop = it.movieDetails.backdropPath,
+                        name = it.movieDetails.title,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )
@@ -56,9 +57,7 @@ class MovieViewModel(
     }
 
     private fun buildLoadingItems(): List<Item> = listOf(
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_24, R.dimen.dimen_56, R.dimen.dimen_56),
-        CustomEmptyItem(R.dimen.dimen_16),
-
+        CustomEmptyItem(R.dimen.dimen_20),
         TitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomSingleLineLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
@@ -89,9 +88,7 @@ class MovieViewModel(
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun buildItems(data: FullMovieData): List<Item> = listOf(
-        NameItem(data.movieDetails.title),
-        CustomEmptyItem(R.dimen.dimen_16),
-
+        CustomEmptyItem(R.dimen.dimen_20),
         TitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         RatingItem(data.movieDetails.voteAverage, data.movieDetails.voteCount),

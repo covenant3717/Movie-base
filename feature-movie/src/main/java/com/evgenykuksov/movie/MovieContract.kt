@@ -12,7 +12,8 @@ class MovieContract {
     }
 
     data class State(
-        val poster: String?,
+        val backdrop: String?,
+        val name: String?,
         val delayUpdateItems: Long,
         val listItems: List<Item>?
     ) : UiState
