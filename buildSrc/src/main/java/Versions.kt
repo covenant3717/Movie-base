@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion
 object Versions {
 
     object App {
-        const val COMPILE_SDK = 30
+        const val COMPILE_SDK = 31
         const val APPLICATION_ID = "com.evgenykuksov.moviebase"
         const val MIN_SDK = 21
         const val TARGET_SDK = 30
@@ -29,14 +29,14 @@ object Versions {
     object Jetpack {
         const val LIFECYCLE = "2.2.0"
         const val APP_COMPAT = "1.2.0"
-        const val NAVIGATION = "2.3.5"
+        const val NAVIGATION = "2.4.0-beta02"
     }
 
     object UI {
         const val MATERIAL = "1.2.1"
         const val COIL = "1.2.2"
         const val COIL_GIF = "1.3.0"
-        const val FRAGMENT = "1.3.5"
+        const val FRAGMENT = "1.4.0"
         const val CONSTRAINT_LAYOUT = "2.0.4"
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"
