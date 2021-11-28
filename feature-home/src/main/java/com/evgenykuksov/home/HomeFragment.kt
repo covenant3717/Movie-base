@@ -1,7 +1,9 @@
 package com.evgenykuksov.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import com.evgenykuksov.core.anim.fadeTo
 import com.evgenykuksov.core.extensions.*
@@ -22,14 +24,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        getPersistentView(inflater, container)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         exitTransition = MaterialElevationScale(false)
-        reenterTransition = MaterialElevationScale(true)
-        viewModel.sendIntent(HomeContract.Intent.Start)
     }
 
     override fun initWidgets() {
+        viewModel.sendIntent(HomeContract.Intent.Start)
+
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
@@ -43,18 +48,13 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-//        rvMovies.adapter = adapter.apply { add(moviesSection) }
-        rvMovies.adapter = adapter
+        rvMovies.adapter = adapter.apply { add(moviesSection) }
     }
 
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                it.listItems?.let { list ->
-//                    moviesSection.update(list)
-                    adapter.clear()
-                    adapter.addAll(list)
-                }
+                it.listItems?.let { list -> moviesSection.update(list) }
                 if (it.rating.isNotNull()) {
                     tvRating.apply {
                         text = it.rating?.insertSpaces(3)
@@ -71,11 +71,6 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                 when (it) {
                     is HomeContract.SingleEvent.ToastError -> {
                         requireContext().toast(it.message, Toast.LENGTH_LONG)
-                    }
-                    is HomeContract.SingleEvent.StartMovieActivity -> {
-//                        val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(13)
-//                        it.findNavController().navigate(action)
-//                        startActivity(MovieActivity.newInstance(requireContext(), it.movieId))
                     }
                 }
             }
