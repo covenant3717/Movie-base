@@ -6,11 +6,13 @@ import android.widget.Toast
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -34,6 +36,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = MaterialContainerTransform().apply { scrimColor = Color.TRANSPARENT }
+        enterTransition = MaterialElevationScale(false)
         viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))
     }
 
@@ -50,7 +53,10 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                imgBackdrop.load(it.backdrop, defaultImageLoader)
+                imgBackdrop.apply {
+                    load(it.backdrop, defaultImageLoader)
+                    animateAlpha(0f, 1f, 1000) {}
+                }
                 tvName.text = it.name
                 delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
