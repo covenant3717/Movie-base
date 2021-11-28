@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.evgenykuksov.core.anim.fadeTo
+import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.BaseFragment
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                 if (it.rating.isNotNull()) {
                     tvRating.apply {
                         text = it.rating?.insertSpaces(3)
-                        fadeTo(true)
+                        animateAlpha(0f, 1f) {}
                     }
                 }
             }

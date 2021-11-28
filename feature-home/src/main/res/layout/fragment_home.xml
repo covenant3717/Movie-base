@@ -131,7 +131,6 @@
         android:fontFamily="sans-serif-medium"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="@color/title_your_rank"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView2"
