@@ -14,10 +14,7 @@ abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(lay
 
     // This is a fix for re-creating a fragment.
     // todo: See for "Navigation component" updates, perhaps they will improve this behavior.
-    fun getPersistentView(
-        inflater: LayoutInflater?,
-        container: ViewGroup?
-    ): View? {
+    fun getPersistentView(inflater: LayoutInflater?, container: ViewGroup?): View? {
         if (rootView == null) {
             // Inflate the layout for this fragment
             rootView = inflater?.inflate(layoutId, container, false)
