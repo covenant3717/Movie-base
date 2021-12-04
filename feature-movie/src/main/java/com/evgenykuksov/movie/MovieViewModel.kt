@@ -26,7 +26,7 @@ class MovieViewModel(
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State("", "", 0, null)
+    override fun createInitialState() = MovieContract.State("", "", "", 0, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -49,6 +49,7 @@ class MovieViewModel(
                     copy(
                         backdrop = it.movieDetails.backdropPath,
                         name = it.movieDetails.title,
+                        date = it.movieDetails.releaseDate,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )

@@ -37,10 +37,11 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = MaterialContainerTransform().apply { scrimColor = Color.TRANSPARENT }
         enterTransition = MaterialElevationScale(false)
-        viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))
     }
 
     override fun initWidgets() {
+        viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))
+
         imgPoster.apply {
             transitionName = moviePoster
             load(moviePoster, defaultImageLoader) {
@@ -58,6 +59,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                     animateAlpha(0f, 1f, 1000) {}
                 }
                 tvName.text = it.name
+                tvDate.text = it.date
                 delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
             }
