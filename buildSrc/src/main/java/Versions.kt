@@ -33,7 +33,7 @@ object Versions {
     }
 
     object UI {
-        const val MATERIAL = "1.2.1"
+        const val MATERIAL = "1.4.0"
         const val COIL = "1.2.2"
         const val COIL_GIF = "1.3.0"
         const val FRAGMENT = "1.4.0"
