@@ -16,6 +16,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.forEach
 import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
@@ -55,10 +56,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         launchWhenStarted {
             viewModel.state.collect {
                 it.listItems?.let { list -> moviesSection.update(list) }
-                if (it.rating.isNotNull()) {
-                    tvRating.apply {
-                        text = it.rating?.insertSpaces(3)
-                        animateAlpha(0f, 1f) {}
+                it.rating?.insertSpaces(3)?.let { rating ->
+                    if (rating != tvRating.text) {
+                        tvRating.text = rating
+                        tvRating.animateAlpha(0f, 1f) {}
                     }
                 }
             }

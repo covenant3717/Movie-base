@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="2.5" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.375" />
         <entry key="app/src/main/res/drawable-hdpi/ic_bookmark.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.3770833333333333" />
         <entry key="app/src/main/res/drawable/ic_bookmark2.xml" value="0.3770833333333333" />
@@ -39,6 +39,8 @@
         <entry key="feature-actor/src/main/res/layout/dialog_person_info.xml" value="0.3609375" />
         <entry key="feature-actor/src/main/res/layout/fragment_actor.xml" value="0.3609375" />
         <entry key="feature-actor/src/main/res/layout/item_property.xml" value="0.3609375" />
+        <entry key="feature-home/src/main/res/drawable/ic_four_points.xml" value="0.3770833333333333" />
+        <entry key="feature-home/src/main/res/drawable/ic_reading_glass.xml" value="0.3770833333333333" />
         <entry key="feature-home/src/main/res/layout/fragment_home.xml" value="0.3609375" />
         <entry key="feature-home/src/main/res/layout/item_movie.xml" value="0.3553846153846154" />
         <entry key="feature-main/src/main/res/drawable/ic_main_bookmark.xml" value="0.3712820512820513" />
