@@ -13,8 +13,8 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
         <!-- Navigation bar color. -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:navigationBarColor">@color/core_background</item>
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
 
         <!-- Customize your theme here. -->
         <!--Disable dark theme. -->
