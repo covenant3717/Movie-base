@@ -17,11 +17,13 @@ import com.evgenykuksov.movie.items.CastItem
 import com.evgenykuksov.movie.items.GenreItem
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.items.TitleItem
+import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MovieViewModel(
+    private val navigator: MovieNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
@@ -123,10 +125,10 @@ class MovieViewModel(
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-            listActor.forEach { actor ->
+            listActor.forEach {
                 add(
-                    ActorItem(actor, defaultImageLoader) {
-                        setSingleEvent(MovieContract.SingleEvent.StartActorActivity(actor.id))
+                    ActorItem(it, defaultImageLoader) { actor, extras ->
+                        navigator.toActor(actor.id, actor.profilePath, extras)
                     }
                 )
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_16))

@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val featureMovieModule = module {
 
-    viewModel { MovieViewModel(get(), get(named(COIL_DEFAULT_LOADER))) }
+    viewModel { MovieViewModel(get(), get(), get(named(COIL_DEFAULT_LOADER))) }
 }

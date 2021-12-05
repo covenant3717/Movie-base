@@ -2,6 +2,9 @@ package com.evgenykuksov.movie
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import coil.ImageLoader
 import coil.load
@@ -37,7 +40,11 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = MaterialContainerTransform().apply { scrimColor = Color.TRANSPARENT }
         enterTransition = MaterialElevationScale(false)
+        exitTransition = MaterialElevationScale(false)
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        getPersistentView(inflater, container)
 
     override fun initWidgets() {
         viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))

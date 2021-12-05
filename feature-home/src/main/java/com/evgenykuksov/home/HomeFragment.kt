@@ -24,13 +24,13 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         exitTransition = MaterialElevationScale(false)
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        getPersistentView(inflater, container)
 
     override fun initWidgets() {
         viewModel.sendIntent(HomeContract.Intent.Start)

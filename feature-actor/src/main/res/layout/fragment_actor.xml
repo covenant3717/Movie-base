@@ -5,22 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/core_background"
-    tools:context="com.evgenykuksov.actor.ActorActivity">
+    tools:context="com.evgenykuksov.actor.ActorFragment">
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/imgPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:cropToPadding="false"
-        android:focusable="true"
-        android:scaleType="centerCrop"
+        android:background="@color/core_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
         android:id="@+id/btnInfo"
