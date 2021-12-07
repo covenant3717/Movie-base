@@ -11,6 +11,13 @@ import kotlin.math.acos
 class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
 
     /**
+     * Common
+     * */
+    override fun back() {
+        navController?.popBackStack()
+    }
+
+    /**
      * HomeNavigation
      * */
     override fun toMovie(movieId: Long, poster: String, extras: FragmentNavigator.Extras) {

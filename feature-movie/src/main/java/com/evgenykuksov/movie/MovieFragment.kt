@@ -14,6 +14,7 @@ import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.core.extensions.toast
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
@@ -49,6 +50,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     override fun initWidgets() {
         viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))
 
+        getToolbar()?.setNavigationOnClickListener { viewModel.sendIntent(MovieContract.Intent.Back) }
         imgPoster.apply {
             transitionName = moviePoster
             load(moviePoster, defaultImageLoader) {

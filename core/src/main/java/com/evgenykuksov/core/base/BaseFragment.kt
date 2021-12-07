@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import com.evgenykuksov.core.R
+import com.google.android.material.appbar.MaterialToolbar
 
 abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(layoutId) {
 
@@ -14,7 +16,7 @@ abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(lay
 
     // This is a fix for re-creating a fragment.
     // todo: See for "Navigation component" updates, perhaps they will improve this behavior.
-    fun getPersistentView(inflater: LayoutInflater?, container: ViewGroup?): View? {
+    protected fun getPersistentView(inflater: LayoutInflater?, container: ViewGroup?): View? {
         if (rootView == null) {
             // Inflate the layout for this fragment
             rootView = inflater?.inflate(layoutId, container, false)
@@ -45,4 +47,6 @@ abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(lay
     protected abstract fun observeState()
 
     protected abstract fun observeSingleEffect()
+
+    protected fun getToolbar(): MaterialToolbar? = view?.findViewById(R.id.topAppBar)
 }

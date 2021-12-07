@@ -4,7 +4,7 @@
     <item android:drawable="@drawable/splash_blot" />
 
     <item
-        android:bottom="@dimen/dimen_40"
+        android:bottom="@dimen/dimen_60"
         android:left="@dimen/dimen_40">
         <bitmap
             android:gravity="bottom|left"

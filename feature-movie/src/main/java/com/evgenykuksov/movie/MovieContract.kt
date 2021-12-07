@@ -9,6 +9,7 @@ class MovieContract {
 
     sealed class Intent : UiIntent {
         data class LoadMovieDetails(val movieId: Long) : Intent()
+        object Back: Intent()
     }
 
     data class State(

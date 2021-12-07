@@ -33,6 +33,7 @@ class MovieViewModel(
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
             is MovieContract.Intent.LoadMovieDetails -> load(intent.movieId)
+            is MovieContract.Intent.Back -> navigator.back()
         }
     }
 
