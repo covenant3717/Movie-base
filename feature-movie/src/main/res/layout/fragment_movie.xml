@@ -28,27 +28,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/dimen_20" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/dimen_20" />
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgPoster"
         android:layout_width="100dp"
         android:layout_height="150dp"
+        android:layout_marginStart="@dimen/dimen_20"
         android:layout_marginTop="220dp"
         android:adjustViewBounds="true"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -58,10 +45,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_20"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="@color/tv_movie_name"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgPoster"
         app:layout_constraintTop_toBottomOf="@+id/imgBackdrop"
         tools:text="Title" />
@@ -72,10 +60,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginEnd="@dimen/dimen_20"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:textColor="@color/tv_movie_date"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgPoster"
         app:layout_constraintTop_toBottomOf="@+id/tvName"
         tools:text="Title" />
