@@ -37,7 +37,7 @@ object Versions {
         const val COIL = "1.2.2"
         const val COIL_GIF = "1.3.0"
         const val FRAGMENT = "1.4.0"
-        const val CONSTRAINT_LAYOUT = "2.0.4"
+        const val CONSTRAINT_LAYOUT = "2.1.2"
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"
         const val SHIMMER = "0.5.0"
