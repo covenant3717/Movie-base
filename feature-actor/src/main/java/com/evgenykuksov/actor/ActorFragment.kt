@@ -40,11 +40,11 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container)
+        getPersistentView(inflater, container) {
+            viewModel.sendIntent(ActorContract.Intent.LoadActorDetails(actorId))
+        }
 
     override fun initWidgets() {
-        viewModel.sendIntent(ActorContract.Intent.LoadActorDetails(actorId))
-
         btnInfo.setOnClickListener {
             it.startAnimationScaleWithBackward(0.9f) {
                 viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)

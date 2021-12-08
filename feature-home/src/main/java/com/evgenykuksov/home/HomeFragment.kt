@@ -31,11 +31,11 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container)
+        getPersistentView(inflater, container) {
+            viewModel.sendIntent(HomeContract.Intent.Start)
+        }
 
     override fun initWidgets() {
-        viewModel.sendIntent(HomeContract.Intent.Start)
-
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
