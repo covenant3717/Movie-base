@@ -12,6 +12,7 @@ import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.home.items.MovieItem
 import com.evgenykuksov.home.items.MovieLoadingItem
+import com.evgenykuksov.domain.movies.model.MoviesGrouping
 import com.evgenykuksov.home.navigation.HomeNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
@@ -29,11 +30,12 @@ class HomeViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = HomeContract.State(null, null)
+    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.NEW, null, null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
             is HomeContract.Intent.Start -> load()
+            is HomeContract.Intent.ChangeGrouping -> handleChangeGrouping(intent.grouping)
             is HomeContract.Intent.SelectCategory -> handleSelectCategory(intent.category)
         }
     }
@@ -76,12 +78,47 @@ class HomeViewModel(
             }
         }
 
-    private fun handleSelectCategory(category: MoviesCategory) =
-        moviesData?.let {
-            when (category) {
-                MoviesCategory.New -> setState { copy(listItems = buildItems(it.listNowPlaying)) }
-                MoviesCategory.Popular -> setState { copy(listItems = buildItems(it.listPopular)) }
-                MoviesCategory.TopRated -> setState { copy(listItems = buildItems(it.listTopRated)) }
+    private fun buildGridItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
+        .apply {
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            list.forEach {
+                add(
+                    MovieItem(it, defaultImageLoader) { movie, extras ->
+                        navigator.toMovie(movie.id, movie.posterPath, extras)
+                    }
+                )
+            }
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+        }
+
+    private fun handleChangeGrouping(grouping: MoviesGrouping) = moviesData?.let {
+        val movieItems = when (grouping) {
+            MoviesGrouping.Linear -> {
+                when (state.value.category) {
+                    MoviesCategory.NEW -> buildItems(it.listNowPlaying)
+                    MoviesCategory.POPULAR -> buildItems(it.listPopular)
+                    MoviesCategory.TOP_RATED -> buildItems(it.listTopRated)
+                }
+            }
+            MoviesGrouping.Grid -> {
+                when (state.value.category) {
+                    MoviesCategory.NEW -> buildGridItems(it.listNowPlaying)
+                    MoviesCategory.POPULAR -> buildGridItems(it.listPopular)
+                    MoviesCategory.TOP_RATED -> buildGridItems(it.listTopRated)
+                }
             }
         }
+        setState { copy(grouping = grouping, listItems = movieItems) }
+    }
+
+    private fun handleSelectCategory(category: MoviesCategory) = moviesData?.let {
+        val movieItems = when (category) {
+            MoviesCategory.NEW -> buildItems(it.listNowPlaying)
+            MoviesCategory.POPULAR -> buildItems(it.listPopular)
+            MoviesCategory.TOP_RATED -> buildItems(it.listTopRated)
+        }
+        setState { copy(category = category, listItems = movieItems) }
+    }
 }

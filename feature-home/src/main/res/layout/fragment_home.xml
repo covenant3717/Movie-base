@@ -23,7 +23,7 @@
         app:layout_constraintGuide_end="@dimen/dimen_20" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/imgFourPoints"
+        android:id="@+id/imgReadingGlass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_24"
@@ -31,7 +31,7 @@
         android:paddingTop="@dimen/dimen_8"
         android:paddingEnd="@dimen/dimen_8"
         android:paddingBottom="@dimen/dimen_8"
-        android:src="@drawable/ic_four_points"
+        android:src="@drawable/ic_reading_glass"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,15 +45,21 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         android:textColor="@color/title_categories"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/imgFourPoints" />
+        app:layout_constraintTop_toBottomOf="@+id/imgReadingGlass" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/imgReadingGlass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/dimen_8"
-        android:src="@drawable/ic_reading_glass"
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/btnToggleGrouping"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@android:color/transparent"
+        android:checked="false"
+        android:drawableTop="@drawable/selector_toggle_grouping"
+        android:paddingStart="@dimen/dimen_2"
+        android:paddingTop="@dimen/dimen_4"
+        android:paddingBottom="@dimen/dimen_4"
+        android:text=""
+        android:textOff=""
+        android:textOn=""
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -104,10 +110,11 @@
         android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginBottom="@dimen/dimen_56"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:spanCount="1"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:itemCount="4"
         tools:listitem="@layout/item_movie" />
