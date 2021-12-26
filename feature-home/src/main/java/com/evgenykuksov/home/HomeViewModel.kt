@@ -30,7 +30,7 @@ class HomeViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.NEW, null, null)
+    override fun createInitialState() = HomeContract.State(MoviesGrouping.Grid, MoviesCategory.NEW, null, null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
@@ -50,7 +50,7 @@ class HomeViewModel(
                 }
                 .collect {
                     moviesData = it
-                    setState { copy(listItems = buildItems(it.listNowPlaying)) }
+                    setState { copy(listItems = buildItems(getMoviesByCategory(state.value.category))) }
                 }
         }
 
@@ -65,7 +65,16 @@ class HomeViewModel(
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
-    private fun buildItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
+    private fun buildItems(list: List<Movie>, grouping: MoviesGrouping = state.value.grouping): List<Item> =
+        mutableListOf<Item>()
+            .apply {
+                when (grouping) {
+                    MoviesGrouping.Linear -> addAll(buildMoviesLinearItems(list))
+                    MoviesGrouping.Grid -> addAll(buildMoviesGridItems(list))
+                }
+            }
+
+    private fun buildMoviesLinearItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
@@ -78,7 +87,7 @@ class HomeViewModel(
             }
         }
 
-    private fun buildGridItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
+    private fun buildMoviesGridItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
@@ -94,31 +103,20 @@ class HomeViewModel(
         }
 
     private fun handleChangeGrouping(grouping: MoviesGrouping) = moviesData?.let {
-        val movieItems = when (grouping) {
-            MoviesGrouping.Linear -> {
-                when (state.value.category) {
-                    MoviesCategory.NEW -> buildItems(it.listNowPlaying)
-                    MoviesCategory.POPULAR -> buildItems(it.listPopular)
-                    MoviesCategory.TOP_RATED -> buildItems(it.listTopRated)
-                }
-            }
-            MoviesGrouping.Grid -> {
-                when (state.value.category) {
-                    MoviesCategory.NEW -> buildGridItems(it.listNowPlaying)
-                    MoviesCategory.POPULAR -> buildGridItems(it.listPopular)
-                    MoviesCategory.TOP_RATED -> buildGridItems(it.listTopRated)
-                }
-            }
-        }
+        val movieItems = buildItems(getMoviesByCategory(state.value.category), grouping)
         setState { copy(grouping = grouping, listItems = movieItems) }
     }
 
     private fun handleSelectCategory(category: MoviesCategory) = moviesData?.let {
-        val movieItems = when (category) {
-            MoviesCategory.NEW -> buildItems(it.listNowPlaying)
-            MoviesCategory.POPULAR -> buildItems(it.listPopular)
-            MoviesCategory.TOP_RATED -> buildItems(it.listTopRated)
-        }
+        val movieItems = buildItems(getMoviesByCategory(category))
         setState { copy(category = category, listItems = movieItems) }
     }
+
+    private fun getMoviesByCategory(category: MoviesCategory): List<Movie> = moviesData?.let {
+        when (category) {
+            MoviesCategory.NEW -> it.listNowPlaying
+            MoviesCategory.POPULAR -> it.listPopular
+            MoviesCategory.TOP_RATED -> it.listTopRated
+        }
+    } ?: emptyList()
 }

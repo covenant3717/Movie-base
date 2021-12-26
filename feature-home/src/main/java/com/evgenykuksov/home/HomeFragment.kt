@@ -64,11 +64,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                tabLayout.getTabAt(it.category.position)?.select()
                 when (it.grouping) {
-                    MoviesGrouping.Linear -> (rvMovies.layoutManager as GridLayoutManager).spanCount = 1
-                    MoviesGrouping.Grid -> (rvMovies.layoutManager as GridLayoutManager).spanCount = 2
+                    MoviesGrouping.Linear -> {
+                        btnToggleGrouping.isChecked = false
+                        (rvMovies.layoutManager as GridLayoutManager).spanCount = 1
+                    }
+                    MoviesGrouping.Grid -> {
+                        btnToggleGrouping.isChecked = true
+                        (rvMovies.layoutManager as GridLayoutManager).spanCount = 2
+                    }
                 }
+                tabLayout.getTabAt(it.category.position)?.select()
                 it.listItems?.let { list -> moviesSection.update(list) }
                 it.rating?.insertSpaces(3)?.let { rating ->
                     if (rating != tvRating.text) {
