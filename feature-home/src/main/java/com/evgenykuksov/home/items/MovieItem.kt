@@ -2,6 +2,7 @@ package com.evgenykuksov.home.items
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
+import androidx.annotation.DimenRes
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import coil.ImageLoader
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 internal data class MovieItem(
     private val movie: Movie,
     private val defaultImageLoader: ImageLoader,
+    @DimenRes private val roundCornerRes: Int?,
     private val onClick: (movie: Movie, extras: FragmentNavigator.Extras) -> Unit
 ) : Item() {
 
@@ -28,7 +30,9 @@ internal data class MovieItem(
             imgPoster.apply {
                 transitionName = movie.posterPath
                 load(movie.posterPath, defaultImageLoader) {
-                    transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_24)))
+                    roundCornerRes?.let {
+                        transformations(RoundedCornersTransformation(resources.getDimension(it)))
+                    }
                 }
             }
             setOnTouchListener { v, event ->

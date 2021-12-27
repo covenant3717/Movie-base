@@ -30,7 +30,7 @@ class HomeViewModel(
 
     private var moviesData: MoviesData? = null
 
-    override fun createInitialState() = HomeContract.State(MoviesGrouping.Grid, MoviesCategory.NEW, null, null)
+    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.NEW, null, null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
@@ -79,7 +79,7 @@ class HomeViewModel(
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
                 add(
-                    MovieItem(it, defaultImageLoader) { movie, extras ->
+                    MovieItem(it, defaultImageLoader, R.dimen.dimen_20) { movie, extras ->
                         navigator.toMovie(movie.id, movie.posterPath, extras)
                     }
                 )
@@ -93,7 +93,7 @@ class HomeViewModel(
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
             list.forEach {
                 add(
-                    MovieItem(it, defaultImageLoader) { movie, extras ->
+                    MovieItem(it, defaultImageLoader, null) { movie, extras ->
                         navigator.toMovie(movie.id, movie.posterPath, extras)
                     }
                 )
