@@ -10,7 +10,6 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 class HomeContract {
 
     sealed class Intent : UiIntent {
-        object Start : Intent()
         data class ChangeGrouping(val grouping: MoviesGrouping) : Intent()
         data class SelectCategory(val category: MoviesCategory) : Intent()
     }

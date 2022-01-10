@@ -30,11 +30,14 @@ class HomeViewModel(
 
     private var moviesData: MoviesData? = null
 
+    init {
+        load()
+    }
+
     override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.NEW, null, null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
-            is HomeContract.Intent.Start -> load()
             is HomeContract.Intent.ChangeGrouping -> handleChangeGrouping(intent.grouping)
             is HomeContract.Intent.SelectCategory -> handleSelectCategory(intent.category)
         }

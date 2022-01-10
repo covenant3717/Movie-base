@@ -18,11 +18,11 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.flow.collect
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
-    private val viewModel: HomeViewModel by inject()
+    private val viewModel: HomeViewModel by viewModel()
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var moviesSection = Section()
 
@@ -32,9 +32,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) {
-            viewModel.sendIntent(HomeContract.Intent.Start)
-        }
+        getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
