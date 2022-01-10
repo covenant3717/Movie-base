@@ -1,4 +1,4 @@
-package com.evgenykuksov.data.data.movies.remote.api
+package com.evgenykuksov.data.data.movies.remote
 
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote

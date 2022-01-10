@@ -1,4 +1,4 @@
-package com.evgenykuksov.data.data.actors.remote.api
+package com.evgenykuksov.data.data.actors.remote
 
 import com.evgenykuksov.data.data.actors.remote.model.ActorInfoRemote
 import retrofit2.http.GET
