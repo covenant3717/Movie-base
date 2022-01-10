@@ -52,6 +52,4 @@ abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(lay
     protected abstract fun observeState()
 
     protected abstract fun observeSingleEffect()
-
-    protected fun getToolbar(): MaterialToolbar? = view?.findViewById(R.id.topAppBar)
 }

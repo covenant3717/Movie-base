@@ -18,7 +18,6 @@ import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.items.TitleItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -33,7 +32,7 @@ class MovieViewModel(
         load(movieId)
     }
 
-    override fun createInitialState() = MovieContract.State("", "", "", null)
+    override fun createInitialState() = MovieContract.State("", "", "", 0, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -52,12 +51,12 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                delay(DELAY_UPDATING_ITEMS)
                 setState {
                     copy(
                         backdrop = it.movieDetails.backdropPath,
                         name = it.movieDetails.title,
                         date = it.movieDetails.releaseDate,
+                        delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )
                 }

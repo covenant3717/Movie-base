@@ -20,6 +20,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_movie.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,7 +49,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
         getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
-        getToolbar()?.setNavigationOnClickListener { viewModel.sendIntent(MovieContract.Intent.Back) }
+        imgBack.setOnClickListener{ viewModel.sendIntent(MovieContract.Intent.Back) }
         imgPoster.apply {
             transitionName = moviePoster
             load(moviePoster, defaultImageLoader) {
@@ -67,6 +68,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 }
                 tvName.text = it.name
                 tvDate.text = it.date
+                delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
             }
         }
