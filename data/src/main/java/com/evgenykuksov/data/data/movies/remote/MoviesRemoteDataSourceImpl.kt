@@ -2,7 +2,7 @@ package com.evgenykuksov.data.data.movies.remote
 
 import kotlinx.coroutines.flow.flow
 
-internal class MoviesRemoteStoreImpl(private val api: MoviesApi) : MoviesRemoteStore {
+internal class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRemoteDataSource {
 
     override fun getNowPlaying() = flow { emit(api.getNowPlaying()) }
 

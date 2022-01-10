@@ -5,7 +5,7 @@ import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
 import kotlinx.coroutines.flow.Flow
 
-internal interface MoviesRemoteStore {
+internal interface MoviesRemoteDataSource {
 
     fun getNowPlaying(): Flow<MoviesDataRemote>
 
