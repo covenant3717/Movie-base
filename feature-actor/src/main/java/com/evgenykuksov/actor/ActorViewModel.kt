@@ -15,16 +15,20 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class ActorViewModel(
+    private val actorId: Long,
     private val actorsUseCase: ActorsUseCase,
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
     private var actorInfo: ActorInfo? = null
 
+    init {
+        load(actorId)
+    }
+
     override fun createInitialState() = ActorContract.State(null)
 
     override fun handleIntent(intent: ActorContract.Intent) {
         when (intent) {
-            is ActorContract.Intent.LoadActorDetails -> load(intent.actorId)
             is ActorContract.Intent.TouchedBtnInfo -> handleTouchBtnInfo()
         }
     }

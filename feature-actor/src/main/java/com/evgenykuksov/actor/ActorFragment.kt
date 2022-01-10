@@ -23,11 +23,13 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.fragment_actor.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 
 class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
-    private val viewModel: ActorViewModel by inject()
+    private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
@@ -40,9 +42,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) {
-            viewModel.sendIntent(ActorContract.Intent.LoadActorDetails(actorId))
-        }
+        getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
         btnInfo.setOnClickListener {

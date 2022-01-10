@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val featureActorModule = module {
 
-    viewModel { ActorViewModel(get()) }
+    viewModel { (actorId: Long) -> ActorViewModel(actorId, get()) }
 }
