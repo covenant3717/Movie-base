@@ -10,7 +10,6 @@ import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.CustomSingleLineLoadingItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.core.items.DescriptionItem
-import com.evgenykuksov.core.items.NameItem
 import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.ActorLoadingItem
 import com.evgenykuksov.movie.items.CastItem
@@ -19,20 +18,25 @@ import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.items.TitleItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MovieViewModel(
+    private val movieId: Long,
     private val navigator: MovieNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
-    override fun createInitialState() = MovieContract.State("", "", "", 0, null)
+    init {
+        load(movieId)
+    }
+
+    override fun createInitialState() = MovieContract.State("", "", "", null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
-            is MovieContract.Intent.LoadMovieDetails -> load(intent.movieId)
             is MovieContract.Intent.Back -> navigator.back()
         }
     }
@@ -48,12 +52,12 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
+                delay(DELAY_UPDATING_ITEMS)
                 setState {
                     copy(
                         backdrop = it.movieDetails.backdropPath,
                         name = it.movieDetails.title,
                         date = it.movieDetails.releaseDate,
-                        delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )
                 }

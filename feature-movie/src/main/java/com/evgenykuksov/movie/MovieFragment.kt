@@ -2,7 +2,6 @@ package com.evgenykuksov.movie
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,21 +14,21 @@ import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.evgenykuksov.core.extensions.toast
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_movie.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 
 class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
-    private val viewModel: MovieViewModel by inject()
+    private val viewModel: MovieViewModel by viewModel { parametersOf(movieId) }
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
@@ -46,9 +45,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) {
-            viewModel.sendIntent(MovieContract.Intent.LoadMovieDetails(movieId))
-        }
+        getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
         getToolbar()?.setNavigationOnClickListener { viewModel.sendIntent(MovieContract.Intent.Back) }
@@ -70,7 +67,6 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 }
                 tvName.text = it.name
                 tvDate.text = it.date
-                delay(it.delayUpdateItems)
                 it.listItems?.let { list -> detailsSection.update(list) }
             }
         }

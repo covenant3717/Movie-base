@@ -8,7 +8,6 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 class MovieContract {
 
     sealed class Intent : UiIntent {
-        data class LoadMovieDetails(val movieId: Long) : Intent()
         object Back: Intent()
     }
 
@@ -16,7 +15,6 @@ class MovieContract {
         val backdrop: String?,
         val name: String?,
         val date: String?,
-        val delayUpdateItems: Long,
         val listItems: List<Item>?
     ) : UiState
 
