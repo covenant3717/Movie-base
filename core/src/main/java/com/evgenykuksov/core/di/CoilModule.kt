@@ -11,6 +11,12 @@ import org.koin.dsl.module
 
 internal val coilModule = module {
 
+    single<ImageLoader>(named(COIL_EMPTY_LOADER)) {
+        ImageLoader(this.androidContext())
+            .newBuilder()
+            .build()
+    }
+
     single<ImageLoader>(named(COIL_DEFAULT_LOADER)) {
         ImageLoader(this.androidContext())
             .newBuilder()
@@ -30,5 +36,6 @@ internal val coilModule = module {
     }
 }
 
+const val COIL_EMPTY_LOADER = "coil_empty_loader"
 const val COIL_DEFAULT_LOADER = "coil_default_loader"
 const val COIL_GIF_LOADER = "coil_gif_loader"

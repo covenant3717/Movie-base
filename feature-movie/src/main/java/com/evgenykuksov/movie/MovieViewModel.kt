@@ -32,7 +32,7 @@ class MovieViewModel(
         load(movieId)
     }
 
-    override fun createInitialState() = MovieContract.State("", "", "", 0, null)
+    override fun createInitialState() = MovieContract.State(null, "", "", 0, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
