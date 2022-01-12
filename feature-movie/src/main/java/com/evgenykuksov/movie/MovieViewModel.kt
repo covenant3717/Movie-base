@@ -70,6 +70,11 @@ class MovieViewModel(
         CustomSingleLineLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        TitleItem(R.string.item_title_genre),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomEmptyItem(R.dimen.dimen_20),
+
         TitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
@@ -79,11 +84,6 @@ class MovieViewModel(
         CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomSingleLineLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
-        CustomEmptyItem(R.dimen.dimen_20),
-
-        TitleItem(R.string.item_title_genre),
-        CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
         TitleItem(R.string.item_title_cast),
@@ -101,14 +101,14 @@ class MovieViewModel(
         RatingItem(data.movieDetails.voteAverage, data.movieDetails.voteCount),
         CustomEmptyItem(R.dimen.dimen_20),
 
-        TitleItem(R.string.item_title_description),
-        CustomEmptyItem(R.dimen.dimen_8),
-        DescriptionItem(data.movieDetails.overview),
-        CustomEmptyItem(R.dimen.dimen_20),
-
         TitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         GenreItem(data.movieDetails.genres),
+        CustomEmptyItem(R.dimen.dimen_20),
+
+        TitleItem(R.string.item_title_description),
+        CustomEmptyItem(R.dimen.dimen_8),
+        DescriptionItem(data.movieDetails.overview),
         CustomEmptyItem(R.dimen.dimen_20),
 
         TitleItem(R.string.item_title_cast),
