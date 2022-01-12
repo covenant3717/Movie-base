@@ -22,7 +22,10 @@ internal class RatingItem(
     }
 
     private fun calcRatingStars() = MAX_RATING_STARS * voteAverage / MAX_RATING_PROGRESS
-}
 
-private const val MAX_RATING_STARS = 5f
-private const val MAX_RATING_PROGRESS = 10f
+    companion object {
+
+        private const val MAX_RATING_STARS = 5f
+        private const val MAX_RATING_PROGRESS = 10f
+    }
+}
