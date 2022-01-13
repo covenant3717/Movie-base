@@ -10,7 +10,7 @@ internal class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRe
 
     override fun getTopRated() = flow { emit(api.getTopRated()) }
 
-    override fun getMovieDetails(id: Long) = flow { emit(api.getMovieDetails(id)) }
+    override fun getDetails(movieId: Long) = flow { emit(api.getDetails(movieId)) }
 
     override fun getCast(movieId: Long) = flow { emit(api.getCast(movieId)) }
 }

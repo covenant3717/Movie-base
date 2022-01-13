@@ -16,7 +16,7 @@ interface MoviesUseCase {
 
     fun getTopRated(): Flow<List<Movie>>
 
-    fun getMovieDetails(id: Long): Flow<MovieDetails>
+    fun getDetails(movieId: Long): Flow<MovieDetails>
 
     fun getCast(movieId: Long): Flow<List<Actor>>
 }

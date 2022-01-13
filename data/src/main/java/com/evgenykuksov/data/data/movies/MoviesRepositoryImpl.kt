@@ -26,7 +26,7 @@ internal class MoviesRepositoryImpl(
         .map { it.results?.map { it.toDomain() }.orEmpty() }
         .flowOn(Dispatchers.IO)
 
-    override fun getMovieDetails(id: Long): Flow<MovieDetails> = remoteDataSource.getMovieDetails(id)
+    override fun getDetails(movieId: Long): Flow<MovieDetails> = remoteDataSource.getDetails(movieId)
         .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 

@@ -39,7 +39,7 @@ class MovieViewModel(
 
     private fun load(movieId: Long) = viewModelScope.launch {
         combine(
-            moviesUseCase.getMovieDetails(movieId),
+            moviesUseCase.getDetails(movieId),
             moviesUseCase.getCast(movieId)
         ) { movieDetails, cast -> FullMovieData(movieDetails, cast) }
             .onStart { setState { copy(listItems = buildLoadingItems()) } }

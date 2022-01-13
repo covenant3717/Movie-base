@@ -13,7 +13,7 @@ internal interface MoviesRemoteDataSource {
 
     fun getTopRated(): Flow<MoviesDataRemote>
 
-    fun getMovieDetails(id: Long): Flow<MovieDetailsRemote>
+    fun getDetails(movieId: Long): Flow<MovieDetailsRemote>
 
     fun getCast(movieId: Long): Flow<CastRemote>
 }

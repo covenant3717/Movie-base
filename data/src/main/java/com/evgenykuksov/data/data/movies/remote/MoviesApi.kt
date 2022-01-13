@@ -18,7 +18,7 @@ internal interface MoviesApi {
     suspend fun getTopRated(): MoviesDataRemote
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("movie_id") id: Long): MovieDetailsRemote
+    suspend fun getDetails(@Path("movie_id") id: Long): MovieDetailsRemote
 
     @GET("movie/{movie_id}/credits")
     suspend fun getCast(@Path("movie_id") id: Long): CastRemote
