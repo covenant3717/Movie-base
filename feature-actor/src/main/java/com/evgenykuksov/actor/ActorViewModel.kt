@@ -6,6 +6,7 @@ import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.domain.actors.model.ActorInfo
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.actor.items.ActorPropertyItem
+import com.evgenykuksov.actor.items.DescriptionItem
 import com.evgenykuksov.core.items.*
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch

@@ -1,6 +1,6 @@
-package com.evgenykuksov.core.items
+package com.evgenykuksov.movie.items
 
-import com.evgenykuksov.core.R
+import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_description.view.*
