@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.domain.movies.model.FullMovieData
+import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.*
 import com.evgenykuksov.movie.items.*
@@ -38,10 +38,7 @@ class MovieViewModel(
     }
 
     private fun load(movieId: Long) = viewModelScope.launch {
-        combine(
-            moviesUseCase.getDetails(movieId),
-            moviesUseCase.getCast(movieId)
-        ) { movieDetails, cast -> FullMovieData(movieDetails, cast) }
+        moviesUseCase.getMovieData(movieId)
             .onStart { setState { copy(listItems = buildLoadingItems()) } }
             .catch { exception ->
                 setState { copy(listItems = buildErrorItems()) }
@@ -50,9 +47,9 @@ class MovieViewModel(
             .collect {
                 setState {
                     copy(
-                        backdrop = it.movieDetails.backdropPath,
-                        name = it.movieDetails.title,
-                        date = it.movieDetails.releaseDate,
+                        backdrop = it.details.backdropPath,
+                        name = it.details.title,
+                        date = it.details.releaseDate,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listItems = buildItems(it)
                     )
@@ -91,26 +88,26 @@ class MovieViewModel(
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
-    private fun buildItems(data: FullMovieData): List<Item> = listOf(
+    private fun buildItems(data: MovieData): List<Item> = listOf(
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
-        RatingItem(data.movieDetails.voteAverage, data.movieDetails.voteCount),
+        RatingItem(data.details.voteAverage, data.details.voteCount),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
-        GenreItem(data.movieDetails.genres),
+        GenreItem(data.details.genres),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
-        DescriptionItem(data.movieDetails.overview),
+        DescriptionItem(data.details.overview),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
-        CastItem(buildActorItems(data.listActor)),
+        CastItem(buildActorItems(data.cast)),
         CustomEmptyItem(R.dimen.dimen_32),
     )
 

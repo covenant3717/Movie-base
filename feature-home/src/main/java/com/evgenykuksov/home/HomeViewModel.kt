@@ -45,7 +45,7 @@ class HomeViewModel(
 
     private fun load() {
         viewModelScope.launch {
-            moviesUseCase.getAll()
+            moviesUseCase.getMovies()
                 .onStart { setState { copy(listItems = buildLoadingItems()) } }
                 .catch { exception ->
                     setState { copy(listItems = buildErrorItems()) }

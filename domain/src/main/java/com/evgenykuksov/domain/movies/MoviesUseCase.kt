@@ -1,22 +1,12 @@
 package com.evgenykuksov.domain.movies
 
-import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.domain.movies.model.Movie
-import com.evgenykuksov.domain.movies.model.MovieDetails
+import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.domain.movies.model.MoviesData
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesUseCase {
 
-    fun getAll(): Flow<MoviesData>
+    fun getMovies(): Flow<MoviesData>
 
-    fun getNowPlaying(): Flow<List<Movie>>
-
-    fun getPopular(): Flow<List<Movie>>
-
-    fun getTopRated(): Flow<List<Movie>>
-
-    fun getDetails(movieId: Long): Flow<MovieDetails>
-
-    fun getCast(movieId: Long): Flow<List<Actor>>
+    fun getMovieData(movieId: Long): Flow<MovieData>
 }
