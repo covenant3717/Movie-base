@@ -4,6 +4,9 @@
     <color name="tv_movie_date">#4DFFFFFF</color>
     <color name="item_title">#33FFFFFF</color>
     <color name="item_description">#66FFFFFF</color>
+    <color name="item_description_gradient_start">@color/core_background</color>
+    <color name="item_description_gradient_center">#B3111111</color>
+    <color name="item_description_gradient_end">#0D111111</color>
     <color name="item_genre_back">#343434</color>
     <color name="item_genre_text">#80FFFFFF</color>
     <color name="item_vote_average">#B3FFFFFF</color>

@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tvDescription"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/dimen_20"
-    android:paddingEnd="@dimen/dimen_20"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-    android:textColor="@color/core_item_description_text"
-    android:textStyle="bold"
-    tools:background="@color/core_background"
-    tools:text="Rate" />
+    android:background="@android:color/transparent"
+    app:layoutDescription="@xml/item_description_scene">
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingStart="@dimen/dimen_20"
+        android:paddingEnd="@dimen/dimen_20"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:textColor="@color/core_item_description_text"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor rhoncus dolor purus non enim praesent elementum facilisis leo. Nunc sed augue lacus viverra vitae congue eu consequat ac. At varius vel pharetra vel turpis nunc. Ac turpis egestas sed tempus. Faucibus ornare suspendisse sed nisi. Vel fringilla est ullamcorper eget nulla. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Aliquam faucibus purus in massa. Duis tristique sollicitudin nibh sit amet commodo. Dictum non consectetur a erat nam. Purus viverra accumsan in nisl nisi scelerisque. Nec ultrices dui sapien eget mi proin sed libero. Ornare arcu odio ut sem nulla. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Quisque sagittis purus sit amet volutpat consequat mauris nunc." />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/gradient_description"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
