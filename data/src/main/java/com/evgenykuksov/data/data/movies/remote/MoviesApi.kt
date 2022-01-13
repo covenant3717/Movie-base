@@ -3,6 +3,7 @@ package com.evgenykuksov.data.data.movies.remote
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
+import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -22,4 +23,7 @@ internal interface MoviesApi {
 
     @GET("movie/{movie_id}/credits")
     suspend fun getCast(@Path("movie_id") id: Long): CastRemote
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getVideos(@Path("movie_id") id: Long): VideosRemote
 }

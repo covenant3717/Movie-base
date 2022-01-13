@@ -2,15 +2,14 @@ package com.evgenykuksov.data.data.movies
 
 import com.evgenykuksov.core.extensions.orNegativeDefault
 import com.evgenykuksov.core.extensions.orZero
+import com.evgenykuksov.data.data.movies.remote.model.*
 import com.evgenykuksov.data.data.movies.remote.model.ActorRemote
 import com.evgenykuksov.data.data.movies.remote.model.GenreRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieRemote
+import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
 import com.evgenykuksov.data.util.getOriginalImageUrl
-import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.domain.movies.model.Genre
-import com.evgenykuksov.domain.movies.model.Movie
-import com.evgenykuksov.domain.movies.model.MovieDetails
+import com.evgenykuksov.domain.movies.model.*
 
 internal fun MovieRemote.toDomain() = Movie(
     id = id.orNegativeDefault(),
@@ -50,4 +49,12 @@ internal fun ActorRemote.toDomain() = Actor(
     name = name.orEmpty(),
     profilePath = getOriginalImageUrl(profilePath.orEmpty()),
     character = character.orEmpty()
+)
+
+internal fun VideoRemote.toDomain() = MovieVideo(
+    id = id.orEmpty(),
+    name = name.orEmpty(),
+    key = key.orEmpty(),
+    site = site.orEmpty(),
+    official = official ?: false
 )

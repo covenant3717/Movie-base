@@ -37,7 +37,7 @@ internal data class MovieItem(
             }
             setOnTouchListener { v, event ->
                 when (event.action) {
-                    MotionEvent.ACTION_DOWN -> v.startAnimationScale(0.9f) {}
+                    MotionEvent.ACTION_DOWN -> v.startAnimationScale(0.95f) {}
                     MotionEvent.ACTION_UP -> v.startAnimationScale(1f) {
                         onClick(
                             movie,
