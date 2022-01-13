@@ -6,5 +6,4 @@
 
     <color name="core_item_description_text">#66FFFFFF</color>
     <color name="core_item_error_hint_text">#4DFFFFFF</color>
-    <color name="core_item_name">#B3FFFFFF</color>
 </resources>

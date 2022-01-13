@@ -1,14 +1,12 @@
 package com.evgenykuksov.actor
 
+import android.view.Gravity
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.actors.ActorsUseCase
 import com.evgenykuksov.domain.actors.model.ActorInfo
 import com.evgenykuksov.core.base.BaseViewModel
-import com.evgenykuksov.core.items.CustomEmptyItem
-import com.evgenykuksov.core.items.DescriptionItem
-import com.evgenykuksov.core.items.ErrorItem
-import com.evgenykuksov.core.items.NameItem
 import com.evgenykuksov.actor.items.ActorPropertyItem
+import com.evgenykuksov.core.items.*
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -45,7 +43,14 @@ class ActorViewModel(
     }
 
     private fun buildItems(actorInfo: ActorInfo): List<Item> = listOf(
-        NameItem(actorInfo.name),
+        CustomTextItem(
+            textContent = actorInfo.name,
+            styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
+            colorRes = R.color.dialog_actor_name,
+            startPaddingRes = R.dimen.dimen_20,
+            endPaddingRes = R.dimen.dimen_20,
+            gravityState = Gravity.CENTER_HORIZONTAL
+        ),
         CustomEmptyItem(R.dimen.dimen_24),
         ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
         CustomEmptyItem(R.dimen.dimen_12),
