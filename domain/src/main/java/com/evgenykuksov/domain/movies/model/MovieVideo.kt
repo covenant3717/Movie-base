@@ -6,4 +6,5 @@ data class MovieVideo(
     val key: String,
     val site: String,
     val official: Boolean,
+    val backdropPath: String,
 )

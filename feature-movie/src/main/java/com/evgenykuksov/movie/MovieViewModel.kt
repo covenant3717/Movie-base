@@ -69,6 +69,11 @@ class MovieViewModel(
         CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        buildTitleItem(R.string.item_title_trailers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        // todo: add loading trailer item
+        CustomEmptyItem(R.dimen.dimen_20),
+
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
@@ -98,6 +103,11 @@ class MovieViewModel(
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         GenreItem(data.details.genres),
+        CustomEmptyItem(R.dimen.dimen_20),
+
+        buildTitleItem(R.string.item_title_trailers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        // todo: add trailer item
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_description),

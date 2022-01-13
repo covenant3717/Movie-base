@@ -3,6 +3,7 @@
     <string name="item_title_rate">Rate / Votes</string>
     <string name="item_title_description">Description</string>
     <string name="item_title_genre">Genre</string>
+    <string name="item_title_trailers">Trailers</string>
     <string name="item_title_cast">Cast</string>
     <string name="item_vote_count">/ %s</string>
 </resources>

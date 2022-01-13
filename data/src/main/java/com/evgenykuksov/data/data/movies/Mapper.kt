@@ -7,18 +7,18 @@ import com.evgenykuksov.data.data.movies.remote.model.ActorRemote
 import com.evgenykuksov.data.data.movies.remote.model.GenreRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieRemote
-import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
-import com.evgenykuksov.data.util.getOriginalImageUrl
+import com.evgenykuksov.data.util.TmdbImagePath
+import com.evgenykuksov.data.util.YoutubeImagePath
 import com.evgenykuksov.domain.movies.model.*
 
 internal fun MovieRemote.toDomain() = Movie(
     id = id.orNegativeDefault(),
-    backdropPath = getOriginalImageUrl(backdropPath.orEmpty()),
+    backdropPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, backdropPath.orEmpty()),
     genreIds = genreIds.orEmpty(),
     title = title.orEmpty(),
     overview = overview.orEmpty(),
     popularity = popularity.orZero(),
-    posterPath = getOriginalImageUrl(posterPath.orEmpty()),
+    posterPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, posterPath.orEmpty()),
     releaseDate = releaseDate.orEmpty(),
     voteAverage = voteAverage.orZero(),
     voteCount = voteCount.orZero()
@@ -27,12 +27,12 @@ internal fun MovieRemote.toDomain() = Movie(
 internal fun MovieDetailsRemote.toDomain() = MovieDetails(
     id = id.orNegativeDefault(),
     title = title.orEmpty(),
-    backdropPath = getOriginalImageUrl(backdropPath.orEmpty()),
+    backdropPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, backdropPath.orEmpty()),
     budget = budget.orZero(),
     genres = genres?.map { it.toDomain() }.orEmpty(),
     overview = overview.orEmpty(),
     popularity = popularity.orZero(),
-    posterPath = getOriginalImageUrl(posterPath.orEmpty()),
+    posterPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, posterPath.orEmpty()),
     releaseDate = releaseDate.orEmpty(),
     runtime = runtime.orZero(),
     voteAverage = voteAverage.orZero(),
@@ -47,7 +47,7 @@ internal fun GenreRemote.toDomain() = Genre(
 internal fun ActorRemote.toDomain() = Actor(
     id = id.orNegativeDefault(),
     name = name.orEmpty(),
-    profilePath = getOriginalImageUrl(profilePath.orEmpty()),
+    profilePath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, profilePath.orEmpty()),
     character = character.orEmpty()
 )
 
@@ -56,5 +56,6 @@ internal fun VideoRemote.toDomain() = MovieVideo(
     name = name.orEmpty(),
     key = key.orEmpty(),
     site = site.orEmpty(),
-    official = official ?: false
+    official = official ?: false,
+    backdropPath = YoutubeImagePath.getImagePath(key.orEmpty(), YoutubeImagePath.MQ_DEFAULT)
 )

@@ -3,7 +3,7 @@ package com.evgenykuksov.data.data.actors
 import com.evgenykuksov.core.extensions.orNegativeDefault
 import com.evgenykuksov.core.extensions.orZero
 import com.evgenykuksov.data.data.actors.remote.model.ActorInfoRemote
-import com.evgenykuksov.data.util.getOriginalImageUrl
+import com.evgenykuksov.data.util.TmdbImagePath
 import com.evgenykuksov.domain.actors.model.ActorInfo
 
 internal fun ActorInfoRemote.toDomain() = ActorInfo(
@@ -13,5 +13,5 @@ internal fun ActorInfoRemote.toDomain() = ActorInfo(
     placeOfBirth = placeOfBirth.orEmpty(),
     popularity = popularity.orZero(),
     biography = biography.orEmpty(),
-    profilePhoto = getOriginalImageUrl(profilePhoto.orEmpty())
+    profilePhoto = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, profilePhoto.orEmpty())
 )
