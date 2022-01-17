@@ -1,6 +1,7 @@
 package com.evgenykuksov.movie
 
 import android.view.ViewGroup
+import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
@@ -58,6 +59,8 @@ class MovieViewModel(
 
     private fun buildLoadingItems(): List<Item> = listOf(
         CustomEmptyItem(R.dimen.dimen_20),
+
+        // rate
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomLoadingItem(
@@ -67,16 +70,35 @@ class MovieViewModel(
         ),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // genre
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
-        buildLoadingLineItem(),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 3,
+                itemWidthRes = R.dimen.dimen_70,
+                itemHeightRes = R.dimen.dimen_30,
+                itemCornerRoundRes = R.dimen.dimen_100,
+                spaceBetweenItems = R.dimen.dimen_8
+            )
+        ),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // trailers
         buildTitleItem(R.string.item_title_trailers),
         CustomEmptyItem(R.dimen.dimen_8),
-        // todo: add loading trailer item
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 7,
+                itemWidthRes = R.dimen.dimen_140,
+                itemHeightRes = R.dimen.dimen_80,
+                itemCornerRoundRes = R.dimen.dimen_14,
+                spaceBetweenItems = R.dimen.dimen_20
+            )
+        ),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // description
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         buildLoadingLineItem(),
@@ -92,9 +114,18 @@ class MovieViewModel(
         ),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // cast
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomGroupItem(buildActorLoadingItems()),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 7,
+                itemWidthRes = R.dimen.dimen_80,
+                itemHeightRes = R.dimen.dimen_120,
+                itemCornerRoundRes = R.dimen.dimen_14,
+                spaceBetweenItems = R.dimen.dimen_20
+            )
+        ),
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
@@ -102,43 +133,58 @@ class MovieViewModel(
 
     private fun buildItems(data: MovieData): List<Item> = listOf(
         CustomEmptyItem(R.dimen.dimen_20),
+
+        // rate
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         RatingItem(data.details.voteAverage, data.details.voteCount),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // genre
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         GenreItem(data.details.genres),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // trailers
         buildTitleItem(R.string.item_title_trailers),
         CustomEmptyItem(R.dimen.dimen_8),
         // todo: add trailer item
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // description
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         DescriptionItem(data.details.overview),
         CustomEmptyItem(R.dimen.dimen_20),
 
+        // cast
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomGroupItem(buildActorItems(data.cast)),
         CustomEmptyItem(R.dimen.dimen_32),
     )
 
-    private fun buildActorLoadingItems() = mutableListOf<Item>()
+    private fun buildGroupLoadingItems(
+        countItems: Int,
+        @DimenRes itemWidthRes: Int,
+        @DimenRes itemHeightRes: Int,
+        @DimenRes itemCornerRoundRes: Int?,
+        @DimenRes spaceBetweenItems: Int?,
+    ) = mutableListOf<Item>()
         .apply {
-            for (i in 1..7) {
-                add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            for (i in 1..countItems) {
                 add(
                     CustomLoadingItem(
-                        widthRes = R.dimen.dimen_80,
-                        heightRes = R.dimen.dimen_120,
-                        cornerRadiusRes = R.dimen.dimen_14
+                        widthRes = itemWidthRes,
+                        heightRes = itemHeightRes,
+                        cornerRadiusRes = itemCornerRoundRes
                     )
                 )
+                spaceBetweenItems?.let {
+                    if (i < countItems) add(CustomEmptyItem(widthRes = it))
+                }
             }
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
         }
