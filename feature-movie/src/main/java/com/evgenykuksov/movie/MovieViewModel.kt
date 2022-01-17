@@ -1,5 +1,6 @@
 package com.evgenykuksov.movie
 
+import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
@@ -9,7 +10,6 @@ import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.*
 import com.evgenykuksov.movie.items.*
-import com.evgenykuksov.movie.items.ActorLoadingItem
 import com.evgenykuksov.movie.items.CastItem
 import com.evgenykuksov.movie.items.GenreItem
 import com.evgenykuksov.movie.items.RatingItem
@@ -61,12 +61,16 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(R.dimen.dimen_80, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomLoadingItem(
+            widthRes = R.dimen.dimen_80,
+            heightRes = R.dimen.dimen_20,
+            marginStartEndRes = R.dimen.dimen_20
+        ),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        buildLoadingLineItem(),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_trailers),
@@ -76,13 +80,17 @@ class MovieViewModel(
 
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        buildLoadingLineItem(),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        buildLoadingLineItem(),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(null, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        buildLoadingLineItem(),
         CustomEmptyItem(R.dimen.dimen_8),
-        CustomSingleLineLoadingItem(R.dimen.dimen_100, R.dimen.dimen_20, R.dimen.dimen_20, R.dimen.dimen_20),
+        CustomLoadingItem(
+            widthRes = R.dimen.dimen_100,
+            heightRes = R.dimen.dimen_20,
+            marginStartEndRes = R.dimen.dimen_20
+        ),
         CustomEmptyItem(R.dimen.dimen_20),
 
         buildTitleItem(R.string.item_title_cast),
@@ -125,7 +133,13 @@ class MovieViewModel(
         .apply {
             for (i in 1..7) {
                 add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-                add(ActorLoadingItem())
+                add(
+                    CustomLoadingItem(
+                        widthRes = R.dimen.dimen_80,
+                        heightRes = R.dimen.dimen_120,
+                        cornerRadiusRes = R.dimen.dimen_14
+                    )
+                )
             }
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
         }
@@ -150,6 +164,12 @@ class MovieViewModel(
         colorRes = R.color.item_title,
         startPaddingRes = R.dimen.dimen_20,
         endPaddingRes = R.dimen.dimen_20,
+    )
+
+    private fun buildLoadingLineItem() = CustomLoadingItem(
+        widthLayoutParams = ViewGroup.LayoutParams.MATCH_PARENT,
+        heightRes = R.dimen.dimen_20,
+        marginStartEndRes = R.dimen.dimen_20,
     )
 
     companion object {

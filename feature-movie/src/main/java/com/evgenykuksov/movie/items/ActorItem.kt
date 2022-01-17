@@ -28,7 +28,7 @@ internal data class ActorItem(
             imgActor.apply {
                 transitionName = actor.profilePath
                 load(actor.profilePath, defaultImageLoader) {
-                    transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_16)))
+                    transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_14)))
                 }
             }
             setOnTouchListener { v, event ->
