@@ -10,7 +10,6 @@ import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.*
 import com.evgenykuksov.movie.items.*
-import com.evgenykuksov.movie.items.CastItem
 import com.evgenykuksov.movie.items.GenreItem
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
@@ -95,7 +94,7 @@ class MovieViewModel(
 
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
-        CastItem(buildActorLoadingItems()),
+        CustomGroupItem(buildActorLoadingItems()),
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
@@ -125,7 +124,7 @@ class MovieViewModel(
 
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
-        CastItem(buildActorItems(data.cast)),
+        CustomGroupItem(buildActorItems(data.cast)),
         CustomEmptyItem(R.dimen.dimen_32),
     )
 
