@@ -18,8 +18,10 @@ internal class GenreItem(private val listGenres: List<Genre>) : Item() {
                 Chip(context)
                     .apply {
                         text = it.name
-                        setChipBackgroundColorResource(R.color.item_genre_back)
+                        setChipBackgroundColorResource(R.color.core_background)
                         setTextColor(context.color(R.color.item_genre_text))
+                        setChipStrokeColorResource(R.color.item_genre_back)
+                        setChipStrokeWidthResource(R.dimen.dimen_1)
                         setEnsureMinTouchTargetSize(false)
                     }
                     .let { chipGroup.addView(it) }
