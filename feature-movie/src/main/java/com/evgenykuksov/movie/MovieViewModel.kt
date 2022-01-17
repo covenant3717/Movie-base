@@ -58,9 +58,8 @@ class MovieViewModel(
     }
 
     private fun buildLoadingItems(): List<Item> = listOf(
-        CustomEmptyItem(R.dimen.dimen_20),
-
         // rate
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomLoadingItem(
@@ -68,9 +67,9 @@ class MovieViewModel(
             heightRes = R.dimen.dimen_20,
             marginStartEndRes = R.dimen.dimen_20
         ),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // genre
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomGroupItem(
@@ -82,23 +81,23 @@ class MovieViewModel(
                 spaceBetweenItems = R.dimen.dimen_8
             )
         ),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // trailers
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_trailers),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomGroupItem(
             buildGroupLoadingItems(
-                countItems = 7,
+                countItems = 3,
                 itemWidthRes = R.dimen.dimen_140,
                 itemHeightRes = R.dimen.dimen_80,
                 itemCornerRoundRes = R.dimen.dimen_14,
                 spaceBetweenItems = R.dimen.dimen_20
             )
         ),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // description
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         buildLoadingLineItem(),
@@ -112,9 +111,9 @@ class MovieViewModel(
             heightRes = R.dimen.dimen_20,
             marginStartEndRes = R.dimen.dimen_20
         ),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // cast
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomGroupItem(
@@ -132,33 +131,32 @@ class MovieViewModel(
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun buildItems(data: MovieData): List<Item> = listOf(
-        CustomEmptyItem(R.dimen.dimen_20),
-
         // rate
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         RatingItem(data.details.voteAverage, data.details.voteCount),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // genre
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_genre),
         CustomEmptyItem(R.dimen.dimen_8),
         GenreItem(data.details.genres),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // trailers
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_trailers),
         CustomEmptyItem(R.dimen.dimen_8),
         // todo: add trailer item
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // description
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         DescriptionItem(data.details.overview),
-        CustomEmptyItem(R.dimen.dimen_20),
 
         // cast
+        CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomGroupItem(buildActorItems(data.cast)),
@@ -189,6 +187,12 @@ class MovieViewModel(
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
         }
 
+    private fun buildLoadingLineItem() = CustomLoadingItem(
+        widthLayoutParams = ViewGroup.LayoutParams.MATCH_PARENT,
+        heightRes = R.dimen.dimen_20,
+        marginStartEndRes = R.dimen.dimen_20,
+    )
+
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
             add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
@@ -209,12 +213,6 @@ class MovieViewModel(
         colorRes = R.color.item_title,
         startPaddingRes = R.dimen.dimen_20,
         endPaddingRes = R.dimen.dimen_20,
-    )
-
-    private fun buildLoadingLineItem() = CustomLoadingItem(
-        widthLayoutParams = ViewGroup.LayoutParams.MATCH_PARENT,
-        heightRes = R.dimen.dimen_20,
-        marginStartEndRes = R.dimen.dimen_20,
     )
 
     companion object {
