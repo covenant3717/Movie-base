@@ -202,7 +202,7 @@ class MovieViewModel(
                 if (it.official) {
                     add(
                         TrailerItem(it, defaultImageLoader) { trailer ->
-                            // todo: open trailer in YouTube
+                            navigator.toYoutube(trailer.key)
                         }
                     )
                     add(CustomEmptyItem(widthRes = R.dimen.dimen_16))

@@ -1,12 +1,12 @@
 package com.evgenykuksov.moviebase.navigation
 
+import android.os.Bundle
 import androidx.navigation.fragment.FragmentNavigator
 import com.evgenykuksov.actor.ActorFragment
 import com.evgenykuksov.home.navigation.HomeNavigation
 import com.evgenykuksov.movie.MovieFragment
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.evgenykuksov.moviebase.R
-import kotlin.math.acos
 
 class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
 
@@ -15,6 +15,13 @@ class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
      * */
     override fun back() {
         navController?.popBackStack()
+    }
+
+    override fun toYoutube(videoKey: String) {
+        navController?.navigate(
+            R.id.youtubeActivity,
+            Bundle().apply { putString("videoKey", videoKey) }
+        )
     }
 
     /**

@@ -23,7 +23,7 @@
         android:id="@+id/movieFragment"
         android:name="com.evgenykuksov.movie.MovieFragment"
         android:label="MovieFragment"
-        tools:layout="@layout/fragment_movie" >
+        tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_actorFragment"
             app:destination="@id/actorFragment" />
@@ -34,5 +34,15 @@
         android:name="com.evgenykuksov.actor.ActorFragment"
         android:label="ActorFragment"
         tools:layout="@layout/fragment_actor" />
+
+    <activity
+        android:id="@+id/youtubeActivity"
+        app:action="android.intent.action.VIEW"
+        app:dataPattern="https://www.youtube.com/watch?v={videoKey}">
+        <argument
+            android:name="videoKey"
+            android:defaultValue=""
+            app:argType="string" />
+    </activity>
 
 </navigation>
