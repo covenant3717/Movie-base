@@ -51,7 +51,7 @@ internal fun ActorRemote.toDomain() = Actor(
     character = character.orEmpty()
 )
 
-internal fun VideoRemote.toDomain() = MovieVideo(
+internal fun TrailerRemote.toDomain() = Trailer(
     id = id.orEmpty(),
     name = name.orEmpty(),
     key = key.orEmpty(),

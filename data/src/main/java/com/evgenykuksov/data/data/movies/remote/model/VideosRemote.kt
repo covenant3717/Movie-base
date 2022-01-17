@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 internal data class VideosRemote(
     @SerializedName("id") val id: Long?,
-    @SerializedName("results") val results: List<VideoRemote>,
+    @SerializedName("results") val results: List<TrailerRemote>,
 )

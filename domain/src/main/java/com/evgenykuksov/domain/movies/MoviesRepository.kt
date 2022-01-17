@@ -3,7 +3,7 @@ package com.evgenykuksov.domain.movies
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MovieDetails
-import com.evgenykuksov.domain.movies.model.MovieVideo
+import com.evgenykuksov.domain.movies.model.Trailer
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
@@ -18,5 +18,5 @@ interface MoviesRepository {
 
     fun getCast(movieId: Long): Flow<List<Actor>>
 
-    fun getVideos(movieId: Long): Flow<List<MovieVideo>>
+    fun getTrailers(movieId: Long): Flow<List<Trailer>>
 }

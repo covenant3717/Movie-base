@@ -18,5 +18,5 @@ internal interface MoviesRemoteDataSource {
 
     fun getCast(movieId: Long): Flow<CastRemote>
 
-    fun getVideos(movieId: Long): Flow<VideosRemote>
+    fun getTrailers(movieId: Long): Flow<VideosRemote>
 }

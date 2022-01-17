@@ -1,6 +1,6 @@
 package com.evgenykuksov.domain.movies.model
 
-data class MovieVideo(
+data class Trailer(
     val id: String,
     val name: String,
     val key: String,

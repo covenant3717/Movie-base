@@ -14,5 +14,5 @@ internal class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRe
 
     override fun getCast(movieId: Long) = flow { emit(api.getCast(movieId)) }
 
-    override fun getVideos(movieId: Long) = flow { emit(api.getVideos(movieId)) }
+    override fun getTrailers(movieId: Long) = flow { emit(api.getTrailers(movieId)) }
 }

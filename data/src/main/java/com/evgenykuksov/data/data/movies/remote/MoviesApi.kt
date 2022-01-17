@@ -25,5 +25,5 @@ internal interface MoviesApi {
     suspend fun getCast(@Path("movie_id") id: Long): CastRemote
 
     @GET("movie/{movie_id}/videos")
-    suspend fun getVideos(@Path("movie_id") id: Long): VideosRemote
+    suspend fun getTrailers(@Path("movie_id") id: Long): VideosRemote
 }
