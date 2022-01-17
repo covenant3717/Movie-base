@@ -10,6 +10,7 @@ import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.*
+import com.evgenykuksov.domain.movies.model.Trailer
 import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.GenreItem
 import com.evgenykuksov.movie.items.RatingItem
@@ -68,34 +69,6 @@ class MovieViewModel(
             marginStartEndRes = R.dimen.dimen_20
         ),
 
-        // genre
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_genre),
-        CustomEmptyItem(R.dimen.dimen_8),
-        CustomGroupItem(
-            buildGroupLoadingItems(
-                countItems = 3,
-                itemWidthRes = R.dimen.dimen_70,
-                itemHeightRes = R.dimen.dimen_30,
-                itemCornerRoundRes = R.dimen.dimen_100,
-                spaceBetweenItems = R.dimen.dimen_8
-            )
-        ),
-
-        // trailers
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_trailers),
-        CustomEmptyItem(R.dimen.dimen_8),
-        CustomGroupItem(
-            buildGroupLoadingItems(
-                countItems = 3,
-                itemWidthRes = R.dimen.dimen_140,
-                itemHeightRes = R.dimen.dimen_80,
-                itemCornerRoundRes = R.dimen.dimen_14,
-                spaceBetweenItems = R.dimen.dimen_20
-            )
-        ),
-
         // description
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_description),
@@ -111,6 +84,35 @@ class MovieViewModel(
             heightRes = R.dimen.dimen_20,
             marginStartEndRes = R.dimen.dimen_20
         ),
+
+        // trailers
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_trailers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 3,
+                itemWidthRes = R.dimen.dimen_160,
+                itemHeightRes = R.dimen.dimen_90,
+                itemCornerRoundRes = R.dimen.dimen_14,
+                spaceBetweenItems = R.dimen.dimen_20
+            )
+        ),
+
+        // genre
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_genre),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 3,
+                itemWidthRes = R.dimen.dimen_70,
+                itemHeightRes = R.dimen.dimen_30,
+                itemCornerRoundRes = R.dimen.dimen_100,
+                spaceBetweenItems = R.dimen.dimen_8
+            )
+        ),
+
 
         // cast
         CustomEmptyItem(R.dimen.dimen_20),
@@ -137,23 +139,23 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_8),
         RatingItem(data.details.voteAverage, data.details.voteCount),
 
-        // genre
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_genre),
-        CustomEmptyItem(R.dimen.dimen_8),
-        GenreItem(data.details.genres),
-
-        // trailers
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_trailers),
-        CustomEmptyItem(R.dimen.dimen_8),
-        // todo: add trailer item
-
         // description
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_description),
         CustomEmptyItem(R.dimen.dimen_8),
         DescriptionItem(data.details.overview),
+
+        // trailers
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_trailers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomGroupItem(buildTrailerItems(data.trailers)),
+
+        // genre
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_genre),
+        CustomEmptyItem(R.dimen.dimen_8),
+        GenreItem(data.details.genres),
 
         // cast
         CustomEmptyItem(R.dimen.dimen_20),
@@ -192,6 +194,22 @@ class MovieViewModel(
         heightRes = R.dimen.dimen_20,
         marginStartEndRes = R.dimen.dimen_20,
     )
+
+    private fun buildTrailerItems(listActor: List<Trailer>) = mutableListOf<Item>()
+        .apply {
+            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            listActor.forEach {
+                if (it.official) {
+                    add(
+                        TrailerItem(it, defaultImageLoader) { trailer ->
+                            // todo: open trailer in YouTube
+                        }
+                    )
+                    add(CustomEmptyItem(widthRes = R.dimen.dimen_16))
+                }
+            }
+        }
+        .toList()
 
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
