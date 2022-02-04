@@ -2,10 +2,7 @@ package com.evgenykuksov.data.data.movies
 
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteDataSource
 import com.evgenykuksov.domain.movies.MoviesRepository
-import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.domain.movies.model.Movie
-import com.evgenykuksov.domain.movies.model.MovieDetails
-import com.evgenykuksov.domain.movies.model.Trailer
+import com.evgenykuksov.domain.movies.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -36,5 +33,9 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
 
     override fun getTrailers(movieId: Long): Flow<List<Trailer>> = remoteDataSource.getTrailers(movieId)
         .map { it.results.map { it.toDomain() } }
+        .flowOn(Dispatchers.IO)
+
+    override fun getImages(movieId: Long): Flow<MovieImages> = remoteDataSource.getImages(movieId)
+        .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 }

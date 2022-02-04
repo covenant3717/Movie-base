@@ -4,6 +4,7 @@ import com.evgenykuksov.data.BuildConfig
 import com.evgenykuksov.data.network.interceptors.ApiKeyInterceptor
 import com.evgenykuksov.data.network.interceptors.HeaderInterceptor
 import com.evgenykuksov.data.network.interceptors.LanguageInterceptor
+import com.evgenykuksov.data.network.interceptors.MovieImagesInterceptor
 import com.google.gson.GsonBuilder
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
@@ -31,6 +32,7 @@ internal fun networkModule(baseUrl: String, apiVersion: String, apiKey: String) 
             .pingInterval(OKHTTP_PING_INTERVAL_MS, TimeUnit.MILLISECONDS)
             .addInterceptor(ApiKeyInterceptor(apiKey))
             .addInterceptor(LanguageInterceptor())
+            .addInterceptor(MovieImagesInterceptor())
             .addInterceptor(ChuckInterceptor(this.androidContext()))
             .addInterceptor(HeaderInterceptor())
             .addInterceptor(

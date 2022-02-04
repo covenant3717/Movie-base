@@ -1,6 +1,7 @@
 package com.evgenykuksov.data.data.movies.remote
 
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
 import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
@@ -19,4 +20,6 @@ internal interface MoviesRemoteDataSource {
     fun getCast(movieId: Long): Flow<CastRemote>
 
     fun getTrailers(movieId: Long): Flow<VideosRemote>
+
+    fun getImages(movieId: Long): Flow<MovieImagesRemote>
 }

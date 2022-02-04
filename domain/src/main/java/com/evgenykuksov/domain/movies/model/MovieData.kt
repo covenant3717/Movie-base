@@ -4,4 +4,5 @@ data class MovieData(
     val details: MovieDetails,
     val cast: List<Actor>,
     val trailers: List<Trailer>,
+    val images: MovieImages,
 )

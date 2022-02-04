@@ -59,3 +59,8 @@ internal fun TrailerRemote.toDomain() = Trailer(
     official = official ?: false,
     backdropPath = YoutubeImagePath.getImagePath(key.orEmpty(), YoutubeImagePath.MQ_DEFAULT)
 )
+
+internal fun MovieImagesRemote.toDomain() = MovieImages(
+    backdrops = backdrops?.map { TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, it.file_path.orEmpty()) }.orEmpty(),
+    posters = posters?.map { TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, it.file_path.orEmpty()) }.orEmpty(),
+)

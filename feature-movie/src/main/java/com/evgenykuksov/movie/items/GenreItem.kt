@@ -14,6 +14,7 @@ internal class GenreItem(private val listGenres: List<Genre>) : Item() {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
+            chipGroup.removeAllViews()
             listGenres.forEach {
                 Chip(context)
                     .apply {
