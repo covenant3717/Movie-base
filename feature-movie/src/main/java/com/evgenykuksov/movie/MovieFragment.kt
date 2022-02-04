@@ -31,8 +31,10 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
     private val viewModel: MovieViewModel by viewModel { parametersOf(movieId) }
     private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private val adapterDetails: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private val adapterBackdrops: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
+    private var backdropSection = Section()
     private val movieId: Long by lazy { arguments?.getLong(ARG_MOVIE_ID) ?: throw IllegalStateException("No movieId") }
     private val moviePoster: String by lazy {
         arguments?.getString(ARG_MOVIE_POSTER) ?: throw IllegalStateException("No poster")
@@ -56,7 +58,8 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_16)))
             }
         }
-        rvDetails.adapter = adapter.apply { add(detailsSection) }
+        rvBackdrops.adapter = adapterBackdrops.apply { add(backdropSection) }
+        rvDetails.adapter = adapterDetails.apply { add(detailsSection) }
     }
 
     override fun observeState() {
@@ -71,6 +74,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 tvName.text = it.name
                 tvDate.text = it.date
                 delay(it.delayUpdateItems)
+                it.listBackdrops?.let { list -> backdropSection.update(list) }
                 it.listItems?.let { list -> detailsSection.update(list) }
             }
         }

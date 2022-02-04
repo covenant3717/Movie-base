@@ -16,6 +16,7 @@ class MovieContract {
         val name: String?,
         val date: String?,
         val delayUpdateItems: Long,
+        val listBackdrops: List<Item>?,
         val listItems: List<Item>?
     ) : UiState
 

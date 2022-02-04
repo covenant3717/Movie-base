@@ -29,7 +29,7 @@ class MovieViewModel(
         load(movieId)
     }
 
-    override fun createInitialState() = MovieContract.State(null, "", "", 0, null)
+    override fun createInitialState() = MovieContract.State(null, "", "", 0, null, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -51,7 +51,8 @@ class MovieViewModel(
                         name = it.details.title,
                         date = it.details.releaseDate,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
-                        listItems = buildItems(it)
+                        listBackdrops = buildBackdropsItems(it.images.backdrops),
+                        listItems = buildDetailsItems(it)
                     )
                 }
             }
@@ -130,7 +131,19 @@ class MovieViewModel(
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
-    private fun buildItems(data: MovieData): List<Item> = mutableListOf<Item>()
+    private fun buildBackdropsItems(listBackdrops: List<String>): List<Item> = mutableListOf<Item>()
+        .apply {
+            CustomEmptyItem(widthRes = R.dimen.dimen_4).addTo(this)
+            listBackdrops.forEachIndexed { index, s ->
+                BackdropItem(s, defaultImageLoader) { backdropPath ->
+                    setState { copy(backdrop = backdropPath) }
+                }.addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_4).addTo(this)
+            }
+        }
+        .toList()
+
+    private fun buildDetailsItems(data: MovieData): List<Item> = mutableListOf<Item>()
         .apply {
             // rate
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
