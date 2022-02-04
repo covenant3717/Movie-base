@@ -1,7 +1,6 @@
 package com.evgenykuksov.movie
 
 import android.view.ViewGroup
-import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
@@ -9,13 +8,14 @@ import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
+import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.*
 import com.evgenykuksov.domain.movies.model.Trailer
 import com.evgenykuksov.movie.items.*
-import com.evgenykuksov.movie.items.GenreItem
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -46,6 +46,7 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
+                delay(5000)
                 setState {
                     copy(
                         backdrop = it.details.backdropPath,
@@ -64,7 +65,7 @@ class MovieViewModel(
         buildTitleItem(R.string.item_title_rate),
         CustomEmptyItem(R.dimen.dimen_8),
         CustomLoadingItem(
-            widthRes = R.dimen.dimen_80,
+            widthRes = R.dimen.dimen_120,
             heightRes = R.dimen.dimen_20,
             marginStartEndRes = R.dimen.dimen_20
         ),
@@ -106,13 +107,12 @@ class MovieViewModel(
         CustomGroupItem(
             buildGroupLoadingItems(
                 countItems = 3,
-                itemWidthRes = R.dimen.dimen_70,
+                itemWidthRes = R.dimen.dimen_100,
                 itemHeightRes = R.dimen.dimen_30,
                 itemCornerRoundRes = R.dimen.dimen_100,
                 spaceBetweenItems = R.dimen.dimen_8
             )
         ),
-
 
         // cast
         CustomEmptyItem(R.dimen.dimen_20),
@@ -132,61 +132,46 @@ class MovieViewModel(
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
-    private fun buildItems(data: MovieData): List<Item> = listOf(
-        // rate
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_rate),
-        CustomEmptyItem(R.dimen.dimen_8),
-        RatingItem(data.details.voteAverage, data.details.voteCount),
-
-        // description
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_description),
-        CustomEmptyItem(R.dimen.dimen_8),
-        DescriptionItem(data.details.overview),
-
-        // trailers
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_trailers),
-        CustomEmptyItem(R.dimen.dimen_8),
-        CustomGroupItem(buildTrailerItems(data.trailers)),
-
-        // genre
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_genre),
-        CustomEmptyItem(R.dimen.dimen_8),
-        GenreItem(data.details.genres),
-
-        // cast
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_cast),
-        CustomEmptyItem(R.dimen.dimen_8),
-        CustomGroupItem(buildActorItems(data.cast)),
-        CustomEmptyItem(R.dimen.dimen_32),
-    )
-
-    private fun buildGroupLoadingItems(
-        countItems: Int,
-        @DimenRes itemWidthRes: Int,
-        @DimenRes itemHeightRes: Int,
-        @DimenRes itemCornerRoundRes: Int?,
-        @DimenRes spaceBetweenItems: Int?,
-    ) = mutableListOf<Item>()
+    private fun buildItems(data: MovieData): List<Item> = mutableListOf<Item>()
         .apply {
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-            for (i in 1..countItems) {
-                add(
-                    CustomLoadingItem(
-                        widthRes = itemWidthRes,
-                        heightRes = itemHeightRes,
-                        cornerRadiusRes = itemCornerRoundRes
-                    )
-                )
-                spaceBetweenItems?.let {
-                    if (i < countItems) add(CustomEmptyItem(widthRes = it))
-                }
-            }
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            // rate
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_rate).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            RatingItem(data.details.voteAverage, data.details.voteCount).addTo(this)
+        }
+        .apply {
+            // description
+            if (data.details.overview.isBlank()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_description).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            DescriptionItem(data.details.overview).addTo(this)
+        }
+        .apply {
+            // trailers
+            if (data.trailers.isEmpty()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_trailers).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            CustomGroupItem(buildTrailerItems(data.trailers)).addTo(this)
+        }
+        .apply {
+            // genre
+            if (data.details.genres.isEmpty()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_genre).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            GenreItem(data.details.genres).addTo(this)
+        }
+        .apply {
+            // cast
+            if (data.cast.isEmpty()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_cast).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            CustomGroupItem(buildActorItems(data.cast)).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_32).addTo(this)
         }
 
     private fun buildLoadingLineItem() = CustomLoadingItem(
@@ -197,15 +182,11 @@ class MovieViewModel(
 
     private fun buildTrailerItems(listActor: List<Trailer>) = mutableListOf<Item>()
         .apply {
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             listActor.forEach {
                 if (it.official) {
-                    add(
-                        TrailerItem(it, defaultImageLoader) { trailer ->
-                            navigator.toYoutube(trailer.key)
-                        }
-                    )
-                    add(CustomEmptyItem(widthRes = R.dimen.dimen_16))
+                    TrailerItem(it, defaultImageLoader) { trailer -> navigator.toYoutube(trailer.key) }.addTo(this)
+                    CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
                 }
             }
         }
@@ -213,14 +194,12 @@ class MovieViewModel(
 
     private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
         .apply {
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             listActor.forEach {
-                add(
-                    ActorItem(it, defaultImageLoader) { actor, extras ->
-                        navigator.toActor(actor.id, actor.profilePath, extras)
-                    }
-                )
-                add(CustomEmptyItem(widthRes = R.dimen.dimen_16))
+                ActorItem(it, defaultImageLoader) { actor, extras ->
+                    navigator.toActor(actor.id, actor.profilePath, extras)
+                }.addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
         }
         .toList()

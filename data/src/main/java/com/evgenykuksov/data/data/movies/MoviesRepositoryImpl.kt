@@ -35,6 +35,7 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
         .flowOn(Dispatchers.IO)
 
     override fun getTrailers(movieId: Long): Flow<List<Trailer>> = remoteDataSource.getTrailers(movieId)
-        .map { it.results.map { it.toDomain() } }
+        .map { it.results.filter { it.official == true } }
+        .map { it.map { it.toDomain() } }
         .flowOn(Dispatchers.IO)
 }

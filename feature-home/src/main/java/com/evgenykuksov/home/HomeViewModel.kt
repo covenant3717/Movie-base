@@ -8,6 +8,7 @@ import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.core.base.BaseViewModel
+import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.home.items.MovieItem
@@ -79,30 +80,26 @@ class HomeViewModel(
 
     private fun buildMoviesLinearItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
-                add(
-                    MovieItem(it, defaultImageLoader, R.dimen.dimen_20) { movie, extras ->
-                        navigator.toMovie(movie.id, movie.posterPath, extras)
-                    }
-                )
-                add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+                MovieItem(it, defaultImageLoader, R.dimen.dimen_20) { movie, extras ->
+                    navigator.toMovie(movie.id, movie.posterPath, extras)
+                }.addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             }
         }
 
     private fun buildMoviesGridItems(list: List<Movie>): List<Item> = mutableListOf<Item>()
         .apply {
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
-                add(
-                    MovieItem(it, defaultImageLoader, null) { movie, extras ->
-                        navigator.toMovie(movie.id, movie.posterPath, extras)
-                    }
-                )
+                MovieItem(it, defaultImageLoader, null) { movie, extras ->
+                    navigator.toMovie(movie.id, movie.posterPath, extras)
+                }.addTo(this)
             }
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
-            add(CustomEmptyItem(widthRes = R.dimen.dimen_20))
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
         }
 
     private fun handleChangeGrouping(grouping: MoviesGrouping) = moviesData?.let {
