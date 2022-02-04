@@ -41,7 +41,7 @@ internal fun MovieDetailsRemote.toDomain() = MovieDetails(
 
 internal fun GenreRemote.toDomain() = Genre(
     id = id.orNegativeDefault(),
-    name = name.orEmpty()
+    name = name.orEmpty().replaceFirstChar { it.uppercase() }
 )
 
 internal fun ActorRemote.toDomain() = Actor(

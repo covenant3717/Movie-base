@@ -31,11 +31,10 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
 
     override fun getCast(movieId: Long): Flow<List<Actor>> = remoteDataSource.getCast(movieId)
         .map { it.cast.orEmpty() }
-        .map { it.map { actorRemote -> actorRemote.toDomain() } }
+        .map { it.map { it.toDomain() } }
         .flowOn(Dispatchers.IO)
 
     override fun getTrailers(movieId: Long): Flow<List<Trailer>> = remoteDataSource.getTrailers(movieId)
-        .map { it.results.filter { it.official == true } }
-        .map { it.map { it.toDomain() } }
+        .map { it.results.map { it.toDomain() } }
         .flowOn(Dispatchers.IO)
 }

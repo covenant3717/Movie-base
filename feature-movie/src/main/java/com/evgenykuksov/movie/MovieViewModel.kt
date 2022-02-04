@@ -15,7 +15,6 @@ import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -46,7 +45,6 @@ class MovieViewModel(
                 setSingleEvent(MovieContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                delay(5000)
                 setState {
                     copy(
                         backdrop = it.details.backdropPath,
@@ -184,10 +182,8 @@ class MovieViewModel(
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             listActor.forEach {
-                if (it.official) {
-                    TrailerItem(it, defaultImageLoader) { trailer -> navigator.toYoutube(trailer.key) }.addTo(this)
-                    CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
-                }
+                TrailerItem(it, defaultImageLoader) { trailer -> navigator.toYoutube(trailer.key) }.addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
         }
         .toList()

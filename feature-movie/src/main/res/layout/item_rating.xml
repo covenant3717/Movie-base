@@ -38,7 +38,7 @@
         android:isIndicator="true"
         android:max="10"
         android:numStars="5"
-        android:progressBackgroundTint="@android:color/transparent"
+        android:progressBackgroundTint="@color/item_rating_bar_star_back"
         android:progressTint="@color/item_rating_bar_star"
         android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="@id/tvVoteCount"
