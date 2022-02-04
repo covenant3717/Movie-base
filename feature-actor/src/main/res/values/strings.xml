@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="dialog_property_birthday">Birthday:</string>
-    <string name="dialog_property_place_of_birth">Place of birth:</string>
-    <string name="dialog_property_popularity">Popularity:</string>
+    <string name="dialog_property_birthday">День рождения:</string>
+    <string name="dialog_property_place_of_birth">Место рождения:</string>
+    <string name="dialog_property_popularity">Поплуярность:</string>
+
+    <!--english strings-->
+<!--    <string name="dialog_property_birthday">Birthday:</string>-->
+<!--    <string name="dialog_property_place_of_birth">Place of birth:</string>-->
+<!--    <string name="dialog_property_popularity">Popularity:</string>-->
 </resources>

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="item_title_rate">Rate / Votes</string>
-    <string name="item_title_description">Description</string>
-    <string name="item_title_genre">Genre</string>
-    <string name="item_title_trailers">Trailers</string>
-    <string name="item_title_cast">Cast</string>
+    <string name="item_title_rate">Рейтнг / Голоса</string>
+    <string name="item_title_description">Описание</string>
+    <string name="item_title_genre">Жанр</string>
+    <string name="item_title_trailers">Трейлеры</string>
+    <string name="item_title_cast">Актеры</string>
     <string name="item_vote_count">/ %s</string>
+
+    <!--english strings-->
+<!--    <string name="item_title_rate">Rate / Votes</string>-->
+<!--    <string name="item_title_description">Description</string>-->
+<!--    <string name="item_title_genre">Genre</string>-->
+<!--    <string name="item_title_trailers">Trailers</string>-->
+<!--    <string name="item_title_cast">Cast</string>-->
+<!--    <string name="item_vote_count">/ %s</string>-->
 </resources>

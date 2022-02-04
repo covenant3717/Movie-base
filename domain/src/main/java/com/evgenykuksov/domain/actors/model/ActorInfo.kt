@@ -7,5 +7,5 @@ data class ActorInfo(
     val placeOfBirth: String,
     val popularity: Float,
     val biography: String,
-    val profilePhoto: String,
+    val profilePhoto: String
 )

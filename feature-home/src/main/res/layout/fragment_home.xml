@@ -141,7 +141,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        tools:text="@string/title_your_rank_value" />
+        tools:text="4 523" />
 
     <com.evgenykuksov.home.view.RatingView
         android:id="@+id/ratingView"
