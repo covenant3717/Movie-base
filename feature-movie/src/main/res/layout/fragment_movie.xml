@@ -44,6 +44,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
+    <ImageView
+        android:id="@+id/imgBookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBackdrop"
+        app:srcCompat="@drawable/ic_bookmark_check" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBackdrops"
         android:layout_width="0dp"
@@ -74,11 +83,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_16"
-        android:layout_marginEnd="@dimen/dimen_20"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="@color/tv_movie_name"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgBookmark"
         app:layout_constraintStart_toEndOf="@+id/imgPoster"
         app:layout_constraintTop_toBottomOf="@+id/imgBackdrop"
         tools:text="TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle" />

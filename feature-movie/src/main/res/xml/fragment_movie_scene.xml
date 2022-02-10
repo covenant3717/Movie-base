@@ -27,8 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_16"
-            android:layout_marginEnd="@dimen/dimen_20"
-            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintEnd_toStartOf="@+id/imgBookmark"
             motion:layout_constraintStart_toEndOf="@+id/imgPoster"
             motion:layout_constraintTop_toBottomOf="@+id/imgBackdrop">
             <CustomAttribute
