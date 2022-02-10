@@ -47,16 +47,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBackdrops"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dimen_14"
+        android:layout_height="38dp"
+        android:layout_marginStart="@dimen/dimen_120"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/dimen_4"
         android:paddingBottom="@dimen/dimen_4"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/imgBackdrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgPoster"
-        app:layout_constraintTop_toTopOf="@+id/imgPoster"
+        app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_backdrop" />
 
     <androidx.appcompat.widget.AppCompatImageView

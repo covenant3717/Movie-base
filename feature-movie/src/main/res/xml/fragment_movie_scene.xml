@@ -92,21 +92,27 @@
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:layout_marginStart="@dimen/dimen_20"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="220dp"
-            android:translationX="-200dp"
             android:alpha="0"
-            android:translationY="-300dp" />
-        <Constraint
-            motion:layout_constraintVertical_bias="1.0"
-            android:layout_height="0dp"
+            android:translationX="-200dp"
+            android:translationY="-300dp"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintHorizontal_bias="1.0"
-            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/rvDetails"
             android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/imgBackdrop"
-            android:id="@+id/rvDetails" />
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:id="@+id/rvBackdrops"
+            android:layout_width="1dp"
+            android:layout_height="38dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/imgBackdrop"
+            motion:layout_constraintEnd_toEndOf="parent" />
     </ConstraintSet>
 </MotionScene>
