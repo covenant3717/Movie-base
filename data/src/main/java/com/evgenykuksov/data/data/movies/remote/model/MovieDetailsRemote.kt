@@ -7,6 +7,7 @@ internal data class MovieDetailsRemote(
     @SerializedName("title") val title: String?,
     @SerializedName("backdrop_path") val backdropPath: String?,
     @SerializedName("budget") val budget: Int?,
+    @SerializedName("revenue") val revenue: Int?,
     @SerializedName("genres") val genres: List<GenreRemote>?,
     @SerializedName("overview") val overview: String?,
     @SerializedName("popularity") val popularity: Float?,

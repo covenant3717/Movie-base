@@ -29,6 +29,7 @@ internal fun MovieDetailsRemote.toDomain() = MovieDetails(
     title = title.orEmpty(),
     backdropPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, backdropPath.orEmpty()),
     budget = budget.orZero(),
+    revenue = revenue.orZero(),
     genres = genres?.map { it.toDomain() }.orEmpty(),
     overview = overview.orEmpty(),
     popularity = popularity.orZero(),

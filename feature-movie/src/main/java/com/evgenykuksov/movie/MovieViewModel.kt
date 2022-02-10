@@ -114,6 +114,12 @@ class MovieViewModel(
             )
         ),
 
+        // finance
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_finance),
+        CustomEmptyItem(R.dimen.dimen_8),
+        buildLoadingLineItem(),
+
         // cast
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_cast),
@@ -175,6 +181,14 @@ class MovieViewModel(
             buildTitleItem(R.string.item_title_genre).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
             GenreItem(data.details.genres).addTo(this)
+        }
+        .apply {
+            // finance
+            if (data.details.revenue == 0 && data.details.budget == 0) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_finance).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            FinanceItem(data.details.revenue, data.details.budget).addTo(this)
         }
         .apply {
             // cast

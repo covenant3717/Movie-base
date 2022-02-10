@@ -4,6 +4,9 @@
     <string name="item_title_rate">Рейтнг / Голоса</string>
     <string name="item_title_description">Описание</string>
     <string name="item_title_genre">Жанр</string>
+    <string name="item_title_finance">Кассовые сборы / Затраты</string>
+    <string name="item_title_revenue">$%s</string>
+    <string name="item_title_costs">/ $%s</string>
     <string name="item_title_trailers">Трейлеры</string>
     <string name="item_title_cast">Актеры</string>
     <string name="item_vote_count">/ %s</string>
@@ -13,6 +16,9 @@
 <!--    <string name="item_title_rate">Rate / Votes</string>-->
 <!--    <string name="item_title_description">Description</string>-->
 <!--    <string name="item_title_genre">Genre</string>-->
+<!--    <string name="item_title_finance">Revenue / Costs</string>-->
+<!--    <string name="item_title_revenue">$%s</string>-->
+<!--    <string name="item_title_costs">/ $%s</string>-->
 <!--    <string name="item_title_trailers">Trailers</string>-->
 <!--    <string name="item_title_cast">Cast</string>-->
 <!--    <string name="item_vote_count">/ %s</string>-->
