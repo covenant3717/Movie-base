@@ -65,3 +65,20 @@ internal fun MovieImagesRemote.toDomain() = MovieImages(
     backdrops = backdrops?.map { TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, it.file_path.orEmpty()) }.orEmpty(),
     posters = posters?.map { TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, it.file_path.orEmpty()) }.orEmpty(),
 )
+
+internal fun Map<String, MovieProviderDataRemote>.toDomain() = this.map {
+    MovieProviders(
+        locale = it.key,
+        link = it.value.link.orEmpty(),
+        flatrate = it.value.flatrate.orEmpty().map { it.toDomain() },
+        rent = it.value.rent.orEmpty().map { it.toDomain() },
+        buy = it.value.buy.orEmpty().map { it.toDomain() }
+    )
+}
+
+internal fun MovieProviderRemote.toDomain() = MovieProvider(
+    id = providerId,
+    name = providerName.orEmpty(),
+    logoPath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, logoPath.orEmpty()),
+    displayPriority = displayPriority.orZero()
+)

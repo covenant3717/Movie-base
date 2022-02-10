@@ -20,7 +20,8 @@ class MoviesUseCaseImpl(private val repository: MoviesRepository) : MoviesUseCas
         repository.getCast(movieId),
         repository.getTrailers(movieId),
         repository.getImages(movieId),
-    ) { details, cast, videos, images ->
-        MovieData(details, cast, videos, images)
+        repository.getProviders(movieId),
+    ) { details, cast, videos, images, providers ->
+        MovieData(details, cast, videos, images, providers)
     }
 }

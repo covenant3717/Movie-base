@@ -1,10 +1,11 @@
 package com.evgenykuksov.data.data.movies.remote
 
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
-import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
-import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieProvidersRemote
+import com.evgenykuksov.data.data.movies.remote.model.TrailersRemote
 import kotlinx.coroutines.flow.Flow
 
 internal interface MoviesRemoteDataSource {
@@ -19,7 +20,9 @@ internal interface MoviesRemoteDataSource {
 
     fun getCast(movieId: Long): Flow<CastRemote>
 
-    fun getTrailers(movieId: Long): Flow<VideosRemote>
+    fun getTrailers(movieId: Long): Flow<TrailersRemote>
 
     fun getImages(movieId: Long): Flow<MovieImagesRemote>
+
+    fun getProviders(movieId: Long): Flow<MovieProvidersRemote>
 }

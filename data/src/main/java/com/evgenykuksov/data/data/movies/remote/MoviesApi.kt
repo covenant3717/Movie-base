@@ -1,10 +1,11 @@
 package com.evgenykuksov.data.data.movies.remote
 
 import com.evgenykuksov.data.data.movies.remote.model.CastRemote
-import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
-import com.evgenykuksov.data.data.movies.remote.model.VideosRemote
+import com.evgenykuksov.data.data.movies.remote.model.MovieProvidersRemote
+import com.evgenykuksov.data.data.movies.remote.model.TrailersRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -26,8 +27,11 @@ internal interface MoviesApi {
     suspend fun getCast(@Path("movie_id") id: Long): CastRemote
 
     @GET("movie/{movie_id}/videos")
-    suspend fun getTrailers(@Path("movie_id") id: Long): VideosRemote
+    suspend fun getTrailers(@Path("movie_id") id: Long): TrailersRemote
 
     @GET("movie/{movie_id}/images")
     suspend fun getImages(@Path("movie_id") id: Long): MovieImagesRemote
+
+    @GET("movie/{movie_id}/watch/providers")
+    suspend fun getProviders(@Path("movie_id") id: Long): MovieProvidersRemote
 }

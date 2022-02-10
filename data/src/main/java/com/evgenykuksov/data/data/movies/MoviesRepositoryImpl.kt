@@ -5,6 +5,7 @@ import com.evgenykuksov.domain.movies.MoviesRepository
 import com.evgenykuksov.domain.movies.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
@@ -36,6 +37,11 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
         .flowOn(Dispatchers.IO)
 
     override fun getImages(movieId: Long): Flow<MovieImages> = remoteDataSource.getImages(movieId)
+        .map { it.toDomain() }
+        .flowOn(Dispatchers.IO)
+
+    override fun getProviders(movieId: Long): Flow<List<MovieProviders>> = remoteDataSource.getProviders(movieId)
+        .map { it.results.filterKeys { it == "RU" } }// todo: language
         .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 }

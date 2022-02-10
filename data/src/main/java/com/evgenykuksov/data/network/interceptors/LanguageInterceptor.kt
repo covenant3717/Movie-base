@@ -16,6 +16,6 @@ internal class LanguageInterceptor : Interceptor {
     companion object {
 
         private const val QUERY_LANGUAGE = "language"
-        private const val QUERY_LANGUAGE_VALUE = "ru"
+        private const val QUERY_LANGUAGE_VALUE = "ru" // todo: language
     }
 }
