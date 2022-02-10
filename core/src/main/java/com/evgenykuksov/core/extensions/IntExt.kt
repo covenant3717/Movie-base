@@ -12,3 +12,9 @@ fun Int.insertSpaces(step: Int): String =
         .map { it.joinToString(separator = "") }
         .joinToString(separator = " ")
         .reversed()
+
+fun Int.toHoursMinutes(): Pair<Int, Int> {
+    val hours = this / 60
+    val minutes = this % 60
+    return Pair(hours, minutes)
+}

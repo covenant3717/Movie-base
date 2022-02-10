@@ -2,6 +2,7 @@
 <resources>
     <color name="tv_movie_name">#B3FFFFFF</color>
     <color name="tv_movie_date">#4DFFFFFF</color>
+    <color name="tv_movie_duration">#33FFFFFF</color>
     <color name="item_title">#33FFFFFF</color>
     <color name="item_description">#66FFFFFF</color>
     <color name="item_description_gradient_start">@color/core_background</color>

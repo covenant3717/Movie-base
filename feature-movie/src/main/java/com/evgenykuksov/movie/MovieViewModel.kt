@@ -29,7 +29,7 @@ class MovieViewModel(
         load(movieId)
     }
 
-    override fun createInitialState() = MovieContract.State(null, "", "", 0, null, null)
+    override fun createInitialState() = MovieContract.State(null, null, null, null, null, null, null)
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
@@ -50,6 +50,7 @@ class MovieViewModel(
                         backdrop = it.details.backdropPath,
                         name = it.details.title,
                         date = it.details.releaseDate,
+                        duration = it.details.runtime,
                         delayUpdateItems = DELAY_UPDATING_ITEMS,
                         listBackdrops = buildBackdropsItems(it.images.backdrops),
                         listItems = buildDetailsItems(it)

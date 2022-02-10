@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="movie_duration">%dч %dмин</string>
     <string name="item_title_rate">Рейтнг / Голоса</string>
     <string name="item_title_description">Описание</string>
     <string name="item_title_genre">Жанр</string>
@@ -8,6 +9,7 @@
     <string name="item_vote_count">/ %s</string>
 
     <!--english strings-->
+<!--    <string name="movie_duration">%dh %dmin</string>-->
 <!--    <string name="item_title_rate">Rate / Votes</string>-->
 <!--    <string name="item_title_description">Description</string>-->
 <!--    <string name="item_title_genre">Genre</string>-->

@@ -13,6 +13,7 @@ import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
+import com.evgenykuksov.core.extensions.toHoursMinutes
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
@@ -73,9 +74,12 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 }
                 tvName.text = it.name
                 tvDate.text = it.date
-                delay(it.delayUpdateItems)
-                it.listBackdrops?.let { list -> backdropSection.update(list) }
-                it.listItems?.let { list -> detailsSection.update(list) }
+                tvDuration.text = it.duration?.toHoursMinutes()?.let {
+                    getString(R.string.movie_duration, it.first, it.second)
+                }
+                it.delayUpdateItems?.let { delay(it) }
+                it.listBackdrops?.let { backdropSection.update(it) }
+                it.listItems?.let { detailsSection.update(it) }
             }
         }
     }
