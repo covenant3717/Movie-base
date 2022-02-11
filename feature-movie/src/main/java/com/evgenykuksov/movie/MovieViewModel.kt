@@ -10,6 +10,7 @@ import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.*
+import com.evgenykuksov.domain.movies.model.MovieProvider
 import com.evgenykuksov.domain.movies.model.Trailer
 import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.RatingItem
@@ -120,6 +121,20 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_8),
         buildLoadingLineItem(),
 
+        // providers
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_providers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 4,
+                itemWidthRes = R.dimen.dimen_40,
+                itemHeightRes = R.dimen.dimen_40,
+                itemCornerRoundRes = R.dimen.dimen_10,
+                spaceBetweenItems = R.dimen.dimen_8
+            )
+        ),
+
         // cast
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_cast),
@@ -133,6 +148,7 @@ class MovieViewModel(
                 spaceBetweenItems = R.dimen.dimen_20
             )
         ),
+
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
@@ -191,14 +207,22 @@ class MovieViewModel(
             FinanceItem(data.details.revenue, data.details.budget).addTo(this)
         }
         .apply {
+            // providers
+            if (data.providers.isEmpty()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_providers).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            CustomGroupItem(buildProviderItems(data.providers)).addTo(this)
+        }
+        .apply {
             // cast
             if (data.cast.isEmpty()) return@apply
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
             buildTitleItem(R.string.item_title_cast).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
             CustomGroupItem(buildActorItems(data.cast)).addTo(this)
-            CustomEmptyItem(R.dimen.dimen_32).addTo(this)
         }
+        .apply { CustomEmptyItem(R.dimen.dimen_32).addTo(this) }
 
     private fun buildLoadingLineItem() = CustomLoadingItem(
         widthLayoutParams = ViewGroup.LayoutParams.MATCH_PARENT,
@@ -206,20 +230,34 @@ class MovieViewModel(
         marginStartEndRes = R.dimen.dimen_20,
     )
 
-    private fun buildTrailerItems(listActor: List<Trailer>) = mutableListOf<Item>()
+    private fun buildTrailerItems(list: List<Trailer>) = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
-            listActor.forEach {
-                TrailerItem(it, defaultImageLoader) { trailer -> navigator.toYoutube(trailer.key) }.addTo(this)
+            list.forEach {
+                TrailerItem(it, defaultImageLoader) { trailer ->
+                    navigator.toYoutube(trailer.key)
+                }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
         }
         .toList()
 
-    private fun buildActorItems(listActor: List<Actor>) = mutableListOf<Item>()
+    private fun buildProviderItems(list: List<MovieProvider>) = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
-            listActor.forEach {
+            list.forEach {
+                ProviderItem(it, defaultImageLoader) { provider ->
+                    // todo
+                }.addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_8).addTo(this)
+            }
+        }
+        .toList()
+
+    private fun buildActorItems(list: List<Actor>) = mutableListOf<Item>()
+        .apply {
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+            list.forEach {
                 ActorItem(it, defaultImageLoader) { actor, extras ->
                     navigator.toActor(actor.id, actor.profilePath, extras)
                 }.addTo(this)

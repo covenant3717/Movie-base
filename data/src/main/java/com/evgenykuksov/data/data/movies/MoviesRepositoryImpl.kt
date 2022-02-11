@@ -42,5 +42,6 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
     override fun getProviders(movieId: Long): Flow<List<MovieProvider>> = remoteDataSource.getProviders(movieId)
         .map { it.results.getOrDefault("RU", null) }
         .map { it?.toDomain() ?: emptyList() }
+        .map { it.distinctBy { it.id } }
         .flowOn(Dispatchers.IO)
 }
