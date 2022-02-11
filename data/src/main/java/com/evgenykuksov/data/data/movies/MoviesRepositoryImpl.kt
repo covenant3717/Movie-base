@@ -3,6 +3,7 @@ package com.evgenykuksov.data.data.movies
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteDataSource
 import com.evgenykuksov.domain.movies.MoviesRepository
 import com.evgenykuksov.domain.movies.model.*
+import com.evgenykuksov.domain.movies.model.Credits
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -26,9 +27,8 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
         .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 
-    override fun getCast(movieId: Long): Flow<List<Actor>> = remoteDataSource.getCast(movieId)
-        .map { it.cast.orEmpty() }
-        .map { it.map { it.toDomain() } }
+    override fun getCredits(movieId: Long): Flow<Credits> = remoteDataSource.getCredits(movieId)
+        .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 
     override fun getTrailers(movieId: Long): Flow<List<Trailer>> = remoteDataSource.getTrailers(movieId)

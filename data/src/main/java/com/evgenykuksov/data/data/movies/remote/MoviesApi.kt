@@ -1,6 +1,6 @@
 package com.evgenykuksov.data.data.movies.remote
 
-import com.evgenykuksov.data.data.movies.remote.model.CastRemote
+import com.evgenykuksov.data.data.movies.remote.model.CreditsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
 import com.evgenykuksov.data.data.movies.remote.model.MoviesDataRemote
@@ -24,7 +24,7 @@ internal interface MoviesApi {
     suspend fun getDetails(@Path("movie_id") id: Long): MovieDetailsRemote
 
     @GET("movie/{movie_id}/credits")
-    suspend fun getCast(@Path("movie_id") id: Long): CastRemote
+    suspend fun getCredits(@Path("movie_id") id: Long): CreditsRemote
 
     @GET("movie/{movie_id}/videos")
     suspend fun getTrailers(@Path("movie_id") id: Long): TrailersRemote

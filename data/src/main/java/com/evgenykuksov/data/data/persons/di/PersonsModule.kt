@@ -1,9 +1,9 @@
-package com.evgenykuksov.data.data.actors.di
+package com.evgenykuksov.data.data.persons.di
 
-import com.evgenykuksov.data.data.actors.PersonsRepositoryImpl
-import com.evgenykuksov.data.data.actors.remote.PersonsRemoteDataSource
-import com.evgenykuksov.data.data.actors.remote.PersonsRemoteStoreImpl
-import com.evgenykuksov.data.data.actors.remote.PersonsApi
+import com.evgenykuksov.data.data.persons.PersonsRepositoryImpl
+import com.evgenykuksov.data.data.persons.remote.PersonsRemoteDataSource
+import com.evgenykuksov.data.data.persons.remote.PersonsRemoteStoreImpl
+import com.evgenykuksov.data.data.persons.remote.PersonsApi
 import com.evgenykuksov.domain.persons.PersonsRepository
 import org.koin.dsl.module
 import retrofit2.Retrofit

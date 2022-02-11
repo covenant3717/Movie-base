@@ -17,11 +17,11 @@ class MoviesUseCaseImpl(private val repository: MoviesRepository) : MoviesUseCas
 
     override fun getMovieData(movieId: Long): Flow<MovieData> = combine(
         repository.getDetails(movieId),
-        repository.getCast(movieId),
+        repository.getCredits(movieId),
         repository.getTrailers(movieId),
         repository.getImages(movieId),
         repository.getProviders(movieId),
-    ) { details, cast, videos, images, providers ->
-        MovieData(details, cast, videos, images, providers)
+    ) { details, credits, videos, images, providers ->
+        MovieData(details, credits, videos, images, providers)
     }
 }

@@ -1,6 +1,6 @@
 package com.evgenykuksov.domain.persons.model
 
-data class Actor(
+data class ActorInfo(
     val id: Long,
     val name: String,
     val birthday: String,

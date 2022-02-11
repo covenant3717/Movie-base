@@ -1,6 +1,6 @@
 package com.evgenykuksov.data.di
 
-import com.evgenykuksov.data.data.actors.di.personsModule
+import com.evgenykuksov.data.data.persons.di.personsModule
 import com.evgenykuksov.data.data.movies.di.movieModule
 import com.evgenykuksov.data.data.profile.di.profileModule
 

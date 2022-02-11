@@ -3,7 +3,7 @@ package com.evgenykuksov.actor
 import android.view.Gravity
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.domain.persons.PersonsUseCase
-import com.evgenykuksov.domain.persons.model.Actor
+import com.evgenykuksov.domain.persons.model.ActorInfo
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.evgenykuksov.actor.items.DescriptionItem
@@ -18,7 +18,7 @@ class ActorViewModel(
     private val personsUseCase: PersonsUseCase,
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
-    private var actorInfo: Actor? = null
+    private var actorInfoInfo: ActorInfo? = null
 
     init {
         load(actorId)
@@ -38,14 +38,14 @@ class ActorViewModel(
                 setSingleEvent(ActorContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                actorInfo = it
+                actorInfoInfo = it
                 setState { copy(photo = it.profilePhoto) }
             }
     }
 
-    private fun buildItems(actor: Actor): List<Item> = listOf(
+    private fun buildItems(actorInfo: ActorInfo): List<Item> = listOf(
         CustomTextItem(
-            textContent = actor.name,
+            textContent = actorInfo.name,
             styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
             colorRes = R.color.dialog_actor_name,
             startPaddingRes = R.dimen.dimen_20,
@@ -53,20 +53,20 @@ class ActorViewModel(
             gravityState = Gravity.CENTER_HORIZONTAL
         ),
         CustomEmptyItem(R.dimen.dimen_24),
-        ActorPropertyItem(R.string.dialog_property_birthday, actor.birthday),
+        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.dialog_property_place_of_birth, actor.placeOfBirth),
+        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.dialog_property_popularity, actor.popularity.toString()),
+        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
         CustomEmptyItem(R.dimen.dimen_12),
-        DescriptionItem(actor.biography),
+        DescriptionItem(actorInfo.biography),
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun handleTouchBtnInfo() {
-        val items = actorInfo?.let { buildItems(it) } ?: buildErrorItems()
+        val items = actorInfoInfo?.let { buildItems(it) } ?: buildErrorItems()
         setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
     }
 }

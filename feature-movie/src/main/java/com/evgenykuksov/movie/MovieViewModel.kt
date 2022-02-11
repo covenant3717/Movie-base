@@ -135,7 +135,7 @@ class MovieViewModel(
             )
         ),
 
-        // cast
+        // actors
         CustomEmptyItem(R.dimen.dimen_20),
         buildTitleItem(R.string.item_title_cast),
         CustomEmptyItem(R.dimen.dimen_8),
@@ -215,12 +215,12 @@ class MovieViewModel(
             CustomGroupItem(buildProviderItems(data.providers)).addTo(this)
         }
         .apply {
-            // cast
-            if (data.cast.isEmpty()) return@apply
+            // actors
+            if (data.credits.actors.isEmpty()) return@apply
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
             buildTitleItem(R.string.item_title_cast).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
-            CustomGroupItem(buildActorItems(data.cast)).addTo(this)
+            CustomGroupItem(buildActorItems(data.credits.actors)).addTo(this)
         }
         .apply { CustomEmptyItem(R.dimen.dimen_32).addTo(this) }
 

@@ -1,4 +1,4 @@
-package com.evgenykuksov.data.data.actors.remote
+package com.evgenykuksov.data.data.persons.remote
 
 import kotlinx.coroutines.flow.flow
 

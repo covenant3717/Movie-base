@@ -45,11 +45,24 @@ internal fun GenreRemote.toDomain() = Genre(
     name = name.orEmpty().replaceFirstChar { it.uppercase() }
 )
 
+internal fun CreditsRemote.toDomain() = Credits(
+    actors = cast?.map { it.toDomain() }.orEmpty(),
+    workers = crew?.map { it.toDomain() }.orEmpty()
+)
+
 internal fun ActorRemote.toDomain() = Actor(
     id = id.orNegativeDefault(),
     name = name.orEmpty(),
     profilePath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, profilePath.orEmpty()),
     character = character.orEmpty()
+)
+
+internal fun WorkerRemote.toDomain() = Worker(
+    id = id.orNegativeDefault(),
+    name = name.orEmpty(),
+    profilePath = TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, profilePath.orEmpty()),
+    department = department.orEmpty(),
+    job = job.orEmpty()
 )
 
 internal fun TrailerRemote.toDomain() = Trailer(
