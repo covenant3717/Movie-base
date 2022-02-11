@@ -2,8 +2,8 @@ package com.evgenykuksov.actor
 
 import android.view.Gravity
 import androidx.lifecycle.viewModelScope
-import com.evgenykuksov.domain.actors.ActorsUseCase
-import com.evgenykuksov.domain.actors.model.ActorInfo
+import com.evgenykuksov.domain.persons.PersonsUseCase
+import com.evgenykuksov.domain.persons.model.Actor
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.evgenykuksov.actor.items.DescriptionItem
@@ -15,10 +15,10 @@ import kotlinx.coroutines.launch
 
 class ActorViewModel(
     private val actorId: Long,
-    private val actorsUseCase: ActorsUseCase,
+    private val personsUseCase: PersonsUseCase,
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
-    private var actorInfo: ActorInfo? = null
+    private var actorInfo: Actor? = null
 
     init {
         load(actorId)
@@ -33,7 +33,7 @@ class ActorViewModel(
     }
 
     private fun load(actorId: Long) = viewModelScope.launch {
-        actorsUseCase.getActorInfo(actorId)
+        personsUseCase.getActor(actorId)
             .catch { exception ->
                 setSingleEvent(ActorContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
@@ -43,9 +43,9 @@ class ActorViewModel(
             }
     }
 
-    private fun buildItems(actorInfo: ActorInfo): List<Item> = listOf(
+    private fun buildItems(actor: Actor): List<Item> = listOf(
         CustomTextItem(
-            textContent = actorInfo.name,
+            textContent = actor.name,
             styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
             colorRes = R.color.dialog_actor_name,
             startPaddingRes = R.dimen.dimen_20,
@@ -53,13 +53,13 @@ class ActorViewModel(
             gravityState = Gravity.CENTER_HORIZONTAL
         ),
         CustomEmptyItem(R.dimen.dimen_24),
-        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
+        ActorPropertyItem(R.string.dialog_property_birthday, actor.birthday),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
+        ActorPropertyItem(R.string.dialog_property_place_of_birth, actor.placeOfBirth),
         CustomEmptyItem(R.dimen.dimen_12),
-        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
+        ActorPropertyItem(R.string.dialog_property_popularity, actor.popularity.toString()),
         CustomEmptyItem(R.dimen.dimen_12),
-        DescriptionItem(actorInfo.biography),
+        DescriptionItem(actor.biography),
         CustomEmptyItem(R.dimen.dimen_32)
     )
 

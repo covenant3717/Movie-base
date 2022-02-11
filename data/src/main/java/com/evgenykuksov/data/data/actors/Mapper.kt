@@ -3,11 +3,11 @@ package com.evgenykuksov.data.data.actors
 import com.evgenykuksov.core.extensions.isCyrillicLetters
 import com.evgenykuksov.core.extensions.orNegativeDefault
 import com.evgenykuksov.core.extensions.orZero
-import com.evgenykuksov.data.data.actors.remote.model.ActorInfoRemote
+import com.evgenykuksov.data.data.actors.remote.model.ActorRemote
 import com.evgenykuksov.data.util.TmdbImagePath
-import com.evgenykuksov.domain.actors.model.ActorInfo
+import com.evgenykuksov.domain.persons.model.Actor
 
-internal fun ActorInfoRemote.toDomain() = ActorInfo(
+internal fun ActorRemote.toDomain() = Actor(
     id = id.orNegativeDefault(),
     name = listNames?.find { it.isCyrillicLetters() } ?: name.orEmpty(),
     birthday = birthday.orEmpty(),

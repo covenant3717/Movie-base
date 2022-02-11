@@ -1,7 +1,7 @@
 package com.evgenykuksov.moviebase.di
 
-import com.evgenykuksov.domain.actors.ActorsUseCase
-import com.evgenykuksov.domain.actors.ActorsUseCaseImpl
+import com.evgenykuksov.domain.persons.PersonsUseCase
+import com.evgenykuksov.domain.persons.PersonsUseCaseImpl
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.MoviesUseCaseImpl
 import com.evgenykuksov.domain.profile.ProfileUseCase
@@ -12,5 +12,5 @@ internal val useCasesModule = module {
 
     single<MoviesUseCase> { MoviesUseCaseImpl(get()) }
     single<ProfileUseCase> { ProfileUseCaseImpl(get()) }
-    single<ActorsUseCase> { ActorsUseCaseImpl(get()) }
+    single<PersonsUseCase> { PersonsUseCaseImpl(get()) }
 }
