@@ -48,6 +48,9 @@ internal fun GenreRemote.toDomain() = Genre(
 internal fun CreditsRemote.toDomain() = Credits(
     actors = cast?.map { it.toDomain() }.orEmpty(),
     workers = crew?.map { it.toDomain() }.orEmpty()
+        .sortedBy { it.profilePath.length }
+        .reversed()
+        .distinctBy { it.id }
 )
 
 internal fun ActorRemote.toDomain() = Actor(
