@@ -19,5 +19,5 @@ interface MoviesRepository {
 
     fun getImages(movieId: Long): Flow<MovieImages>
 
-    fun getProviders(movieId: Long): Flow<List<MovieProviders>>
+    fun getProviders(movieId: Long): Flow<List<MovieProvider>>
 }

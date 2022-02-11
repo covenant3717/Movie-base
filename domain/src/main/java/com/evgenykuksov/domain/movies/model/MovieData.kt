@@ -5,5 +5,5 @@ data class MovieData(
     val cast: List<Actor>,
     val trailers: List<Trailer>,
     val images: MovieImages,
-    val providersData: List<MovieProviders>,
+    val providers: List<MovieProvider>,
 )
