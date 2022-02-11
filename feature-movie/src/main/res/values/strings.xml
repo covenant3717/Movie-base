@@ -10,6 +10,7 @@
     <string name="item_title_trailers">Трейлеры</string>
     <string name="item_title_providers">Доступен на сервисах</string>
     <string name="item_title_cast">Актеры</string>
+    <string name="item_title_workers">Съёмочная группа</string>
     <string name="item_vote_count">/ %s</string>
 
     <!--english strings-->
@@ -22,5 +23,6 @@
 <!--    <string name="item_title_costs">/ $%s</string>-->
 <!--    <string name="item_title_trailers">Trailers</string>-->
 <!--    <string name="item_title_cast">Cast</string>-->
+<!--    <string name="item_title_workers">Crew</string>-->
 <!--    <string name="item_vote_count">/ %s</string>-->
 </resources>

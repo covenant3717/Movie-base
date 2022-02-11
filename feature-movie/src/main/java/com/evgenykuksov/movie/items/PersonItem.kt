@@ -8,26 +8,25 @@ import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.evgenykuksov.core.anim.startAnimationScale
-import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.android.synthetic.main.item_actor.view.*
+import kotlinx.android.synthetic.main.item_person.view.*
 
-internal data class ActorItem(
-    private val actor: Actor,
+internal data class PersonItem(
+    private val imagePath: String,
     private val defaultImageLoader: ImageLoader,
-    private val onClick: (actor: Actor, extras: FragmentNavigator.Extras) -> Unit
+    private val onClick: (extras: FragmentNavigator.Extras) -> Unit
 ) : Item() {
 
-    override fun getLayout(): Int = R.layout.item_actor
+    override fun getLayout(): Int = R.layout.item_person
 
     @SuppressLint("ClickableViewAccessibility")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
-            imgActor.apply {
-                transitionName = actor.profilePath
-                load(actor.profilePath, defaultImageLoader) {
+            imgPerson.apply {
+                transitionName = imagePath
+                load(imagePath, defaultImageLoader) {
                     transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_14)))
                 }
             }
@@ -35,10 +34,7 @@ internal data class ActorItem(
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> v.startAnimationScale(0.95f) {}
                     MotionEvent.ACTION_UP -> v.startAnimationScale(1f) {
-                        onClick(
-                            actor,
-                            FragmentNavigatorExtras(imgActor to actor.profilePath)
-                        )
+                        onClick(FragmentNavigatorExtras(imgPerson to imagePath))
                     }
                     MotionEvent.ACTION_CANCEL -> v.startAnimationScale(1f) {}
                     else -> {}

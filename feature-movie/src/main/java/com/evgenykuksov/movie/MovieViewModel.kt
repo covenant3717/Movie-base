@@ -5,13 +5,10 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
-import com.evgenykuksov.domain.movies.model.Actor
-import com.evgenykuksov.domain.movies.model.MovieData
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.*
-import com.evgenykuksov.domain.movies.model.MovieProvider
-import com.evgenykuksov.domain.movies.model.Trailer
+import com.evgenykuksov.domain.movies.model.*
 import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
@@ -149,6 +146,20 @@ class MovieViewModel(
             )
         ),
 
+        // workers
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_workers),
+        CustomEmptyItem(R.dimen.dimen_8),
+        CustomGroupItem(
+            buildGroupLoadingItems(
+                countItems = 7,
+                itemWidthRes = R.dimen.dimen_80,
+                itemHeightRes = R.dimen.dimen_120,
+                itemCornerRoundRes = R.dimen.dimen_14,
+                spaceBetweenItems = R.dimen.dimen_20
+            )
+        ),
+
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
@@ -220,7 +231,15 @@ class MovieViewModel(
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
             buildTitleItem(R.string.item_title_cast).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
-            CustomGroupItem(buildActorItems(data.credits.actors)).addTo(this)
+            CustomGroupItem(buildPersonItems<Actor>(data.credits.actors)).addTo(this)
+        }
+        .apply {
+            // workers
+            if (data.credits.workers.isEmpty()) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_workers).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            CustomGroupItem(buildPersonItems(data.credits.workers)).addTo(this)
         }
         .apply { CustomEmptyItem(R.dimen.dimen_32).addTo(this) }
 
@@ -254,13 +273,20 @@ class MovieViewModel(
         }
         .toList()
 
-    private fun buildActorItems(list: List<Actor>) = mutableListOf<Item>()
+    private fun <T>buildPersonItems(list: List<T>) = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
-                ActorItem(it, defaultImageLoader) { actor, extras ->
-                    navigator.toActor(actor.id, actor.profilePath, extras)
-                }.addTo(this)
+                if (it is Actor) {
+                    PersonItem(it.profilePath, defaultImageLoader) { extras ->
+                        navigator.toActor(it.id, it.profilePath, extras)
+                    }.addTo(this)
+                }
+                if (it is Worker) {
+                    PersonItem(it.profilePath, defaultImageLoader) { extras ->
+                        // todo
+                    }.addTo(this)
+                }
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
         }
