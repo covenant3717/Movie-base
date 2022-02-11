@@ -86,6 +86,12 @@ class MovieViewModel(
             heightRes = R.dimen.dimen_20,
             marginStartEndRes = R.dimen.dimen_20
         ),
+        
+        // finance
+        CustomEmptyItem(R.dimen.dimen_20),
+        buildTitleItem(R.string.item_title_finance),
+        CustomEmptyItem(R.dimen.dimen_8),
+        buildLoadingLineItem(),
 
         // trailers
         CustomEmptyItem(R.dimen.dimen_20),
@@ -114,12 +120,6 @@ class MovieViewModel(
                 spaceBetweenItems = R.dimen.dimen_8
             )
         ),
-
-        // finance
-        CustomEmptyItem(R.dimen.dimen_20),
-        buildTitleItem(R.string.item_title_finance),
-        CustomEmptyItem(R.dimen.dimen_8),
-        buildLoadingLineItem(),
 
         // providers
         CustomEmptyItem(R.dimen.dimen_20),
@@ -183,6 +183,14 @@ class MovieViewModel(
             DescriptionItem(data.details.overview).addTo(this)
         }
         .apply {
+            // finance
+            if (data.details.revenue == 0 && data.details.budget == 0) return@apply
+            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
+            buildTitleItem(R.string.item_title_finance).addTo(this)
+            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
+            FinanceItem(data.details.revenue, data.details.budget).addTo(this)
+        }
+        .apply {
             // trailers
             if (data.trailers.isEmpty()) return@apply
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
@@ -197,14 +205,6 @@ class MovieViewModel(
             buildTitleItem(R.string.item_title_genre).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
             GenreItem(data.details.genres).addTo(this)
-        }
-        .apply {
-            // finance
-            if (data.details.revenue == 0 && data.details.budget == 0) return@apply
-            CustomEmptyItem(R.dimen.dimen_20).addTo(this)
-            buildTitleItem(R.string.item_title_finance).addTo(this)
-            CustomEmptyItem(R.dimen.dimen_8).addTo(this)
-            FinanceItem(data.details.revenue, data.details.budget).addTo(this)
         }
         .apply {
             // providers
