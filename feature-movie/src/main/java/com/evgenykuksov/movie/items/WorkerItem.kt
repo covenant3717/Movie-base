@@ -1,6 +1,7 @@
 package com.evgenykuksov.movie.items
 
 import android.annotation.SuppressLint
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.navigation.fragment.FragmentNavigator
 import coil.ImageLoader
 import coil.load
@@ -22,6 +23,7 @@ internal data class WorkerItem(
     @SuppressLint("ClickableViewAccessibility")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
+            (this as? MotionLayout?)?.transitionToStart()
             imgWorker.apply {
                 transitionName = worker.profilePath
                 load(worker.profilePath, defaultImageLoader) {
