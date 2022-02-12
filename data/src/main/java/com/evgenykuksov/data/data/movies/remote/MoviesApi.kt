@@ -8,6 +8,7 @@ import com.evgenykuksov.data.data.movies.remote.model.MovieProvidersRemote
 import com.evgenykuksov.data.data.movies.remote.model.TrailersRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 internal interface MoviesApi {
 
@@ -30,7 +31,10 @@ internal interface MoviesApi {
     suspend fun getTrailers(@Path("movie_id") id: Long): TrailersRemote
 
     @GET("movie/{movie_id}/images")
-    suspend fun getImages(@Path("movie_id") id: Long): MovieImagesRemote
+    suspend fun getImages(
+        @Path("movie_id") id: Long,
+        @Query("language") language: String = "null"
+    ): MovieImagesRemote
 
     @GET("movie/{movie_id}/watch/providers")
     suspend fun getProviders(@Path("movie_id") id: Long): MovieProvidersRemote

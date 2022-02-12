@@ -1,5 +1,6 @@
 package com.evgenykuksov.data.data.movies
 
+import com.evgenykuksov.core.language.APP_LANGUAGE
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteDataSource
 import com.evgenykuksov.domain.movies.MoviesRepository
 import com.evgenykuksov.domain.movies.model.*
@@ -40,7 +41,7 @@ internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDa
         .flowOn(Dispatchers.IO)
 
     override fun getProviders(movieId: Long): Flow<List<MovieProvider>> = remoteDataSource.getProviders(movieId)
-        .map { it.results.getOrDefault("RU", null) }
+        .map { it.results.getOrDefault(APP_LANGUAGE.uppercase(), null) }
         .map { it?.toDomain() ?: emptyList() }
         .map { it.distinctBy { it.id } }
         .flowOn(Dispatchers.IO)
