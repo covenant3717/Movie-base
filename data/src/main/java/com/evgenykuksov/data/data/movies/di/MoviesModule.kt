@@ -1,6 +1,8 @@
 package com.evgenykuksov.data.data.movies.di
 
 import com.evgenykuksov.data.data.movies.MoviesRepositoryImpl
+import com.evgenykuksov.data.data.movies.local.memory.MoviesMemoryDataSource
+import com.evgenykuksov.data.data.movies.local.memory.MoviesMemoryDataSourceImpl
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteDataSource
 import com.evgenykuksov.data.data.movies.remote.MoviesRemoteDataSourceImpl
 import com.evgenykuksov.data.data.movies.remote.MoviesApi
@@ -14,5 +16,7 @@ internal val movieModule = module {
 
     single<MoviesRemoteDataSource> { MoviesRemoteDataSourceImpl(get()) }
 
-    single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+    single<MoviesMemoryDataSource> { MoviesMemoryDataSourceImpl() }
+
+    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
 }
