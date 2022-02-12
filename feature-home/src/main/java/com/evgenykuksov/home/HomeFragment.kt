@@ -1,11 +1,14 @@
 package com.evgenykuksov.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.evgenykuksov.core.anim.ANIM_DURATION_250
 import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
@@ -37,16 +40,19 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     override fun initWidgets() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    MoviesCategory.UPCOMING.position ->
-                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.UPCOMING))
-                    MoviesCategory.NOW_PLAYING.position ->
-                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.NOW_PLAYING))
-                    MoviesCategory.POPULAR.position ->
-                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.POPULAR))
-                    MoviesCategory.TOP_RATED.position ->
-                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.TOP_RATED))
-                }
+                // delay fixes the interruption of the indicator animation
+                Handler(Looper.getMainLooper()).postDelayed({
+                    when (tab?.position) {
+                        MoviesCategory.UPCOMING.position ->
+                            viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.UPCOMING))
+                        MoviesCategory.NOW_PLAYING.position ->
+                            viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.NOW_PLAYING))
+                        MoviesCategory.POPULAR.position ->
+                            viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.POPULAR))
+                        MoviesCategory.TOP_RATED.position ->
+                            viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.TOP_RATED))
+                    }
+                }, ANIM_DURATION_250)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}

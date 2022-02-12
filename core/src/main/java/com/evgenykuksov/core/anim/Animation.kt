@@ -11,7 +11,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 fun View.animateAlpha(
     currentValue: Float,
     newValue: Float,
-    durationTime: Long = 350L,
+    durationTime: Long = ANIM_DURATION_350,
     onAnimationEnd: () -> Unit
 ) = ValueAnimator
     .ofFloat(currentValue, newValue)
@@ -28,7 +28,7 @@ fun View.startAnimationScale(endValue: Float, onAnimationEnd: () -> Unit) {
     val scaleY = ObjectAnimator.ofFloat(this, View.SCALE_Y, this.scaleY, endValue)
     AnimatorSet().apply {
         interpolator = FastOutSlowInInterpolator()
-        duration = 100
+        duration = ANIM_DURATION_100
         playTogether(scaleX, scaleY)
         doOnEnd { onAnimationEnd() }
         start()

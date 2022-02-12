@@ -9,6 +9,7 @@ import android.widget.Toast
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.evgenykuksov.core.anim.ANIM_DURATION_1000
 import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
@@ -69,7 +70,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                 it.backdrop?.let { backdrop ->
                     imgBackdrop.apply {
                         load(backdrop, emptyImageLoader)
-                        animateAlpha(0f, 1f, BACKDROP_ANIMATION_DURATION) {}
+                        animateAlpha(0f, 1f, ANIM_DURATION_1000) {}
                     }
                 }
                 tvName.text = it.name
@@ -100,7 +101,6 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
         private const val ARG_MOVIE_POSTER = "arg_movie_poster"
         private const val ARG_MOVIE_ID = "arg_movie_id"
-        private const val BACKDROP_ANIMATION_DURATION = 1000L
 
         fun createBundle(movieId: Long, poster: String) = Bundle().apply {
             putString(ARG_MOVIE_POSTER, poster)
