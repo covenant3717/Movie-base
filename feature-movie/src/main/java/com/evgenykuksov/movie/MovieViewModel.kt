@@ -180,6 +180,7 @@ class MovieViewModel(
     private fun buildDetailsItems(data: MovieData): List<Item> = mutableListOf<Item>()
         .apply {
             // rate
+            if (data.details.voteAverage == 0f && data.details.voteCount == 0) return@apply
             CustomEmptyItem(R.dimen.dimen_20).addTo(this)
             buildTitleItem(R.string.item_title_rate).addTo(this)
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
@@ -241,7 +242,7 @@ class MovieViewModel(
             CustomEmptyItem(R.dimen.dimen_8).addTo(this)
             CustomGroupItem(buildPersonItems(data.credits.workers)).addTo(this)
         }
-        .apply { CustomEmptyItem(R.dimen.dimen_32).addTo(this) }
+        .apply { CustomEmptyItem(R.dimen.dimen_40).addTo(this) }
 
     private fun buildLoadingLineItem() = CustomLoadingItem(
         widthLayoutParams = ViewGroup.LayoutParams.MATCH_PARENT,
@@ -283,7 +284,7 @@ class MovieViewModel(
                     }.addTo(this)
                 }
                 if (it is Worker) {
-                    PersonItem(it.profilePath, defaultImageLoader) { extras ->
+                    WorkerItem(it, defaultImageLoader) { extras ->
                         // todo
                     }.addTo(this)
                 }

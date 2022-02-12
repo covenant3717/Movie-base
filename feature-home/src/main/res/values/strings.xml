@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_categories">Категории</string>
-    <string name="tab_upcoming">Предстоящие</string>
+    <string name="tab_upcoming">Скоро в кино</string>
     <string name="tab_new">В кино</string>
     <string name="tab_popular">Популярные</string>
     <string name="tab_top_rated">Высокий рейтинг</string>
