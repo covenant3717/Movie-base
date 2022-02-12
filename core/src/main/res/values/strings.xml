@@ -1,3 +1,6 @@
 <resources>
-    <string name="core_item_error_hint_text">Oops... \nSomething went wrong.\nPlease try again later</string>
+    <string name="core_item_error_hint_text">Уупс... \nЧто-то пошло не так.\nПожалуйста, попробуйте еще раз позднее</string>
+
+    <!--english strings-->
+<!--    <string name="core_item_error_hint_text">Oops... \nSomething went wrong.\nPlease try again later</string>-->
 </resources>
