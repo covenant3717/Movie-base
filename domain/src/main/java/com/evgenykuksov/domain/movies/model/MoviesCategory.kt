@@ -1,7 +1,8 @@
 package com.evgenykuksov.domain.movies.model
 
 enum class MoviesCategory(val position: Int) {
-    NEW(0),
-    POPULAR(1),
-    TOP_RATED(2);
+    UPCOMING(0),
+    NOW_PLAYING(1),
+    POPULAR(2),
+    TOP_RATED(3);
 }

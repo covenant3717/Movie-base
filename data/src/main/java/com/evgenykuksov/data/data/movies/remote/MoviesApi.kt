@@ -1,5 +1,6 @@
 package com.evgenykuksov.data.data.movies.remote
 
+import com.evgenykuksov.core.language.APP_LANGUAGE
 import com.evgenykuksov.data.data.movies.remote.model.CreditsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieDetailsRemote
 import com.evgenykuksov.data.data.movies.remote.model.MovieImagesRemote
@@ -13,7 +14,10 @@ import retrofit2.http.Query
 internal interface MoviesApi {
 
     @GET("movie/upcoming")
-    suspend fun getNowPlaying(): MoviesDataRemote
+    suspend fun getUpcoming(@Query("region") region: String = APP_LANGUAGE): MoviesDataRemote
+
+    @GET("movie/now_playing")
+    suspend fun getNowPlaying(@Query("region") region: String = APP_LANGUAGE): MoviesDataRemote
 
     @GET("movie/popular")
     suspend fun getPopular(): MoviesDataRemote

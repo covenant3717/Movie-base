@@ -35,7 +35,7 @@ class HomeViewModel(
         load()
     }
 
-    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.NEW, null, null)
+    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, null, null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
@@ -114,7 +114,8 @@ class HomeViewModel(
 
     private fun getMoviesByCategory(category: MoviesCategory): List<Movie> = moviesData?.let {
         when (category) {
-            MoviesCategory.NEW -> it.listNowPlaying
+            MoviesCategory.UPCOMING -> it.listUpcoming
+            MoviesCategory.NOW_PLAYING -> it.listNowPlaying
             MoviesCategory.POPULAR -> it.listPopular
             MoviesCategory.TOP_RATED -> it.listTopRated
         }

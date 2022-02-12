@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.Flow
 
 internal interface MoviesRemoteDataSource {
 
+    fun getUpcoming(): Flow<MoviesDataRemote>
+
     fun getNowPlaying(): Flow<MoviesDataRemote>
 
     fun getPopular(): Flow<MoviesDataRemote>

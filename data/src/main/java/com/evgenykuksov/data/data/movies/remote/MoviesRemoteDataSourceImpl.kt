@@ -4,6 +4,8 @@ import kotlinx.coroutines.flow.flow
 
 internal class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRemoteDataSource {
 
+    override fun getUpcoming() = flow { emit(api.getUpcoming()) }
+
     override fun getNowPlaying() = flow { emit(api.getNowPlaying()) }
 
     override fun getPopular() = flow { emit(api.getPopular()) }

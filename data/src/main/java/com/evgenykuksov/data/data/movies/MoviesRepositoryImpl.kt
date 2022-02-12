@@ -12,6 +12,10 @@ import kotlinx.coroutines.flow.map
 
 internal class MoviesRepositoryImpl(private val remoteDataSource: MoviesRemoteDataSource) : MoviesRepository {
 
+    override fun getUpcoming(): Flow<List<Movie>> = remoteDataSource.getUpcoming()
+        .map { it.results?.map { it.toDomain() }.orEmpty() }
+        .flowOn(Dispatchers.IO)
+
     override fun getNowPlaying(): Flow<List<Movie>> = remoteDataSource.getNowPlaying()
         .map { it.results?.map { it.toDomain() }.orEmpty() }
         .flowOn(Dispatchers.IO)

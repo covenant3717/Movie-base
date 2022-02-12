@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_categories">Категории</string>
-    <string name="tab_new">Новые</string>
+    <string name="tab_upcoming">Предстоящие</string>
+    <string name="tab_new">В кино</string>
     <string name="tab_popular">Популярные</string>
     <string name="tab_top_rated">Высокий рейтинг</string>
     <string name="title_your_rank">Ваш ранг</string>
 
     <!--english strings-->
 <!--    <string name="title_categories">Categories</string>-->
-<!--    <string name="tab_new">New</string>-->
+<!--    <string name="tab_upcoming">Upcoming</string>-->
+<!--    <string name="tab_new">Now playing</string>-->
 <!--    <string name="tab_popular">Popular</string>-->
 <!--    <string name="tab_top_rated">Top rated</string>-->
 <!--    <string name="title_your_rank">Your rank</string>-->

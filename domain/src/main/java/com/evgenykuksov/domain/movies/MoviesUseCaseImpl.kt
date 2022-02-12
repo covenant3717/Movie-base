@@ -8,11 +8,12 @@ import kotlinx.coroutines.flow.combine
 class MoviesUseCaseImpl(private val repository: MoviesRepository) : MoviesUseCase {
 
     override fun getMovies() = combine(
+        repository.getUpcoming(),
         repository.getNowPlaying(),
         repository.getPopular(),
         repository.getTopRated()
-    ) { listNowPlaying, listPopular, listTopRated ->
-        MoviesData(listNowPlaying, listPopular, listTopRated)
+    ) { listUpcoming, listNowPlaying, listPopular, listTopRated ->
+        MoviesData(listUpcoming, listNowPlaying, listPopular, listTopRated)
     }
 
     override fun getMovieData(movieId: Long): Flow<MovieData> = combine(

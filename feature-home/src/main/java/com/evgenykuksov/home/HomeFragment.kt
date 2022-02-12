@@ -38,8 +38,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    MoviesCategory.NEW.position ->
-                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.NEW))
+                    MoviesCategory.UPCOMING.position ->
+                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.UPCOMING))
+                    MoviesCategory.NOW_PLAYING.position ->
+                        viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.NOW_PLAYING))
                     MoviesCategory.POPULAR.position ->
                         viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.POPULAR))
                     MoviesCategory.TOP_RATED.position ->
