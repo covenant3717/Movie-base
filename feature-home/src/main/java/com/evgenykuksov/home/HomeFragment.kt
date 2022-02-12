@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModel()
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private val tabHandler by lazy { Handler(Looper.getMainLooper()) }
     private var moviesSection = Section()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 // delay fixes the interruption of the indicator animation
-                Handler(Looper.getMainLooper()).postDelayed({
+                tabHandler.removeCallbacksAndMessages(null)
+                tabHandler.postDelayed({
                     when (tab?.position) {
                         MoviesCategory.UPCOMING.position ->
                             viewModel.sendIntent(HomeContract.Intent.SelectCategory(MoviesCategory.UPCOMING))
