@@ -11,7 +11,6 @@ import com.evgenykuksov.core.items.buildGroupLoadingItems
 import com.evgenykuksov.domain.persons.PersonsUseCase
 import com.evgenykuksov.domain.persons.model.ActorData
 import com.xwray.groupie.kotlinandroidextensions.Item
-import kotlinx.coroutines.channels.ActorScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
@@ -47,30 +46,44 @@ class ActorViewModel(
                 actorData = it
                 setState {
                     copy(
-                        photo = it.actorInfo.profilePhoto,
                         listItems = buildItems(it.images),
-                        delayUpdateItems = 3000
+                        delayUpdateItems = 1000
                     )
                 }
             }
     }
 
-    private fun buildLoadingItems() = buildGroupLoadingItems(
-        countItems = 12,
-        itemWidthRes = R.dimen.dimen_60,
-        itemHeightRes = R.dimen.dimen_80,
-        itemCornerRoundRes = R.dimen.dimen_10,
-        spaceBetweenItems = R.dimen.dimen_10,
-        startEndSpacesRes = R.dimen.dimen_16
-    )
-
-    private fun buildItems(images: List<String>) = mutableListOf<Item>()
-        .apply { if (images.isEmpty()) CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this) }
+    private fun buildLoadingItems() = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
+            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {}.addTo(this)
+        }
+        .apply {
+            CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
+            addAll(
+                buildGroupLoadingItems(
+                    countItems = 10,
+                    itemWidthRes = R.dimen.dimen_60,
+                    itemHeightRes = R.dimen.dimen_80,
+                    itemCornerRoundRes = R.dimen.dimen_10,
+                    spaceBetweenItems = R.dimen.dimen_10,
+                    startEndSpacesRes = null
+                )
+            )
+            CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+        }
+
+    private fun buildItems(images: List<String>) = mutableListOf<Item>()
+        .apply {
+            CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
+            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {}.addTo(this)
+        }
+        .apply {
             images.forEachIndexed { index, s ->
-                ActorImageItem(s, defaultImageLoader) {}.addTo(this)
-                if (index != images.lastIndex) CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
+                CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
+                ActorImageItem(imagePath = s, imageLoader = defaultImageLoader) {
+                    setState { copy(photo = it) }
+                }.addTo(this)
             }
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
         }

@@ -2,19 +2,21 @@ package com.evgenykuksov.actor
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
-import com.evgenykuksov.core.anim.startAnimationScaleWithBackward
+import com.evgenykuksov.core.anim.ANIM_DURATION_250
+import com.evgenykuksov.core.anim.ANIM_DURATION_350
+import com.evgenykuksov.core.anim.animateAlpha
+import com.evgenykuksov.core.base.BaseFragment
+import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.extensions.toast
-import com.evgenykuksov.core.base.BaseFragment
-import com.evgenykuksov.core.di.COIL_DEFAULT_LOADER
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
@@ -33,7 +35,7 @@ import org.koin.core.qualifier.named
 class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
-    private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
+    private val defaultImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
     private val adapterPhotos: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var photosSection = Section()
@@ -50,7 +52,14 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
         getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
-        rvItems.adapter = adapterPhotos.apply { add(photosSection) }
+        imgPhoto.apply {
+            transitionName = actorPhoto
+            load(actorPhoto, defaultImageLoader)
+        }
+        rvItems.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, true)
+            adapter = adapterPhotos.apply { add(photosSection) }
+        }
 //        btnInfo.setOnClickListener {
 //            it.startAnimationScaleWithBackward(0.9f) {
 //                viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)
@@ -61,9 +70,16 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     override fun observeState() {
         launchWhenStarted {
             viewModel.state.collect {
-                imgPhoto.apply {
-                    transitionName = actorPhoto
-                    load(actorPhoto, defaultImageLoader)
+                it.photo?.let {
+                    imgPhoto.animateAlpha(1f, 0f, ANIM_DURATION_250) {
+                        imgPhoto.load(it, defaultImageLoader) {
+                            listener(
+                                onSuccess = { request, result ->
+                                    imgPhoto.animateAlpha(0f, 1f, ANIM_DURATION_350) {}
+                                }
+                            )
+                        }
+                    }
                 }
                 it.delayUpdateItems?.let { delay(it) }
                 it.listItems?.let { photosSection.update(it) }

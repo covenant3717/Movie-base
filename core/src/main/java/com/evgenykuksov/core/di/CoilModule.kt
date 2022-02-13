@@ -14,6 +14,7 @@ internal val coilModule = module {
     single<ImageLoader>(named(COIL_EMPTY_LOADER)) {
         ImageLoader(this.androidContext())
             .newBuilder()
+            .error(R.drawable.ic_core_popcorn)
             .build()
     }
 
