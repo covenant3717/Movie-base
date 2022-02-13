@@ -278,7 +278,7 @@ class MovieViewModel(
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
-                PersonItem(it.profilePath, defaultImageLoader) { extras ->
+                ActorItem(it, defaultImageLoader) { extras ->
                     navigator.toActor(it.id, it.profilePath, extras)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)

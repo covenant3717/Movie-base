@@ -14,4 +14,5 @@
     <color name="item_vote_count">#33FFFFFF</color>
     <color name="item_rating_bar_star">#FDD05D</color>
     <color name="item_rating_bar_star_back">#80FDD05D</color>
+    <color name="item_actor_character">#4DFFFFFF</color>
 </resources>
