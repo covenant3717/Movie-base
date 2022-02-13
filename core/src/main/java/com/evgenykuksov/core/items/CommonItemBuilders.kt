@@ -11,8 +11,9 @@ fun buildGroupLoadingItems(
     @DimenRes itemHeightRes: Int?,
     @DimenRes itemCornerRoundRes: Int?,
     @DimenRes spaceBetweenItems: Int?,
+    @DimenRes startEndSpacesRes: Int?,
 ) = mutableListOf<Item>().apply {
-    CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+    CustomEmptyItem(widthRes = startEndSpacesRes).addTo(this)
     for (i in 1..countItems) {
         CustomLoadingItem(
             widthRes = itemWidthRes,
@@ -23,5 +24,5 @@ fun buildGroupLoadingItems(
             if (i < countItems) CustomEmptyItem(widthRes = it).addTo(this)
         }
     }
-    CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
+    CustomEmptyItem(widthRes = startEndSpacesRes).addTo(this)
 }

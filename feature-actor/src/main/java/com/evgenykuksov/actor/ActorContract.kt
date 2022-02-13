@@ -12,7 +12,9 @@ class ActorContract {
     }
 
     data class State(
-        val photo: String?
+        val photo: String?,
+        val listItems: List<Item>?,
+        val delayUpdateItems: Long?,
     ) : UiState
 
     sealed class SingleEvent : UiSingleEvent {

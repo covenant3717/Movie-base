@@ -100,7 +100,8 @@ class MovieViewModel(
                 itemWidthRes = R.dimen.dimen_160,
                 itemHeightRes = R.dimen.dimen_90,
                 itemCornerRoundRes = R.dimen.dimen_14,
-                spaceBetweenItems = R.dimen.dimen_20
+                spaceBetweenItems = R.dimen.dimen_20,
+                startEndSpacesRes = R.dimen.dimen_20
             )
         ),
 
@@ -114,7 +115,8 @@ class MovieViewModel(
                 itemWidthRes = R.dimen.dimen_100,
                 itemHeightRes = R.dimen.dimen_30,
                 itemCornerRoundRes = R.dimen.dimen_100,
-                spaceBetweenItems = R.dimen.dimen_8
+                spaceBetweenItems = R.dimen.dimen_8,
+                startEndSpacesRes = R.dimen.dimen_20
             )
         ),
 
@@ -128,7 +130,8 @@ class MovieViewModel(
                 itemWidthRes = R.dimen.dimen_40,
                 itemHeightRes = R.dimen.dimen_40,
                 itemCornerRoundRes = R.dimen.dimen_10,
-                spaceBetweenItems = R.dimen.dimen_8
+                spaceBetweenItems = R.dimen.dimen_8,
+                startEndSpacesRes = R.dimen.dimen_20
             )
         ),
 
@@ -142,7 +145,8 @@ class MovieViewModel(
                 itemWidthRes = R.dimen.dimen_80,
                 itemHeightRes = R.dimen.dimen_120,
                 itemCornerRoundRes = R.dimen.dimen_14,
-                spaceBetweenItems = R.dimen.dimen_20
+                spaceBetweenItems = R.dimen.dimen_20,
+                startEndSpacesRes = R.dimen.dimen_20
             )
         ),
 

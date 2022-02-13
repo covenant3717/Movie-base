@@ -2,6 +2,7 @@ package com.evgenykuksov.actor
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +20,10 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.fragment_actor.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,7 +34,9 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val defaultImageLoader: ImageLoader by inject(named(COIL_DEFAULT_LOADER))
+    private val adapterPhotos: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private var photosSection = Section()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
     private val actorPhoto: String by lazy { arguments?.getString(ARG_ACTOR_PHOTO, "") ?: "" }
 
@@ -45,11 +50,12 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
         getPersistentView(inflater, container) { }
 
     override fun initWidgets() {
-        btnInfo.setOnClickListener {
-            it.startAnimationScaleWithBackward(0.9f) {
-                viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)
-            }
-        }
+        rvItems.adapter = adapterPhotos.apply { add(photosSection) }
+//        btnInfo.setOnClickListener {
+//            it.startAnimationScaleWithBackward(0.9f) {
+//                viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)
+//            }
+//        }
     }
 
     override fun observeState() {
@@ -59,6 +65,8 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
                     transitionName = actorPhoto
                     load(actorPhoto, defaultImageLoader)
                 }
+                it.delayUpdateItems?.let { delay(it) }
+                it.listItems?.let { photosSection.update(it) }
             }
         }
     }
