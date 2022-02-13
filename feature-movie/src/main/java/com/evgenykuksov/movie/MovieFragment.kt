@@ -69,8 +69,11 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
             viewModel.state.collect {
                 it.backdrop?.let { backdrop ->
                     imgBackdrop.apply {
-                        load(backdrop, emptyImageLoader)
-                        animateAlpha(0f, 1f, ANIM_DURATION_1000) {}
+                        load(backdrop, emptyImageLoader) {
+                            listener(onSuccess = { request, metadata ->
+                                animateAlpha(0f, 1f, ANIM_DURATION_1000) {}
+                            })
+                        }
                     }
                 }
                 tvName.text = it.name
