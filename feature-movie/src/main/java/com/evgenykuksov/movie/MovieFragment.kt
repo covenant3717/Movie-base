@@ -10,6 +10,7 @@ import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.evgenykuksov.core.anim.ANIM_DURATION_1000
+import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
@@ -71,7 +72,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
                     imgBackdrop.apply {
                         load(backdrop, emptyImageLoader) {
                             listener(onSuccess = { request, metadata ->
-                                animateAlpha(0f, 1f, ANIM_DURATION_1000) {}
+                                animateAlpha(0f, 1f, ANIM_DURATION_350) {}
                             })
                         }
                     }
