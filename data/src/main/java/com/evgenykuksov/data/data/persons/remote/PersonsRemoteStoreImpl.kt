@@ -6,5 +6,7 @@ internal class PersonsRemoteStoreImpl(private val api: PersonsApi) : PersonsRemo
 
     override fun getActor(id: Long) = flow { emit(api.getActor(id)) }
 
+    override fun getPersonImages(id: Long) = flow { emit(api.getPersonImages(id)) }
+
     override fun getPersonExternalIds(id: Long) = flow { emit(api.getExternalIds(id)) }
 }

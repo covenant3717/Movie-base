@@ -8,5 +8,7 @@ interface PersonsRepository {
 
     fun getActor(id: Long): Flow<ActorInfo>
 
+    fun getPersonImages(id: Long): Flow<List<String>>
+
     fun getPersonExternalIds(id: Long): Flow<PersonExternalIds>
 }

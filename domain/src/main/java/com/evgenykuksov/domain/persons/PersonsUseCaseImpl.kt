@@ -7,8 +7,9 @@ class PersonsUseCaseImpl(private val repository: PersonsRepository) : PersonsUse
 
     override fun getActorData(id: Long) = combine(
         repository.getActor(id),
+        repository.getPersonImages(id),
         repository.getPersonExternalIds(id)
-    ) { actorInfo, personExternalIds ->
-        ActorData(actorInfo, personExternalIds)
+    ) { actorInfo, images, personExternalIds ->
+        ActorData(actorInfo, images, personExternalIds)
     }
 }

@@ -17,6 +17,10 @@ internal class PersonsRepositoryImpl(
         .map { it.toDomain() }
         .flowOn(Dispatchers.IO)
 
+    override fun getPersonImages(id: Long): Flow<List<String>> = remoteDataSource.getPersonImages(id)
+        .map { it.toDomain() }
+        .flowOn(Dispatchers.IO)
+
     override fun getPersonExternalIds(id: Long): Flow<PersonExternalIds> = remoteDataSource.getPersonExternalIds(id)
         .map { it.toDomain() }
         .flowOn(Dispatchers.IO)

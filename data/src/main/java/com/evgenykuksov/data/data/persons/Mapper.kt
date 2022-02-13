@@ -5,6 +5,7 @@ import com.evgenykuksov.core.extensions.orNegativeDefault
 import com.evgenykuksov.core.extensions.orZero
 import com.evgenykuksov.data.data.persons.remote.model.ActorInfoRemote
 import com.evgenykuksov.data.data.persons.remote.model.PersonExternalIdsRemote
+import com.evgenykuksov.data.data.persons.remote.model.PersonImagesRemote
 import com.evgenykuksov.data.util.TmdbImagePath
 import com.evgenykuksov.domain.persons.model.ActorInfo
 import com.evgenykuksov.domain.persons.model.PersonExternalIds
@@ -27,3 +28,7 @@ internal fun PersonExternalIdsRemote.toDomain() = PersonExternalIds(
     instagramId = instagramId.orEmpty(),
     twitterId = twitterId.orEmpty(),
 )
+
+internal fun PersonImagesRemote.toDomain() = this.profiles?.map {
+    TmdbImagePath.getImagePath(TmdbImagePath.ORIGINAL, it.file_path.orEmpty())
+}.orEmpty()
