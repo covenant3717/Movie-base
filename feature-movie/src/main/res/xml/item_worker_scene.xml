@@ -11,22 +11,25 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
+
         <Constraint
             android:id="@+id/tvName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0"
+            motion:layout_constraintEnd_toEndOf="@+id/imgWorker"
             motion:layout_constraintHorizontal_bias="0.0"
-            motion:layout_constraintStart_toEndOf="@+id/imgWorker"
+            motion:layout_constraintStart_toStartOf="@+id/imgWorker"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/tvSpecialization"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0"
+            motion:layout_constraintEnd_toEndOf="@+id/imgWorker"
             motion:layout_constraintHorizontal_bias="0.0"
-            motion:layout_constraintStart_toEndOf="@+id/imgWorker"
+            motion:layout_constraintStart_toStartOf="@+id/imgWorker"
             motion:layout_constraintTop_toBottomOf="@+id/tvName" />
     </ConstraintSet>
 
