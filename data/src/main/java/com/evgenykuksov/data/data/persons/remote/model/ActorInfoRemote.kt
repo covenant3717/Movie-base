@@ -2,7 +2,7 @@ package com.evgenykuksov.data.data.persons.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ActorInfoRemote(
+internal data class ActorInfoRemote(
     @SerializedName("id") val id: Long?,
     @SerializedName("name") val name: String?,
     @SerializedName("birthday") val birthday: String?,

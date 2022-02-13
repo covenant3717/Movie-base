@@ -63,19 +63,6 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
         }
     }
 
-    private fun showInfoDialog(listItems: List<Item>) {
-        val view = layoutInflater.inflate(R.layout.dialog_person_info, null).apply {
-            findViewById<RecyclerView>(R.id.rvInfo).adapter = adapterInfo.apply {
-                clear()
-                addAll(listItems)
-            }
-        }
-
-        BottomSheetDialog(requireContext(), R.style.DialogInfo)
-            .apply { setContentView(view) }
-            .show()
-    }
-
     override fun observeSingleEffect() {
         launchWhenStarted {
             viewModel.singleEvent.collect {
@@ -89,6 +76,19 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
                 }
             }
         }
+    }
+
+    private fun showInfoDialog(listItems: List<Item>) {
+        val view = layoutInflater.inflate(R.layout.dialog_person_info, null).apply {
+            findViewById<RecyclerView>(R.id.rvInfo).adapter = adapterInfo.apply {
+                clear()
+                addAll(listItems)
+            }
+        }
+
+        BottomSheetDialog(requireContext(), R.style.DialogInfo)
+            .apply { setContentView(view) }
+            .show()
     }
 
     companion object {

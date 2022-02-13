@@ -1,9 +1,9 @@
 package com.evgenykuksov.domain.persons
 
-import com.evgenykuksov.domain.persons.model.ActorInfo
+import com.evgenykuksov.domain.persons.model.ActorData
 import kotlinx.coroutines.flow.Flow
 
 interface PersonsUseCase {
 
-    fun getActor(id: Long): Flow<ActorInfo>
+    fun getActorData(id: Long): Flow<ActorData>
 }

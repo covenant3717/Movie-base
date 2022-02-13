@@ -8,6 +8,7 @@ import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.evgenykuksov.actor.items.DescriptionItem
 import com.evgenykuksov.core.items.*
+import com.evgenykuksov.domain.persons.model.ActorData
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -18,7 +19,7 @@ class ActorViewModel(
     private val personsUseCase: PersonsUseCase,
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
-    private var actorInfoInfo: ActorInfo? = null
+    private var actorData: ActorData? = null
 
     init {
         load(actorId)
@@ -33,13 +34,13 @@ class ActorViewModel(
     }
 
     private fun load(actorId: Long) = viewModelScope.launch {
-        personsUseCase.getActor(actorId)
+        personsUseCase.getActorData(actorId)
             .catch { exception ->
                 setSingleEvent(ActorContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
             }
             .collect {
-                actorInfoInfo = it
-                setState { copy(photo = it.profilePhoto) }
+                actorData = it
+                setState { copy(photo = it.actorInfo.profilePhoto) }
             }
     }
 
@@ -66,7 +67,7 @@ class ActorViewModel(
     private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
 
     private fun handleTouchBtnInfo() {
-        val items = actorInfoInfo?.let { buildItems(it) } ?: buildErrorItems()
+        val items = actorData?.let { buildItems(it.actorInfo) } ?: buildErrorItems()
         setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
     }
 }
