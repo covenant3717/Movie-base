@@ -23,11 +23,11 @@ object Versions {
     }
 
     object Coroutines {
-        const val COROUTINE = "1.4.2"
+        const val COROUTINE = "1.6.0"
     }
 
     object Jetpack {
-        const val LIFECYCLE = "2.2.0"
+        const val LIFECYCLE = "2.4.1"
         const val APP_COMPAT = "1.2.0"
         const val NAVIGATION = "2.4.0-beta02"
     }
