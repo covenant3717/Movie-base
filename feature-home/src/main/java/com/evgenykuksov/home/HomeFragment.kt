@@ -20,7 +20,6 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
@@ -70,37 +69,33 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     override fun observeState() {
-        launchWhenStarted {
-            viewModel.state.collect {
-                when (it.grouping) {
-                    MoviesGrouping.Linear -> {
-                        btnToggleGrouping.isChecked = false
-                        (rvMovies.layoutManager as GridLayoutManager).spanCount = 1
-                    }
-                    MoviesGrouping.Grid -> {
-                        btnToggleGrouping.isChecked = true
-                        (rvMovies.layoutManager as GridLayoutManager).spanCount = 2
-                    }
+        viewModel.state.collectLA(viewLifecycleOwner) {
+            when (it.grouping) {
+                MoviesGrouping.Linear -> {
+                    btnToggleGrouping.isChecked = false
+                    (rvMovies.layoutManager as GridLayoutManager).spanCount = 1
                 }
-                tabLayout.getTabAt(it.category.position)?.select()
-                it.listItems?.let { list -> moviesSection.update(list) }
-                it.rating?.insertSpaces(3)?.let { rating ->
-                    if (rating != tvRating.text) {
-                        tvRating.text = rating
-                        tvRating.animateAlpha(0f, 1f) {}
-                    }
+                MoviesGrouping.Grid -> {
+                    btnToggleGrouping.isChecked = true
+                    (rvMovies.layoutManager as GridLayoutManager).spanCount = 2
+                }
+            }
+            tabLayout.getTabAt(it.category.position)?.select()
+            it.listItems?.let { list -> moviesSection.update(list) }
+            it.rating?.insertSpaces(3)?.let { rating ->
+                if (rating != tvRating.text) {
+                    tvRating.text = rating
+                    tvRating.animateAlpha(0f, 1f) {}
                 }
             }
         }
     }
 
     override fun observeSingleEffect() {
-        launchWhenStarted {
-            viewModel.singleEvent.collect {
-                when (it) {
-                    is HomeContract.SingleEvent.ToastError -> {
-                        requireContext().toast(it.message, Toast.LENGTH_LONG)
-                    }
+        viewModel.singleEvent.collectLA(viewLifecycleOwner) {
+            when (it) {
+                is HomeContract.SingleEvent.ToastError -> {
+                    requireContext().toast(it.message, Toast.LENGTH_LONG)
                 }
             }
         }

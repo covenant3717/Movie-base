@@ -15,7 +15,7 @@ import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
-import com.evgenykuksov.core.extensions.launchWhenStarted
+import com.evgenykuksov.core.extensions.collectLA
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialContainerTransform
@@ -26,7 +26,6 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.fragment_actor.*
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -40,7 +39,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var photosSection = Section()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
-    private val actorPhoto: String by lazy { arguments?.getString(ARG_ACTOR_PHOTO, "") ?: "" }
+    private val actorPhoto: String by lazy { arguments?.getString(ARG_ACTOR_PHOTO).orEmpty() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,35 +67,31 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     }
 
     override fun observeState() {
-        launchWhenStarted {
-            viewModel.state.collect {
-                it.photo?.let {
-                    imgPhoto.animateAlpha(1f, 0f, ANIM_DURATION_250) {
-                        imgPhoto.load(it, defaultImageLoader) {
-                            listener(
-                                onSuccess = { request, result ->
-                                    imgPhoto.animateAlpha(0f, 1f, ANIM_DURATION_350) {}
-                                }
-                            )
-                        }
+        viewModel.state.collectLA(viewLifecycleOwner) {
+            it.photo?.let {
+                imgPhoto.animateAlpha(1f, 0f, ANIM_DURATION_250) {
+                    imgPhoto.load(it, defaultImageLoader) {
+                        listener(
+                            onSuccess = { request, result ->
+                                imgPhoto.animateAlpha(0f, 1f, ANIM_DURATION_350) {}
+                            }
+                        )
                     }
                 }
-                it.delayUpdateItems?.let { delay(it) }
-                it.listItems?.let { photosSection.update(it) }
             }
+            it.delayUpdateItems?.let { delay(it) }
+            it.listItems?.let { photosSection.update(it) }
         }
     }
 
     override fun observeSingleEffect() {
-        launchWhenStarted {
-            viewModel.singleEvent.collect {
-                when (it) {
-                    is ActorContract.SingleEvent.ToastError -> {
-                        requireContext().toast(it.message, Toast.LENGTH_LONG)
-                    }
-                    is ActorContract.SingleEvent.ShowDialogInfo -> {
-                        showInfoDialog(it.listItems)
-                    }
+        viewModel.singleEvent.collectLA(viewLifecycleOwner) {
+            when (it) {
+                is ActorContract.SingleEvent.ToastError -> {
+                    requireContext().toast(it.message, Toast.LENGTH_LONG)
+                }
+                is ActorContract.SingleEvent.ShowDialogInfo -> {
+                    showInfoDialog(it.listItems)
                 }
             }
         }

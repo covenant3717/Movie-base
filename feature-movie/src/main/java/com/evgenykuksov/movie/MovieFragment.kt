@@ -9,12 +9,11 @@ import android.widget.Toast
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.evgenykuksov.core.anim.ANIM_DURATION_1000
 import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.animateAlpha
-import com.evgenykuksov.core.extensions.launchWhenStarted
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
+import com.evgenykuksov.core.extensions.collectLA
 import com.evgenykuksov.core.extensions.toHoursMinutes
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.transition.MaterialContainerTransform
@@ -24,7 +23,6 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import kotlinx.android.synthetic.main.fragment_movie.*
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -39,9 +37,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     private var detailsSection = Section()
     private var backdropSection = Section()
     private val movieId: Long by lazy { arguments?.getLong(ARG_MOVIE_ID) ?: throw IllegalStateException("No movieId") }
-    private val moviePoster: String by lazy {
-        arguments?.getString(ARG_MOVIE_POSTER) ?: throw IllegalStateException("No poster")
-    }
+    private val moviePoster: String by lazy { arguments?.getString(ARG_MOVIE_POSTER).orEmpty() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,36 +62,32 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     }
 
     override fun observeState() {
-        launchWhenStarted {
-            viewModel.state.collect {
-                it.backdrop?.let { backdrop ->
-                    imgBackdrop.apply {
-                        load(backdrop, emptyImageLoader) {
-                            listener(onSuccess = { request, metadata ->
-                                animateAlpha(0f, 1f, ANIM_DURATION_350) {}
-                            })
-                        }
+        viewModel.state.collectLA(viewLifecycleOwner) {
+            it.backdrop?.let { backdrop ->
+                imgBackdrop.apply {
+                    load(backdrop, emptyImageLoader) {
+                        listener(onSuccess = { request, metadata ->
+                            animateAlpha(0f, 1f, ANIM_DURATION_350) {}
+                        })
                     }
                 }
-                tvName.text = it.name
-                tvDate.text = it.date
-                tvDuration.text = it.duration?.toHoursMinutes()?.let {
-                    getString(R.string.movie_duration, it.first, it.second)
-                }
-                it.delayUpdateItems?.let { delay(it) }
-                it.listBackdrops?.let { backdropSection.update(it) }
-                it.listItems?.let { detailsSection.update(it) }
             }
+            tvName.text = it.name
+            tvDate.text = it.date
+            tvDuration.text = it.duration?.toHoursMinutes()?.let {
+                getString(R.string.movie_duration, it.first, it.second)
+            }
+            it.delayUpdateItems?.let { delay(it) }
+            it.listBackdrops?.let { backdropSection.update(it) }
+            it.listItems?.let { detailsSection.update(it) }
         }
     }
 
     override fun observeSingleEffect() {
-        launchWhenStarted {
-            viewModel.singleEvent.collect {
-                when (it) {
-                    is MovieContract.SingleEvent.ToastError -> {
-                        requireContext().toast(it.message, Toast.LENGTH_LONG)
-                    }
+        viewModel.singleEvent.collectLA(viewLifecycleOwner) {
+            when (it) {
+                is MovieContract.SingleEvent.ToastError -> {
+                    requireContext().toast(it.message, Toast.LENGTH_LONG)
                 }
             }
         }
