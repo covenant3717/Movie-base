@@ -2,9 +2,26 @@ package com.evgenykuksov.core.extensions
 
 import android.graphics.Rect
 import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.DimenRes
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+
+fun View.setMargins(
+    @DimenRes startRes: Int? = null,
+    @DimenRes topRes: Int? = null,
+    @DimenRes endRes: Int? = null,
+    @DimenRes bottomRes: Int? = null
+) {
+    (layoutParams as ViewGroup.MarginLayoutParams).apply {
+        val start = startRes?.let { context.dimen(it) } ?: leftMargin
+        val top = topRes?.let { context.dimen(it) } ?: topMargin
+        val end = endRes?.let { context.dimen(it) } ?: rightMargin
+        val bottom = bottomRes?.let { context.dimen(it) } ?: bottomMargin
+        setMargins(start, top, end, bottom)
+    }
+}
 
 fun View.addBottomInsets() {
     this.doOnApplyWindowInsets { view, insets, padding ->
