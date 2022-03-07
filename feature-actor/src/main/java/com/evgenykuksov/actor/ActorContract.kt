@@ -8,7 +8,6 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 class ActorContract {
 
     sealed class Intent : UiIntent {
-        object TouchedBtnInfo : Intent()
     }
 
     data class State(

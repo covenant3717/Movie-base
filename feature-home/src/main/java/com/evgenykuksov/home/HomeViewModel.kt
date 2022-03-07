@@ -67,8 +67,6 @@ class HomeViewModel(
 
     private fun buildLoadingItems(): List<Item> = listOf<Item>(MovieLoadingItem(gifLoader))
 
-    private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
-
     private fun buildItems(list: List<Movie>, grouping: MoviesGrouping = state.value.grouping): List<Item> =
         mutableListOf<Item>()
             .apply {

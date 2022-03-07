@@ -16,7 +16,7 @@ internal class ActorImageItem(
     private val imagePath: String? = null,
     @DrawableRes private val imagePathRes: Int? = null,
     private val imageLoader: ImageLoader,
-    private val onClick: (image: String) -> Unit = {}
+    private val onClick: (image: String?) -> Unit = {}
 ) : Item() {
 
     override fun getLayout(): Int = R.layout.item_actor_image
@@ -30,9 +30,7 @@ internal class ActorImageItem(
                 setOnTouchListener { v, event ->
                     when (event.action) {
                         MotionEvent.ACTION_DOWN -> startAnimationScale(0.95f) {}
-                        MotionEvent.ACTION_UP -> startAnimationScale(1f) {
-                            if (imagePath != null) onClick(imagePath)
-                        }
+                        MotionEvent.ACTION_UP -> startAnimationScale(1f) { onClick(imagePath) }
                         MotionEvent.ACTION_CANCEL -> startAnimationScale(1f) {}
                         else -> {}
                     }

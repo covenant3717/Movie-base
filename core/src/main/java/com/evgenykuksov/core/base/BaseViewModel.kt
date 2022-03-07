@@ -2,6 +2,8 @@ package com.evgenykuksov.core.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.evgenykuksov.core.items.ErrorItem
+import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -42,4 +44,6 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState, SingleEvent : U
     }
 
     protected fun setSingleEvent(effect: SingleEvent) = viewModelScope.launch { _singleEvent.send(effect) }
+
+    protected fun buildErrorItems() = listOf<Item>(ErrorItem())
 }

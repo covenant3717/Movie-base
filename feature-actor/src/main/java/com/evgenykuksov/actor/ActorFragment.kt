@@ -59,11 +59,6 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, true)
             adapter = adapterPhotos.apply { add(photosSection) }
         }
-//        btnInfo.setOnClickListener {
-//            it.startAnimationScaleWithBackward(0.9f) {
-//                viewModel.sendIntent(ActorContract.Intent.TouchedBtnInfo)
-//            }
-//        }
     }
 
     override fun observeState() {

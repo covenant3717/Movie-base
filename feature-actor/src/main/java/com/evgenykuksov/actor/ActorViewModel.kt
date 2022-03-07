@@ -1,18 +1,20 @@
 package com.evgenykuksov.actor
 
+import android.view.Gravity
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.actor.items.ActorImageItem
+import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.CustomEmptyItem
-import com.evgenykuksov.core.items.ErrorItem
+import com.evgenykuksov.core.items.CustomTextItem
 import com.evgenykuksov.core.items.buildGroupLoadingItems
 import com.evgenykuksov.domain.persons.PersonsUseCase
 import com.evgenykuksov.domain.persons.model.ActorData
+import com.evgenykuksov.domain.persons.model.ActorInfo
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
@@ -32,7 +34,7 @@ class ActorViewModel(
 
     override fun handleIntent(intent: ActorContract.Intent) {
         when (intent) {
-            is ActorContract.Intent.TouchedBtnInfo -> handleTouchBtnInfo()
+            // todo: handle intents
         }
     }
 
@@ -76,7 +78,9 @@ class ActorViewModel(
     private fun buildItems(images: List<String>) = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
-            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {}.addTo(this)
+            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {
+                handleTouchBtnInfo()
+            }.addTo(this)
         }
         .apply {
             images.forEachIndexed { index, s ->
@@ -88,30 +92,34 @@ class ActorViewModel(
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
         }
 
-//    private fun buildItems(actorInfo: ActorInfo): List<Item> = listOf(
-//        CustomTextItem(
-//            textContent = actorInfo.name,
-//            styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
-//            colorRes = R.color.dialog_actor_name,
-//            startPaddingRes = R.dimen.dimen_20,
-//            endPaddingRes = R.dimen.dimen_20,
-//            gravityState = Gravity.CENTER_HORIZONTAL
-//        ),
-//        CustomEmptyItem(R.dimen.dimen_24),
-//        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
-//        CustomEmptyItem(R.dimen.dimen_12),
-//        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
-//        CustomEmptyItem(R.dimen.dimen_12),
-//        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
-//        CustomEmptyItem(R.dimen.dimen_12),
-//        DescriptionItem(actorInfo.biography),
-//        CustomEmptyItem(R.dimen.dimen_32)
-//    )
-
-    private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
+    private fun buildInfoItems(actorInfo: ActorInfo): List<Item> = listOf(
+        CustomTextItem(
+            textContent = actorInfo.name,
+            styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
+            colorRes = R.color.dialog_actor_name,
+            startPaddingRes = R.dimen.dimen_20,
+            endPaddingRes = R.dimen.dimen_20,
+            gravityState = Gravity.CENTER_HORIZONTAL
+        ),
+        CustomEmptyItem(R.dimen.dimen_24),
+        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
+        CustomEmptyItem(R.dimen.dimen_12),
+        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
+        CustomEmptyItem(R.dimen.dimen_12),
+        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
+        CustomEmptyItem(R.dimen.dimen_12),
+        CustomTextItem(
+            textContent = actorInfo.biography,
+            colorRes = R.color.core_item_description_text,
+            styleRes = R.style.TextAppearance_MaterialComponents_Subtitle2,
+            startPaddingRes = R.dimen.dimen_20,
+            endPaddingRes = R.dimen.dimen_20,
+        ),
+        CustomEmptyItem(R.dimen.dimen_32)
+    )
 
     private fun handleTouchBtnInfo() {
-//        val items = actorData?.let { buildItems(it.actorInfo) } ?: buildErrorItems()
-//        setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
+        val items = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
+        setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
     }
 }

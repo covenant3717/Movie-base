@@ -167,8 +167,6 @@ class MovieViewModel(
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
-    private fun buildErrorItems(): List<Item> = listOf<Item>(ErrorItem())
-
     private fun buildBackdropsItems(listBackdrops: List<String>): List<Item> = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_4).addTo(this)
