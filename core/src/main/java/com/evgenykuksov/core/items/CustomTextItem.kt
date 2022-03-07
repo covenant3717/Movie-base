@@ -1,5 +1,6 @@
 package com.evgenykuksov.core.items
 
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.view_custom_text_item.view.*
  *
  * */
 
-class CustomTextItem(
+data class CustomTextItem(
     private val textContent: String? = null,
     @StringRes private val textContentRes: Int? = null,
     @StyleRes private val styleRes: Int? = null,
@@ -29,13 +30,14 @@ class CustomTextItem(
     @DimenRes private val topPaddingRes: Int? = null,
     @DimenRes private val endPaddingRes: Int? = null,
     @DimenRes private val bottomPaddingRes: Int? = null,
+    @DimenRes override val sidePaddingsRes: Int? = null,
+    @DimenRes override val sideMarginsRes: Int? = null,
     private val gravityState: Int? = null,
     private val onClick: () -> Unit = {}
-) : Item() {
-
-    override fun getLayout(): Int = R.layout.view_custom_text_item
+) : BaseItem(R.layout.view_custom_text_item) {
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+        super.bind(viewHolder, position)
         viewHolder.containerView.apply {
             textHint.apply {
                 textContent?.let { text = it }

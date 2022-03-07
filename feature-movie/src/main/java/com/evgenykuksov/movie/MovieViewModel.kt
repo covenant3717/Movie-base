@@ -304,8 +304,7 @@ class MovieViewModel(
         textContentRes = textRes,
         styleRes = R.style.TextAppearance_MaterialComponents_Subtitle1,
         colorRes = R.color.item_title,
-        startPaddingRes = R.dimen.dimen_20,
-        endPaddingRes = R.dimen.dimen_20,
+        sideMarginsRes = R.dimen.dimen_20
     )
 
     companion object {

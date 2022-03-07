@@ -58,7 +58,9 @@ class ActorViewModel(
     private fun buildLoadingItems() = mutableListOf<Item>()
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
-            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {}.addTo(this)
+            ActorImageItem(imagePathRes = R.drawable.ic_info, imageLoader = defaultImageLoader) {
+                handleTouchBtnInfo()
+            }.addTo(this)
         }
         .apply {
             CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
@@ -97,23 +99,21 @@ class ActorViewModel(
             textContent = actorInfo.name,
             styleRes = R.style.TextAppearance_MaterialComponents_Headline6,
             colorRes = R.color.dialog_actor_name,
-            startPaddingRes = R.dimen.dimen_20,
-            endPaddingRes = R.dimen.dimen_20,
+            sideMarginsRes = R.dimen.dimen_20,
             gravityState = Gravity.CENTER_HORIZONTAL
         ),
         CustomEmptyItem(R.dimen.dimen_24),
         ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
-        CustomEmptyItem(R.dimen.dimen_12),
+        CustomEmptyItem(R.dimen.dimen_8),
         ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
-        CustomEmptyItem(R.dimen.dimen_12),
+        CustomEmptyItem(R.dimen.dimen_8),
         ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
-        CustomEmptyItem(R.dimen.dimen_12),
+        CustomEmptyItem(R.dimen.dimen_16),
         CustomTextItem(
             textContent = actorInfo.biography,
             colorRes = R.color.core_item_description_text,
             styleRes = R.style.TextAppearance_MaterialComponents_Subtitle2,
-            startPaddingRes = R.dimen.dimen_20,
-            endPaddingRes = R.dimen.dimen_20,
+            sideMarginsRes = R.dimen.dimen_20
         ),
         CustomEmptyItem(R.dimen.dimen_32)
     )
