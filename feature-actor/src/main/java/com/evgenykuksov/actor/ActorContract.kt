@@ -8,10 +8,13 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 class ActorContract {
 
     sealed class Intent : UiIntent {
+        // todo: describe intents
     }
 
     data class State(
         val photo: String?,
+        val listPhotos: List<String>?,
+        val currentPhotoPosition: Int?,
         val listItems: List<Item>?,
         val delayUpdateItems: Long?,
     ) : UiState

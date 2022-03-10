@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
+import com.evgenykuksov.actor.adapter.FullSizePhotoAdapter
 import com.evgenykuksov.core.anim.ANIM_DURATION_250
 import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.animateAlpha
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
 import com.evgenykuksov.core.extensions.collectLA
+import com.evgenykuksov.core.extensions.gone
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialContainerTransform
@@ -34,8 +36,9 @@ import org.koin.core.qualifier.named
 class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
-    private val defaultImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    private val adapterPhotos: GroupAdapter<GroupieViewHolder> = GroupAdapter()
+    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
+    private val adapterFullSizePhotos = FullSizePhotoAdapter(emptyImageLoader, emptyList())
+    private val adapterSmallPhotos: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var photosSection = Section()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
@@ -53,11 +56,16 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     override fun initWidgets() {
         imgPhoto.apply {
             transitionName = actorPhoto
-            load(actorPhoto, defaultImageLoader)
+            load(actorPhoto, emptyImageLoader)
+        }
+        vpItems.apply {
+            isUserInputEnabled = false
+            offscreenPageLimit = 5
+            adapter = adapterFullSizePhotos
         }
         rvItems.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, true)
-            adapter = adapterPhotos.apply { add(photosSection) }
+            adapter = adapterSmallPhotos.apply { add(photosSection) }
         }
     }
 
@@ -65,7 +73,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
         viewModel.state.collectLA(viewLifecycleOwner) {
             it.photo?.let {
                 imgPhoto.animateAlpha(1f, 0f, ANIM_DURATION_250) {
-                    imgPhoto.load(it, defaultImageLoader) {
+                    imgPhoto.load(it, emptyImageLoader) {
                         listener(
                             onSuccess = { request, result ->
                                 imgPhoto.animateAlpha(0f, 1f, ANIM_DURATION_350) {}
@@ -75,6 +83,11 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
                 }
             }
             it.delayUpdateItems?.let { delay(it) }
+            it.listPhotos?.let {
+                adapterFullSizePhotos.setData(it)
+                imgPhoto.gone()
+            }
+            it.currentPhotoPosition?.let { vpItems.currentItem = it }
             it.listItems?.let { photosSection.update(it) }
         }
     }

@@ -6,7 +6,14 @@ import android.view.ViewGroup
 import androidx.annotation.DimenRes
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+
+fun View.gone() = this.run { isVisible = false }
+
+fun View.visible() = this.run { isVisible = true }
+
+fun View.invisible() = this.run { visibility = View.INVISIBLE }
 
 fun View.setMargins(
     @DimenRes startRes: Int? = null,

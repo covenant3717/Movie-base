@@ -30,7 +30,7 @@ class ActorViewModel(
         load(actorId)
     }
 
-    override fun createInitialState() = ActorContract.State(null, null, null)
+    override fun createInitialState() = ActorContract.State(null, null, 0, null, null)
 
     override fun handleIntent(intent: ActorContract.Intent) {
         when (intent) {
@@ -48,6 +48,7 @@ class ActorViewModel(
                 actorData = it
                 setState {
                     copy(
+                        listPhotos = it.images,
                         listItems = buildItems(it.images),
                         delayUpdateItems = 1000
                     )
@@ -88,7 +89,8 @@ class ActorViewModel(
             images.forEachIndexed { index, s ->
                 CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
                 ActorImageItem(imagePath = s, imageLoader = defaultImageLoader) {
-                    setState { copy(photo = it) }
+//                    setState { copy(currentPhotoPosition = index) }
+                    setState { ActorContract.State(null, null, index, null, null) }
                 }.addTo(this)
             }
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
