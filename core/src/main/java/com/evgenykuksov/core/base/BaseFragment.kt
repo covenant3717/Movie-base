@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import com.evgenykuksov.core.R
-import com.google.android.material.appbar.MaterialToolbar
 
 abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(layoutId) {
 
     private var rootView: View? = null
-    var hasInitializedRootView = false
+    private var hasInitializedRootView = false
 
     // This is a fix for re-creating a fragment.
     // todo: See for "Navigation component" updates, perhaps they will improve this behavior.

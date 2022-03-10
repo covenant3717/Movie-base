@@ -1,6 +1,5 @@
 package com.evgenykuksov.core.items
 
-import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
@@ -10,7 +9,6 @@ import com.evgenykuksov.core.R
 import com.evgenykuksov.core.extensions.color
 import com.evgenykuksov.core.extensions.orZero
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
-import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.view_custom_text_item.view.*
 
 /**
