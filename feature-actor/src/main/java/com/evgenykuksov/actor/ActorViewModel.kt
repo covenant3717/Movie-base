@@ -89,8 +89,7 @@ class ActorViewModel(
             images.forEachIndexed { index, s ->
                 CustomEmptyItem(widthRes = R.dimen.dimen_10).addTo(this)
                 ActorImageItem(imagePath = s, imageLoader = defaultImageLoader) {
-//                    setState { copy(currentPhotoPosition = index) }
-                    setState { ActorContract.State(null, null, index, null, null) }
+                    setState { copy(null, null, index, null, null) }
                 }.addTo(this)
             }
             CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
