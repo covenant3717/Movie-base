@@ -87,7 +87,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
                 adapterFullSizePhotos.setData(it)
                 imgPhoto.gone()
             }
-            it.currentPhotoPosition?.let { vpItems.currentItem = it }
+            it.currentPhotoPosition?.let { vpItems.setCurrentItem(it, true) }
             it.listItems?.let { photosSection.update(it) }
         }
     }
