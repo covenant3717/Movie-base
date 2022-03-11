@@ -43,7 +43,7 @@ internal data class ActorItem(
                     false
                 }
             }
-            tvCharacter.text = actor.character
+            tvCharacter.text = actor.name
         }
     }
 }
