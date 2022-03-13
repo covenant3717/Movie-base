@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.chrisbanes.photoview.PhotoView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/imgPhoto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="centerCrop"
-    tools:src="@tools:sample/avatars" />
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="@dimen/dimen_16"
+    app:cardElevation="0dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+</androidx.cardview.widget.CardView>

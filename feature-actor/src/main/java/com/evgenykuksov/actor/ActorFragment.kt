@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
-import com.evgenykuksov.actor.adapter.FullSizePhotoAdapter
+import com.evgenykuksov.actor.adapter.PhotoAdapter
+import com.evgenykuksov.actor.adapter.PhotoPageTransformer
 import com.evgenykuksov.core.anim.ANIM_DURATION_250
 import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.animateAlpha
@@ -37,7 +38,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    private val adapterFullSizePhotos = FullSizePhotoAdapter(emptyImageLoader, emptyList())
+    private val adapterFullSizePhotos = PhotoAdapter(emptyImageLoader, emptyList())
     private val adapterSmallPhotos: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var photosSection = Section()
@@ -59,8 +60,8 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
             load(actorPhoto, emptyImageLoader)
         }
         vpItems.apply {
-            isUserInputEnabled = false
             offscreenPageLimit = 5
+            setPageTransformer(PhotoPageTransformer(5))
             adapter = adapterFullSizePhotos
         }
         rvItems.apply {

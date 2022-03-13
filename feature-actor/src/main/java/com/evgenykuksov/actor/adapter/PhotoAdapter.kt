@@ -9,7 +9,7 @@ import coil.load
 import com.evgenykuksov.actor.R
 import kotlinx.android.synthetic.main.item_page.view.*
 
-class FullSizePhotoAdapter(
+class PhotoAdapter(
     private val emptyImageLoader: ImageLoader,
     private var items: List<String>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
