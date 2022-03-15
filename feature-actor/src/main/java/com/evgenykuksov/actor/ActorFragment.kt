@@ -13,6 +13,7 @@ import com.evgenykuksov.actor.adapter.PhotoPageTransformer
 import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
 import com.evgenykuksov.core.extensions.collectLA
+import com.evgenykuksov.core.extensions.setPaddings
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialContainerTransform
@@ -54,6 +55,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     override fun observeState() {
         viewModel.state.collectLA(viewLifecycleOwner) {
             it.listPhotos?.let { adapterPhotos.setData(it) }
+            it.listPhotos?.let { if (it.size == 1) vpItems.setPaddings(endRes = R.dimen.dimen_16) }
         }
     }
 
