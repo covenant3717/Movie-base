@@ -17,7 +17,7 @@ abstract class BaseFragment(@LayoutRes private val layoutId: Int) : Fragment(lay
     protected fun getPersistentView(
         inflater: LayoutInflater?,
         container: ViewGroup?,
-        onViewCreated: () -> Unit
+        onViewCreated: () -> Unit = {}
     ): View? {
         if (rootView == null) {
             // Inflate the layout for this fragment
