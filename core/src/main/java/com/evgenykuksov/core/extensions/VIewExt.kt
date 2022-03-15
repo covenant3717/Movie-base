@@ -30,6 +30,19 @@ fun View.setMargins(
     }
 }
 
+fun View.setPaddings(
+    @DimenRes startRes: Int? = null,
+    @DimenRes topRes: Int? = null,
+    @DimenRes endRes: Int? = null,
+    @DimenRes bottomRes: Int? = null
+) {
+    val start = startRes?.let { context.dimen(it) } ?: paddingLeft
+    val top = topRes?.let { context.dimen(it) } ?: paddingTop
+    val end = endRes?.let { context.dimen(it) } ?: paddingEnd
+    val bottom = bottomRes?.let { context.dimen(it) } ?: paddingBottom
+    setPadding(start, top, end, bottom)
+}
+
 fun View.addBottomInsets() {
     this.doOnApplyWindowInsets { view, insets, padding ->
         view.updatePadding(bottom = padding.bottom + insets.systemWindowInsetBottom)

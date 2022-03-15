@@ -40,3 +40,22 @@ fun View.startAnimationScaleWithBackward(endValue: Float, onAnimationEnd: () -> 
         startAnimationScale(1f) { onAnimationEnd() }
     }
 }
+
+fun View.animateIntChanges(
+    currentValue: Int,
+    newValue: Int,
+    durationTime: Long = 350L,
+    onAnimationUpdate: (value: Int) -> Unit = {},
+    onAnimationEnd: () -> Unit = {}
+) = ValueAnimator
+    .ofInt(currentValue, newValue)
+    .apply {
+        interpolator = DecelerateInterpolator()
+        duration = durationTime
+        addUpdateListener {
+            onAnimationUpdate(it.animatedValue as Int)
+            requestLayout()
+        }
+        doOnEnd { onAnimationEnd() }
+    }
+    .start()
