@@ -26,7 +26,7 @@ class ActorViewModel(
         load(actorId)
     }
 
-    override fun createInitialState() = ActorContract.State(null)
+    override fun createInitialState() = ActorContract.State(null, R.dimen.dimen_40)
 
     override fun handleIntent(intent: ActorContract.Intent) {
         when (intent) {
@@ -43,7 +43,12 @@ class ActorViewModel(
             .collect {
                 actorData = it
                 delay(1000)
-                setState { copy(listPhotos = it.images,) }
+                setState {
+                    copy(
+                        listPhotos = it.images,
+                        pagerEndPaddingRes = if (it.images.size > 1) R.dimen.dimen_40 else R.dimen.dimen_16
+                    )
+                }
             }
     }
 

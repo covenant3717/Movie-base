@@ -13,6 +13,7 @@ class ActorContract {
 
     data class State(
         val listPhotos: List<String?>?,
+        val pagerEndPaddingRes: Int?,
     ) : UiState
 
     sealed class SingleEvent : UiSingleEvent {

@@ -55,7 +55,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     override fun observeState() {
         viewModel.state.collectLA(viewLifecycleOwner) {
             it.listPhotos?.let { adapterPhotos.setData(it) }
-            it.listPhotos?.let { if (it.size == 1) vpItems.setPaddings(endRes = R.dimen.dimen_16) }
+            it.pagerEndPaddingRes?.let { vpItems.setPaddings(endRes = it) }
         }
     }
 
