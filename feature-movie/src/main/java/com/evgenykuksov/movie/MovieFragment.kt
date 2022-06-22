@@ -47,7 +47,7 @@ class MovieFragment : BaseFragment(R.layout.fragment_movie) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) { }
+        getPersistentView(inflater, container)
 
     override fun initWidgets() {
         imgBack.setOnClickListener { viewModel.sendIntent(MovieContract.Intent.Back) }

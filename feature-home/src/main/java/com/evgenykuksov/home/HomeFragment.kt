@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) { }
+        getPersistentView(inflater, container)
 
     override fun initWidgets() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

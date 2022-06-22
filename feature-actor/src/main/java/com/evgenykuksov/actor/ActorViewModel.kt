@@ -30,7 +30,7 @@ class ActorViewModel(
 
     override fun handleIntent(intent: ActorContract.Intent) {
         when (intent) {
-            // todo: handle intents
+            is ActorContract.Intent.InfoClicked -> handleInfoClicked()
         }
     }
 
@@ -76,7 +76,7 @@ class ActorViewModel(
         CustomEmptyItem(R.dimen.dimen_32)
     )
 
-    private fun handleTouchBtnInfo() {
+    private fun handleInfoClicked() {
         val items = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
         setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
     }

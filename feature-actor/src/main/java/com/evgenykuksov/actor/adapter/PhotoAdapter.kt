@@ -3,6 +3,7 @@ package com.evgenykuksov.actor.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
@@ -10,7 +11,8 @@ import com.evgenykuksov.actor.R
 import kotlinx.android.synthetic.main.item_page_photo.view.*
 
 class PhotoAdapter(
-    private val emptyImageLoader: ImageLoader
+    private val emptyImageLoader: ImageLoader,
+    private val onInfoClick: () -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<String?> = emptyList()
@@ -54,6 +56,10 @@ class PhotoAdapter(
             itemView.run {
                 imgPhoto.load(item, emptyImageLoader) {
                     crossfade(true)
+                }
+                imgInfo.apply {
+                    isVisible = adapterPosition == 0
+                    setOnClickListener { onInfoClick() }
                 }
             }
         }

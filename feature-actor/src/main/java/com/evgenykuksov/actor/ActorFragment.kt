@@ -31,7 +31,9 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    private val adapterPhotos = PhotoAdapter(emptyImageLoader)
+    private val adapterPhotos = PhotoAdapter(emptyImageLoader) {
+        viewModel.sendIntent(ActorContract.Intent.InfoClicked)
+    }
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
 
@@ -42,7 +44,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        getPersistentView(inflater, container) { }
+        getPersistentView(inflater, container)
 
     override fun initWidgets() {
         vpItems.apply {

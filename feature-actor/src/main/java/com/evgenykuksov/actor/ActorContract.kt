@@ -8,7 +8,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 class ActorContract {
 
     sealed class Intent : UiIntent {
-        // todo: describe intents
+        object InfoClicked: Intent()
     }
 
     data class State(
