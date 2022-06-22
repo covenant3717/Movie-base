@@ -2,7 +2,6 @@ package com.evgenykuksov.actor
 
 import android.view.Gravity
 import androidx.lifecycle.viewModelScope
-import com.evgenykuksov.actor.items.ActorPropertyItem
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.CustomTextItem
@@ -60,12 +59,53 @@ class ActorViewModel(
             sideMarginsRes = R.dimen.dimen_20,
             gravityState = Gravity.CENTER_HORIZONTAL
         ),
+
+        // birthday
         CustomEmptyItem(R.dimen.dimen_24),
-        ActorPropertyItem(R.string.dialog_property_birthday, actorInfo.birthday),
-        CustomEmptyItem(R.dimen.dimen_8),
-        ActorPropertyItem(R.string.dialog_property_place_of_birth, actorInfo.placeOfBirth),
-        CustomEmptyItem(R.dimen.dimen_8),
-        ActorPropertyItem(R.string.dialog_property_popularity, actorInfo.popularity.toString()),
+        CustomTextItem(
+            textContentRes = R.string.dialog_property_birthday,
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_name,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+        CustomTextItem(
+            textContent = actorInfo.birthday,
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_value,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+
+        // popularity
+        CustomEmptyItem(R.dimen.dimen_10),
+        CustomTextItem(
+            textContentRes = R.string.dialog_property_popularity,
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_name,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+        CustomTextItem(
+            textContent = actorInfo.popularity.toString(),
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_value,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+
+        // place of birth
+        CustomEmptyItem(R.dimen.dimen_10),
+        CustomTextItem(
+            textContentRes = R.string.dialog_property_place_of_birth,
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_name,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+        CustomTextItem(
+            textContent =actorInfo.placeOfBirth,
+            styleRes = R.style.TextAppearance_MaterialComponents_Body2,
+            colorRes = R.color.dialog_property_value,
+            sideMarginsRes = R.dimen.dimen_20,
+        ),
+
+        // biography
         CustomEmptyItem(R.dimen.dimen_16),
         CustomTextItem(
             textContent = actorInfo.biography,
@@ -73,7 +113,7 @@ class ActorViewModel(
             styleRes = R.style.TextAppearance_MaterialComponents_Subtitle2,
             sideMarginsRes = R.dimen.dimen_20
         ),
-        CustomEmptyItem(R.dimen.dimen_32)
+        CustomEmptyItem(R.dimen.dimen_40)
     )
 
     private fun handleInfoClicked() {

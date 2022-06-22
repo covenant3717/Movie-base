@@ -10,11 +10,11 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
-fun View.animateAlpha(
+fun View.startAnimationAlpha(
     currentValue: Float,
     newValue: Float,
     durationTime: Long = ANIM_DURATION_350,
-    onAnimationEnd: () -> Unit
+    onAnimationEnd: () -> Unit = {}
 ) = ValueAnimator
     .ofFloat(currentValue, newValue)
     .apply {

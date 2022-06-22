@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
 import com.evgenykuksov.actor.R
+import com.evgenykuksov.core.anim.startAnimationAlpha
 import kotlinx.android.synthetic.main.item_page_photo.view.*
 
 class PhotoAdapter(
@@ -58,7 +59,8 @@ class PhotoAdapter(
                     crossfade(true)
                 }
                 imgInfo.apply {
-                    isVisible = adapterPosition == 0
+                    if (adapterPosition == 0) startAnimationAlpha(0f, 1f)
+                    else isVisible = false
                     setOnClickListener { onInfoClick() }
                 }
             }

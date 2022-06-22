@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.evgenykuksov.core.anim.ANIM_DURATION_250
-import com.evgenykuksov.core.anim.animateAlpha
+import com.evgenykuksov.core.anim.startAnimationAlpha
 import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.BaseFragment
@@ -85,7 +85,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             it.rating?.insertSpaces(3)?.let { rating ->
                 if (rating != tvRating.text) {
                     tvRating.text = rating
-                    tvRating.animateAlpha(0f, 1f) {}
+                    tvRating.startAnimationAlpha(0f, 1f)
                 }
             }
         }

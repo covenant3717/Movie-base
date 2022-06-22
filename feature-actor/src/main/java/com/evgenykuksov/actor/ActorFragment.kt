@@ -31,9 +31,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    private val adapterPhotos = PhotoAdapter(emptyImageLoader) {
-        viewModel.sendIntent(ActorContract.Intent.InfoClicked)
-    }
+    private val adapterPhotos = PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
     private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
 
@@ -76,10 +74,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private fun showInfoDialog(listItems: List<Item>) {
         val view = layoutInflater.inflate(R.layout.dialog_person_info, null).apply {
-            findViewById<RecyclerView>(R.id.rvInfo).adapter = adapterInfo.apply {
-                clear()
-                addAll(listItems)
-            }
+            findViewById<RecyclerView>(R.id.rvInfo).adapter = adapterInfo.apply { replaceAll(listItems) }
         }
 
         BottomSheetDialog(requireContext(), R.style.DialogInfo)
