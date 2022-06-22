@@ -3,6 +3,8 @@ package com.evgenykuksov.core.anim
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
@@ -59,3 +61,16 @@ fun View.animateIntChanges(
         doOnEnd { onAnimationEnd() }
     }
     .start()
+
+@SuppressLint("ClickableViewAccessibility")
+fun View.setAnimScaleClickListener(onClick: () -> Unit = {}) {
+    setOnTouchListener { v, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> startAnimationScale(0.95f) {}
+            MotionEvent.ACTION_UP -> startAnimationScale(1f) { onClick() }
+            MotionEvent.ACTION_CANCEL -> startAnimationScale(1f) {}
+            else -> {}
+        }
+        false
+    }
+}

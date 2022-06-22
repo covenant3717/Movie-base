@@ -1,14 +1,11 @@
 package com.evgenykuksov.movie.items
 
-import android.annotation.SuppressLint
-import android.view.MotionEvent
-import android.view.View
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.evgenykuksov.core.anim.startAnimationScale
+import com.evgenykuksov.core.anim.setAnimScaleClickListener
 import com.evgenykuksov.domain.movies.model.Actor
 import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
@@ -23,7 +20,6 @@ internal data class ActorItem(
 
     override fun getLayout(): Int = R.layout.item_actor
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
             imgActor.let {
@@ -31,16 +27,8 @@ internal data class ActorItem(
                 it.load(actor.profilePath, defaultImageLoader) {
                     transformations(RoundedCornersTransformation(resources.getDimension(R.dimen.dimen_14)))
                 }
-                it.setOnTouchListener { v, event ->
-                    when (event.action) {
-                        MotionEvent.ACTION_DOWN -> startAnimationScale(0.95f) {}
-                        MotionEvent.ACTION_UP -> startAnimationScale(1f) {
-                            onClick(FragmentNavigatorExtras(imgActor to actor.profilePath))
-                        }
-                        MotionEvent.ACTION_CANCEL -> startAnimationScale(1f) {}
-                        else -> {}
-                    }
-                    false
+                it.setAnimScaleClickListener {
+                    onClick(FragmentNavigatorExtras(imgActor to actor.profilePath))
                 }
             }
             tvCharacter.text = actor.name

@@ -1,10 +1,8 @@
 package com.evgenykuksov.movie.items
 
-import android.annotation.SuppressLint
-import android.view.MotionEvent
 import coil.ImageLoader
 import coil.load
-import com.evgenykuksov.core.anim.startAnimationScale
+import com.evgenykuksov.core.anim.setAnimScaleClickListener
 import com.evgenykuksov.movie.R
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -18,20 +16,11 @@ internal data class BackdropItem(
 
     override fun getLayout(): Int = R.layout.item_backdrop
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.containerView.apply {
             imgBackdrop.apply {
                 load(backdropPath, imageLoader)
-                setOnTouchListener { v, event ->
-                    when (event.action) {
-                        MotionEvent.ACTION_DOWN -> viewHolder.containerView.startAnimationScale(0.95f) {}
-                        MotionEvent.ACTION_UP -> viewHolder.containerView.startAnimationScale(1f) { onClick(backdropPath) }
-                        MotionEvent.ACTION_CANCEL -> viewHolder.containerView.startAnimationScale(1f) {}
-                        else -> {}
-                    }
-                    false
-                }
+                setAnimScaleClickListener { onClick(backdropPath) }
             }
         }
     }
