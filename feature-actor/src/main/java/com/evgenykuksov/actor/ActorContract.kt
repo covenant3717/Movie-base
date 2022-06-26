@@ -5,7 +5,7 @@ import com.evgenykuksov.core.base.UiSingleEvent
 import com.evgenykuksov.core.base.UiState
 import com.xwray.groupie.kotlinandroidextensions.Item
 
-class ActorContract {
+internal class ActorContract {
 
     sealed class Intent : UiIntent {
         object InfoClicked: Intent()

@@ -11,7 +11,7 @@ import com.evgenykuksov.actor.R
 import com.evgenykuksov.core.anim.startAnimationAlpha
 import kotlinx.android.synthetic.main.item_page_photo.view.*
 
-class PhotoAdapter(
+internal class PhotoAdapter(
     private val emptyImageLoader: ImageLoader,
     private val onInfoClick: () -> Unit = {}
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

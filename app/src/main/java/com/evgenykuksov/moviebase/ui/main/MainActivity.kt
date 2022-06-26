@@ -13,7 +13,7 @@ import com.evgenykuksov.moviebase.navigation.Navigator
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val navigator: Navigator by inject()
 

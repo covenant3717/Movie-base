@@ -8,7 +8,7 @@ import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.ui.main.MainActivity
 import kotlinx.coroutines.delay
 
-class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) {
+internal class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

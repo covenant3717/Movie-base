@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+internal class HomeViewModel(
     private val navigator: HomeNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,

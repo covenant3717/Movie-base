@@ -5,7 +5,7 @@ import androidx.core.view.ViewCompat
 import androidx.viewpager2.widget.ViewPager2
 import java.lang.Math.abs
 
-class PhotoPageTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTransformer {
+internal class PhotoPageTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTransformer {
 
     override fun transformPage(page: View, position: Float) {
         page.apply {

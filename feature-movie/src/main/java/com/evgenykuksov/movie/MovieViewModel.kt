@@ -16,7 +16,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class MovieViewModel(
+internal class MovieViewModel(
     private val movieId: Long,
     private val navigator: MovieNavigation,
     private val moviesUseCase: MoviesUseCase,

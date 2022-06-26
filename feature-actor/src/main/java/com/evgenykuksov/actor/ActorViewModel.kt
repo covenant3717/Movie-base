@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class ActorViewModel(
+internal class ActorViewModel(
     private val actorId: Long,
     private val personsUseCase: PersonsUseCase
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {

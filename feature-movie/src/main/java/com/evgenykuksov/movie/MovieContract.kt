@@ -5,7 +5,7 @@ import com.evgenykuksov.core.base.UiSingleEvent
 import com.evgenykuksov.core.base.UiState
 import com.xwray.groupie.kotlinandroidextensions.Item
 
-class MovieContract {
+internal class MovieContract {
 
     sealed class Intent : UiIntent {
         object Back: Intent()

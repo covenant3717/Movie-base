@@ -2,7 +2,7 @@ package com.evgenykuksov.moviebase.navigation
 
 import androidx.navigation.NavController
 
-abstract class BaseNavigator {
+internal abstract class BaseNavigator {
 
     protected var navController: NavController? = null
 

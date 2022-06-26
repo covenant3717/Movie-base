@@ -7,7 +7,7 @@ import com.evgenykuksov.core.base.UiState
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
 import com.xwray.groupie.kotlinandroidextensions.Item
 
-class HomeContract {
+internal class HomeContract {
 
     sealed class Intent : UiIntent {
         data class ChangeGrouping(val grouping: MoviesGrouping) : Intent()

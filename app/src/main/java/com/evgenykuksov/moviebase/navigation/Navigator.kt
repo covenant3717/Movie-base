@@ -8,7 +8,7 @@ import com.evgenykuksov.movie.MovieFragment
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.evgenykuksov.moviebase.R
 
-class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
+internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
 
     /**
      * Common
