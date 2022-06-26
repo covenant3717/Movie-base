@@ -23,7 +23,6 @@ fun DependencyHandlerScope.core() {
 
 fun DependencyHandlerScope.domain() {
     "implementation"(Dependencies.Main.kotlin)
-    "implementation"(Dependencies.Main.coreKtx)
     "implementation"(Dependencies.Coroutines.coroutine)
     "implementation"(Dependencies.Coroutines.coroutineAndroid)
 }
