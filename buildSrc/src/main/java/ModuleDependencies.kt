@@ -52,6 +52,7 @@ fun DependencyHandlerScope.app() {
     "implementation"(project(Dependencies.Modules.FEATURE_HOME))
     "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
     "implementation"(project(Dependencies.Modules.FEATURE_ACTOR))
+    "implementation"(project(Dependencies.Modules.FEATURE_BOTTOM_DIALOG))
 
     "implementation"(Dependencies.Main.kotlin)
     "implementation"(Dependencies.Main.coreKtx)
@@ -104,5 +105,9 @@ fun DependencyHandlerScope.featureMovie() {
 }
 
 fun DependencyHandlerScope.featureActor() {
+    commonFeatureDependencies()
+}
+
+fun DependencyHandlerScope.featureBottomDialog() {
     commonFeatureDependencies()
 }

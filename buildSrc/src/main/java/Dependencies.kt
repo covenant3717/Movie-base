@@ -62,5 +62,6 @@ object Dependencies {
         const val FEATURE_HOME = ":feature-home"
         const val FEATURE_MOVIE = ":feature-movie"
         const val FEATURE_ACTOR = ":feature-actor"
+        const val FEATURE_BOTTOM_DIALOG = ":feature-bottom-dialog"
     }
 }
