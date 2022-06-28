@@ -3,12 +3,15 @@ package com.evgenykuksov.moviebase.navigation
 import android.os.Bundle
 import androidx.navigation.fragment.FragmentNavigator
 import com.evgenykuksov.actor.ActorFragment
+import com.evgenykuksov.actor.navigation.ActorNavigation
 import com.evgenykuksov.home.navigation.HomeNavigation
 import com.evgenykuksov.movie.MovieFragment
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.evgenykuksov.moviebase.R
+import com.example.feature_bottom_dialog.BottomDialogFragment
+import com.xwray.groupie.kotlinandroidextensions.Item
 
-internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
+internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation, ActorNavigation {
 
     /**
      * Common
@@ -21,6 +24,13 @@ internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation {
         navController?.navigate(
             R.id.youtubeActivity,
             Bundle().apply { putString("videoKey", videoKey) }
+        )
+    }
+
+    override fun toBottomDialog(listItems: List<Item>) {
+        navController?.navigate(
+            R.id.bottomDialog,
+            BottomDialogFragment.createBundle(listItems)
         )
     }
 

@@ -23,7 +23,6 @@ fun DependencyHandlerScope.core() {
 
 fun DependencyHandlerScope.domain() {
     "implementation"(Dependencies.Main.kotlin)
-    "implementation"(Dependencies.Main.coreKtx)
     "implementation"(Dependencies.Coroutines.coroutine)
     "implementation"(Dependencies.Coroutines.coroutineAndroid)
 }
@@ -52,6 +51,7 @@ fun DependencyHandlerScope.app() {
     "implementation"(project(Dependencies.Modules.FEATURE_HOME))
     "implementation"(project(Dependencies.Modules.FEATURE_MOVIE))
     "implementation"(project(Dependencies.Modules.FEATURE_ACTOR))
+    "implementation"(project(Dependencies.Modules.FEATURE_BOTTOM_DIALOG))
 
     "implementation"(Dependencies.Main.kotlin)
     "implementation"(Dependencies.Main.coreKtx)
@@ -63,6 +63,8 @@ fun DependencyHandlerScope.app() {
     "implementation"(Dependencies.Jetpack.navigationFragment)
     "implementation"(Dependencies.Jetpack.navigationUI)
     "implementation"(Dependencies.UI.constraintLayout)
+    "implementation"(Dependencies.UI.groupie)
+    "implementation"(Dependencies.UI.groupieExt)
 }
 
 private fun DependencyHandlerScope.commonFeatureDependencies() {
@@ -104,5 +106,9 @@ fun DependencyHandlerScope.featureMovie() {
 }
 
 fun DependencyHandlerScope.featureActor() {
+    commonFeatureDependencies()
+}
+
+fun DependencyHandlerScope.featureBottomDialog() {
     commonFeatureDependencies()
 }

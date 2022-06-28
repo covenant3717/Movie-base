@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_stub">Данные отсутствуют</string>
+
+    <!--english strings-->
+    <!--<string name="text_stub">No data</string>-->
+</resources>
