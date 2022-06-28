@@ -63,6 +63,8 @@ fun DependencyHandlerScope.app() {
     "implementation"(Dependencies.Jetpack.navigationFragment)
     "implementation"(Dependencies.Jetpack.navigationUI)
     "implementation"(Dependencies.UI.constraintLayout)
+    "implementation"(Dependencies.UI.groupie)
+    "implementation"(Dependencies.UI.groupieExt)
 }
 
 private fun DependencyHandlerScope.commonFeatureDependencies() {

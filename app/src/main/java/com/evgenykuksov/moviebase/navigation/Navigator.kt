@@ -9,6 +9,7 @@ import com.evgenykuksov.movie.MovieFragment
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.evgenykuksov.moviebase.R
 import com.example.feature_bottom_dialog.BottomDialogFragment
+import com.xwray.groupie.kotlinandroidextensions.Item
 
 internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation, ActorNavigation {
 
@@ -26,7 +27,7 @@ internal class Navigator : BaseNavigator(), HomeNavigation, MovieNavigation, Act
         )
     }
 
-    override fun toBottomDialog(listItems: List<*>) {
+    override fun toBottomDialog(listItems: List<Item>) {
         navController?.navigate(
             R.id.bottomDialog,
             BottomDialogFragment.createBundle(listItems)

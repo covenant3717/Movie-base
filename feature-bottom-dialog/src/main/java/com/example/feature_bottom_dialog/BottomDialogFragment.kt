@@ -39,8 +39,8 @@ class BottomDialogFragment : BottomSheetDialogFragment() {
 
         private const val ARG_LIST_ITEMS = "arg_list_items"
 
-        fun createBundle(listItems: List<*>) = Bundle().apply {
-            val serializableListItems: ArrayList<Item>? = listItems.toMutableList() as? ArrayList<Item>
+        fun createBundle(listItems: List<Item>) = Bundle().apply {
+            val serializableListItems: ArrayList<Item>? = listItems.toMutableList() as? ArrayList
 
             if (serializableListItems.isNullOrEmpty()) putSerializable(ARG_LIST_ITEMS, buildStubItems())
             else putSerializable(ARG_LIST_ITEMS, serializableListItems)
