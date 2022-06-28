@@ -45,4 +45,9 @@
             app:argType="string" />
     </activity>
 
+    <dialog
+        android:id="@+id/bottomDialog"
+        android:name="com.example.feature_bottom_dialog.BottomDialogFragment"
+        tools:layout="@layout/bottom_dialog_fragment" />
+
 </navigation>

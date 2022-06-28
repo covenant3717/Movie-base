@@ -2,6 +2,7 @@ package com.evgenykuksov.actor
 
 import android.view.Gravity
 import androidx.lifecycle.viewModelScope
+import com.evgenykuksov.actor.navigation.ActorNavigation
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.CustomTextItem
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 
 internal class ActorViewModel(
     private val actorId: Long,
+    private val navigator: ActorNavigation,
     private val personsUseCase: PersonsUseCase
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
@@ -99,7 +101,7 @@ internal class ActorViewModel(
             sideMarginsRes = R.dimen.dimen_20,
         ),
         CustomTextItem(
-            textContent =actorInfo.placeOfBirth,
+            textContent = actorInfo.placeOfBirth,
             styleRes = R.style.TextAppearance_MaterialComponents_Body2,
             colorRes = R.color.dialog_property_value,
             sideMarginsRes = R.dimen.dimen_20,
@@ -117,7 +119,7 @@ internal class ActorViewModel(
     )
 
     private fun handleInfoClicked() {
-        val items = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
-        setSingleEvent(ActorContract.SingleEvent.ShowDialogInfo(items))
+        val listItems = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
+        navigator.toBottomDialog(listItems)
     }
 }

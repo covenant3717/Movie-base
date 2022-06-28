@@ -5,4 +5,6 @@ interface BaseNavigation {
     fun back()
 
     fun toYoutube(videoKey: String)
+
+    fun toBottomDialog(listItems: List<*>)
 }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import com.evgenykuksov.actor.adapter.PhotoAdapter
 import com.evgenykuksov.actor.adapter.PhotoPageTransformer
@@ -15,12 +14,8 @@ import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
 import com.evgenykuksov.core.extensions.collectLA
 import com.evgenykuksov.core.extensions.setPaddings
 import com.evgenykuksov.core.extensions.toast
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.fragment_actor.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,7 +27,6 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
     private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
     private val adapterPhotos = PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
-    private val adapterInfo: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,21 +59,8 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
                 is ActorContract.SingleEvent.ToastError -> {
                     requireContext().toast(it.message, Toast.LENGTH_LONG)
                 }
-                is ActorContract.SingleEvent.ShowDialogInfo -> {
-                    showInfoDialog(it.listItems)
-                }
             }
         }
-    }
-
-    private fun showInfoDialog(listItems: List<Item>) {
-        val view = layoutInflater.inflate(R.layout.dialog_person_info, null).apply {
-            findViewById<RecyclerView>(R.id.rvInfo).adapter = adapterInfo.apply { replaceAll(listItems) }
-        }
-
-        BottomSheetDialog(requireContext(), R.style.DialogInfo)
-            .apply { setContentView(view) }
-            .show()
     }
 
     companion object {
