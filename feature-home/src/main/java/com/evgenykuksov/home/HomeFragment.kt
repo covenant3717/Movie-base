@@ -69,7 +69,6 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     override fun observeState() {
-  
         viewModel.state.collectLA(viewLifecycleOwner) {
             when (it.grouping) {
                 MoviesGrouping.Linear -> {
