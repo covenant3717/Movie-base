@@ -20,6 +20,7 @@ object Versions {
 
     object DI {
         const val KOIN = "3.1.3"
+        const val HILT = "2.44"
     }
 
     object Coroutines {

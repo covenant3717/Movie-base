@@ -5,6 +5,7 @@ import Plugins.KOTLIN_ANDROID
 import Plugins.KOTLIN_ANDROID_EXTENSIONS
 import Plugins.KOTLIN_KAPT
 import Plugins.NAVIGATION_SAFE_ARGS
+import Plugins.PLUGIN_HILT
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -16,6 +17,7 @@ private object Plugins {
     const val KOTLIN_KAPT = "kotlin-kapt"
     const val KOTLIN = "kotlin"
     const val NAVIGATION_SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
+    const val PLUGIN_HILT = "com.google.dagger.hilt.android"
 }
 
 internal fun PluginDependenciesSpec.pluginAndroidApplication(): PluginDependencySpec = id(ANDROID_APPLICATION)
@@ -31,3 +33,5 @@ internal fun PluginDependenciesSpec.pluginKotlinAndroidExt(): PluginDependencySp
 internal fun PluginDependenciesSpec.pluginKotlinKapt(): PluginDependencySpec = id(KOTLIN_KAPT)
 
 internal fun PluginDependenciesSpec.pluginNavigationSafeArgs(): PluginDependencySpec = id(NAVIGATION_SAFE_ARGS)
+
+internal fun PluginDependenciesSpec.pluginHilt(): PluginDependencySpec = id(PLUGIN_HILT)

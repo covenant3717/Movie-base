@@ -8,9 +8,11 @@ import com.evgenykuksov.movie.di.featureMovieModule
 import com.evgenykuksov.moviebase.di.useCasesModule
 import com.evgenykuksov.home.di.featureHomeModule
 import com.evgenykuksov.moviebase.di.navigationModule
+import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+@HiltAndroidApp
 internal class App : Application() {
 
     override fun onCreate() {

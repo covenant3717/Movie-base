@@ -11,6 +11,9 @@ object Dependencies {
     object DI {
         const val koin = "io.insert-koin:koin-core:${Versions.DI.KOIN}"
         const val koinAndroid = "io.insert-koin:koin-android:${Versions.DI.KOIN}"
+        const val hilt = "com.google.dagger:hilt-android:${Versions.DI.HILT}"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.DI.HILT}"
+        const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.DI.HILT}"
     }
 
     object Coroutines {

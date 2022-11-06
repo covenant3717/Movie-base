@@ -6,6 +6,7 @@ fun PluginDependenciesSpec.appPlugins() {
     pluginKotlinAndroidExt()
     pluginKotlinKapt()
     pluginNavigationSafeArgs()
+    pluginHilt()
 }
 
 fun PluginDependenciesSpec.corePlugins() {
