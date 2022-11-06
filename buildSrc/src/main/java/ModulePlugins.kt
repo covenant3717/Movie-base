@@ -13,6 +13,8 @@ fun PluginDependenciesSpec.corePlugins() {
     pluginAndroidLibrary()
     pluginKotlinAndroid()
     pluginKotlinAndroidExt()
+    pluginKotlinKapt()
+    pluginHilt()
 }
 
 fun PluginDependenciesSpec.dataPlugins() {
