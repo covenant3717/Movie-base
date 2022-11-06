@@ -31,5 +31,7 @@ fun PluginDependenciesSpec.featurePlugins() {
     pluginAndroidLibrary()
     pluginKotlinAndroid()
     pluginKotlinAndroidExt()
+    pluginKotlinKapt()
+    pluginHilt()
 }
 
