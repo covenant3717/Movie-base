@@ -20,6 +20,7 @@ fun PluginDependenciesSpec.dataPlugins() {
     pluginKotlinAndroid()
     pluginKotlinAndroidExt()
     pluginKotlinKapt()
+    pluginHilt()
 }
 
 fun PluginDependenciesSpec.domainPlugins() {
