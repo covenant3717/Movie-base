@@ -10,9 +10,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.evgenykuksov.core.extensions.integer
 import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.navigation.Navigator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
+@AndroidEntryPoint
 internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val navigator: Navigator by inject()

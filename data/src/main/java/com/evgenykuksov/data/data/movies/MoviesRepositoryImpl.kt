@@ -8,8 +8,9 @@ import com.evgenykuksov.domain.movies.model.*
 import com.evgenykuksov.domain.movies.model.Credits
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
-internal class MoviesRepositoryImpl(
+internal class MoviesRepositoryImpl @Inject constructor(
     private val remoteDataSource: MoviesRemoteDataSource,
     private val memoryDataSource: MoviesMemoryDataSource
 ) : MoviesRepository {

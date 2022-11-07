@@ -34,6 +34,7 @@ fun PluginDependenciesSpec.featurePlugins() {
     pluginKotlinAndroid()
     pluginKotlinAndroidExt()
     pluginKotlinKapt()
+    pluginNavigationSafeArgs()
     pluginHilt()
 }
 

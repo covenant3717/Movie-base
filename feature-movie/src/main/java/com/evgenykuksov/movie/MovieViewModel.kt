@@ -2,6 +2,7 @@ package com.evgenykuksov.movie
 
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
@@ -13,17 +14,23 @@ import com.evgenykuksov.movie.items.*
 import com.evgenykuksov.movie.items.RatingItem
 import com.evgenykuksov.movie.navigation.MovieNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-internal class MovieViewModel(
-    private val movieId: Long,
-    private val navigator: MovieNavigation,
+@HiltViewModel
+internal class MovieViewModel @Inject constructor(
+//    private val navigator: MovieNavigation,
+    stateHandle: SavedStateHandle,
     private val moviesUseCase: MoviesUseCase,
     private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
     init {
+        // https://stackoverflow.com/questions/65280323/how-to-pass-runtime-parameters-to-a-viewmodels-constructor-when-using-hilt-for
+        // так можно передавать параметры во viewModel
+        val movieId = stateHandle.get<Long>("arg_movie_id") ?: -1
         load(movieId)
     }
 
@@ -31,7 +38,8 @@ internal class MovieViewModel(
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
-            is MovieContract.Intent.Back -> navigator.back()
+            // TODO: hilt migration
+            is MovieContract.Intent.Back ->{} /*navigator.back()*/
         }
     }
 
@@ -257,7 +265,8 @@ internal class MovieViewModel(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 TrailerItem(it, defaultImageLoader) { trailer ->
-                    navigator.toYoutube(trailer.key)
+                    // TODO: hilt migration
+//                    navigator.toYoutube(trailer.key)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
@@ -281,7 +290,8 @@ internal class MovieViewModel(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 ActorItem(it, defaultImageLoader) { extras ->
-                    navigator.toActor(it.id, it.profilePath, extras)
+                    // TODO: hilt migration
+//                    navigator.toActor(it.id, it.profilePath, extras)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }

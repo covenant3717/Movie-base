@@ -30,14 +30,14 @@ object Versions {
     object Jetpack {
         const val LIFECYCLE = "2.4.1"
         const val APP_COMPAT = "1.2.0"
-        const val NAVIGATION = "2.4.2"
+        const val NAVIGATION = "2.5.3"
     }
 
     object UI {
         const val MATERIAL = "1.4.0"
         const val COIL = "1.4.0"
         const val COIL_GIF = "1.3.0"
-        const val FRAGMENT = "1.4.0"
+        const val FRAGMENT = "1.5.2"
         const val CONSTRAINT_LAYOUT = "2.1.2"
         const val GROUPIE = "2.9.0"
         const val CIRCLE_IMAGE_VIEW = "3.1.0"

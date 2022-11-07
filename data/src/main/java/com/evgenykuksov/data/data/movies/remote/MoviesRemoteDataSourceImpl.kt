@@ -1,8 +1,9 @@
 package com.evgenykuksov.data.data.movies.remote
 
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-internal class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRemoteDataSource {
+internal class MoviesRemoteDataSourceImpl @Inject constructor(private val api: MoviesApi) : MoviesRemoteDataSource {
 
     override fun getUpcoming() = flow { emit(api.getUpcoming()) }
 

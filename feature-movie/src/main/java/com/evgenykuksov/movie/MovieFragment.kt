@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -21,22 +23,22 @@ import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie.*
 import kotlinx.coroutines.delay
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
-import org.koin.core.qualifier.named
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
-    private val viewModel: MovieViewModel by viewModel { parametersOf(movieId) }
-    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
+    private val viewModel: MovieViewModel by viewModels()
+// TODO: hilt migration
+//    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
+    @Inject lateinit var emptyImageLoader: ImageLoader
     private val adapterDetails: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterBackdrops: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()
     private var backdropSection = Section()
-    private val movieId: Long by lazy { arguments?.getLong(ARG_MOVIE_ID) ?: throw IllegalStateException("No movieId") }
     private val moviePoster: String by lazy { arguments?.getString(ARG_MOVIE_POSTER).orEmpty() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
