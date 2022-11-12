@@ -7,15 +7,15 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val featureHomeModule = module {
-
-    viewModel {
-        HomeViewModel(
-            get(),
-            get(),
-            get(),
-            get(named(COIL_DEFAULT_LOADER)),
-            get(named(COIL_GIF_LOADER)),
-        )
-    }
-}
+//val featureHomeModule = module {
+//
+//    viewModel {
+//        HomeViewModel(
+//            get(),
+//            get(),
+//            get(),
+//            get(named(COIL_DEFAULT_LOADER)),
+//            get(named(COIL_GIF_LOADER)),
+//        )
+//    }
+//}

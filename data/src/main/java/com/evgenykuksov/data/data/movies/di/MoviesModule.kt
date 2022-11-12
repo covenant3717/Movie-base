@@ -11,19 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import org.koin.dsl.module
 import retrofit2.Retrofit
-
-internal val movieModule = module {
-
-    single { get<Retrofit>().create(MoviesApi::class.java) }
-
-    single<MoviesRemoteDataSource> { MoviesRemoteDataSourceImpl(get()) }
-
-    single<MoviesMemoryDataSource> { MoviesMemoryDataSourceImpl() }
-
-    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
-}
 
 @Module
 @InstallIn(ViewModelComponent::class)

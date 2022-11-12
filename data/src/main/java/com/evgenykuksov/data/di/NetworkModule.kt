@@ -22,6 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+// TODO: hilt migration
+// как передать парметры
 internal fun networkModule(baseUrl: String, apiVersion: String, apiKey: String) = module {
 
     single {
