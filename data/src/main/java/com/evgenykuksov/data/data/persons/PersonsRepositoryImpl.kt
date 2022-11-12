@@ -8,8 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-internal class PersonsRepositoryImpl(
+internal class PersonsRepositoryImpl @Inject constructor(
     private val remoteDataSource: PersonsRemoteDataSource
 ) : PersonsRepository {
 

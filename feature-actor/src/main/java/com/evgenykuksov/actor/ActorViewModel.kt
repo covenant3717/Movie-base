@@ -1,6 +1,7 @@
 package com.evgenykuksov.actor
 
 import android.view.Gravity
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.evgenykuksov.actor.navigation.ActorNavigation
 import com.evgenykuksov.core.base.BaseViewModel
@@ -10,20 +11,25 @@ import com.evgenykuksov.domain.persons.PersonsUseCase
 import com.evgenykuksov.domain.persons.model.ActorData
 import com.evgenykuksov.domain.persons.model.ActorInfo
 import com.xwray.groupie.kotlinandroidextensions.Item
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-internal class ActorViewModel(
-    private val actorId: Long,
-    private val navigator: ActorNavigation,
+@HiltViewModel
+internal class ActorViewModel @Inject constructor(
+//    private val actorId: Long,
+    stateHandle: SavedStateHandle,
+//    private val navigator: ActorNavigation,
     private val personsUseCase: PersonsUseCase
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
     private var actorData: ActorData? = null
 
     init {
+        val actorId = stateHandle.get<Long>("arg_actor_id") ?: -1
         load(actorId)
     }
 
@@ -120,6 +126,6 @@ internal class ActorViewModel(
 
     private fun handleInfoClicked() {
         val listItems = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
-        navigator.toBottomDialog(listItems)
+//        navigator.toBottomDialog(listItems)     // TODO: hilt migration
     }
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import coil.ImageLoader
 import com.evgenykuksov.actor.adapter.PhotoAdapter
 import com.evgenykuksov.actor.adapter.PhotoPageTransformer
@@ -16,18 +17,20 @@ import com.evgenykuksov.core.extensions.setPaddings
 import com.evgenykuksov.core.extensions.toast
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_actor.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
-    private val viewModel: ActorViewModel by viewModel { parametersOf(actorId) }
-    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
+    private val viewModel: ActorViewModel by viewModels()
+    // TODO: hilt migration
+//    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
+    @Inject lateinit var emptyImageLoader: ImageLoader
     private val adapterPhotos = PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
-    private val actorId: Long by lazy { arguments?.getLong(ARG_ACTOR_ID) ?: throw IllegalStateException("No actorId") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

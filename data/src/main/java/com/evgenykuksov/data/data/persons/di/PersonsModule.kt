@@ -2,17 +2,26 @@ package com.evgenykuksov.data.data.persons.di
 
 import com.evgenykuksov.data.data.persons.PersonsRepositoryImpl
 import com.evgenykuksov.data.data.persons.remote.PersonsRemoteDataSource
-import com.evgenykuksov.data.data.persons.remote.PersonsRemoteStoreImpl
+import com.evgenykuksov.data.data.persons.remote.PersonsRemoteDataSourceImpl
 import com.evgenykuksov.data.data.persons.remote.PersonsApi
 import com.evgenykuksov.domain.persons.PersonsRepository
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import retrofit2.Retrofit
 
-internal val personsModule = module {
+@Module
+@InstallIn(ViewModelComponent::class)
+internal object PersonsModule {
 
-    single { get<Retrofit>().create(PersonsApi::class.java) }
+    @Provides
+    fun providePersonsApi(retrofit: Retrofit): PersonsApi = retrofit.create(PersonsApi::class.java)
 
-    single<PersonsRemoteDataSource> { PersonsRemoteStoreImpl(get()) }
+    @Provides
+    fun providePersonsRemoteDataSource(api: PersonsApi): PersonsRemoteDataSource = PersonsRemoteDataSourceImpl(api)
 
-    single<PersonsRepository> { PersonsRepositoryImpl(get()) }
+    @Provides
+    fun providePersonsRepository(remoteDataSource: PersonsRemoteDataSource): PersonsRepository =
+        PersonsRepositoryImpl(remoteDataSource)
 }
