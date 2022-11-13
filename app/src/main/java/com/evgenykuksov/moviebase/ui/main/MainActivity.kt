@@ -12,12 +12,13 @@ import com.evgenykuksov.moviebase.R
 import com.evgenykuksov.moviebase.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.ext.android.inject
+import javax.inject.Inject
 
 @AndroidEntryPoint
 internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val navigator: Navigator by inject()
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class MovieViewModel @Inject constructor(
-//    private val navigator: MovieNavigation,
+    private val navigator: MovieNavigation,
     stateHandle: SavedStateHandle,
     private val moviesUseCase: MoviesUseCase,
     @CoilModule.DefaultLoaderCoil private val defaultImageLoader: ImageLoader
@@ -39,8 +39,7 @@ internal class MovieViewModel @Inject constructor(
 
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
-            // TODO: hilt migration
-            is MovieContract.Intent.Back -> {} /*navigator.back()*/
+            is MovieContract.Intent.Back -> navigator.back()
         }
     }
 
@@ -266,8 +265,7 @@ internal class MovieViewModel @Inject constructor(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 TrailerItem(it, defaultImageLoader) { trailer ->
-                    // TODO: hilt migration
-//                    navigator.toYoutube(trailer.key)
+                    navigator.toYoutube(trailer.key)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }
@@ -291,8 +289,7 @@ internal class MovieViewModel @Inject constructor(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 ActorItem(it, defaultImageLoader) { extras ->
-                    // TODO: hilt migration
-//                    navigator.toActor(it.id, it.profilePath, extras)
+                    navigator.toActor(it.id, it.profilePath, extras)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_16).addTo(this)
             }

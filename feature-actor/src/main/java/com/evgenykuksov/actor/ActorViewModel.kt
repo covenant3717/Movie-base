@@ -20,9 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class ActorViewModel @Inject constructor(
-//    private val actorId: Long,
     stateHandle: SavedStateHandle,
-//    private val navigator: ActorNavigation,
+    private val navigator: ActorNavigation,
     private val personsUseCase: PersonsUseCase
 ) : BaseViewModel<ActorContract.Intent, ActorContract.State, ActorContract.SingleEvent>() {
 
@@ -126,6 +125,6 @@ internal class ActorViewModel @Inject constructor(
 
     private fun handleInfoClicked() {
         val listItems = actorData?.let { buildInfoItems(it.actorInfo) } ?: buildErrorItems()
-//        navigator.toBottomDialog(listItems)     // TODO: hilt migration
+        navigator.toBottomDialog(listItems)
     }
 }

@@ -29,8 +29,7 @@ class ActorFragment : BaseFragment(R.layout.fragment_actor) {
     @CoilModule.EmptyLoaderCoil
     @Inject
     lateinit var emptyImageLoader: ImageLoader
-    private val adapterPhotos =
-        PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
+    private val adapterPhotos by lazy { PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

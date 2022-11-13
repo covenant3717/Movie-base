@@ -11,7 +11,6 @@ import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.di.CoilModule
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.CustomEmptyItem
-import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.home.items.MovieItem
 import com.evgenykuksov.home.items.MovieLoadingItem
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
@@ -19,14 +18,13 @@ import com.evgenykuksov.home.navigation.HomeNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-//    private val navigator: HomeNavigation,
+    private val navigator: HomeNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,
     @CoilModule.DefaultLoaderCoil private val defaultImageLoader: ImageLoader,
@@ -85,8 +83,7 @@ internal class HomeViewModel @Inject constructor(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 MovieItem(it, defaultImageLoader, R.dimen.dimen_20) { movie, extras ->
-                    // TODO: hilt migration
-//                    navigator.toMovie(movie.id, movie.posterPath, extras)
+                    navigator.toMovie(movie.id, movie.posterPath, extras)
                 }.addTo(this)
                 CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             }
@@ -98,8 +95,7 @@ internal class HomeViewModel @Inject constructor(
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)
             list.forEach {
                 MovieItem(it, defaultImageLoader, null) { movie, extras ->
-                    // TODO: hilt migration
-//                    navigator.toMovie(movie.id, movie.posterPath, extras)
+                    navigator.toMovie(movie.id, movie.posterPath, extras)
                 }.addTo(this)
             }
             CustomEmptyItem(widthRes = R.dimen.dimen_20).addTo(this)

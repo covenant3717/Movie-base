@@ -55,8 +55,6 @@ fun DependencyHandlerScope.app() {
 
     "implementation"(Dependencies.Main.kotlin)
     "implementation"(Dependencies.Main.coreKtx)
-    "implementation"(Dependencies.DI.koin)
-    "implementation"(Dependencies.DI.koinAndroid)
     "implementation"(Dependencies.DI.hilt)
     "kapt"(Dependencies.DI.hiltCompiler)
     "implementation"(Dependencies.Coroutines.coroutine)
@@ -76,8 +74,6 @@ private fun DependencyHandlerScope.commonFeatureDependencies() {
 
     "implementation"(Dependencies.Main.kotlin)
     "implementation"(Dependencies.Main.coreKtx)
-    "implementation"(Dependencies.DI.koin)
-    "implementation"(Dependencies.DI.koinAndroid)
     "implementation"(Dependencies.DI.hilt)
     "kapt"(Dependencies.DI.hiltCompiler)
     "implementation"(Dependencies.Coroutines.coroutine)
