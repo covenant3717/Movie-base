@@ -15,15 +15,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/*
 // TODO: hilt migration
-// как передать парметры
+// как передать парметры: BuildConfig.BASE_URL, BuildConfig.API_VERSION, BuildConfig.API_KEY
 internal fun networkModule(baseUrl: String, apiVersion: String, apiKey: String) = module {
 
     single {
@@ -57,6 +56,7 @@ internal fun networkModule(baseUrl: String, apiVersion: String, apiKey: String) 
         GsonBuilder().create()
     }
 }
+*/
 
 @Module
 @InstallIn(SingletonComponent::class)

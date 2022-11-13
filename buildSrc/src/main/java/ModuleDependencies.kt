@@ -33,8 +33,6 @@ fun DependencyHandlerScope.data() {
 
     "implementation"(Dependencies.Main.kotlin)
     "implementation"(Dependencies.Main.coreKtx)
-    "implementation"(Dependencies.DI.koin)
-    "implementation"(Dependencies.DI.koinAndroid)
     "implementation"(Dependencies.DI.hilt)
     "kapt"(Dependencies.DI.hiltCompiler)
     "implementation"(Dependencies.Coroutines.coroutine)
