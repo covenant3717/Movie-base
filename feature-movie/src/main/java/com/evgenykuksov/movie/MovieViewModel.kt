@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.core.base.BaseViewModel
+import com.evgenykuksov.core.di.CoilModule
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.*
 import com.evgenykuksov.domain.movies.model.*
@@ -24,7 +25,7 @@ internal class MovieViewModel @Inject constructor(
 //    private val navigator: MovieNavigation,
     stateHandle: SavedStateHandle,
     private val moviesUseCase: MoviesUseCase,
-    private val defaultImageLoader: ImageLoader
+    @CoilModule.DefaultLoaderCoil private val defaultImageLoader: ImageLoader
 ) : BaseViewModel<MovieContract.Intent, MovieContract.State, MovieContract.SingleEvent>() {
 
     init {
@@ -39,7 +40,7 @@ internal class MovieViewModel @Inject constructor(
     override fun handleIntent(intent: MovieContract.Intent) {
         when (intent) {
             // TODO: hilt migration
-            is MovieContract.Intent.Back ->{} /*navigator.back()*/
+            is MovieContract.Intent.Back -> {} /*navigator.back()*/
         }
     }
 

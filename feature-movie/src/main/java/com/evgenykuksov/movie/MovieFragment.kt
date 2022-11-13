@@ -7,14 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import coil.ImageLoader
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.evgenykuksov.core.anim.ANIM_DURATION_350
 import com.evgenykuksov.core.anim.startAnimationAlpha
 import com.evgenykuksov.core.base.BaseFragment
-import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
+import com.evgenykuksov.core.di.CoilModule
 import com.evgenykuksov.core.extensions.collectLA
 import com.evgenykuksov.core.extensions.toHoursMinutes
 import com.evgenykuksov.core.extensions.toast
@@ -32,9 +31,9 @@ import javax.inject.Inject
 class MovieFragment : BaseFragment(R.layout.fragment_movie) {
 
     private val viewModel: MovieViewModel by viewModels()
-// TODO: hilt migration
-//    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    @Inject lateinit var emptyImageLoader: ImageLoader
+    @CoilModule.EmptyLoaderCoil
+    @Inject
+    lateinit var emptyImageLoader: ImageLoader
     private val adapterDetails: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private val adapterBackdrops: GroupAdapter<GroupieViewHolder> = GroupAdapter()
     private var detailsSection = Section()

@@ -11,7 +11,7 @@ import coil.ImageLoader
 import com.evgenykuksov.actor.adapter.PhotoAdapter
 import com.evgenykuksov.actor.adapter.PhotoPageTransformer
 import com.evgenykuksov.core.base.BaseFragment
-import com.evgenykuksov.core.di.COIL_EMPTY_LOADER
+import com.evgenykuksov.core.di.CoilModule
 import com.evgenykuksov.core.extensions.collectLA
 import com.evgenykuksov.core.extensions.setPaddings
 import com.evgenykuksov.core.extensions.toast
@@ -19,18 +19,18 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_actor.*
-import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ActorFragment : BaseFragment(R.layout.fragment_actor) {
 
     private val viewModel: ActorViewModel by viewModels()
-    // TODO: hilt migration
-//    private val emptyImageLoader: ImageLoader by inject(named(COIL_EMPTY_LOADER))
-    @Inject lateinit var emptyImageLoader: ImageLoader
-    private val adapterPhotos = PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
+
+    @CoilModule.EmptyLoaderCoil
+    @Inject
+    lateinit var emptyImageLoader: ImageLoader
+    private val adapterPhotos =
+        PhotoAdapter(emptyImageLoader) { viewModel.sendIntent(ActorContract.Intent.InfoClicked) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

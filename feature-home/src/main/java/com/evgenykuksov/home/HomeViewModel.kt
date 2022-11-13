@@ -8,6 +8,7 @@ import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.core.base.BaseViewModel
+import com.evgenykuksov.core.di.CoilModule
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.CustomEmptyItem
 import com.evgenykuksov.core.items.ErrorItem
@@ -28,8 +29,8 @@ internal class HomeViewModel @Inject constructor(
 //    private val navigator: HomeNavigation,
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,
-    private val defaultImageLoader: ImageLoader,
-    private val gifLoader: ImageLoader
+    @CoilModule.DefaultLoaderCoil private val defaultImageLoader: ImageLoader,
+    @CoilModule.GiftLoaderCoil private val gifLoader: ImageLoader
 ) : BaseViewModel<HomeContract.Intent, HomeContract.State, HomeContract.SingleEvent>() {
 
     private var moviesData: MoviesData? = null
