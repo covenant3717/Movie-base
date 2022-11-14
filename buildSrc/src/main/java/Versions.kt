@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion
 object Versions {
 
     object App {
-        const val COMPILE_SDK = 31
+        const val COMPILE_SDK = 33
         const val APPLICATION_ID = "com.evgenykuksov.moviebase"
         const val MIN_SDK = 21
         const val TARGET_SDK = 30
@@ -31,7 +31,7 @@ object Versions {
         const val LIFECYCLE = "2.4.1"
         const val APP_COMPAT = "1.2.0"
         const val NAVIGATION = "2.4.2"
-        const val COMPOSE_UI = "1.1.1"
+        const val COMPOSE_UI = "1.3.0"
         const val COMPOSE_ACTIVITY = "1.5.1"
         const val COMPOSE_VIEW_MODEL = "2.5.1"
         const val COMPOSE_BOOM = "2022.10.00"
