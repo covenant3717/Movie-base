@@ -64,15 +64,15 @@ fun DependencyHandlerScope.app() {
     "implementation"(Dependencies.Jetpack.navigationUI)
 
     // Вариант 1.
-//    "implementation"(Dependencies.Jetpack.composeUi)
-//    "implementation"(Dependencies.Jetpack.composePreview)
-//    "implementation"(Dependencies.Jetpack.composeMaterial2)
-//    "implementation"(Dependencies.Jetpack.composeActivity)
-//    "implementation"(Dependencies.Jetpack.composeViewmodel)
+    "implementation"(Dependencies.Jetpack.composeUi)
+    "implementation"(Dependencies.Jetpack.composePreview)
+    "implementation"(Dependencies.Jetpack.composeMaterial2)
+    "implementation"(Dependencies.Jetpack.composeActivity)
+    "implementation"(Dependencies.Jetpack.composeViewmodel)
 
-    // Вариант 2.
-    "implementation platform ${(Dependencies.Jetpack.composeBom)}"
-    "implementation"(Dependencies.Jetpack.composeRuntime)
+    // Вариант 2 (не сработал).
+//    "implementation platform ${(Dependencies.Jetpack.composeBom)}"
+//    "implementation"(Dependencies.Jetpack.composeRuntime)
 
     "implementation"(Dependencies.UI.constraintLayout)
     "implementation"(Dependencies.UI.groupie)
