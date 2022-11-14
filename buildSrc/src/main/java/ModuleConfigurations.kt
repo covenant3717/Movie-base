@@ -42,6 +42,12 @@ fun BaseAppModuleExtension.appConfiguration() {
     kotlinOptions {
         jvmTarget = Versions.Main.JAVA.toString()
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
+    }
 }
 
 fun BaseExtension.libraryConfiguration() {
