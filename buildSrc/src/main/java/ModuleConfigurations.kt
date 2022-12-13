@@ -1,5 +1,8 @@
 import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import org.gradle.api.Action
+import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
 
 fun BaseAppModuleExtension.appConfiguration() {
     compileSdk = Versions.App.COMPILE_SDK
@@ -54,5 +57,9 @@ fun BaseExtension.libraryConfiguration() {
     compileSdkVersion(Versions.App.COMPILE_SDK)
     defaultConfig {
         minSdk = Versions.App.MIN_SDK
+    }
+    buildFeatures.compose = true
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
     }
 }

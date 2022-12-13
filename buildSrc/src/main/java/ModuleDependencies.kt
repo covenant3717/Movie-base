@@ -8,6 +8,12 @@ fun DependencyHandlerScope.core() {
     "implementation"(Dependencies.DI.koinAndroid)
     "implementation"(Dependencies.Coroutines.coroutine)
     "implementation"(Dependencies.Coroutines.coroutineAndroid)
+    "implementation"(Dependencies.Jetpack.composeUi)
+    "implementation"(Dependencies.Jetpack.composeUiGraphics)
+    "implementation"(Dependencies.Jetpack.composePreview)
+    "debugImplementation"(Dependencies.Jetpack.composeTooling)
+    "implementation"(Dependencies.Jetpack.composeMaterial2)
+    "implementation"(Dependencies.Jetpack.composeActivity)
     "implementation"(Dependencies.Jetpack.viewmodel)
     "implementation"(Dependencies.Jetpack.livedata)
     "implementation"(Dependencies.Jetpack.runtime)
@@ -65,7 +71,9 @@ fun DependencyHandlerScope.app() {
 
     // Вариант 1.
     "implementation"(Dependencies.Jetpack.composeUi)
+    "implementation"(Dependencies.Jetpack.composeUiGraphics)
     "implementation"(Dependencies.Jetpack.composePreview)
+    "debugImplementation"(Dependencies.Jetpack.composeTooling)
     "implementation"(Dependencies.Jetpack.composeMaterial2)
     "implementation"(Dependencies.Jetpack.composeActivity)
     "implementation"(Dependencies.Jetpack.composeViewmodel)

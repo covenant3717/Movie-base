@@ -28,6 +28,8 @@ object Dependencies {
 
         // Вариант 1.
         const val composeUi = "androidx.compose.ui:ui:${Versions.Jetpack.COMPOSE_UI}"
+        const val composeUiGraphics = "androidx.compose.ui:ui-graphics:${Versions.Jetpack.COMPOSE_UI}"
+        const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.Jetpack.COMPOSE_UI}"
         const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.Jetpack.COMPOSE_UI}"
         const val composeMaterial2 = "androidx.compose.material:material:${Versions.Jetpack.COMPOSE_UI}"
         const val composeActivity = "androidx.activity:activity-compose:${Versions.Jetpack.COMPOSE_ACTIVITY}"
