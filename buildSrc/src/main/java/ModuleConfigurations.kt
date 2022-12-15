@@ -1,18 +1,14 @@
 import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import org.gradle.api.Action
-import org.gradle.internal.impldep.com.amazonaws.PredefinedClientConfigurations.defaultConfig
 
 fun BaseAppModuleExtension.appConfiguration() {
-    compileSdk = Versions.App.COMPILE_SDK
     defaultConfig {
         applicationId = Versions.App.APPLICATION_ID
+        compileSdk = Versions.App.COMPILE_SDK
         minSdk = Versions.App.MIN_SDK
         targetSdk = Versions.App.TARGET_SDK
         versionCode = Versions.App.VERSION_CODE
         versionName = Versions.App.VERSION_NAME
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -32,9 +28,6 @@ fun BaseAppModuleExtension.appConfiguration() {
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
-            isZipAlignEnabled = true
-            isJniDebuggable = false
-            isRenderscriptDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -49,7 +42,7 @@ fun BaseAppModuleExtension.appConfiguration() {
     composeOptions.kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
 }
 
-fun BaseExtension.libraryConfiguration() {
+fun BaseExtension.coreConfiguration() {
     compileSdkVersion(Versions.App.COMPILE_SDK)
     defaultConfig {
         minSdk = Versions.App.MIN_SDK
@@ -64,3 +57,13 @@ fun BaseExtension.dataConfiguration() {
         minSdk = Versions.App.MIN_SDK
     }
 }
+
+fun BaseExtension.featureConfiguration() {
+    compileSdkVersion(Versions.App.COMPILE_SDK)
+    defaultConfig {
+        minSdk = Versions.App.MIN_SDK
+    }
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
+}
+
