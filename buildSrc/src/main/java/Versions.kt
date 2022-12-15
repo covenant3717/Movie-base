@@ -12,7 +12,7 @@ object Versions {
     }
 
     object Main {
-        const val KOTLIN = "1.7.0"
+        const val KOTLIN = "1.7.10"
         const val KOTLIN_COMPILER_EXTENSION = "1.2.0"
         const val CORE_KTX = "1.8.0"
         const val GRADLE = "7.2.1"
@@ -34,7 +34,6 @@ object Versions {
         const val COMPOSE_UI = "1.3.0"
         const val COMPOSE_ACTIVITY = "1.5.1"
         const val COMPOSE_VIEW_MODEL = "2.5.1"
-        const val COMPOSE_BOOM = "2022.10.00"
     }
 
     object UI {

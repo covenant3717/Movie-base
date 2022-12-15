@@ -45,12 +45,8 @@ fun BaseAppModuleExtension.appConfiguration() {
     kotlinOptions {
         jvmTarget = Versions.Main.JAVA.toString()
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
-    }
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
 }
 
 fun BaseExtension.libraryConfiguration() {
@@ -59,7 +55,12 @@ fun BaseExtension.libraryConfiguration() {
         minSdk = Versions.App.MIN_SDK
     }
     buildFeatures.compose = true
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
+    composeOptions.kotlinCompilerExtensionVersion = Versions.Main.KOTLIN_COMPILER_EXTENSION
+}
+
+fun BaseExtension.dataConfiguration() {
+    compileSdkVersion(Versions.App.COMPILE_SDK)
+    defaultConfig {
+        minSdk = Versions.App.MIN_SDK
     }
 }
