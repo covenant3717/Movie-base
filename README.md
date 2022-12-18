@@ -1,5 +1,7 @@
-**MovieBase** is an Android application for viewing movie information (description, rating, trailers, posters, actors, etc.).
+На данный момент работает только под VPN.
+TMDB блокирует запросы из России и api возвращает лишь ошибки.
 
-The **aim** of this project is to gain experience in using modern Android development tools and applying the best programming practices.
+**MovieBase** — аndroid-приложение для просмотра информации о фильмах (описание, рейтинг, трейлеры, постеры, актеры и т.д.
 
+**Цель** этого проекта — получить опыт использования современных средств разработки для Android и применения лучших практик программирования.
 ----
