@@ -12,7 +12,7 @@ fun BaseAppModuleExtension.appConfiguration() {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        getByName("debug") {
+        debug {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
             buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
             buildConfigField("String", "API_VERSION", "\"3\"")
@@ -21,7 +21,7 @@ fun BaseAppModuleExtension.appConfiguration() {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-dev"
         }
-        getByName("release") {
+        release {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
             buildConfigField("String", "API_KEY", "\"791455e526b737816137912ea56a5ba4\"")
             buildConfigField("String", "API_VERSION", "\"3\"")

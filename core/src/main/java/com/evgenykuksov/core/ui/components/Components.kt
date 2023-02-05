@@ -13,9 +13,9 @@ import com.evgenykuksov.core.ui.theme.ThemeColors
 fun TopBar(
     @DrawableRes navigationIcon: Int,
     title: String = "",
-    colorNavigationIcon: Color = ThemeColors.white100,
-    colorText: Color = ThemeColors.white50,
-    colorBackground: Color = ThemeColors.black100,
+    colorNavigationIcon: Color = ThemeColors.core_white100,
+    colorText: Color = ThemeColors.core_white50,
+    colorBackground: Color = ThemeColors.core_black100,
     onNavigationIconClick: () -> Unit = {}
 ) {
     TopAppBar(
