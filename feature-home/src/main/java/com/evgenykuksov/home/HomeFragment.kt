@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
@@ -22,6 +23,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -32,6 +36,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -119,6 +124,12 @@ class HomeFragment : Fragment() {
             Spacer(modifier = Modifier.height(48.dp))
             Rang(4532)
             Spacer(modifier = Modifier.height(20.dp))
+            DashedDivider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                thickness = 4.dp
+            )
         }
     }
 
@@ -190,6 +201,31 @@ class HomeFragment : Fragment() {
                 text = rang.toString(),
                 color = colorResource(id = R.color.core_white_80),
                 style = MaterialTheme.typography.subtitle1
+            )
+        }
+    }
+
+    @Composable
+    fun DashedDivider(
+        thickness: Dp,
+        color: Color = colorResource(id = R.color.item_rank_active),
+        phase: Float = 0f,
+        intervals: FloatArray = floatArrayOf(60f, 30f),
+        modifier: Modifier
+    ) {
+        Canvas(
+            modifier = modifier
+        ) {
+            val dividerHeight = thickness.toPx()
+            drawRoundRect(
+                color = color,
+                style = Stroke(
+                    width = dividerHeight,
+                    pathEffect = PathEffect.dashPathEffect(
+                        intervals = intervals,
+                        phase = phase
+                    )
+                )
             )
         }
     }
