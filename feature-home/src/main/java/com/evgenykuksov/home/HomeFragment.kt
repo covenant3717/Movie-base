@@ -12,6 +12,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
@@ -26,6 +30,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,10 +75,10 @@ class HomeFragment : Fragment() {
                 .fillMaxWidth()
                 .background(ThemeColors.core_background)
                 .padding(top = 20.dp)
-                .clickable(onClick = { }, indication = rememberRipple(
-                    bounded = true,
-                    color = ThemeColors.core_white10,
-                ), interactionSource = remember { MutableInteractionSource() })
+//                .clickable(onClick = { }, indication = rememberRipple(
+//                    bounded = true,
+//                    color = ThemeColors.core_white10,
+//                ), interactionSource = remember { MutableInteractionSource() })
         ) {
             IconButton(modifier = Modifier, onClick = {}) {
                 Icon(
@@ -109,6 +114,11 @@ class HomeFragment : Fragment() {
             }
             Spacer(modifier = Modifier.height(32.dp))
             ScrollableTabRow(titles)
+            Spacer(modifier = Modifier.height(24.dp))
+            ListMovies(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.height(48.dp))
+            Rang(4532)
+            Spacer(modifier = Modifier.height(20.dp))
         }
     }
 
@@ -137,6 +147,49 @@ class HomeFragment : Fragment() {
                         )
                     }
                 }
+            )
+        }
+    }
+
+    @Composable
+    private fun ListMovies(modifier: Modifier) {
+        LazyHorizontalGrid(
+            modifier = modifier,
+            rows = GridCells.Fixed(2),
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(19) {
+                Card(
+                    modifier = Modifier
+                        .width(100.dp),
+                    backgroundColor = Color.DarkGray,
+                    elevation = 8.dp,
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun Rang(rang: Int) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Text(
+                modifier = Modifier.weight(1f),
+                text = stringResource(id = R.string.title_your_rank),
+                color = colorResource(id = R.color.core_white_80),
+                style = MaterialTheme.typography.subtitle1
+            )
+            Text(
+                text = rang.toString(),
+                color = colorResource(id = R.color.core_white_80),
+                style = MaterialTheme.typography.subtitle1
             )
         }
     }
