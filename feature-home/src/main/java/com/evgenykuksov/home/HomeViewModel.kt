@@ -10,14 +10,12 @@ import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.core.base.BaseViewModel
 import com.evgenykuksov.core.extensions.addTo
 import com.evgenykuksov.core.items.CustomEmptyItem
-import com.evgenykuksov.core.items.ErrorItem
 import com.evgenykuksov.home.items.MovieItem
 import com.evgenykuksov.home.items.MovieLoadingItem
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
 import com.evgenykuksov.home.navigation.HomeNavigation
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
@@ -35,7 +33,7 @@ internal class HomeViewModel(
         load()
     }
 
-    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, null, null)
+    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, emptyList(), null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
@@ -47,14 +45,14 @@ internal class HomeViewModel(
     private fun load() {
         viewModelScope.launch {
             moviesUseCase.getMovies()
-                .onStart { setState { copy(listItems = buildLoadingItems()) } }
+                .onStart { setState { copy(movies = buildLoadingItems()) } }
                 .catch { exception ->
-                    setState { copy(listItems = buildErrorItems()) }
+                    setState { copy(movies = buildErrorItems()) }
                     setSingleEvent(HomeContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
                 }
                 .collect {
                     moviesData = it
-                    setState { copy(listItems = buildItems(getMoviesByCategory(state.value.category))) }
+                    setState { copy(movies = buildItems(getMoviesByCategory(state.value.category))) }
                 }
         }
 
@@ -102,12 +100,12 @@ internal class HomeViewModel(
 
     private fun handleChangeGrouping(grouping: MoviesGrouping) = moviesData?.let {
         val movieItems = buildItems(getMoviesByCategory(state.value.category), grouping)
-        setState { copy(grouping = grouping, listItems = movieItems) }
+        setState { copy(grouping = grouping, movies = movieItems) }
     }
 
     private fun handleSelectCategory(category: MoviesCategory) = moviesData?.let {
         val movieItems = buildItems(getMoviesByCategory(category))
-        setState { copy(category = category, listItems = movieItems) }
+        setState { copy(category = category, movies = movieItems) }
     }
 
     private fun getMoviesByCategory(category: MoviesCategory): List<Movie> = moviesData?.let {

@@ -4,8 +4,8 @@ import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.UiIntent
 import com.evgenykuksov.core.base.UiSingleEvent
 import com.evgenykuksov.core.base.UiState
+import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
-import com.xwray.groupie.kotlinandroidextensions.Item
 
 internal class HomeContract {
 
@@ -17,7 +17,7 @@ internal class HomeContract {
     data class State(
         val grouping: MoviesGrouping,
         val category: MoviesCategory,
-        val listItems: List<Item>?,
+        val movies: List<Movie>,
         val rating: Int?
     ) : UiState
 

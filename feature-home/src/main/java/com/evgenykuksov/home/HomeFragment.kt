@@ -6,14 +6,11 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,34 +19,22 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.evgenykuksov.core.anim.ANIM_DURATION_250
-import com.evgenykuksov.core.anim.startAnimationAlpha
-import com.evgenykuksov.core.extensions.*
 import com.evgenykuksov.domain.movies.model.MoviesCategory
-import com.evgenykuksov.core.base.BaseFragment
 import com.evgenykuksov.core.ui.theme.ThemeColors
+import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.transition.MaterialElevationScale
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -66,13 +51,14 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(inflater.context).apply {
             setContent {
-                HomeScreen()
+                val state by viewModel.state.collectAsState()
+                HomeScreen(state)
             }
         }
     }
 
     @Composable
-    private fun HomeScreen() {
+    private fun HomeScreen(state: HomeContract.State) {
         Column(
             modifier = Modifier
                 .systemBarsPadding()
@@ -80,10 +66,6 @@ class HomeFragment : Fragment() {
                 .fillMaxWidth()
                 .background(ThemeColors.core_background)
                 .padding(top = 20.dp)
-//                .clickable(onClick = { }, indication = rememberRipple(
-//                    bounded = true,
-//                    color = ThemeColors.core_white10,
-//                ), interactionSource = remember { MutableInteractionSource() })
         ) {
             IconButton(modifier = Modifier, onClick = {}) {
                 Icon(
@@ -120,16 +102,10 @@ class HomeFragment : Fragment() {
             Spacer(modifier = Modifier.height(32.dp))
             ScrollableTabRow(titles)
             Spacer(modifier = Modifier.height(24.dp))
-            ListMovies(modifier = Modifier.weight(1f))
+            ListMovies(modifier = Modifier.weight(1f), state.movies)
             Spacer(modifier = Modifier.height(48.dp))
-            Rang(4532)
-            Spacer(modifier = Modifier.height(20.dp))
-            DashedDivider(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                thickness = 4.dp
-            )
+            Rating(state.rating)
+            Spacer(modifier = Modifier.height(30.dp))
         }
     }
 
@@ -163,7 +139,7 @@ class HomeFragment : Fragment() {
     }
 
     @Composable
-    private fun ListMovies(modifier: Modifier) {
+    private fun ListMovies(modifier: Modifier, movies: List<Movie>) {
         LazyHorizontalGrid(
             modifier = modifier,
             rows = GridCells.Fixed(2),
@@ -171,21 +147,33 @@ class HomeFragment : Fragment() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(19) {
-                Card(
-                    modifier = Modifier
-                        .width(100.dp),
-                    backgroundColor = Color.DarkGray,
-                    elevation = 8.dp,
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                }
+            items(movies.size) {
+                MovieItem()
             }
         }
     }
 
     @Composable
-    private fun Rang(rang: Int) {
+    private fun MovieItem() {
+        Card(
+            modifier = Modifier
+                .width(100.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .clickable(
+                    indication = rememberRipple(bounded = true, color = ThemeColors.core_white10),
+                    interactionSource = remember { MutableInteractionSource() },
+                    onClick = { }
+                ),
+            backgroundColor = Color.DarkGray,
+            elevation = 8.dp,
+            shape = RoundedCornerShape(12.dp),
+            content = {}
+        )
+    }
+
+    @Composable
+    private fun Rating(rating: Int?) {
+        if (rating == null) return
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -198,11 +186,18 @@ class HomeFragment : Fragment() {
                 style = MaterialTheme.typography.subtitle1
             )
             Text(
-                text = rang.toString(),
+                text = rating.toString(),
                 color = colorResource(id = R.color.core_white_80),
                 style = MaterialTheme.typography.subtitle1
             )
         }
+        Spacer(modifier = Modifier.height(20.dp))
+        DashedDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            thickness = 4.dp
+        )
     }
 
     @Composable
@@ -233,7 +228,9 @@ class HomeFragment : Fragment() {
     @Composable
     @Preview(showSystemUi = true)
     fun HomeScreenPreview() {
-        HomeScreen()
+        HomeScreen(
+            HomeContract.State(MoviesGrouping.Grid, MoviesCategory.NOW_PLAYING, emptyList(), 1354)
+        )
     }
 
 /*
