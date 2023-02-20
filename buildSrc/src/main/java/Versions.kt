@@ -31,7 +31,7 @@ object Versions {
         const val LIFECYCLE = "2.4.1"
         const val APP_COMPAT = "1.2.0"
         const val NAVIGATION = "2.4.2"
-        const val COMPOSE_BOM = "2022.10.00"
+        const val COMPOSE_BOM = "2023.01.00"
         const val COMPOSE_ACTIVITY = "1.5.1"
         const val COMPOSE_VIEW_MODEL = "2.5.1"
     }
