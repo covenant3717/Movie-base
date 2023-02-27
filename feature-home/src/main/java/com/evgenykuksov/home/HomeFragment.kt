@@ -1,8 +1,6 @@
 package com.evgenykuksov.home
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -32,19 +31,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import coil.compose.AsyncImage
 import com.evgenykuksov.core.ui.theme.ThemeColors
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
 import com.evgenykuksov.home.utils.MoviesCategory
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
-    private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
-    private val tabHandler by lazy { Handler(Looper.getMainLooper()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(inflater.context).apply {
@@ -101,7 +97,7 @@ class HomeFragment : Fragment() {
             ScrollableTabRow(state.category)
             Spacer(modifier = Modifier.height(24.dp))
             ListMovies(modifier = Modifier.weight(1f), state.movies)
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             Rating(state.rating)
             Spacer(modifier = Modifier.height(30.dp))
         }
@@ -109,7 +105,6 @@ class HomeFragment : Fragment() {
 
     @Composable
     private fun ScrollableTabRow(selectedCategory: MoviesCategory) {
-//        var state by remember { mutableStateOf(0) }
         Column {
             ScrollableTabRow(
                 selectedTabIndex = selectedCategory.index,
@@ -158,14 +153,14 @@ class HomeFragment : Fragment() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(movies.size) {
-                MovieItem()
+            movies.forEach {
+                item { MovieItem(it) }
             }
         }
     }
 
     @Composable
-    private fun MovieItem() {
+    private fun MovieItem(movie: Movie) {
         Card(
             modifier = Modifier
                 .width(100.dp)
@@ -178,7 +173,13 @@ class HomeFragment : Fragment() {
             backgroundColor = Color.DarkGray,
             elevation = 8.dp,
             shape = RoundedCornerShape(12.dp),
-            content = { }
+            content = {
+                AsyncImage(
+                    model = movie.posterPath,
+                    contentScale = ContentScale.Crop,
+                    contentDescription = null
+                )
+            }
         )
     }
 
@@ -240,7 +241,12 @@ class HomeFragment : Fragment() {
     @Preview(showSystemUi = true)
     fun HomeScreenPreview() {
         HomeScreen(
-            HomeContract.State(MoviesGrouping.Grid, MoviesCategory.NOW_PLAYING, emptyList(), 1354)
+            HomeContract.State(
+                MoviesGrouping.Grid,
+                MoviesCategory.NOW_PLAYING,
+                listOf(Movie.STUB, Movie.STUB, Movie.STUB, Movie.STUB, Movie.STUB),
+                1354
+            )
         )
     }
 

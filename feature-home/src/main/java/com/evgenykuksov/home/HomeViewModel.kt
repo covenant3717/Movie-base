@@ -25,16 +25,17 @@ internal class HomeViewModel(
     private val moviesUseCase: MoviesUseCase,
     private val profileUseCase: ProfileUseCase,
     private val defaultImageLoader: ImageLoader,
-    private val gifLoader: ImageLoader
+//    private val gifLoader: ImageLoader
 ) : BaseViewModel<HomeContract.Intent, HomeContract.State, HomeContract.SingleEvent>() {
 
     private var moviesData: MoviesData? = null
 
     init {
-//        load()
+        load()
     }
 
-    override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, emptyList(), null)
+    override fun createInitialState() =
+        HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, emptyList(), null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
@@ -45,11 +46,42 @@ internal class HomeViewModel(
         }
     }
 
-    private fun handleSelectCategory(category: MoviesCategory) {
-//        val movieItems = buildItems(getMoviesByCategory(category))
-//        setState { copy(category = category, movies = movieItems) }
-        setState { copy(category = category, movies = emptyList()) }
+    private fun load() {
+        viewModelScope.launch {
+            moviesUseCase.getMovies()
+//                .onStart { setState { copy(movies = buildLoadingItems()) } }
+                .catch { exception ->
+//                    setState { copy(movies = buildErrorItems()) }
+//                    setSingleEvent(HomeContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty()))
+                }
+                .collect {
+                    moviesData = it
+                    setState { copy(movies = getMoviesByCategory(state.value.category)) }
+                }
+        }
+
+        viewModelScope.launch {
+            profileUseCase.getRating()
+                .catch { exception -> setSingleEvent(HomeContract.SingleEvent.ToastError(exception.localizedMessage.orEmpty())) }
+                .collect { setState { copy(rating = it) } }
+        }
     }
+
+    private fun handleSelectCategory(category: MoviesCategory) {
+        setState { copy(category = category, movies = getMoviesByCategory(category)) }
+    }
+
+    private fun getMoviesByCategory(category: MoviesCategory): List<Movie> =
+        moviesData
+            ?.let {
+                when (category) {
+                    MoviesCategory.UPCOMING -> it.listUpcoming
+                    MoviesCategory.NOW_PLAYING -> it.listNowPlaying
+                    MoviesCategory.POPULAR -> it.listPopular
+                    MoviesCategory.TOP_RATED -> it.listTopRated
+                }
+            }
+            .orEmpty()
 
 /*
     private fun load() {

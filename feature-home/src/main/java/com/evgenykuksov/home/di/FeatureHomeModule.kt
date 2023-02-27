@@ -15,7 +15,7 @@ val featureHomeModule = module {
             get(),
             get(),
             get(named(COIL_DEFAULT_LOADER)),
-            get(named(COIL_GIF_LOADER)),
+//            get(named(COIL_GIF_LOADER)),
         )
     }
 }

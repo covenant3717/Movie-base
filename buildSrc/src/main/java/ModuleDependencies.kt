@@ -107,7 +107,7 @@ private fun DependencyHandlerScope.commonFeatureDependencies() {
     "implementation"(Dependencies.Jetpack.composeActivity)
     "implementation"(Dependencies.Jetpack.composeViewModel)
     "implementation"(Dependencies.UI.material)
-    "implementation"(Dependencies.UI.coil)
+    "implementation"(Dependencies.UI.coilCompose)
     "implementation"(Dependencies.UI.coilGif)
     "implementation"(Dependencies.UI.constraintLayout)
     "implementation"(Dependencies.UI.fragment)

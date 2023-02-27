@@ -26,14 +26,14 @@ internal val coilModule = module {
             .build()
     }
 
-    single<ImageLoader>(named(COIL_GIF_LOADER)) {
-        ImageLoader.Builder(this.androidContext())
-            .componentRegistry {
-                if (Build.VERSION.SDK_INT >= 28) add(ImageDecoderDecoder(this@single.androidContext()))
-                else add(GifDecoder())
-            }
-            .build()
-    }
+//    single<ImageLoader>(named(COIL_GIF_LOADER)) {
+//        ImageLoader.Builder(this.androidContext())
+//            .componentRegistry {
+//                if (Build.VERSION.SDK_INT >= 28) add(ImageDecoderDecoder(this@single.androidContext()))
+//                else add(GifDecoder())
+//            }
+//            .build()
+//    }
 }
 
 const val COIL_EMPTY_LOADER = "coil_empty_loader"

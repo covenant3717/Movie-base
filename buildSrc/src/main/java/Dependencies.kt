@@ -39,6 +39,7 @@ object Dependencies {
     object UI {
         const val material = "com.google.android.material:material:${Versions.UI.MATERIAL}"
         const val coil = "io.coil-kt:coil:${Versions.UI.COIL}"
+        const val coilCompose = "io.coil-kt:coil-compose:${Versions.UI.COIL}"
         const val coilGif = "io.coil-kt:coil-gif:${Versions.UI.COIL_GIF}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
         const val fragment = "androidx.fragment:fragment:${Versions.UI.FRAGMENT}"
