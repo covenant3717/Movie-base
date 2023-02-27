@@ -1,10 +1,10 @@
 package com.evgenykuksov.home
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import com.evgenykuksov.domain.movies.MoviesUseCase
 import com.evgenykuksov.domain.movies.model.Movie
-import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.domain.movies.model.MoviesData
 import com.evgenykuksov.domain.profile.ProfileUseCase
 import com.evgenykuksov.core.base.BaseViewModel
@@ -14,6 +14,7 @@ import com.evgenykuksov.home.items.MovieItem
 import com.evgenykuksov.home.items.MovieLoadingItem
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
 import com.evgenykuksov.home.navigation.HomeNavigation
+import com.evgenykuksov.home.utils.MoviesCategory
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
@@ -30,18 +31,27 @@ internal class HomeViewModel(
     private var moviesData: MoviesData? = null
 
     init {
-        load()
+//        load()
     }
 
     override fun createInitialState() = HomeContract.State(MoviesGrouping.Linear, MoviesCategory.UPCOMING, emptyList(), null)
 
     override fun handleIntent(intent: HomeContract.Intent) {
         when (intent) {
-            is HomeContract.Intent.ChangeGrouping -> handleChangeGrouping(intent.grouping)
+            is HomeContract.Intent.ChangeGrouping -> {
+//                handleChangeGrouping(intent.grouping)
+            }
             is HomeContract.Intent.SelectCategory -> handleSelectCategory(intent.category)
         }
     }
 
+    private fun handleSelectCategory(category: MoviesCategory) {
+//        val movieItems = buildItems(getMoviesByCategory(category))
+//        setState { copy(category = category, movies = movieItems) }
+        setState { copy(category = category, movies = emptyList()) }
+    }
+    
+/*
     private fun load() {
         viewModelScope.launch {
             moviesUseCase.getMovies()
@@ -116,4 +126,5 @@ internal class HomeViewModel(
             MoviesCategory.TOP_RATED -> it.listTopRated
         }
     } ?: emptyList()
+*/
 }

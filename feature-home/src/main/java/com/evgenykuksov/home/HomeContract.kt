@@ -1,11 +1,11 @@
 package com.evgenykuksov.home
 
-import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.base.UiIntent
 import com.evgenykuksov.core.base.UiSingleEvent
 import com.evgenykuksov.core.base.UiState
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
+import com.evgenykuksov.home.utils.MoviesCategory
 
 internal class HomeContract {
 

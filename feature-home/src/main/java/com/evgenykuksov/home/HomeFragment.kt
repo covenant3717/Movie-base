@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,22 +32,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import com.evgenykuksov.domain.movies.model.MoviesCategory
 import com.evgenykuksov.core.ui.theme.ThemeColors
 import com.evgenykuksov.domain.movies.model.Movie
 import com.evgenykuksov.domain.movies.model.MoviesGrouping
+import com.evgenykuksov.home.utils.MoviesCategory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Section
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
     private val adapter: GroupAdapter<GroupieViewHolder> = GroupAdapter()
-    private val titles = listOf(R.string.tab_upcoming, R.string.tab_new, R.string.tab_popular, R.string.tab_top_rated)
     private val tabHandler by lazy { Handler(Looper.getMainLooper()) }
-    private var moviesSection = Section()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(inflater.context).apply {
@@ -100,7 +98,7 @@ class HomeFragment : Fragment() {
                 }
             }
             Spacer(modifier = Modifier.height(32.dp))
-            ScrollableTabRow(titles)
+            ScrollableTabRow(state.category)
             Spacer(modifier = Modifier.height(24.dp))
             ListMovies(modifier = Modifier.weight(1f), state.movies)
             Spacer(modifier = Modifier.height(48.dp))
@@ -110,32 +108,45 @@ class HomeFragment : Fragment() {
     }
 
     @Composable
-    private fun ScrollableTabRow(titles: List<Int>) {
-        var state by remember { mutableStateOf(0) }
+    private fun ScrollableTabRow(selectedCategory: MoviesCategory) {
+//        var state by remember { mutableStateOf(0) }
         Column {
             ScrollableTabRow(
-                selectedTabIndex = state,
+                selectedTabIndex = selectedCategory.index,
                 backgroundColor = ThemeColors.core_background,
                 contentColor = colorResource(id = R.color.tab_underline),
                 edgePadding = 0.dp,
                 tabs = {
-                    titles.forEachIndexed { index, titleId ->
+                    MoviesCategory.values().forEachIndexed { index, category ->
                         Tab(
-                            text = {
-                                Text(
-                                    text = stringResource(titleId),
-                                    style = MaterialTheme.typography.subtitle1
+                            titleRes = category.titleRes,
+                            isSelected = selectedCategory.index == index,
+                            onClick = {
+                                viewModel.handleIntent(
+                                    HomeContract.Intent.SelectCategory(MoviesCategory.getCategoryByIndex(index))
                                 )
-                            },
-                            selected = state == index,
-                            onClick = { state = index },
-                            selectedContentColor = colorResource(id = R.color.tab_selected),
-                            unselectedContentColor = colorResource(id = R.color.tab_default),
+                            }
                         )
                     }
                 }
             )
         }
+    }
+
+    @Composable
+    private fun Tab(@StringRes titleRes: Int, isSelected: Boolean, onClick: () -> Unit) {
+        Tab(
+            text = {
+                Text(
+                    text = stringResource(titleRes),
+                    style = MaterialTheme.typography.subtitle1
+                )
+            },
+            selected = isSelected,
+            onClick = { onClick() },
+            selectedContentColor = colorResource(id = R.color.tab_selected),
+            unselectedContentColor = colorResource(id = R.color.tab_default)
+        )
     }
 
     @Composable
@@ -167,7 +178,7 @@ class HomeFragment : Fragment() {
             backgroundColor = Color.DarkGray,
             elevation = 8.dp,
             shape = RoundedCornerShape(12.dp),
-            content = {}
+            content = { }
         )
     }
 
