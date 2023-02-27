@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
             ScrollableTabRow(
                 selectedTabIndex = selectedCategory.index,
                 backgroundColor = ThemeColors.core_background,
-                contentColor = colorResource(id = R.color.tab_underline),
+                contentColor = colorResource(R.color.tab_underline),
                 edgePadding = 0.dp,
                 tabs = {
                     MoviesCategory.values().forEachIndexed { index, category ->
