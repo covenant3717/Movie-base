@@ -50,7 +50,7 @@ internal class HomeViewModel(
 //        setState { copy(category = category, movies = movieItems) }
         setState { copy(category = category, movies = emptyList()) }
     }
-    
+
 /*
     private fun load() {
         viewModelScope.launch {

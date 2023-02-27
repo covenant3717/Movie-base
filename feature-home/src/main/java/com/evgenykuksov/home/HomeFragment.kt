@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         ) {
             IconButton(modifier = Modifier, onClick = {}) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_reading_glass),
+                    painter = painterResource(R.drawable.ic_reading_glass),
                     tint = ThemeColors.core_icon,
                     contentDescription = null
                 )
@@ -84,14 +84,14 @@ class HomeFragment : Fragment() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f),
-                    text = stringResource(id = R.string.title_categories),
-                    color = colorResource(id = R.color.title_categories),
+                    text = stringResource(R.string.title_categories),
+                    color = colorResource(R.color.title_categories),
                     style = MaterialTheme.typography.h5
                 )
                 IconButton(modifier = Modifier.align(Alignment.Bottom), onClick = {}) {
                     Icon(
                         modifier = Modifier,
-                        painter = painterResource(id = R.drawable.ic_four_points),
+                        painter = painterResource(R.drawable.ic_four_points),
                         tint = ThemeColors.core_icon,
                         contentDescription = null
                     )
@@ -144,8 +144,8 @@ class HomeFragment : Fragment() {
             },
             selected = isSelected,
             onClick = { onClick() },
-            selectedContentColor = colorResource(id = R.color.tab_selected),
-            unselectedContentColor = colorResource(id = R.color.tab_default)
+            selectedContentColor = colorResource(R.color.tab_selected),
+            unselectedContentColor = colorResource(R.color.tab_default)
         )
     }
 
@@ -214,7 +214,7 @@ class HomeFragment : Fragment() {
     @Composable
     fun DashedDivider(
         thickness: Dp,
-        color: Color = colorResource(id = R.color.item_rank_active),
+        color: Color = colorResource(R.color.item_rank_active),
         phase: Float = 0f,
         intervals: FloatArray = floatArrayOf(60f, 30f),
         modifier: Modifier
