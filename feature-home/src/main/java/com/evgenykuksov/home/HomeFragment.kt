@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             ScrollableTabRow(state.category)
             Spacer(modifier = Modifier.height(24.dp))
             ListMovies(modifier = Modifier.weight(1f), state.movies)
